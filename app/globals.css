@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bg: #f7fbf8;
+	--surface: #ffffff;
+	--text: #1f2d24;
+	--brand-50: #f4f9f6;
+	--brand-100: #deeee4;
+	--brand-700: #2a6343;
+	--brand-900: #173626;
+	--radius-pill: 9999px;
+	--radius-card: 0.75rem;
+	--shadow-brand-soft: 0 6px 18px rgb(42 99 67 / 0.25);
+	--shadow-studio: 0 14px 28px rgb(23 54 38 / 0.14);
+	--sticky-bg: rgb(255 255 255 / 0.9);
+	--sticky-blur: 10px;
+	--studio-highlight: radial-gradient(circle at 50% 20%, rgb(255 255 255 / 0.92) 0%, rgb(255 255 255 / 0) 55%);
+	--studio-backdrop: linear-gradient(160deg, #f6fbf8 0%, #edf6f1 55%, #e7f2ec 100%);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	color: var(--text);
+	background:
+		radial-gradient(circle at top right, #dff1e5 0%, transparent 40%),
+		radial-gradient(circle at 10% 90%, #e8f7ee 0%, transparent 35%),
+		var(--bg);
+	font-family: "Avenir Next", "Avenir", "Helvetica Neue", sans-serif;
+}
+
+@layer components {
+	.ds-sticky-top {
+		position: sticky;
+		top: 0;
+		z-index: 30;
+		border-top: 1px solid var(--brand-100);
+		border-bottom: 1px solid var(--brand-100);
+		background: var(--sticky-bg);
+		backdrop-filter: blur(var(--sticky-blur));
+	}
+
+	.ds-chip {
+		border-radius: var(--radius-pill);
+		border: 1px solid var(--brand-100);
+		background: #fff;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--brand-900);
+		transition: all 180ms ease;
+	}
+
+	.ds-chip:hover {
+		background: var(--brand-100);
+	}
+
+	.ds-chip-active {
+		border-color: var(--brand-700);
+		background: var(--brand-700);
+		color: #fff;
+		box-shadow: var(--shadow-brand-soft);
+	}
+
+	.ds-image-frame {
+		overflow: hidden;
+		border-radius: var(--radius-card);
+		border: 1px solid var(--brand-100);
+		background: linear-gradient(to bottom, var(--brand-50), #fff);
+	}
+
+	.ds-image-studio {
+		position: relative;
+		isolation: isolate;
+		background: var(--studio-backdrop);
+		box-shadow: var(--shadow-studio);
+	}
+
+	.ds-image-studio::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: var(--studio-highlight);
+		pointer-events: none;
+	}
+
+	.ds-image-subject {
+		position: relative;
+		z-index: 1;
+		filter: saturate(1.06) contrast(1.05) brightness(1.02);
+		transition: transform 260ms ease, filter 260ms ease;
+	}
+
+	.group:hover .ds-image-subject {
+		transform: scale(1.03);
+		filter: saturate(1.1) contrast(1.08) brightness(1.03);
+	}
+}
