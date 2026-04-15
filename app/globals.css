@@ -63,7 +63,8 @@ body {
 	}
 
 	.ds-chip:hover {
-		background: var(--brand-100);
+		background: var(--brand-99);
+		color: var(--brand-900);
 	}
 
 	.ds-chip-active {
