@@ -1,0 +1,341 @@
+[
+  {
+    "id": "fa-lam-120-1",
+    "image": "https://mainatural.com/wp-content/uploads/2026/02/Botella_agua_rosas.png",
+    "name": "Agua de Rosas",
+    "price": "$59.000",
+    "amountInCents": 5900000,
+    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-ass-30",
+    "image": "https://mainatural.com/wp-content/uploads/2021/08/Suero-Aqua-MAI-1.png",
+    "name": "Aqua - Suero Facial",
+    "price": "$74.000",
+    "amountInCents": 7400000,
+    "description": "Ilumina tu rostro desde la primera aplicación con una fórmula botánica que hidrata, suaviza y potencia tu glow natural. Agrégalo hoy a tu rutina y siente una piel más viva, fresca y luminosa.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "balsamo-jardin-herbal",
+    "image": "https://mainatural.com/wp-content/uploads/2021/08/Balsamo-MAI-1.png",
+    "name": "Bálsamo - Jardín Herbal",
+    "price": "$78.000",
+    "amountInCents": 7800000,
+    "description": "Descubre una fórmula botánica pensada para transformar tu rutina en una experiencia sensorial, efectiva y consciente. Pruébalo hoy y enamórate de una piel y cabello que se ven tan bien como se sienten.",
+    "category": "capilar",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-cam-150",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Lavanda.png",
+    "name": "Caléndula & Aloe Vera Manzanilla - Mousse Cremoso Limpiador",
+    "price": "$62.000",
+    "amountInCents": 6200000,
+    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "el-perfume-perfume-capilar",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/El-Perfume.png",
+    "name": "El Perfume - Perfume Capilar",
+    "price": "$52.000",
+    "amountInCents": 5200000,
+    "description": "Perfuma y protege tu cabello con una bruma botánica que deja una estela elegante, suave y memorable. Llévalo contigo y enamora con cada movimiento.",
+    "category": "capilar",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "ca-hcc-500",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Crema-para-peinar.png",
+    "name": "Herbal Curl - Crema Para Peinar",
+    "price": "$56.000",
+    "amountInCents": 5600000,
+    "description": "Descubre una fórmula botánica pensada para transformar tu rutina en una experiencia sensorial, efectiva y consciente. Pruébalo hoy y enamórate de una piel y cabello que se ven tan bien como se sienten.",
+    "category": "capilar",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "co-js-110-1-1",
+    "image": "https://mainatural.com/wp-content/uploads/2025/07/MAnzanilla.png",
+    "name": "Jabón Sólido - Caléndula & Manzanilla - Cosmética Natural Orgánica",
+    "price": "$35.000",
+    "amountInCents": 3500000,
+    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
+    "category": "corporal",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "co-js-110-1",
+    "image": "https://mainatural.com/wp-content/uploads/2025/07/Carbon.png",
+    "name": "Jabón Sólido - Carbón Activado y Arroz - Cosmética Natural Orgánica",
+    "price": "$35.000",
+    "amountInCents": 3500000,
+    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
+    "category": "corporal",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "co-js-67",
+    "image": "https://mainatural.com/wp-content/uploads/2025/07/Cacao.png",
+    "name": "Jabón Sólido - Rosas & Cacao - Cosmética Natural Orgánica",
+    "price": "$24.000",
+    "amountInCents": 2400000,
+    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
+    "category": "corporal",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "co-js-110-1-1-1",
+    "image": "https://mainatural.com/wp-content/uploads/2025/07/Ruda_Vervena.png",
+    "name": "Jabón Sólido - Ruda, Hierbabuena & Verbena - Cosmética Natural Orgánica",
+    "price": "$35.000",
+    "amountInCents": 3500000,
+    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
+    "category": "corporal",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-jpm-120",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Jazmin.png",
+    "name": "Jazmín & Pétalos de Rosa - Mousse Espumoso Limpiador",
+    "price": "$58.000",
+    "amountInCents": 5800000,
+    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "kit-cuidado-corporal-mai",
+    "image": "https://mainatural.com/wp-content/uploads/2025/07/Carbon.png",
+    "name": "Kit Cuidado Corporal MAI",
+    "price": "$63.000",
+    "amountInCents": 6300000,
+    "description": "Incluye Jabón Sólido - Carbón Activado y Arroz - Cosmética Natural Orgánica + Jabón Sólido - Caléndula & Manzanilla - Cosmética Natural Orgánica.",
+    "category": "kits",
+    "badge": "Ahorra 10%",
+    "benefits": [
+      "Limpieza + nutrición",
+      "Ritual corporal consciente",
+      "Edición recomendada"
+    ],
+    "rating": 4.9,
+    "reviewsCount": 48
+  },
+  {
+    "id": "kit-ritual-facial-mai",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Emolientev.png",
+    "name": "Kit Ritual Facial MAI",
+    "price": "$117.040",
+    "amountInCents": 11704000,
+    "description": "Incluye Rocio Primordial Emoliente - Tónico Facial + Aqua - Suero Facial.",
+    "category": "kits",
+    "badge": "Ahorra 12%",
+    "benefits": [
+      "Limpieza + tratamiento",
+      "Ideal día/noche",
+      "Ahorro frente a compra individual"
+    ],
+    "rating": 4.9,
+    "reviewsCount": 48
+  },
+  {
+    "id": "kit-rutina-capilar-mai",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/El-Perfume.png",
+    "name": "Kit Rutina Capilar MAI",
+    "price": "$108.000",
+    "amountInCents": 10800000,
+    "description": "Incluye El Perfume - Perfume Capilar + Shampoo - Jardín Herbal.",
+    "category": "kits",
+    "badge": "Ahorra 10%",
+    "benefits": [
+      "Nutrición y protección",
+      "Rutina capilar completa",
+      "Resultados progresivos"
+    ],
+    "rating": 4.9,
+    "reviewsCount": 48
+  },
+  {
+    "id": "fa-lam-120",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Lavanda.png",
+    "name": "Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador",
+    "price": "$58.000",
+    "amountInCents": 5800000,
+    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-lnd-70",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/LEche-Nutritiva-Dia-1.png",
+    "name": "Leche Nutritiva - Día",
+    "price": "$74.000",
+    "amountInCents": 7400000,
+    "description": "Empieza cada mañana con hidratación profunda, textura sedosa y un acabado saludable que enamora a primera vista. Tu piel se ve equilibrada, luminosa y lista para el día.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-lnn-70",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Leche-Nutritiva-Facial-Noche-1.png",
+    "name": "Leche Nutritiva - Noche",
+    "price": "$74.000",
+    "amountInCents": 7400000,
+    "description": "Mientras duermes, tu piel se regenera con una mezcla nutritiva de activos botánicos que reconforta y revitaliza. Despierta con el rostro más suave, descansado y visiblemente radiante.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-rpt-70",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Emolientev.png",
+    "name": "Rocio Primordial Emoliente - Tónico Facial",
+    "price": "$59.000",
+    "amountInCents": 5900000,
+    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-rpt-70-1",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Herbal.png",
+    "name": "Rocio Primordial Herbal - Tónico Facial",
+    "price": "$59.000",
+    "amountInCents": 5900000,
+    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "fa-rcm-120",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Romero.png",
+    "name": "Romero & Carbón Activado - Mousse Cremoso Limpiador",
+    "price": "$58.000",
+    "amountInCents": 5800000,
+    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
+    "category": "facial",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  },
+  {
+    "id": "mnk-001",
+    "image": "https://mainatural.com/wp-content/uploads/2021/08/Shampoo-MAI-1.png",
+    "name": "Shampoo - Jardín Herbal",
+    "price": "$68.000",
+    "amountInCents": 6800000,
+    "description": "Limpieza profunda y gentil en un solo paso para un cabello más fuerte, suelto y con brillo natural. Dale a tu melena el cuidado consciente que merece y notarás la diferencia desde el primer lavado.",
+    "category": "capilar",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 4.8,
+    "reviewsCount": 32
+  }
+]

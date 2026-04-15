@@ -44,9 +44,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const existingUser = await db.user.findUnique({ where: { email } });
+    const user = existingUser
+      ? await db.user.update({
+          where: { email },
+          data: {
+            name,
+            phone,
+          },
+        })
+      : await db.user.create({
+          data: {
+            email,
+            name,
+            phone,
+            password: '',
+          },
+        });
+
+    if (!user) {
+      return NextResponse.json({ error: 'No fue posible preparar el usuario' }, { status: 500 });
+    }
+
     const appointment = await db.appointment.create({
       data: {
-        userId: '',
+        userId: user.id,
         name,
         email,
         phone,
@@ -54,7 +76,7 @@ export async function POST(request: NextRequest) {
         time,
         service: service || 'Consulta general',
         notes: notes || '',
-        status: 'pending',
+        status: 'pending_payment',
       },
     });
 

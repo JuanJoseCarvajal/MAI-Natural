@@ -5,14 +5,70 @@ import { createAppointment, getDayAvailability } from './actions';
 import BookingCalendar from '@/components/ui/BookingCalendar';
 
 const SERVICES = [
-  { id: '1', name: 'Consulta general', duration: '30 min', price: '$50' },
-  { id: '2', name: 'Tratamiento facial', duration: '60 min', price: '$120' },
-  { id: '3', name: 'Tratamiento capilar', duration: '45 min', price: '$90' },
-  { id: '4', name: 'Package premium', duration: '90 min', price: '$200' },
+  { id: '1', name: 'Consulta general', duration: '30 min', priceLabel: '$50.000', amountInCents: 5000000 },
+  { id: '2', name: 'Tratamiento facial', duration: '60 min', priceLabel: '$120.000', amountInCents: 12000000 },
+  { id: '3', name: 'Tratamiento capilar', duration: '45 min', priceLabel: '$90.000', amountInCents: 9000000 },
+  { id: '4', name: 'Package premium', duration: '90 min', priceLabel: '$200.000', amountInCents: 20000000 },
 ];
 
+// Por defecto queda en modo test; para activar pago real usa NEXT_PUBLIC_SERVICES_PAYMENT_MODE=live
+const FORCE_PAYMENT_TEST_MODE = process.env.NEXT_PUBLIC_SERVICES_PAYMENT_MODE !== 'live';
+const CALENDLY_BASE_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '';
+const ENABLE_CALENDLY = Boolean(CALENDLY_BASE_URL);
+const BANK_NAME = process.env.NEXT_PUBLIC_BANCOLOMBIA_BANK_NAME ?? 'Bancolombia';
+const BANK_ACCOUNT_TYPE = process.env.NEXT_PUBLIC_BANCOLOMBIA_ACCOUNT_TYPE ?? 'Cuenta de ahorros';
+const BANK_ACCOUNT_NUMBER = process.env.NEXT_PUBLIC_BANCOLOMBIA_ACCOUNT_NUMBER ?? '678-901234-56';
+const BANK_ACCOUNT_HOLDER = process.env.NEXT_PUBLIC_BANCOLOMBIA_ACCOUNT_HOLDER ?? 'MAI Natural SAS';
+const BANK_QR_STATIC_URL = process.env.NEXT_PUBLIC_BANCOLOMBIA_QR_URL ?? '';
+
+type ConfirmedAppointment = {
+  id: string;
+  paymentDueAtIso: string;
+};
+
+function formatCOP(amountInCents: number) {
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+  }).format(amountInCents / 100);
+}
+
+function formatTimeLeft(targetIso: string, now: number) {
+  const diff = new Date(targetIso).getTime() - now;
+  if (diff <= 0) return 'Tiempo vencido';
+  const totalMinutes = Math.floor(diff / 60000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return `${hours}h ${minutes.toString().padStart(2, '0')}m`;
+}
+
+function buildCalendlyUrl(baseUrl: string, params: { name: string; email: string; service: string }) {
+  if (!baseUrl) return '';
+  const url = new URL(baseUrl);
+  if (params.name) url.searchParams.set('name', params.name);
+  if (params.email) url.searchParams.set('email', params.email);
+  if (params.service) url.searchParams.set('a1', params.service);
+  return url.toString();
+}
+
+function buildTransferQrUrl(params: { appointmentId: string; serviceName: string; amountInCents: number }) {
+  const amountInPesos = Math.round(params.amountInCents / 100);
+  const transferPayload = [
+    `Banco:${BANK_NAME}`,
+    `Tipo:${BANK_ACCOUNT_TYPE}`,
+    `Cuenta:${BANK_ACCOUNT_NUMBER}`,
+    `Titular:${BANK_ACCOUNT_HOLDER}`,
+    `Valor COP:${amountInPesos}`,
+    `Ref:${params.appointmentId}`,
+    `Concepto:${params.serviceName}`,
+  ].join('\n');
+
+  return `https://quickchart.io/qr?text=${encodeURIComponent(transferPayload)}&size=280`;
+}
+
 export default function ServicesPage() {
-  const steps = ['Servicio', 'Tus datos', 'Horario', 'Confirmar'];
+  const steps = ['Servicio', 'Tus datos', 'Horario', 'Confirmar', 'Pago'];
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,8 +96,34 @@ export default function ServicesPage() {
   });
   const [dayAvailability, setDayAvailability] = useState({ count: 0, remaining: 2, isFull: false });
   const [checkingAvailability, setCheckingAvailability] = useState(false);
+  const [confirmedAppointment, setConfirmedAppointment] = useState<ConfirmedAppointment | null>(null);
+  const [nowTimestamp, setNowTimestamp] = useState(Date.now());
+  const [payingOnline, setPayingOnline] = useState(false);
+  const [confirmingTransfer, setConfirmingTransfer] = useState(false);
+  const [transferReference, setTransferReference] = useState('');
+  const [transferMessage, setTransferMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [showCalendly, setShowCalendly] = useState(false);
+  const [paymentConfirmation, setPaymentConfirmation] = useState<{
+    method: 'wompi' | 'transfer';
+    note: string;
+  } | null>(null);
 
   const selectedService = SERVICES.find((service) => service.name === reviewData.service);
+  const paymentExpired = confirmedAppointment
+    ? new Date(confirmedAppointment.paymentDueAtIso).getTime() <= nowTimestamp
+    : false;
+  const calendlyUrl = buildCalendlyUrl(CALENDLY_BASE_URL, {
+    name: formData.name,
+    email: formData.email,
+    service: formData.service,
+  });
+  const transferQrUrl = confirmedAppointment && selectedService
+    ? BANK_QR_STATIC_URL || buildTransferQrUrl({
+        appointmentId: confirmedAppointment.id,
+        serviceName: selectedService.name,
+        amountInCents: selectedService.amountInCents,
+      })
+    : BANK_QR_STATIC_URL;
 
   const timeSlots = useMemo(
     () => ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
@@ -68,6 +150,14 @@ export default function ServicesPage() {
     checkAvailability();
   }, [formData.date]);
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setNowTimestamp(Date.now());
+    }, 30000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -81,6 +171,7 @@ export default function ServicesPage() {
     if (step === 0) return Boolean(formData.service);
     if (step === 1) return Boolean(formData.name && formData.email && formData.phone);
     if (step === 2) return Boolean(formData.date && formData.time && !dayAvailability.isFull);
+    if (step === 3) return true;
     return true;
   };
 
@@ -93,12 +184,16 @@ export default function ServicesPage() {
       return;
     }
 
+    if (step >= steps.length - 2) {
+      return;
+    }
+
     if (step === 2) {
       setReviewData({ ...formData });
     }
 
     setMessage(null);
-    setStep((prev) => Math.min(prev + 1, steps.length - 1));
+    setStep((prev) => Math.min(prev + 1, steps.length - 2));
   };
 
   const goBack = () => {
@@ -116,7 +211,7 @@ export default function ServicesPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (step !== steps.length - 1) {
+    if (step !== steps.length - 2) {
       return;
     }
 
@@ -142,19 +237,24 @@ export default function ServicesPage() {
       );
 
       if (result.success) {
+        const createdAtIso = result.appointment?.createdAt
+          ? new Date(result.appointment.createdAt).toISOString()
+          : new Date().toISOString();
+        const dueDate = new Date(createdAtIso);
+        dueDate.setDate(dueDate.getDate() + 1);
+
+        setConfirmedAppointment({
+          id: result.appointment?.id ?? '',
+          paymentDueAtIso: dueDate.toISOString(),
+        });
+        setTransferReference('');
+        setTransferMessage(null);
+        setPaymentConfirmation(null);
         setMessage({
           type: 'success',
-          text: 'Cita reservada exitosamente. Te enviaremos un correo de confirmación.',
+          text: 'Cita confirmada. Completa el pago o confirma consignación dentro de las próximas 24 horas.',
         });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          date: '',
-          time: '',
-          service: '',
-          notes: '',
-        });
+        setStep(steps.length - 1);
       } else {
         if (result.error === 'Completa todos los campos requeridos') {
           const fallbackStep = getFirstIncompleteStep();
@@ -177,6 +277,119 @@ export default function ServicesPage() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleOnlinePayment = async () => {
+    if (!confirmedAppointment || !selectedService) return;
+
+    if (FORCE_PAYMENT_TEST_MODE) {
+      setPaymentConfirmation({
+        method: 'wompi',
+        note: 'Pago Wompi simulado y aprobado en modo test.',
+      });
+      setTransferMessage({
+        type: 'success',
+        text: 'Pago en línea aprobado (test). Tu cita queda confirmada para la fecha agendada.',
+      });
+      return;
+    }
+
+    setPayingOnline(true);
+    setTransferMessage(null);
+
+    try {
+      const response = await fetch('/api/payments/wompi/appointments/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          appointmentId: confirmedAppointment.id,
+          amountInCents: selectedService.amountInCents,
+          serviceName: selectedService.name,
+          customerEmail: reviewData.email,
+          customerName: reviewData.name,
+        }),
+      });
+
+      const data = (await response.json()) as { checkoutUrl?: string; error?: string };
+      if (!response.ok || !data.checkoutUrl) {
+        setTransferMessage({
+          type: 'error',
+          text: data.error ?? 'No fue posible iniciar el pago en línea.',
+        });
+        return;
+      }
+
+      window.location.href = data.checkoutUrl;
+    } catch (error) {
+      setTransferMessage({
+        type: 'error',
+        text: 'Error de conexión al iniciar el pago.',
+      });
+    } finally {
+      setPayingOnline(false);
+    }
+  };
+
+  const handleConfirmBankTransfer = async () => {
+    if (!confirmedAppointment?.id) return;
+    if (!transferReference.trim()) {
+      setTransferMessage({
+        type: 'error',
+        text: 'Ingresa el número de referencia de la consignación.',
+      });
+      return;
+    }
+
+    if (FORCE_PAYMENT_TEST_MODE) {
+      setPaymentConfirmation({
+        method: 'transfer',
+        note: `Consignación simulada (ref: ${transferReference.trim() || 'TEST-REF'}).`,
+      });
+      setTransferMessage({
+        type: 'success',
+        text: 'Consignación confirmada (test). Tu cita queda lista para validación administrativa.',
+      });
+      return;
+    }
+
+    setConfirmingTransfer(true);
+    setTransferMessage(null);
+
+    try {
+      const response = await fetch('/api/appointments/confirm-transfer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          appointmentId: confirmedAppointment.id,
+          transferReference: transferReference.trim(),
+        }),
+      });
+
+      const data = (await response.json()) as { success?: boolean; error?: string };
+      if (!response.ok || !data.success) {
+        setTransferMessage({
+          type: 'error',
+          text: data.error ?? 'No fue posible confirmar la consignación.',
+        });
+        return;
+      }
+
+      setTransferMessage({
+        type: 'success',
+        text: 'Recibimos tu confirmación de consignación. Verificaremos el pago y te contactaremos por correo.',
+      });
+    } catch (error) {
+      setTransferMessage({
+        type: 'error',
+        text: 'Error de conexión al confirmar la consignación.',
+      });
+    } finally {
+      setConfirmingTransfer(false);
     }
   };
 
@@ -242,7 +455,7 @@ export default function ServicesPage() {
                     >
                       <h3 className="font-semibold text-brand-900">{service.name}</h3>
                       <p className="mt-1 text-sm text-slate-600">Duración: {service.duration}</p>
-                      <p className="mt-2 font-bold text-brand-700">{service.price}</p>
+                      <p className="mt-2 font-bold text-brand-700">{service.priceLabel}</p>
                     </button>
                   );
                 })}
@@ -290,6 +503,39 @@ export default function ServicesPage() {
             <section>
               <h2 className="text-xl font-semibold text-brand-900">Paso 3: Fecha y hora</h2>
               <p className="mt-1 text-sm text-slate-600">Selecciona una fecha y luego una hora disponible.</p>
+
+              {ENABLE_CALENDLY ? (
+                <div className="mt-4 rounded-2xl border border-brand-200 bg-brand-50 p-4">
+                  <p className="text-sm font-semibold text-brand-900">Integración Calendly activa</p>
+                  <p className="mt-1 text-sm text-slate-700">
+                    Puedes agendar desde Calendly y luego continuar este flujo para confirmar datos y pago.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setShowCalendly((prev) => !prev)}
+                      className="rounded-full bg-brand-700 px-4 py-2 text-xs font-semibold text-white hover:bg-brand-900"
+                    >
+                      {showCalendly ? 'Ocultar Calendly' : 'Abrir Calendly aquí'}
+                    </button>
+                    <a
+                      href={calendlyUrl || CALENDLY_BASE_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-brand-300 px-4 py-2 text-xs font-semibold text-brand-900 hover:bg-white"
+                    >
+                      Abrir Calendly en nueva pestaña
+                    </a>
+                  </div>
+                  {showCalendly ? (
+                    <iframe
+                      title="Calendly"
+                      src={calendlyUrl || CALENDLY_BASE_URL}
+                      className="mt-4 h-[680px] w-full rounded-xl border border-brand-100 bg-white"
+                    />
+                  ) : null}
+                </div>
+              ) : null}
 
               <div className="mt-4 grid gap-5 lg:grid-cols-[1.1fr_1fr]">
                 <BookingCalendar
@@ -365,7 +611,7 @@ export default function ServicesPage() {
               <div className="mt-4 rounded-xl border border-brand-100 bg-brand-50 p-4">
                 <p className="text-sm text-slate-700"><strong>Servicio:</strong> {selectedService?.name || reviewData.service}</p>
                 <p className="text-sm text-slate-700 mt-1"><strong>Duración:</strong> {selectedService?.duration || 'N/A'}</p>
-                <p className="text-sm text-slate-700 mt-1"><strong>Precio:</strong> {selectedService?.price || 'N/A'}</p>
+                <p className="text-sm text-slate-700 mt-1"><strong>Precio:</strong> {selectedService?.priceLabel || 'N/A'}</p>
                 <p className="text-sm text-slate-700 mt-3"><strong>Nombre:</strong> {reviewData.name}</p>
                 <p className="text-sm text-slate-700 mt-1"><strong>Correo:</strong> {reviewData.email}</p>
                 <p className="text-sm text-slate-700 mt-1"><strong>Teléfono:</strong> {reviewData.phone}</p>
@@ -378,8 +624,133 @@ export default function ServicesPage() {
             </section>
           ) : null}
 
+          {step === 4 ? (
+            <section className="space-y-6">
+              <div>
+                <h2 className="text-xl font-semibold text-brand-900">Paso 5: Pago y próximos pasos</h2>
+                <p className="mt-1 text-sm text-slate-600">
+                  Tu cita quedó registrada en estado pendiente de pago. Completa el pago en línea o confirma tu consignación Bancolombia.
+                </p>
+                {FORCE_PAYMENT_TEST_MODE ? (
+                  <p className="mt-2 inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
+                    Modo test activo: los pagos se simulan en esta pantalla
+                  </p>
+                ) : null}
+              </div>
+
+              <div className={`rounded-xl border p-4 ${paymentExpired ? 'border-red-200 bg-red-50' : 'border-brand-100 bg-brand-50'}`}>
+                <p className={`text-sm font-semibold ${paymentExpired ? 'text-red-700' : 'text-brand-900'}`}>
+                  Ventana de pago: 24 horas
+                </p>
+                <p className={`mt-1 text-sm ${paymentExpired ? 'text-red-600' : 'text-slate-700'}`}>
+                  Tiempo restante: {confirmedAppointment ? formatTimeLeft(confirmedAppointment.paymentDueAtIso, nowTimestamp) : 'N/A'}
+                </p>
+                <p className={`mt-1 text-xs ${paymentExpired ? 'text-red-600' : 'text-slate-600'}`}>
+                  Si no recibimos pago o confirmación dentro del plazo, la reserva se libera automáticamente.
+                </p>
+              </div>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <article className="rounded-2xl border border-brand-100 bg-white p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Opción 1</p>
+                  <h3 className="mt-1 text-lg font-bold text-brand-900">Pago en línea inmediato</h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Paga de forma segura con Wompi y asegura tu cita al instante.
+                  </p>
+                  <p className="mt-3 text-sm font-semibold text-brand-900">
+                    Total a pagar: {selectedService ? formatCOP(selectedService.amountInCents) : 'N/A'}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleOnlinePayment}
+                    disabled={payingOnline || paymentExpired || Boolean(paymentConfirmation)}
+                    className="mt-4 w-full rounded-full bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-900 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {payingOnline ? 'Redirigiendo...' : FORCE_PAYMENT_TEST_MODE ? 'Simular pago Wompi' : 'Pagar en línea ahora'}
+                  </button>
+                </article>
+
+                <article className="rounded-2xl border border-brand-100 bg-white p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Opción 2</p>
+                  <h3 className="mt-1 text-lg font-bold text-brand-900">Consignación Bancolombia</h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Realiza la consignación y confirma la referencia para validación manual.
+                  </p>
+                  <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
+                    <p><strong>Banco:</strong> {BANK_NAME}</p>
+                    <p><strong>Tipo:</strong> {BANK_ACCOUNT_TYPE}</p>
+                    <p><strong>Número:</strong> {BANK_ACCOUNT_NUMBER}</p>
+                    <p><strong>Titular:</strong> {BANK_ACCOUNT_HOLDER}</p>
+                    <p className="mt-1 text-xs text-slate-500">En el concepto coloca tu nombre y fecha de la cita.</p>
+                  </div>
+                  {transferQrUrl ? (
+                    <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3 text-center">
+                      <p className="text-xs font-semibold text-brand-900">QR para consignación</p>
+                      <img
+                        src={transferQrUrl}
+                        alt="QR consignación Bancolombia"
+                        className="mx-auto mt-2 h-48 w-48 rounded-md border border-slate-200 bg-white p-2"
+                      />
+                      <p className="mt-2 text-xs text-slate-500">Escanea para cargar datos de cuenta y referencia de esta cita.</p>
+                    </div>
+                  ) : null}
+                  <input
+                    type="text"
+                    value={transferReference}
+                    onChange={(e) => setTransferReference(e.target.value)}
+                    placeholder="Referencia de consignación"
+                    className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+                    disabled={paymentExpired}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleConfirmBankTransfer}
+                    disabled={confirmingTransfer || paymentExpired || Boolean(paymentConfirmation)}
+                    className="mt-3 w-full rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-900 hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {confirmingTransfer ? 'Confirmando...' : FORCE_PAYMENT_TEST_MODE ? 'Simular consignación' : 'Confirmar consignación'}
+                  </button>
+                </article>
+              </div>
+
+              {paymentConfirmation ? (
+                <div className="rounded-xl border border-green-200 bg-green-50 p-4">
+                  <h3 className="text-sm font-semibold text-green-800">Pago confirmado</h3>
+                  <p className="mt-1 text-sm text-green-700">
+                    Método: {paymentConfirmation.method === 'wompi' ? 'Wompi' : 'Consignación Bancolombia'}.
+                  </p>
+                  <p className="mt-1 text-sm text-green-700">{paymentConfirmation.note}</p>
+                  <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm text-green-800">
+                    <li>Te enviaremos correo de confirmación final de la cita.</li>
+                    <li>Recibirás recordatorio automático antes de tu horario.</li>
+                    <li>Si necesitas reprogramar, podrás hacerlo desde tu cuenta.</li>
+                  </ol>
+                </div>
+              ) : null}
+
+              {transferMessage ? (
+                <div
+                  className={`rounded-lg p-3 text-sm ${
+                    transferMessage.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                  }`}
+                >
+                  {transferMessage.text}
+                </div>
+              ) : null}
+
+              <div className="rounded-xl border border-brand-100 bg-white p-4">
+                <h3 className="text-sm font-semibold text-brand-900">Próximos pasos</h3>
+                <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-slate-700">
+                  <li>Completa el pago en línea o confirma tu consignación Bancolombia dentro de 24 horas.</li>
+                  <li>Recibirás un correo de validación cuando confirmemos el pago.</li>
+                  <li>Tu cita pasará a estado confirmado y te enviaremos recordatorio antes de la hora agendada.</li>
+                </ol>
+              </div>
+            </section>
+          ) : null}
+
           <div className="flex flex-wrap gap-3 pt-2">
-            {step > 0 ? (
+            {step > 0 && step < steps.length - 1 ? (
               <button
                 type="button"
                 onClick={goBack}
@@ -389,7 +760,7 @@ export default function ServicesPage() {
               </button>
             ) : null}
 
-            {step < steps.length - 1 ? (
+            {step < steps.length - 2 ? (
               <button
                 type="button"
                 onClick={goNext}
@@ -397,7 +768,7 @@ export default function ServicesPage() {
               >
                 Continuar
               </button>
-            ) : (
+            ) : step === steps.length - 2 ? (
               <button
                 type="submit"
                 disabled={loading}
@@ -405,7 +776,7 @@ export default function ServicesPage() {
               >
                 {loading ? 'Reservando...' : 'Confirmar y reservar'}
               </button>
-            )}
+            ) : null}
           </div>
         </form>
       </div>

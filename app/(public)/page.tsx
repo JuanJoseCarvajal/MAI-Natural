@@ -54,6 +54,53 @@ export default function PublicHomePage() {
         </div>
       </section>
 
+            <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-700 to-brand-500 p-8 text-white ring-1 ring-brand-300 md:p-10">
+        <div className="pointer-events-none absolute -right-8 -top-8 h-44 w-44 rounded-full bg-white/15 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-10 left-20 h-36 w-36 rounded-full bg-brand-100/30 blur-2xl" />
+        <div className="relative z-10 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
+          <div>
+            <p className="inline-flex rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold tracking-wide text-white/95 backdrop-blur">
+                CLUB MAI · BELLEZA CON ACOMPAÑAMIENTO
+            </p>
+            <h2 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
+                Más que productos. Un proceso contigo.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-brand-100 md:text-base">
+                Supervisión personalizada, reuniones mensuales y seguimiento de tu caso para construir una rutina consciente, sostenible y con resultados reales.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="/subscriptions"
+                className="rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-900 transition hover:bg-brand-100"
+              >
+                 Descubrir Club MAI
+              </Link>
+              <Link
+                href="/account"
+                className="rounded-full border border-white/80 px-7 py-3 text-sm font-bold text-white transition hover:bg-white/10"
+              >
+                 Unirme al Club
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-3">
+            <article className="rounded-2xl bg-white/15 p-4 backdrop-blur ring-1 ring-white/20">
+                <p className="text-xs font-semibold text-brand-100">SUPERVISIÓN</p>
+                <p className="mt-1 text-lg font-bold text-white">Seguimiento personalizado de tu caso</p>
+            </article>
+            <article className="rounded-2xl bg-white/15 p-4 backdrop-blur ring-1 ring-white/20">
+                <p className="text-xs font-semibold text-brand-100">COMUNIDAD</p>
+                <p className="mt-1 text-lg font-bold text-white">Reuniones mensuales + red de miembras</p>
+            </article>
+            <article className="rounded-2xl bg-white/15 p-4 backdrop-blur ring-1 ring-white/20">
+                <p className="text-xs font-semibold text-brand-100">DESCUENTO FIJO</p>
+                <p className="mt-1 text-lg font-bold text-white">Hasta 20% OFF en todo el catálogo MAI</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section>
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
@@ -136,53 +183,6 @@ export default function PublicHomePage() {
           <div className="rounded-2xl bg-brand-100 p-4">
             <p className="text-sm font-semibold text-brand-900">Regalo consciente</p>
             <p className="mt-1 text-sm text-slate-700">Duo Rutina Glow con empaque premium</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-700 to-brand-500 p-8 text-white ring-1 ring-brand-300 md:p-10">
-        <div className="pointer-events-none absolute -right-8 -top-8 h-44 w-44 rounded-full bg-white/15 blur-2xl" />
-        <div className="pointer-events-none absolute -bottom-10 left-20 h-36 w-36 rounded-full bg-brand-100/30 blur-2xl" />
-        <div className="relative z-10 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
-          <div>
-            <p className="inline-flex rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold tracking-wide text-white/95 backdrop-blur">
-              NUEVO PROGRAMA MAI CLUB
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
-              Suscríbete y ahorra en cada entrega de tu rutina
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm text-brand-100 md:text-base">
-              Elige frecuencia mensual o bimensual, recibe beneficios exclusivos y accede a descuentos permanentes en tus productos favoritos.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="/subscriptions"
-                className="rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-900 transition hover:bg-brand-100"
-              >
-                Conocer suscripciones
-              </Link>
-              <Link
-                href="/account"
-                className="rounded-full border border-white/80 px-7 py-3 text-sm font-bold text-white transition hover:bg-white/10"
-              >
-                Ver beneficios en mi cuenta
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid gap-3">
-            <article className="rounded-2xl bg-white/15 p-4 backdrop-blur ring-1 ring-white/20">
-              <p className="text-xs font-semibold text-brand-100">DESCUENTO FIJO</p>
-              <p className="mt-1 text-lg font-bold text-white">Hasta 20% en productos seleccionados</p>
-            </article>
-            <article className="rounded-2xl bg-white/15 p-4 backdrop-blur ring-1 ring-white/20">
-              <p className="text-xs font-semibold text-brand-100">EMBAJADOR MAI</p>
-              <p className="mt-1 text-lg font-bold text-white">Comparte tu código y ambos ganan descuento</p>
-            </article>
-            <article className="rounded-2xl bg-white/15 p-4 backdrop-blur ring-1 ring-white/20">
-              <p className="text-xs font-semibold text-brand-100">PAUSABLE</p>
-              <p className="mt-1 text-lg font-bold text-white">Cambia fecha o pausa sin perder beneficios</p>
-            </article>
           </div>
         </div>
       </section>

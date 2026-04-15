@@ -9,7 +9,7 @@ const publicNavItems = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Productos" },
   { href: "/services", label: "Servicios" },
-  { href: "/subscriptions", label: "Suscripción" },
+  { href: "/subscriptions", label: "Club MAI" },
 ];
 
 export default function Navigation() {

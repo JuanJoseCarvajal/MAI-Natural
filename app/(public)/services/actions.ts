@@ -16,6 +16,28 @@ export async function createAppointment(
       return { error: 'Completa todos los campos requeridos' };
     }
 
+    const existingUser = await db.user.findUnique({ where: { email } });
+    const user = existingUser
+      ? await db.user.update({
+          where: { email },
+          data: {
+            name,
+            phone,
+          },
+        })
+      : await db.user.create({
+          data: {
+            email,
+            name,
+            phone,
+            password: '',
+          },
+        });
+
+    if (!user) {
+      return { error: 'No fue posible preparar el usuario para la cita' };
+    }
+
     const appointmentDateTime = new Date(`${date}T${time}`);
     if (appointmentDateTime < new Date()) {
       return { error: 'La fecha y hora deben ser en el futuro' };
@@ -31,7 +53,7 @@ export async function createAppointment(
 
     const appointment = await db.appointment.create({
       data: {
-        userId: '',
+        userId: user.id,
         name,
         email,
         phone,
@@ -39,7 +61,7 @@ export async function createAppointment(
         time,
         service: service || 'Consulta general',
         notes,
-        status: 'pending',
+        status: 'pending_payment',
       },
     });
 

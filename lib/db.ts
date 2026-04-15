@@ -117,6 +117,9 @@ export const db = {
 
   // Appointment operations
   appointment: {
+    async findUnique(args: { where: { id: string } }) {
+      return appointments.get(args.where.id) ?? null;
+    },
     async create(args: { data: Omit<Appointment, 'id' | 'createdAt' | 'updatedAt'> }) {
       const id = randomUUID();
       const appointment: Appointment = {
@@ -139,6 +142,17 @@ export const db = {
         }
       }
       return result;
+    },
+    async update(args: { where: { id: string }; data: Partial<Appointment> }) {
+      const current = appointments.get(args.where.id);
+      if (!current) return null;
+      const updated: Appointment = {
+        ...current,
+        ...args.data,
+        updatedAt: new Date(),
+      };
+      appointments.set(args.where.id, updated);
+      return updated;
     },
     async delete(args: { where: { id: string } }) {
       appointments.delete(args.where.id);
