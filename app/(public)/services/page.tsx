@@ -90,6 +90,7 @@ export default function ServicesPage() {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[] | undefined>>({});
   const [currentMonth, setCurrentMonth] = useState(() => {
     const now = new Date();
     return new Date(now.getFullYear(), now.getMonth(), 1);
@@ -161,10 +162,11 @@ export default function ServicesPage() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const canGoNext = () => {
@@ -224,6 +226,7 @@ export default function ServicesPage() {
 
     setLoading(true);
     setMessage(null);
+    setFieldErrors({});
 
     try {
       const result = await createAppointment(
@@ -256,6 +259,17 @@ export default function ServicesPage() {
         });
         setStep(steps.length - 1);
       } else {
+        if (result.fieldErrors) {
+          setFieldErrors(result.fieldErrors);
+          const contactHasError =
+            result.fieldErrors.name ||
+            result.fieldErrors.email ||
+            result.fieldErrors.phone;
+          if (contactHasError) {
+            setStep(1);
+          }
+        }
+
         if (result.error === 'Completa todos los campos requeridos') {
           const fallbackStep = getFirstIncompleteStep();
           if (fallbackStep !== -1) {
@@ -468,33 +482,57 @@ export default function ServicesPage() {
               <h2 className="text-xl font-semibold text-brand-900">Paso 2: Datos de contacto</h2>
               <p className="mt-1 text-sm text-slate-600">Usaremos estos datos para confirmar tu cita.</p>
               <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Nombre completo"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="rounded-lg border px-3 py-2"
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="rounded-lg border px-3 py-2"
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Teléfono"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="rounded-lg border px-3 py-2 md:col-span-2"
-                  required
-                />
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nombre completo"
+                    value={formData.name}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.name)}
+                    className={`w-full rounded-lg border px-3 py-2 ${
+                      fieldErrors.name ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {fieldErrors.name?.[0] ? (
+                    <p className="mt-1 text-xs text-red-600">{fieldErrors.name[0]}</p>
+                  ) : null}
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Correo"
+                    value={formData.email}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.email)}
+                    className={`w-full rounded-lg border px-3 py-2 ${
+                      fieldErrors.email ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {fieldErrors.email?.[0] ? (
+                    <p className="mt-1 text-xs text-red-600">{fieldErrors.email[0]}</p>
+                  ) : null}
+                </div>
+                <div className="md:col-span-2">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Teléfono"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.phone)}
+                    className={`w-full rounded-lg border px-3 py-2 ${
+                      fieldErrors.phone ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {fieldErrors.phone?.[0] ? (
+                    <p className="mt-1 text-xs text-red-600">{fieldErrors.phone[0]}</p>
+                  ) : null}
+                </div>
               </div>
             </section>
           ) : null}
