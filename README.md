@@ -5,9 +5,11 @@ Proyecto con Next.js y arquitectura modular para e-commerce + booking + admin pa
 ## 🚀 Quick Start
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
+
+> Este proyecto usa **pnpm** como package manager. La versión está fijada en `package.json` (campo `packageManager`). Si no tienes pnpm, instálalo con `npm install -g pnpm` o habilita corepack (`corepack enable`).
 
 Abre http://localhost:3000
 
@@ -29,11 +31,13 @@ Abre http://localhost:3000
 - `/login` - Iniciar sesión
 - `/register` - Registrarse
 
-### User Dashboard (Protegido)
-- `/dashboard` - Dashboard principal
-- `/dashboard/appointments` - Mis citas
-- `/dashboard/orders` - Mis órdenes
-- `/dashboard/profile` - Editar perfil
+### User Account (Protegido)
+- `/account` - Cuenta principal
+- `/account/appointments` - Mis citas
+- `/account/orders` - Mis órdenes
+- `/account/profile` - Editar perfil
+
+> Las rutas antiguas `/dashboard/*` redirigen automáticamente a `/account/*` vía middleware.
 
 ### Admin (Solo admins)
 - `/admin` - Dashboard admin
@@ -46,7 +50,7 @@ Abre http://localhost:3000
 ### ✅ Autenticación
 - NextAuth + Credentials provider
 - JWT sessions (30 días)
-- Middleware protection para `/dashboard`
+- Middleware protection para `/account` y `/admin`
 - Login/Register con validación
 
 ### ✅ Sistema de Citas
@@ -97,7 +101,7 @@ components/
 lib/
   ├── auth.ts          # NextAuth config
   ├── db.ts            # Database adapter
-  ├── stripe.ts        # Stripe config
+  ├── wompi.ts         # Wompi checkout helpers
   └── utils.ts         # Utilities
 
 prisma/
@@ -107,13 +111,13 @@ prisma/
 
 ## 🛠️ Stack Tecnológico
 
-- **Next.js 16.2.3** - App router, Server components
-- **React 19.2.5** - UI framework
-- **TypeScript 5.5.4** - Type safety
-- **Tailwind CSS 3.4.7** - Styling
-- **NextAuth 5.0.0** - Authentication
-- **Prisma** - ORM (schema ready)
-- **PostgreSQL** - Database (optional)
+- **Next.js 14** - App router, Server components
+- **React 18** - UI framework
+- **TypeScript 5.3** - Type safety
+- **Tailwind CSS 3.4** - Styling
+- **NextAuth 5.0 (beta)** - Authentication
+- **Prisma** - ORM (schema ready, adaptador en memoria por ahora)
+- **PostgreSQL** - Database (pendiente de conectar)
 
 ## 📊 Build Status
 
@@ -138,29 +142,24 @@ Routes:
 - ƒ /api/appointments
 - ƒ /api/auth/[...nextauth]
 - ƒ /api/trpc/[trpc]
-- ƒ /api/webhooks/stripe
 ```
 
 ## 🔄 Próximos Pasos
 
-1. **Stripe Integration** - Checkout y pagos
-2. **Prisma + PostgreSQL** - Base de datos real
-3. **Email Notifications** - Confirmación y recordatorios
-4. **Admin Reports** - PDF/Excel de citas
-5. **SMS Reminders** - Recordatorio 24h antes
-6. **Advanced Analytics** - Gráficos en admin
+1. **Prisma + PostgreSQL** - Base de datos real
+2. **Email Notifications** - Confirmación y recordatorios
+3. **Admin Reports** - PDF/Excel de citas
+4. **SMS Reminders** - Recordatorio 24h antes
+5. **Advanced Analytics** - Gráficos en admin
 
 ## 📦 Build & Deploy
 
 ```bash
-# Build
-npm run build
+# Build (también corre type-check vía Next)
+pnpm build
 
 # Run localmente
-npm run start
-
-# Lint
-npm run lint
+pnpm start
 ```
 
 ## 💡 Notas MVP

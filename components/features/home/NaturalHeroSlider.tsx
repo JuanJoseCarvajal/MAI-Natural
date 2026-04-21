@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -41,16 +42,22 @@ export default function NaturalHeroSlider() {
   return (
     <div className="absolute inset-0">
       {SLIDES.map((slide, index) => (
-        <img
+        <div
           key={slide.src}
-          src={slide.src}
-          alt={slide.alt}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
+            "absolute inset-0 transition-opacity duration-1000",
             index === current ? "opacity-100" : "opacity-0"
           )}
-          loading={index === 0 ? "eager" : "lazy"}
-        />
+        >
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            fill
+            sizes="100vw"
+            priority={index === 0}
+            className="object-cover"
+          />
+        </div>
       ))}
 
       <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 rounded-full bg-white/60 px-3 py-1.5 backdrop-blur">

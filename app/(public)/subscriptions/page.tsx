@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /* ─── Datos ──────────────────────────────────────── */
 
@@ -172,12 +173,16 @@ export default function SubscriptionsPage() {
 
       {/* ── Hero ── */}
       <section className="relative -mx-4 overflow-hidden md:-mx-6">
-        <img
-          src="https://images.pexels.com/photos/6621434/pexels-photo-6621434.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt="Herbolaria botánica para cosméticos naturales MAI"
-          className="h-[520px] w-full object-cover object-center md:h-[600px]"
-          loading="eager"
-        />
+        <div className="relative h-[520px] w-full md:h-[600px]">
+          <Image
+            src="https://images.pexels.com/photos/6621434/pexels-photo-6621434.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            alt="Herbolaria botánica para cosméticos naturales MAI"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-900/70 to-brand-900/30" />
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto w-full max-w-7xl px-6 md:px-8">
@@ -242,11 +247,12 @@ export default function SubscriptionsPage() {
           {pillars.map((p) => (
             <article key={p.title} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-md">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={p.img}
                   alt={p.alt}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 to-transparent" />
               </div>
@@ -263,10 +269,12 @@ export default function SubscriptionsPage() {
       <section className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl px-2">
         <div className="grid gap-0 md:grid-cols-2">
           <div className="relative min-h-[380px] overflow-hidden rounded-3xl md:rounded-r-none">
-            <img
+            <Image
               src="https://images.pexels.com/photos/207518/pexels-photo-207518.jpeg?auto=compress&cs=tinysrgb&w=900"
               alt="Campo de lavanda orgánica botánica"
-              className="h-full w-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-brand-900/70 via-brand-700/40 to-brand-900/70" />
@@ -326,11 +334,12 @@ export default function SubscriptionsPage() {
 
               {/* Image */}
               <div className="relative h-52 overflow-hidden">
-                <img
+                <Image
                   src={plan.img}
                   alt={plan.alt}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
                 />
                 <div className={`absolute inset-0 ${plan.featured ? "bg-gradient-to-t from-brand-900/80 to-brand-900/30" : "bg-gradient-to-t from-brand-900/70 to-transparent"}`} />
                 <div className="absolute bottom-4 left-5 right-5">
@@ -410,11 +419,12 @@ export default function SubscriptionsPage() {
       <section className="mx-auto max-w-6xl px-2">
         <div className="grid gap-0 overflow-hidden rounded-3xl md:grid-cols-2">
           <div className="relative min-h-[280px] overflow-hidden">
-            <img
+            <Image
               src="https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=900"
               alt="Rosas naturales jardín botánico MAI"
-              className="h-full w-full object-cover"
-              loading="lazy"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-brand-900/50" />
           </div>

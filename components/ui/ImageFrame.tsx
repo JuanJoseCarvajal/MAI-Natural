@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 type ImageFrameProps = {
@@ -7,6 +8,7 @@ type ImageFrameProps = {
   fit?: "cover" | "contain";
   frameClassName?: string;
   imageClassName?: string;
+  sizes?: string;
 };
 
 export default function ImageFrame({
@@ -16,16 +18,19 @@ export default function ImageFrame({
   fit = "cover",
   frameClassName,
   imageClassName,
+  sizes = "(max-width: 768px) 100vw, 33vw",
 }: ImageFrameProps) {
   const fitClass = fit === "cover" ? "object-cover" : "object-contain";
 
   return (
     <div className={cn("ds-image-frame ds-image-studio", frameClassName)}>
-      <img
+      <Image
         src={src}
         alt={alt}
-        loading={loading}
-        className={cn("ds-image-subject h-full w-full", fitClass, imageClassName)}
+        fill
+        sizes={sizes}
+        priority={loading === "eager"}
+        className={cn("ds-image-subject", fitClass, imageClassName)}
       />
     </div>
   );

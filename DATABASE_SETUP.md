@@ -65,11 +65,6 @@ DATABASE_URL="postgresql://mai_user:secure_password_here@localhost:5432/mai_natu
 # NextAuth
 NEXTAUTH_SECRET="$(openssl rand -base64 32)"
 NEXTAUTH_URL="http://localhost:3000"
-
-# Stripe (opcional)
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE_SECRET_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."
 ```
 
 ## 🔄 Migrar a Prisma
