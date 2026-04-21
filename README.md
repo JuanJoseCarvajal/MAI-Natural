@@ -99,7 +99,7 @@ components/
 lib/
   ├── auth.ts          # NextAuth config
   ├── db.ts            # Database adapter
-  ├── stripe.ts        # Stripe config
+  ├── wompi.ts         # Wompi checkout helpers
   └── utils.ts         # Utilities
 
 prisma/
@@ -140,17 +140,15 @@ Routes:
 - ƒ /api/appointments
 - ƒ /api/auth/[...nextauth]
 - ƒ /api/trpc/[trpc]
-- ƒ /api/webhooks/stripe
 ```
 
 ## 🔄 Próximos Pasos
 
-1. **Stripe Integration** - Checkout y pagos
-2. **Prisma + PostgreSQL** - Base de datos real
-3. **Email Notifications** - Confirmación y recordatorios
-4. **Admin Reports** - PDF/Excel de citas
-5. **SMS Reminders** - Recordatorio 24h antes
-6. **Advanced Analytics** - Gráficos en admin
+1. **Prisma + PostgreSQL** - Base de datos real
+2. **Email Notifications** - Confirmación y recordatorios
+3. **Admin Reports** - PDF/Excel de citas
+4. **SMS Reminders** - Recordatorio 24h antes
+5. **Advanced Analytics** - Gráficos en admin
 
 ## 📦 Build & Deploy
 
