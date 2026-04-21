@@ -29,11 +29,13 @@ Abre http://localhost:3000
 - `/login` - Iniciar sesión
 - `/register` - Registrarse
 
-### User Dashboard (Protegido)
-- `/dashboard` - Dashboard principal
-- `/dashboard/appointments` - Mis citas
-- `/dashboard/orders` - Mis órdenes
-- `/dashboard/profile` - Editar perfil
+### User Account (Protegido)
+- `/account` - Cuenta principal
+- `/account/appointments` - Mis citas
+- `/account/orders` - Mis órdenes
+- `/account/profile` - Editar perfil
+
+> Las rutas antiguas `/dashboard/*` redirigen automáticamente a `/account/*` vía middleware.
 
 ### Admin (Solo admins)
 - `/admin` - Dashboard admin
@@ -46,7 +48,7 @@ Abre http://localhost:3000
 ### ✅ Autenticación
 - NextAuth + Credentials provider
 - JWT sessions (30 días)
-- Middleware protection para `/dashboard`
+- Middleware protection para `/account` y `/admin`
 - Login/Register con validación
 
 ### ✅ Sistema de Citas
@@ -107,13 +109,13 @@ prisma/
 
 ## 🛠️ Stack Tecnológico
 
-- **Next.js 16.2.3** - App router, Server components
-- **React 19.2.5** - UI framework
-- **TypeScript 5.5.4** - Type safety
-- **Tailwind CSS 3.4.7** - Styling
-- **NextAuth 5.0.0** - Authentication
-- **Prisma** - ORM (schema ready)
-- **PostgreSQL** - Database (optional)
+- **Next.js 14** - App router, Server components
+- **React 18** - UI framework
+- **TypeScript 5.3** - Type safety
+- **Tailwind CSS 3.4** - Styling
+- **NextAuth 5.0 (beta)** - Authentication
+- **Prisma** - ORM (schema ready, adaptador en memoria por ahora)
+- **PostgreSQL** - Database (pendiente de conectar)
 
 ## 📊 Build Status
 
@@ -153,14 +155,11 @@ Routes:
 ## 📦 Build & Deploy
 
 ```bash
-# Build
+# Build (también corre type-check vía Next)
 npm run build
 
 # Run localmente
 npm run start
-
-# Lint
-npm run lint
 ```
 
 ## 💡 Notas MVP
