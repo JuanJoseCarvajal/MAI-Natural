@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useState, Suspense } from "react";
@@ -235,10 +236,12 @@ function CheckoutInner() {
         <aside className="md:sticky md:top-24 md:self-start">
           <div className="overflow-hidden rounded-3xl bg-white shadow ring-1 ring-brand-100">
             <div className="relative h-44 overflow-hidden">
-              <img
+              <Image
                 src={plan.img}
                 alt={plan.name}
-                className="h-full w-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-900/80 to-transparent" />
               <div className="absolute bottom-4 left-5">

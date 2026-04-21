@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
@@ -71,9 +72,12 @@ export default function Navigation() {
           >
             {/* Avatar: imagen si existe, sino iniciales */}
             {session.user?.image ? (
-              <img
+              <Image
                 src={session.user.image}
                 alt={session.user.name ?? "Avatar"}
+                width={28}
+                height={28}
+                unoptimized
                 className="h-7 w-7 rounded-full object-cover"
               />
             ) : (

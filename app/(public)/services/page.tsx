@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import { createAppointment, getDayAvailability } from './actions';
 import BookingCalendar from '@/components/ui/BookingCalendar';
@@ -724,9 +725,11 @@ export default function ServicesPage() {
                   {transferQrUrl ? (
                     <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3 text-center">
                       <p className="text-xs font-semibold text-brand-900">QR para consignación</p>
-                      <img
+                      <Image
                         src={transferQrUrl}
                         alt="QR consignación Bancolombia"
+                        width={280}
+                        height={280}
                         className="mx-auto mt-2 h-48 w-48 rounded-md border border-slate-200 bg-white p-2"
                       />
                       <p className="mt-2 text-xs text-slate-500">Escanea para cargar datos de cuenta y referencia de esta cita.</p>
