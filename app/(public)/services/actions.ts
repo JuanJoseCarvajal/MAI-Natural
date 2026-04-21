@@ -1,6 +1,7 @@
 'use server';
 
 import { db } from '@/lib/db';
+import { appointmentInputSchema } from '@/lib/validators/appointment';
 
 export async function createAppointment(
   name: string,
@@ -12,24 +13,40 @@ export async function createAppointment(
   notes: string
 ) {
   try {
-    if (!name || !email || !phone || !date || !time) {
-      return { error: 'Completa todos los campos requeridos' };
+    const parsed = appointmentInputSchema.safeParse({
+      name,
+      email,
+      phone,
+      date,
+      time,
+      service,
+      notes,
+    });
+
+    if (!parsed.success) {
+      const firstIssue = parsed.error.issues[0];
+      return {
+        error: firstIssue?.message ?? 'Datos inválidos',
+        fieldErrors: parsed.error.flatten().fieldErrors,
+      };
     }
 
-    const existingUser = await db.user.findUnique({ where: { email } });
+    const input = parsed.data;
+
+    const existingUser = await db.user.findUnique({ where: { email: input.email } });
     const user = existingUser
       ? await db.user.update({
-          where: { email },
+          where: { email: input.email },
           data: {
-            name,
-            phone,
+            name: input.name,
+            phone: input.phone,
           },
         })
       : await db.user.create({
           data: {
-            email,
-            name,
-            phone,
+            email: input.email,
+            name: input.name,
+            phone: input.phone,
             password: '',
           },
         });
@@ -38,13 +55,13 @@ export async function createAppointment(
       return { error: 'No fue posible preparar el usuario para la cita' };
     }
 
-    const appointmentDateTime = new Date(`${date}T${time}`);
+    const appointmentDateTime = new Date(`${input.date}T${input.time}`);
     if (appointmentDateTime < new Date()) {
       return { error: 'La fecha y hora deben ser en el futuro' };
     }
 
     const sameDayAppointments = (await db.appointment.findMany()).filter(
-      (appointment) => appointment.date === date
+      (appointment) => appointment.date === input.date
     );
 
     if (sameDayAppointments.length >= 2) {
@@ -54,13 +71,13 @@ export async function createAppointment(
     const appointment = await db.appointment.create({
       data: {
         userId: user.id,
-        name,
-        email,
-        phone,
-        date,
-        time,
-        service: service || 'Consulta general',
-        notes,
+        name: input.name,
+        email: input.email,
+        phone: input.phone,
+        date: input.date,
+        time: input.time,
+        service: input.service || 'Consulta general',
+        notes: input.notes,
         status: 'pending_payment',
       },
     });
