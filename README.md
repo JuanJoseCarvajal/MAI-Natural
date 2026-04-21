@@ -5,9 +5,11 @@ Proyecto con Next.js y arquitectura modular para e-commerce + booking + admin pa
 ## 🚀 Quick Start
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
+
+> Este proyecto usa **pnpm** como package manager. La versión está fijada en `package.json` (campo `packageManager`). Si no tienes pnpm, instálalo con `npm install -g pnpm` o habilita corepack (`corepack enable`).
 
 Abre http://localhost:3000
 
@@ -154,10 +156,10 @@ Routes:
 
 ```bash
 # Build (también corre type-check vía Next)
-npm run build
+pnpm build
 
 # Run localmente
-npm run start
+pnpm start
 ```
 
 ## 💡 Notas MVP
