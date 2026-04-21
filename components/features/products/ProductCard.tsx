@@ -16,6 +16,7 @@ type ProductCardProps = {
   badge?: string;
   rating?: number;
   reviewsCount?: number;
+  compact?: boolean;
 };
 
 export default function ProductCard({
@@ -29,6 +30,7 @@ export default function ProductCard({
   badge,
   rating,
   reviewsCount,
+  compact = false,
 }: ProductCardProps) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
@@ -40,7 +42,7 @@ export default function ProductCard({
   };
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl bg-white p-4 shadow ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white p-4 shadow ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl">
       <div className="absolute left-4 top-4 flex items-center gap-2">
         {badge ? (
           <span className="rounded-full bg-brand-700 px-3 py-1 text-xs font-semibold text-white">{badge}</span>
@@ -52,12 +54,18 @@ export default function ProductCard({
         ) : null}
       </div>
 
-      <ImageFrame
-        src={image}
-        alt={name}
-        frameClassName="mt-8 h-52"
-        fit="cover"
-      />
+      <Link
+        href={`/products/${id}`}
+        aria-label={`Ver detalle de ${name}`}
+        className="block"
+      >
+        <ImageFrame
+          src={image}
+          alt={name}
+          frameClassName="mt-8 h-52 cursor-pointer"
+          fit="cover"
+        />
+      </Link>
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <h3 className="text-lg font-bold text-brand-900">{name}</h3>
@@ -70,9 +78,9 @@ export default function ProductCard({
         </p>
       ) : null}
 
-      <p className="mt-3 text-sm text-slate-600 line-clamp-2">{description}</p>
+      <p className={`mt-3 text-sm text-slate-600 ${compact ? "line-clamp-2" : ""}`}>{description}</p>
 
-      <div className="mt-5 flex items-center gap-3">
+      <div className="mt-auto flex items-center gap-3 pt-5">
         <Link
           href={`/products/${id}`}
           className="rounded-full border border-brand-300 px-5 py-2 text-sm font-semibold text-brand-900 transition hover:bg-brand-50"

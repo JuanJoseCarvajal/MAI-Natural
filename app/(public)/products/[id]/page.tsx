@@ -18,7 +18,23 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
-      <Link href="/products" className="text-sm text-brand-700 hover:underline">
+      <Link
+        href="/products"
+        className="inline-flex items-center gap-1 text-sm text-brand-700 hover:underline"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4"
+          aria-hidden="true"
+        >
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
         Volver al catalogo
       </Link>
       <div className="mt-4 grid gap-8 md:grid-cols-2 items-start">
@@ -26,8 +42,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           src={product.image}
           alt={product.name}
           loading="eager"
-          frameClassName="rounded-2xl p-6 shadow-sm"
-          imageClassName="h-[360px]"
+          frameClassName="rounded-2xl p-6 shadow-sm h-[360px]"
           fit="contain"
         />
         <div>
