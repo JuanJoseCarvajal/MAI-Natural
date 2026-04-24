@@ -1,5 +1,3 @@
-import catalog from "@/lib/products.catalog.json";
-
 export type ProductCategory =
   | "facial"
   | "capilar"
@@ -18,6 +16,9 @@ export type Product = {
   benefits: string[];
   rating: number;
   reviewsCount: number;
+  sku?: string;
+  stock?: number;
+  active?: boolean;
 };
 
 export const categoryLabels: Record<ProductCategory, string> = {
@@ -36,15 +37,3 @@ export const categoryImages: Record<ProductCategory, string> = {
     "https://mainatural.com/wp-content/uploads/elementor/thumbs/Categoria-Facial-2-r67l4wjc01w2wakl51c9itj5wiaessnoowkbun5kf4.png",
   kits: "https://mainatural.com/wp-content/uploads/2025/06/foto8-768x432.jpg",
 };
-
-export const products: Product[] = (catalog as Product[]).filter(
-  (product) => product.amountInCents > 0
-);
-
-export function getProductById(id: string) {
-  return products.find((product) => product.id === id);
-}
-
-export function getProductsByCategory(category: ProductCategory) {
-  return products.filter((product) => product.category === category);
-}

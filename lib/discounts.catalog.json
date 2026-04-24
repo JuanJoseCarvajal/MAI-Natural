@@ -1,0 +1,24 @@
+[
+  {
+    "id": "desc-kit-mai-10",
+    "code": "KITMAI10",
+    "label": "10% en kits MAI",
+    "description": "Aplica en kits y trios seleccionados de la tienda.",
+    "active": true,
+    "kind": "percentage",
+    "percentage": 10,
+    "scope": "kits",
+    "minimumSubtotalInCents": 6000000
+  },
+  {
+    "id": "desc-facial-15",
+    "code": "FACIAL15",
+    "label": "15% en facial",
+    "description": "Descuento especial para cosmética facial.",
+    "active": false,
+    "kind": "percentage",
+    "percentage": 15,
+    "scope": "category",
+    "category": "facial"
+  }
+]

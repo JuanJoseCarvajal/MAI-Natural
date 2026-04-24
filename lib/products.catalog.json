@@ -337,5 +337,65 @@
     ],
     "rating": 4.8,
     "reviewsCount": 32
+  },
+  {
+    "id": "kit-trio-capilar-esencial-mai",
+    "image": "https://mainatural.com/wp-content/uploads/2021/08/Shampoo-MAI-1.png",
+    "name": "Kit Trio Capilar Esencial MAI",
+    "price": "$182.000",
+    "amountInCents": 18200000,
+    "description": "Incluye Shampoo - Jardín Herbal + Bálsamo - Jardín Herbal + Herbal Curl - Crema Para Peinar. Un trío pensado para limpiar, nutrir y definir la rutina capilar completa.",
+    "category": "kits",
+    "badge": "Trío recomendado",
+    "benefits": [
+      "Rutina capilar de 3 pasos",
+      "Limpieza + nutrición + definición",
+      "Ideal para empezar"
+    ],
+    "rating": 4.9,
+    "reviewsCount": 24,
+    "sku": "KIT-TRIO-CAPILAR-001",
+    "stock": 12,
+    "active": true
+  },
+  {
+    "id": "kit-trio-facial-equilibrio-mai",
+    "image": "https://mainatural.com/wp-content/uploads/2025/05/Emolientev.png",
+    "name": "Kit Trio Facial Equilibrio MAI",
+    "price": "$172.000",
+    "amountInCents": 17200000,
+    "description": "Incluye Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador + Rocio Primordial Emoliente - Tónico Facial + Aqua - Suero Facial. Una secuencia diaria para limpiar, preparar y tratar.",
+    "category": "kits",
+    "badge": "Rutina guiada",
+    "benefits": [
+      "Rutina facial de 3 pasos",
+      "Limpieza + preparación + tratamiento",
+      "Pensado para uso diario"
+    ],
+    "rating": 4.9,
+    "reviewsCount": 18,
+    "sku": "KIT-TRIO-FACIAL-001",
+    "stock": 10,
+    "active": true
+  },
+  {
+    "id": "kit-trio-corporal-ritual-mai",
+    "image": "https://mainatural.com/wp-content/uploads/2025/07/Cacao.png",
+    "name": "Kit Trio Corporal Ritual MAI",
+    "price": "$84.000",
+    "amountInCents": 8400000,
+    "description": "Incluye Jabón Sólido - Carbón Activado y Arroz + Jabón Sólido - Caléndula & Manzanilla + Jabón Sólido - Rosas & Cacao. Un ritual corporal completo para rotar según el momento de tu piel.",
+    "category": "kits",
+    "badge": "Edición artesanal",
+    "benefits": [
+      "Trío corporal de rotación",
+      "Ideal para regalo o ritual personal",
+      "Selección artesanal"
+    ],
+    "rating": 4.9,
+    "reviewsCount": 16,
+    "sku": "KIT-TRIO-CORPORAL-001",
+    "stock": 8,
+    "active": true
   }
 ]

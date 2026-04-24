@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/components/features/cart/CartContext";
 import ImageFrame from "@/components/ui/ImageFrame";
+import type { DiscountEvaluation } from "@/lib/discounts";
 
 function formatCOP(cents: number): string {
   return new Intl.NumberFormat("es-CO", {
@@ -17,6 +18,46 @@ export default function CheckoutPage() {
   const { items, totalAmountInCents, increment, decrement, removeItem } = useCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [discountCode, setDiscountCode] = useState("");
+  const [discountResult, setDiscountResult] = useState<DiscountEvaluation | null>(null);
+  const [discountMessage, setDiscountMessage] = useState("");
+  const [validatingDiscount, setValidatingDiscount] = useState(false);
+
+  const discountedTotal = discountResult?.valid
+    ? discountResult.discountedSubtotalInCents
+    : totalAmountInCents;
+
+  const handleApplyDiscount = async () => {
+    if (!discountCode.trim() || items.length === 0) return;
+    setValidatingDiscount(true);
+    setDiscountMessage("");
+
+    try {
+      const response = await fetch("/api/discounts/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: discountCode.trim(),
+          items: items.map((item) => ({ id: item.id, quantity: item.quantity })),
+        }),
+      });
+
+      const data = (await response.json()) as DiscountEvaluation;
+      if (!response.ok || !data.valid) {
+        setDiscountResult(null);
+        setDiscountMessage(data.message || "El código no se pudo aplicar.");
+        return;
+      }
+
+      setDiscountResult(data);
+      setDiscountMessage(`Código aplicado: ${data.code}`);
+    } catch {
+      setDiscountResult(null);
+      setDiscountMessage("Error de conexión al validar el código.");
+    } finally {
+      setValidatingDiscount(false);
+    }
+  };
 
   const handlePay = async () => {
     if (items.length === 0) return;
@@ -29,6 +70,7 @@ export default function CheckoutPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items: items.map((i) => ({ id: i.id, quantity: i.quantity })),
+          discountCode: discountResult?.valid ? discountResult.code : undefined,
         }),
       });
 
@@ -111,8 +153,48 @@ export default function CheckoutPage() {
       </ul>
 
       <div className="mt-6 flex items-center justify-between rounded-2xl bg-brand-50 px-6 py-4">
-        <span className="text-lg font-semibold text-brand-900">Total</span>
-        <span className="text-2xl font-bold text-brand-700">{formatCOP(totalAmountInCents)}</span>
+        <div>
+          <span className="text-lg font-semibold text-brand-900">Total</span>
+          {discountResult?.valid ? (
+            <p className="mt-1 text-xs text-slate-500">
+              Subtotal: {formatCOP(totalAmountInCents)} · Descuento: -{formatCOP(discountResult.discountAmountInCents)}
+            </p>
+          ) : null}
+        </div>
+        <span className="text-2xl font-bold text-brand-700">{formatCOP(discountedTotal)}</span>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-brand-100 bg-white px-5 py-4 text-sm text-slate-700">
+        <p className="font-semibold text-brand-900">Código de descuento</p>
+        <div className="mt-3 flex flex-col gap-3 md:flex-row">
+          <input
+            type="text"
+            value={discountCode}
+            onChange={(event) => setDiscountCode(event.target.value.toUpperCase())}
+            placeholder="Ingresa tu código"
+            className="flex-1 rounded-full border border-slate-300 px-4 py-3"
+          />
+          <button
+            type="button"
+            onClick={handleApplyDiscount}
+            disabled={validatingDiscount || items.length === 0}
+            className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-900 disabled:opacity-60"
+          >
+            {validatingDiscount ? "Validando..." : "Aplicar código"}
+          </button>
+        </div>
+        {discountMessage ? (
+          <p className={`mt-3 text-sm ${discountResult?.valid ? "text-green-700" : "text-red-600"}`}>
+            {discountMessage}
+          </p>
+        ) : null}
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-brand-100 bg-white px-5 py-4 text-sm text-slate-700">
+        <p className="font-semibold text-brand-900">Politica de entrega</p>
+        <p className="mt-1">
+          El tiempo estimado de entrega es de 5 a 7 dias habiles. Cada pedido se produce de forma personalizada y artesanal, uno a uno y nunca en masa.
+        </p>
       </div>
 
       {error ? (

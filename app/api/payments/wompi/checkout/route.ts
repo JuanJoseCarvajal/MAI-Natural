@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getProductById } from "@/lib/products";
+import { evaluateDiscountCode } from "@/lib/discounts.server";
+import { getProductById } from "@/lib/products.server";
 import {
   buildWompiCheckoutUrl,
   buildWompiIntegritySignature,
@@ -13,6 +14,7 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as {
       productId?: string;
       items?: CartItemInput[];
+      discountCode?: string;
     };
 
     const publicKey = process.env.WOMPI_PUBLIC_KEY;
@@ -32,11 +34,18 @@ export async function POST(request: NextRequest) {
     if (body.items && body.items.length > 0) {
       let totalInCents = 0;
       for (const item of body.items) {
-        const product = getProductById(item.id);
+        const product = await getProductById(item.id);
         if (!product) {
           return NextResponse.json({ error: `Producto ${item.id} no encontrado` }, { status: 404 });
         }
         totalInCents += product.amountInCents * item.quantity;
+      }
+
+      if (body.discountCode) {
+        const discount = await evaluateDiscountCode(body.discountCode, body.items);
+        if (discount.valid) {
+          totalInCents = discount.discountedSubtotalInCents;
+        }
       }
 
       const reference = createWompiReference("cart");
@@ -61,7 +70,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "productId o items requerido" }, { status: 400 });
     }
 
-    const product = getProductById(productId);
+    const product = await getProductById(productId);
     if (!product) {
       return NextResponse.json({ error: "Producto no encontrado" }, { status: 404 });
     }

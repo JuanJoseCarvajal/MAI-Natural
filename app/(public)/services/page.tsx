@@ -11,9 +11,6 @@ const SERVICES = [
   { id: '3', name: 'Tratamiento capilar', duration: '45 min', priceLabel: '$90.000', amountInCents: 9000000 },
   { id: '4', name: 'Package premium', duration: '90 min', priceLabel: '$200.000', amountInCents: 20000000 },
 ];
-
-// Por defecto queda en modo test; para activar pago real usa NEXT_PUBLIC_SERVICES_PAYMENT_MODE=live
-const FORCE_PAYMENT_TEST_MODE = process.env.NEXT_PUBLIC_SERVICES_PAYMENT_MODE !== 'live';
 const CALENDLY_BASE_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '';
 const ENABLE_CALENDLY = Boolean(CALENDLY_BASE_URL);
 const BANK_NAME = process.env.NEXT_PUBLIC_BANCOLOMBIA_BANK_NAME ?? 'Bancolombia';
@@ -100,13 +97,12 @@ export default function ServicesPage() {
   const [checkingAvailability, setCheckingAvailability] = useState(false);
   const [confirmedAppointment, setConfirmedAppointment] = useState<ConfirmedAppointment | null>(null);
   const [nowTimestamp, setNowTimestamp] = useState(Date.now());
-  const [payingOnline, setPayingOnline] = useState(false);
   const [confirmingTransfer, setConfirmingTransfer] = useState(false);
   const [transferReference, setTransferReference] = useState('');
   const [transferMessage, setTransferMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showCalendly, setShowCalendly] = useState(false);
   const [paymentConfirmation, setPaymentConfirmation] = useState<{
-    method: 'wompi' | 'transfer';
+    method: 'transfer';
     note: string;
   } | null>(null);
 
@@ -295,77 +291,12 @@ export default function ServicesPage() {
     }
   };
 
-  const handleOnlinePayment = async () => {
-    if (!confirmedAppointment || !selectedService) return;
-
-    if (FORCE_PAYMENT_TEST_MODE) {
-      setPaymentConfirmation({
-        method: 'wompi',
-        note: 'Pago Wompi simulado y aprobado en modo test.',
-      });
-      setTransferMessage({
-        type: 'success',
-        text: 'Pago en línea aprobado (test). Tu cita queda confirmada para la fecha agendada.',
-      });
-      return;
-    }
-
-    setPayingOnline(true);
-    setTransferMessage(null);
-
-    try {
-      const response = await fetch('/api/payments/wompi/appointments/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          appointmentId: confirmedAppointment.id,
-          amountInCents: selectedService.amountInCents,
-          serviceName: selectedService.name,
-          customerEmail: reviewData.email,
-          customerName: reviewData.name,
-        }),
-      });
-
-      const data = (await response.json()) as { checkoutUrl?: string; error?: string };
-      if (!response.ok || !data.checkoutUrl) {
-        setTransferMessage({
-          type: 'error',
-          text: data.error ?? 'No fue posible iniciar el pago en línea.',
-        });
-        return;
-      }
-
-      window.location.href = data.checkoutUrl;
-    } catch (error) {
-      setTransferMessage({
-        type: 'error',
-        text: 'Error de conexión al iniciar el pago.',
-      });
-    } finally {
-      setPayingOnline(false);
-    }
-  };
-
   const handleConfirmBankTransfer = async () => {
     if (!confirmedAppointment?.id) return;
     if (!transferReference.trim()) {
       setTransferMessage({
         type: 'error',
         text: 'Ingresa el número de referencia de la consignación.',
-      });
-      return;
-    }
-
-    if (FORCE_PAYMENT_TEST_MODE) {
-      setPaymentConfirmation({
-        method: 'transfer',
-        note: `Consignación simulada (ref: ${transferReference.trim() || 'TEST-REF'}).`,
-      });
-      setTransferMessage({
-        type: 'success',
-        text: 'Consignación confirmada (test). Tu cita queda lista para validación administrativa.',
       });
       return;
     }
@@ -397,6 +328,10 @@ export default function ServicesPage() {
       setTransferMessage({
         type: 'success',
         text: 'Recibimos tu confirmación de consignación. Verificaremos el pago y te contactaremos por correo.',
+      });
+      setPaymentConfirmation({
+        method: 'transfer',
+        note: `Referencia recibida: ${transferReference.trim()}. Tu pago quedó pendiente de validación manual por el equipo MAI.`,
       });
     } catch (error) {
       setTransferMessage({
@@ -545,9 +480,9 @@ export default function ServicesPage() {
 
               {ENABLE_CALENDLY ? (
                 <div className="mt-4 rounded-2xl border border-brand-200 bg-brand-50 p-4">
-                  <p className="text-sm font-semibold text-brand-900">Integración Calendly activa</p>
+                  <p className="text-sm font-semibold text-brand-900">Calendly listo para agendar</p>
                   <p className="mt-1 text-sm text-slate-700">
-                    Puedes agendar desde Calendly y luego continuar este flujo para confirmar datos y pago.
+                    Si ya tienes tu enlace de Calendly configurado, puedes usarlo aquí para mostrar disponibilidad real al cliente.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button
@@ -668,13 +603,8 @@ export default function ServicesPage() {
               <div>
                 <h2 className="text-xl font-semibold text-brand-900">Paso 5: Pago y próximos pasos</h2>
                 <p className="mt-1 text-sm text-slate-600">
-                  Tu cita quedó registrada en estado pendiente de pago. Completa el pago en línea o confirma tu consignación Bancolombia.
+                  Tu cita quedó registrada en estado pendiente de pago. Para asegurarla, realiza tu transferencia Bancolombia y reporta la referencia.
                 </p>
-                {FORCE_PAYMENT_TEST_MODE ? (
-                  <p className="mt-2 inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
-                    Modo test activo: los pagos se simulan en esta pantalla
-                  </p>
-                ) : null}
               </div>
 
               <div className={`rounded-xl border p-4 ${paymentExpired ? 'border-red-200 bg-red-50' : 'border-brand-100 bg-brand-50'}`}>
@@ -689,82 +619,64 @@ export default function ServicesPage() {
                 </p>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2">
-                <article className="rounded-2xl border border-brand-100 bg-white p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Opción 1</p>
-                  <h3 className="mt-1 text-lg font-bold text-brand-900">Pago en línea inmediato</h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Paga de forma segura con Wompi y asegura tu cita al instante.
-                  </p>
-                  <p className="mt-3 text-sm font-semibold text-brand-900">
-                    Total a pagar: {selectedService ? formatCOP(selectedService.amountInCents) : 'N/A'}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={handleOnlinePayment}
-                    disabled={payingOnline || paymentExpired || Boolean(paymentConfirmation)}
-                    className="mt-4 w-full rounded-full bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-900 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {payingOnline ? 'Redirigiendo...' : FORCE_PAYMENT_TEST_MODE ? 'Simular pago Wompi' : 'Pagar en línea ahora'}
-                  </button>
-                </article>
-
-                <article className="rounded-2xl border border-brand-100 bg-white p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Opción 2</p>
-                  <h3 className="mt-1 text-lg font-bold text-brand-900">Consignación Bancolombia</h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Realiza la consignación y confirma la referencia para validación manual.
-                  </p>
-                  <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
-                    <p><strong>Banco:</strong> {BANK_NAME}</p>
-                    <p><strong>Tipo:</strong> {BANK_ACCOUNT_TYPE}</p>
-                    <p><strong>Número:</strong> {BANK_ACCOUNT_NUMBER}</p>
-                    <p><strong>Titular:</strong> {BANK_ACCOUNT_HOLDER}</p>
-                    <p className="mt-1 text-xs text-slate-500">En el concepto coloca tu nombre y fecha de la cita.</p>
+              <article className="rounded-2xl border border-brand-100 bg-white p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Metodo disponible</p>
+                <h3 className="mt-1 text-lg font-bold text-brand-900">Transferencia Bancolombia</h3>
+                <p className="mt-2 text-sm text-slate-600">
+                  Esta primera version recibe pagos unicamente por transferencia. Tu cita queda reservada y el equipo la confirma manualmente al validar la referencia.
+                </p>
+                <p className="mt-3 text-sm font-semibold text-brand-900">
+                  Total a transferir: {selectedService ? formatCOP(selectedService.amountInCents) : 'N/A'}
+                </p>
+                <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
+                  <p><strong>Banco:</strong> {BANK_NAME}</p>
+                  <p><strong>Tipo:</strong> {BANK_ACCOUNT_TYPE}</p>
+                  <p><strong>Número:</strong> {BANK_ACCOUNT_NUMBER}</p>
+                  <p><strong>Titular:</strong> {BANK_ACCOUNT_HOLDER}</p>
+                  <p className="mt-1 text-xs text-slate-500">En el concepto coloca tu nombre y la fecha de la cita.</p>
+                </div>
+                {transferQrUrl ? (
+                  <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3 text-center">
+                    <p className="text-xs font-semibold text-brand-900">QR para transferencia</p>
+                    <Image
+                      src={transferQrUrl}
+                      alt="QR transferencia Bancolombia"
+                      width={280}
+                      height={280}
+                      className="mx-auto mt-2 h-48 w-48 rounded-md border border-slate-200 bg-white p-2"
+                    />
+                    <p className="mt-2 text-xs text-slate-500">Escanea para cargar la cuenta y la referencia de esta cita.</p>
                   </div>
-                  {transferQrUrl ? (
-                    <div className="mt-3 rounded-lg border border-slate-200 bg-white p-3 text-center">
-                      <p className="text-xs font-semibold text-brand-900">QR para consignación</p>
-                      <Image
-                        src={transferQrUrl}
-                        alt="QR consignación Bancolombia"
-                        width={280}
-                        height={280}
-                        className="mx-auto mt-2 h-48 w-48 rounded-md border border-slate-200 bg-white p-2"
-                      />
-                      <p className="mt-2 text-xs text-slate-500">Escanea para cargar datos de cuenta y referencia de esta cita.</p>
-                    </div>
-                  ) : null}
-                  <input
-                    type="text"
-                    value={transferReference}
-                    onChange={(e) => setTransferReference(e.target.value)}
-                    placeholder="Referencia de consignación"
-                    className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
-                    disabled={paymentExpired}
-                  />
-                  <button
-                    type="button"
-                    onClick={handleConfirmBankTransfer}
-                    disabled={confirmingTransfer || paymentExpired || Boolean(paymentConfirmation)}
-                    className="mt-3 w-full rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-900 hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {confirmingTransfer ? 'Confirmando...' : FORCE_PAYMENT_TEST_MODE ? 'Simular consignación' : 'Confirmar consignación'}
-                  </button>
-                </article>
-              </div>
+                ) : null}
+                <input
+                  type="text"
+                  value={transferReference}
+                  onChange={(e) => setTransferReference(e.target.value)}
+                  placeholder="Referencia de transferencia"
+                  className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+                  disabled={paymentExpired}
+                />
+                <button
+                  type="button"
+                  onClick={handleConfirmBankTransfer}
+                  disabled={confirmingTransfer || paymentExpired || Boolean(paymentConfirmation)}
+                  className="mt-3 w-full rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-900 hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {confirmingTransfer ? 'Confirmando...' : 'Reportar transferencia'}
+                </button>
+              </article>
 
               {paymentConfirmation ? (
                 <div className="rounded-xl border border-green-200 bg-green-50 p-4">
-                  <h3 className="text-sm font-semibold text-green-800">Pago confirmado</h3>
+                  <h3 className="text-sm font-semibold text-green-800">Transferencia reportada</h3>
                   <p className="mt-1 text-sm text-green-700">
-                    Método: {paymentConfirmation.method === 'wompi' ? 'Wompi' : 'Consignación Bancolombia'}.
+                    Método: Transferencia Bancolombia.
                   </p>
                   <p className="mt-1 text-sm text-green-700">{paymentConfirmation.note}</p>
                   <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm text-green-800">
-                    <li>Te enviaremos correo de confirmación final de la cita.</li>
-                    <li>Recibirás recordatorio automático antes de tu horario.</li>
-                    <li>Si necesitas reprogramar, podrás hacerlo desde tu cuenta.</li>
+                    <li>El equipo revisará la referencia y validará el pago manualmente.</li>
+                    <li>Te contactaremos por correo o WhatsApp con la confirmación final.</li>
+                    <li>Si necesitas mover la cita, gestionala primero desde Calendly si ya fue creada allí.</li>
                   </ol>
                 </div>
               ) : null}
@@ -782,9 +694,9 @@ export default function ServicesPage() {
               <div className="rounded-xl border border-brand-100 bg-white p-4">
                 <h3 className="text-sm font-semibold text-brand-900">Próximos pasos</h3>
                 <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-slate-700">
-                  <li>Completa el pago en línea o confirma tu consignación Bancolombia dentro de 24 horas.</li>
-                  <li>Recibirás un correo de validación cuando confirmemos el pago.</li>
-                  <li>Tu cita pasará a estado confirmado y te enviaremos recordatorio antes de la hora agendada.</li>
+                  <li>Realiza la transferencia Bancolombia y reporta la referencia dentro de 24 horas.</li>
+                  <li>Recibirás una validación manual cuando el equipo confirme el pago.</li>
+                  <li>Una vez validada, tu cita quedará confirmada para la fecha agendada.</li>
                 </ol>
               </div>
             </section>

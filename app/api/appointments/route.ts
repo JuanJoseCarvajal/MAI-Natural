@@ -99,6 +99,10 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
 
+    const role = (session.user as { role?: string }).role;
+    const sessionUserId = (session.user as { id?: string }).id;
+    const sessionEmail = session.user.email;
+
     const { searchParams } = new URL(request.url);
     const appointmentId = searchParams.get('id');
 
@@ -109,9 +113,31 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    await db.appointment.delete({ where: { id: appointmentId } });
+    const appointment = await db.appointment.findUnique({ where: { id: appointmentId } });
 
-    return NextResponse.json({ success: true, message: 'Cita cancelada' });
+    if (!appointment) {
+      return NextResponse.json({ error: 'Cita no encontrada' }, { status: 404 });
+    }
+
+    const canManageAppointment =
+      role === 'admin' ||
+      (sessionUserId && appointment.userId === sessionUserId) ||
+      (sessionEmail && appointment.email === sessionEmail);
+
+    if (!canManageAppointment) {
+      return NextResponse.json({ error: 'No autorizado' }, { status: 403 });
+    }
+
+    const updatedAppointment = await db.appointment.update({
+      where: { id: appointmentId },
+      data: { status: 'cancelled' },
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: 'Cita cancelada',
+      appointment: updatedAppointment,
+    });
   } catch (error) {
     return NextResponse.json(
       { error: 'Error al cancelar la cita' },

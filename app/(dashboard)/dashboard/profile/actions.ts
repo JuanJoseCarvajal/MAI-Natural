@@ -1,22 +1,40 @@
 'use server';
 
+import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { redirect } from 'next/navigation';
 
-export async function updateProfileAction(
-  email: string,
-  name: string,
-  phone: string
-) {
+type SessionUser = { id?: string; email?: string | null };
+
+export async function updateProfileAction(name: string, phone: string) {
   try {
-    if (!email || !name) {
-      return { error: 'Email y nombre son requeridos' };
+    const session = await auth();
+    const sessionUser = session?.user as SessionUser | undefined;
+
+    if (!session?.user || (!sessionUser?.id && !sessionUser?.email)) {
+      return { error: 'Debes iniciar sesión para actualizar tu perfil' };
     }
 
-    const updated = await db.user.update({
-      where: { email },
-      data: { name, phone, updatedAt: new Date() },
-    });
+    if (!name?.trim()) {
+      return { error: 'El nombre es requerido' };
+    }
+
+    const updated =
+      (sessionUser.id
+        ? await db.user.update({
+            where: { id: sessionUser.id },
+            data: { name: name.trim(), phone: phone.trim() || null, updatedAt: new Date() },
+          })
+        : null) ??
+      (sessionUser.email
+        ? await db.user.update({
+            where: { email: sessionUser.email },
+            data: { name: name.trim(), phone: phone.trim() || null, updatedAt: new Date() },
+          })
+        : null);
+
+    if (!updated) {
+      return { error: 'No encontramos tu perfil para actualizarlo' };
+    }
 
     return {
       success: true,
@@ -30,9 +48,21 @@ export async function updateProfileAction(
   }
 }
 
-export async function getUserProfile(email: string) {
+export async function getUserProfile() {
   try {
-    const user = await db.user.findUnique({ where: { email } });
+    const session = await auth();
+    const sessionUser = session?.user as SessionUser | undefined;
+
+    if (!session?.user || (!sessionUser?.id && !sessionUser?.email)) {
+      return { error: 'No autorizado' };
+    }
+
+    const user =
+      (sessionUser.id
+        ? await db.user.findUnique({ where: { id: sessionUser.id } })
+        : null) ??
+      (sessionUser.email ? await db.user.findUnique({ where: { email: sessionUser.email } }) : null);
+
     return { user };
   } catch (error) {
     return { error: 'Error al obtener usuario' };

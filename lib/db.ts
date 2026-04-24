@@ -39,6 +39,11 @@ export interface Order {
   userId: string;
   total: number;
   status: string;
+  paymentStatus?: string;
+  paymentMethod?: string | null;
+  shippingStatus?: string;
+  trackingNumber?: string | null;
+  notes?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -75,13 +80,16 @@ initializeDatabase();
 export const db = {
   // User operations
   user: {
-    async findUnique(args: { where: { email: string } }) {
+    async findUnique(args: { where: { email?: string; id?: string } }) {
       // Asegurar que la DB está inicializada
       initializeDatabase();
       
       // Buscar usuario en la store
       for (const user of users.values()) {
-        if (user.email === args.where.email) {
+        if (
+          (args.where.email && user.email === args.where.email) ||
+          (args.where.id && user.id === args.where.id)
+        ) {
           return user;
         }
       }
@@ -100,9 +108,12 @@ export const db = {
       users.set(id, user);
       return user;
     },
-    async update(args: { where: { email: string }; data: Partial<User> }) {
+    async update(args: { where: { email?: string; id?: string }; data: Partial<User> }) {
       for (const [id, user] of users) {
-        if (user.email === args.where.email) {
+        if (
+          (args.where.email && user.email === args.where.email) ||
+          (args.where.id && user.id === args.where.id)
+        ) {
           const updated = { ...user, ...args.data, updatedAt: new Date() };
           users.set(id, updated);
           return updated;
@@ -162,11 +173,17 @@ export const db = {
 
   // Order operations
   order: {
+    async findUnique(args: { where: { id: string } }) {
+      return orders.get(args.where.id) ?? null;
+    },
     async create(args: { data: Omit<Order, 'id' | 'createdAt' | 'updatedAt'> }) {
       const id = randomUUID();
       const order: Order = {
         id,
         ...args.data,
+        status: args.data.status ?? 'preparing_order',
+        paymentStatus: args.data.paymentStatus ?? 'pending',
+        shippingStatus: args.data.shippingStatus ?? 'preparing_order',
         createdAt: new Date(),
         updatedAt: new Date(),
       };
@@ -179,6 +196,17 @@ export const db = {
         result = result.filter((o) => o.userId === args.where?.userId);
       }
       return result;
+    },
+    async update(args: { where: { id: string }; data: Partial<Order> }) {
+      const current = orders.get(args.where.id);
+      if (!current) return null;
+      const updated: Order = {
+        ...current,
+        ...args.data,
+        updatedAt: new Date(),
+      };
+      orders.set(args.where.id, updated);
+      return updated;
     },
   },
 };

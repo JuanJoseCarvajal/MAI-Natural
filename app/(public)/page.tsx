@@ -1,9 +1,11 @@
 import Link from "next/link";
 import ProductCard from "@/components/features/products/ProductCard";
-import { categoryLabels, products } from "@/lib/products";
+import { categoryLabels } from "@/lib/products";
 import NaturalHeroSlider from "@/components/features/home/NaturalHeroSlider";
+import { getAllProducts } from "@/lib/products.server";
 
-export default function PublicHomePage() {
+export default async function PublicHomePage() {
+  const products = await getAllProducts();
   const featuredProducts = products.slice(0, 4);
   const categoryEntries = Object.entries(categoryLabels);
 
@@ -47,8 +49,8 @@ export default function PublicHomePage() {
               <p className="text-xs text-slate-100">Valoracion promedio</p>
             </div>
             <div className="rounded-xl bg-white/15 p-3 shadow-sm ring-1 ring-white/30 backdrop-blur">
-              <p className="text-2xl font-bold text-white">48h</p>
-              <p className="text-xs text-slate-100">Envio nacional</p>
+              <p className="text-2xl font-bold text-white">5-7 dias</p>
+              <p className="text-xs text-slate-100">Entrega artesanal</p>
             </div>
           </div>
         </div>
@@ -144,8 +146,8 @@ export default function PublicHomePage() {
 
       <section className="grid gap-4 rounded-3xl bg-brand-900 p-6 text-white md:grid-cols-3 md:p-8">
         <article className="rounded-2xl bg-white/10 p-4">
-          <h3 className="text-lg font-bold">Despacho agil</h3>
-          <p className="mt-1 text-sm text-brand-100">Preparacion en menos de 24h y seguimiento del pedido en todo momento.</p>
+          <h3 className="text-lg font-bold">Produccion artesanal</h3>
+          <p className="mt-1 text-sm text-brand-100">Cada producto se prepara uno a uno. El tiempo estimado de entrega es de 5 a 7 dias habiles.</p>
         </article>
         <article className="rounded-2xl bg-white/10 p-4">
           <h3 className="text-lg font-bold">Rituales guiados</h3>

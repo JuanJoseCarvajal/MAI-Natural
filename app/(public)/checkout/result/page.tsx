@@ -12,7 +12,7 @@ type ResultPageProps = {
 const statusMap: Record<string, { title: string; message: string }> = {
   APPROVED: {
     title: "Pago aprobado",
-    message: "Tu pago fue aprobado exitosamente. Pronto recibiras la confirmacion de tu pedido.",
+    message: "Tu pago fue aprobado exitosamente. Te enviaremos la confirmacion de tu pedido y entraremos en produccion artesanal.",
   },
   DECLINED: {
     title: "Pago rechazado",
@@ -37,6 +37,9 @@ export default function CheckoutResultPage({ searchParams }: ResultPageProps) {
       <section className="rounded-2xl bg-white p-8 shadow ring-1 ring-slate-200">
         <h1 className="text-3xl font-bold text-brand-900">{view.title}</h1>
         <p className="mt-3 text-slate-700">{view.message}</p>
+        <p className="mt-2 text-sm text-slate-600">
+          Tiempo estimado de entrega: 5 a 7 dias habiles. Cada producto se elabora de forma personalizada y artesanal, uno a uno y nunca en masa.
+        </p>
 
         <div className="mt-6 space-y-2 rounded-xl bg-slate-50 p-4 text-sm text-slate-700">
           <p>

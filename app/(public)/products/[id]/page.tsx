@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { categoryLabels, getProductById, products } from "@/lib/products";
+import { categoryLabels } from "@/lib/products";
 import WompiCheckoutButton from "@/components/features/checkout/WompiCheckoutButton";
 import AddToCartButton from "@/components/features/cart/AddToCartButton";
 import ImageFrame from "@/components/ui/ImageFrame";
+import { getAllProducts, getProductById } from "@/lib/products.server";
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById(params.id);
+export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+  const product = await getProductById(params.id);
 
   if (!product) {
     notFound();
   }
 
+  const products = await getAllProducts();
   const related = products
     .filter((item) => item.category === product.category && item.id !== product.id)
     .slice(0, 3);
@@ -55,6 +57,10 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             {product.rating.toFixed(1)} / 5 ({product.reviewsCount} reseñas)
           </p>
           <p className="mt-4 text-slate-700">{product.description}</p>
+
+          <div className="mt-4 rounded-2xl border border-brand-100 bg-brand-50 px-4 py-3 text-sm text-slate-700">
+            Tiempo de entrega estimado: 5 a 7 dias habiles. Cada producto se prepara de forma personalizada y artesanal, uno a uno y nunca en masa.
+          </div>
 
           <ul className="mt-5 space-y-2 text-sm text-slate-700">
             {product.benefits.map((benefit) => (

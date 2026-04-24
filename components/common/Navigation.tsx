@@ -10,7 +10,7 @@ const publicNavItems = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Productos" },
   { href: "/services", label: "Servicios" },
-  { href: "/subscriptions", label: "Club MAI" },
+  { href: "/subscriptions", label: "Club MAI", disabled: true, disabledLabel: "Proximamente" },
 ];
 
 export default function Navigation() {
@@ -50,27 +50,65 @@ export default function Navigation() {
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const handleDesktopChange = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (event.matches) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    handleDesktopChange(mediaQuery);
+    mediaQuery.addEventListener("change", handleDesktopChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleDesktopChange);
+    };
+  }, []);
+
   const closeAllMenus = () => {
     setUserMenuOpen(false);
     setMobileMenuOpen(false);
   };
 
   const renderPrimaryLinks = (mobile = false) =>
-    publicNavItems.map((item) => (
-      <Link
-        key={item.href}
-        href={item.href}
-        aria-current={isActive(item.href) ? "page" : undefined}
-        onClick={closeAllMenus}
-        className={
-          mobile
-            ? "rounded-2xl px-4 py-3 text-base font-semibold text-brand-900 transition hover:bg-brand-50"
-            : linkClass(item.href)
-        }
-      >
-        {item.label}
-      </Link>
-    ));
+    publicNavItems.map((item) =>
+      item.disabled ? (
+        <span
+          key={item.href}
+          aria-disabled="true"
+          className={
+            mobile
+              ? "flex items-center justify-between rounded-2xl border border-brand-100 bg-brand-50 px-4 py-3 text-base font-semibold text-brand-900"
+              : "inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/65"
+          }
+        >
+          <span>{item.label}</span>
+          <span
+            className={
+              mobile
+                ? "rounded-full bg-brand-900 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white"
+                : "rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-white"
+            }
+          >
+            {item.disabledLabel}
+          </span>
+        </span>
+      ) : (
+        <Link
+          key={item.href}
+          href={item.href}
+          aria-current={isActive(item.href) ? "page" : undefined}
+          onClick={closeAllMenus}
+          className={
+            mobile
+              ? "rounded-2xl px-4 py-3 text-base font-semibold text-brand-900 transition hover:bg-brand-50"
+              : linkClass(item.href)
+          }
+        >
+          {item.label}
+        </Link>
+      )
+    );
 
   return (
     <nav className="relative">

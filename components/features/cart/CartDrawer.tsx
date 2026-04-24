@@ -170,7 +170,7 @@ export default function CartDrawer() {
               </span>
             </div>
             <p className="text-xs text-slate-500">
-              Envío calculado al finalizar el pedido.
+              Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa.
             </p>
             <Link
               href="/checkout"
