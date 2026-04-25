@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { categoryLabels } from "@/lib/products";
-import WompiCheckoutButton from "@/components/features/checkout/WompiCheckoutButton";
 import AddToCartButton from "@/components/features/cart/AddToCartButton";
 import ImageFrame from "@/components/ui/ImageFrame";
 import { getAllProducts, getProductById } from "@/lib/products.server";
@@ -62,6 +61,11 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
             Tiempo de entrega estimado: 5 a 7 dias habiles. Cada producto se prepara de forma personalizada y artesanal, uno a uno y nunca en masa.
           </div>
 
+          <div className="mt-4 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm text-slate-700">
+            <p className="font-semibold text-brand-900">Metodo de pago</p>
+            <p className="mt-1">Consignacion Bancolombia. La orden se crea primero y el pago se confirma despues de recibir tu comprobante.</p>
+          </div>
+
           <ul className="mt-5 space-y-2 text-sm text-slate-700">
             {product.benefits.map((benefit) => (
               <li key={benefit}>• {benefit}</li>
@@ -75,7 +79,6 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
             amountInCents={product.amountInCents}
             image={product.image}
           />
-          <WompiCheckoutButton productId={product.id} />
         </div>
       </div>
 

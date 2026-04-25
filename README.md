@@ -16,7 +16,7 @@ Abre http://localhost:3000
 ## 🔐 Demo Credentials
 
 **Usuario/Admin:**
-- Email: `usuario@ejemplo.com`
+- Email: `hola@mainatural.com`
 - Contraseña: `password123`
 
 ## 📁 Rutas Principales

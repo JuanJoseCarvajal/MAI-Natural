@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 const publicNavItems = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Productos" },
+  { href: "/routines", label: "Rutinas" },
   { href: "/services", label: "Servicios" },
   { href: "/subscriptions", label: "Club MAI", disabled: true, disabledLabel: "Proximamente" },
 ];

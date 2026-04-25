@@ -172,12 +172,15 @@ export default function CartDrawer() {
             <p className="text-xs text-slate-500">
               Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa.
             </p>
+            <p className="text-xs text-brand-800">
+              Metodo de pago unico: <strong>Consignacion Bancolombia</strong>.
+            </p>
             <Link
               href="/checkout"
               onClick={closeCart}
               className="block w-full rounded-full bg-brand-700 py-3 text-center text-sm font-bold text-white transition hover:bg-brand-900"
             >
-              Finalizar compra
+              Crear orden
             </Link>
             <button
               onClick={closeCart}

@@ -104,9 +104,9 @@ export async function getAdminOverview() {
     const lowStockProducts = products.filter((product) => (product.stock ?? 0) <= 5).length;
     const activeProducts = products.filter((product) => product.active !== false).length;
     const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
-    const paidOrders = orders.filter((order) => (order.paymentStatus ?? 'pending') === 'verified').length;
+    const paidOrders = orders.filter((order) => (order.paymentStatus ?? 'pending_confirmation') === 'confirmed').length;
     const shipmentsInProgress = orders.filter((order) =>
-      ['preparing_order', 'order_sent', 'order_in_route'].includes(
+      ['confirmed', 'preparing_order', 'order_sent', 'order_in_route'].includes(
         order.shippingStatus ?? order.status
       )
     ).length;

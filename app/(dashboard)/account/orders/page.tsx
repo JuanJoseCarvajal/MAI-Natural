@@ -4,7 +4,9 @@ import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
 
 const orderStatusLabels: Record<string, string> = {
-  preparing_order: 'Preparando orden',
+  pending_confirmation: 'Pendiente de confirmacion',
+  confirmed: 'Confirmada',
+  preparing_order: 'Preparando tu orden',
   order_sent: 'Pedido enviado',
   order_in_route: 'Pedido en ruta',
   delivered: 'Entregado',
@@ -16,6 +18,13 @@ const appointmentStatusLabels: Record<string, string> = {
   confirmed: 'Confirmada',
   cancelled: 'Cancelada',
   expired_payment_window: 'Ventana de pago vencida',
+};
+
+const paymentStatusLabels: Record<string, string> = {
+  pending_confirmation: 'Pendiente de confirmacion',
+  proof_submitted: 'Comprobante recibido',
+  confirmed: 'Pago confirmado',
+  rejected: 'Comprobante rechazado',
 };
 
 function formatCOP(value: number) {
@@ -92,10 +101,16 @@ export default async function AccountOrdersPage() {
                       <p className="mt-2 text-sm text-slate-700">
                         Total: <strong>{formatCOP(order.total)}</strong>
                       </p>
+                      <p className="mt-1 text-sm text-slate-600">
+                        Pago: <strong>Consignacion Bancolombia</strong>
+                      </p>
                       {order.trackingNumber ? (
                         <p className="mt-1 text-sm text-slate-600">
                           Guía: <strong>{order.trackingNumber}</strong>
                         </p>
+                      ) : null}
+                      {order.proofInstructions ? (
+                        <p className="mt-2 text-sm text-slate-600">{order.proofInstructions}</p>
                       ) : null}
                     </div>
                     <div className="flex flex-col gap-2 text-sm">
@@ -103,7 +118,7 @@ export default async function AccountOrdersPage() {
                         {orderStatusLabels[status] ?? status}
                       </span>
                       <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-                        Pago: {order.paymentStatus ?? 'pendiente'}
+                        Pago: {paymentStatusLabels[order.paymentStatus ?? 'pending_confirmation'] ?? order.paymentStatus ?? 'pendiente'}
                       </span>
                     </div>
                   </div>

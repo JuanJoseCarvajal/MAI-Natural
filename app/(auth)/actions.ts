@@ -32,7 +32,27 @@ export async function registerAction(
     });
 
     if (existingUser) {
-      return { error: 'El correo ya está registrado' };
+      if (existingUser.password) {
+        return { error: 'El correo ya está registrado' };
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      await db.user.update({
+        where: { id: existingUser.id },
+        data: {
+          name,
+          password: hashedPassword,
+        },
+      });
+
+      await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+
+      return { success: true };
     }
 
     // Hashear la contraseña

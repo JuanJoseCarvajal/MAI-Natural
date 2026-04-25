@@ -79,6 +79,9 @@ export default function ProductCard({
       ) : null}
 
       <p className={`mt-3 text-sm text-slate-600 ${compact ? "line-clamp-2" : ""}`}>{description}</p>
+      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+        Pago: Consignacion Bancolombia
+      </p>
 
       <div className="mt-auto flex items-center gap-3 pt-5">
         <Link
@@ -96,7 +99,7 @@ export default function ProductCard({
               : "bg-brand-700 hover:bg-brand-900"
           }`}
         >
-          {added ? "✓ Agregado" : "Agregar"}
+          {added ? "✓ Agregado" : "Agregar al carrito"}
         </button>
       </div>
     </article>

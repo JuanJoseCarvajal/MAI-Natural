@@ -20,7 +20,7 @@ export default async function AdminPage() {
 
   const statCards = [
     { label: "Productos activos", value: metrics.activeProducts, helper: `${metrics.productsCount} en catálogo`, href: "/admin/products", icon: "🧴" },
-    { label: "Órdenes", value: metrics.ordersCount, helper: `${metrics.paidOrders} pagadas`, href: "/admin/orders", icon: "🛒" },
+    { label: "Órdenes", value: metrics.ordersCount, helper: `${metrics.paidOrders} confirmadas`, href: "/admin/orders", icon: "🛒" },
     { label: "Citas", value: metrics.appointmentsCount, helper: `${metrics.pendingPayments} con pago pendiente`, href: "/admin/appointments", icon: "📅" },
     { label: "Usuarios", value: metrics.usersCount, helper: "Base de clientes", href: "/admin/users", icon: "👥" },
     { label: "Inventario bajo", value: metrics.lowStockProducts, helper: "Productos por reponer", href: "/admin/inventory", icon: "📦" },

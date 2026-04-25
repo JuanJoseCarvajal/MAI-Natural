@@ -17,23 +17,32 @@ function formatCOP(value: number) {
   }).format(value / 100);
 }
 
-const paymentOptions = ["pending", "reported", "verified", "rejected"];
+const paymentOptions = ["pending_confirmation", "proof_submitted", "confirmed", "rejected"];
 const orderStatusOptions = [
+  "pending_confirmation",
+  "confirmed",
   "preparing_order",
   "order_sent",
   "order_in_route",
   "delivered",
 ];
-const shippingOptions = ["preparing_order", "order_sent", "order_in_route", "delivered"];
+const shippingOptions = [
+  "pending_confirmation",
+  "confirmed",
+  "preparing_order",
+  "order_sent",
+  "order_in_route",
+  "delivered",
+];
 
 const statusLabels: Record<string, string> = {
-  preparing_order: "Preparando orden",
+  pending_confirmation: "Pendiente de confirmacion",
+  confirmed: "Confirmada",
+  preparing_order: "Preparando tu orden",
   order_sent: "Pedido enviado",
   order_in_route: "Pedido en ruta",
   delivered: "Entregado",
-  pending: "Pendiente",
-  reported: "Reportado",
-  verified: "Verificado",
+  proof_submitted: "Comprobante recibido",
   rejected: "Rechazado",
 };
 
@@ -47,7 +56,7 @@ export default function AdminOrdersManager({
 
   const filteredOrders = useMemo(() => {
     if (mode === "payments") {
-      return orders.filter((order) => (order.paymentStatus ?? "pending") !== "verified");
+      return orders.filter((order) => (order.paymentStatus ?? "pending_confirmation") !== "confirmed");
     }
     if (mode === "shipping") {
       return orders.filter((order) => (order.shippingStatus ?? "pending") !== "delivered");
@@ -96,7 +105,7 @@ export default function AdminOrdersManager({
           <p className="mt-2 text-3xl font-extrabold text-brand-900">
             {
               orders.filter((order) =>
-                ["preparing_order", "order_sent", "order_in_route"].includes(order.status)
+                ["pending_confirmation", "confirmed", "preparing_order", "order_sent", "order_in_route"].includes(order.status)
               ).length
             }
           </p>
@@ -113,6 +122,7 @@ export default function AdminOrdersManager({
             <thead className="bg-slate-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Orden</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Cliente</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Total</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Estado operativo</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Pago</th>
@@ -123,7 +133,7 @@ export default function AdminOrdersManager({
             <tbody className="divide-y divide-slate-100">
               {filteredOrders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-10 text-center text-sm text-slate-600">
+                  <td colSpan={7} className="px-6 py-10 text-center text-sm text-slate-600">
                     No hay órdenes para esta vista todavía.
                   </td>
                 </tr>
@@ -136,8 +146,18 @@ export default function AdminOrdersManager({
                         {new Date(order.createdAt).toLocaleDateString("es-CO")}
                       </p>
                     </td>
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-brand-900">{order.customerName}</p>
+                      <p className="text-xs text-slate-500">{order.customerEmail}</p>
+                      <p className="text-xs text-slate-500">{order.customerPhone}</p>
+                    </td>
                     <td className="px-6 py-4 text-sm font-semibold text-brand-900">
                       {formatCOP(order.total)}
+                      <p className="mt-1 text-xs font-normal text-slate-500">
+                        {order.paymentMethod === "bank_transfer_bancolombia"
+                          ? "Consignacion Bancolombia"
+                          : order.paymentMethod ?? "Sin definir"}
+                      </p>
                     </td>
                     <td className="px-6 py-4">
                       <select

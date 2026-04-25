@@ -37,12 +37,25 @@ export interface Appointment {
 export interface Order {
   id: string;
   userId: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  items: Array<{
+    id: string;
+    name: string;
+    price: string;
+    amountInCents: number;
+    quantity: number;
+  }>;
   total: number;
   status: string;
   paymentStatus?: string;
   paymentMethod?: string | null;
   shippingStatus?: string;
   trackingNumber?: string | null;
+  discountCode?: string | null;
+  proofInstructions?: string | null;
+  proofSubmittedAt?: Date | null;
   notes?: string | null;
   createdAt: Date;
   updatedAt: Date;
@@ -61,8 +74,8 @@ function initializeDatabase() {
   
   const demoUser: User = {
     id: 'demo-user-1',
-    email: 'usuario@ejemplo.com',
-    name: 'Usuario Demo',
+    email: 'hola@mainatural.com',
+    name: 'Administracion MAI',
     password: DEMO_PASSWORD_HASH,
     phone: '+34 666 666 666',
     role: 'admin',
@@ -181,9 +194,9 @@ export const db = {
       const order: Order = {
         id,
         ...args.data,
-        status: args.data.status ?? 'preparing_order',
-        paymentStatus: args.data.paymentStatus ?? 'pending',
-        shippingStatus: args.data.shippingStatus ?? 'preparing_order',
+        status: args.data.status ?? 'pending_confirmation',
+        paymentStatus: args.data.paymentStatus ?? 'pending_confirmation',
+        shippingStatus: args.data.shippingStatus ?? 'pending_confirmation',
         createdAt: new Date(),
         updatedAt: new Date(),
       };

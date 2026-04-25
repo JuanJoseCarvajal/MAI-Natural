@@ -27,16 +27,16 @@ export default async function PublicHomePage() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
-              href="/products"
+              href="/routines"
               className="rounded-full bg-brand-700 px-7 py-3 text-sm font-bold text-white transition hover:bg-brand-900"
             >
-              Comprar ahora
+              Armar mi rutina
             </Link>
             <Link
-              href="/services"
+              href="/products"
               className="rounded-full border-2 border-white/80 px-7 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-900"
             >
-              Diagnostico y servicios
+              Comprar productos
             </Link>
           </div>
           <div className="mt-8 grid max-w-xl grid-cols-3 gap-3 text-center">
@@ -167,10 +167,10 @@ export default async function PublicHomePage() {
             Mejora conversion y satisfaccion proponiendo combos simples: limpieza + tratamiento + sellado.
           </p>
           <Link
-            href="/products#categoria-kits"
+            href="/routines"
             className="mt-6 inline-flex rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-900"
           >
-            Ver kits recomendados
+            Explorar rutinas
           </Link>
         </div>
         <div className="grid gap-3">
@@ -197,6 +197,9 @@ export default async function PublicHomePage() {
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Link href="/products" className="rounded-full bg-brand-700 px-7 py-3 text-sm font-bold text-white hover:bg-brand-900">
             Ir a tienda
+          </Link>
+          <Link href="/routines" className="rounded-full border border-brand-700 px-7 py-3 text-sm font-bold text-brand-700 hover:bg-brand-700 hover:text-white">
+            Ver rutinas
           </Link>
           <Link href="/services" className="rounded-full border border-brand-700 px-7 py-3 text-sm font-bold text-brand-700 hover:bg-brand-700 hover:text-white">
             Hablar con asesora

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 interface Stats {
   appointmentsCount: number;
@@ -9,16 +10,22 @@ interface Stats {
 }
 
 export default function DashboardPage() {
+  const { data: session } = useSession();
   const [stats, setStats] = useState<Stats>({
     appointmentsCount: 0,
     ordersCount: 0,
   });
 
   useEffect(() => {
+    const email = session?.user?.email;
+    if (!email) return;
+
     // Fetch user stats
     const fetchStats = async () => {
       try {
-        const appointmentsRes = await fetch('/api/appointments?email=usuario@ejemplo.com');
+        const appointmentsRes = await fetch(
+          `/api/appointments?email=${encodeURIComponent(email)}`
+        );
         const appointmentsData = await appointmentsRes.json();
         const appointmentsCount = appointmentsData.appointments?.length || 0;
 
@@ -32,7 +39,7 @@ export default function DashboardPage() {
     };
 
     fetchStats();
-  }, []);
+  }, [session?.user?.email]);
 
   return (
     <div className="space-y-8">
