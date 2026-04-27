@@ -33,7 +33,7 @@
   },
   {
     "id": "balsamo-jardin-herbal",
-    "image": "/products/capilar/balsamo-jardin-herbal-mai-natural/balsamo-jardin-herbal-mai-natural.png",
+    "image": "/products/Capilar/balsamo-jardin-herbal-mai-natural.png",
     "name": "Bálsamo - Jardín Herbal",
     "price": "$78.000",
     "amountInCents": 7800000,
@@ -65,7 +65,7 @@
   },
   {
     "id": "el-perfume-perfume-capilar",
-    "image": "/products/capilar/el-perfume-capilar-mai-natural/el-perfume-capilar-mai-natural.png",
+    "image": "/products/Capilar/el-perfume-jardin-herbal-mai-natural.png",
     "name": "El Perfume - Perfume Capilar",
     "price": "$52.000",
     "amountInCents": 5200000,
@@ -81,7 +81,7 @@
   },
   {
     "id": "ca-hcc-500",
-    "image": "/products/capilar/herbal-curl-crema-para-peinar-mai-natural/herbal-curl-crema-para-peinar-mai-natural.png",
+    "image": "/products/Capilar/herbal-curl-crema-para-peinar-mai-natural.png",
     "name": "Herbal Curl - Crema Para Peinar",
     "price": "$56.000",
     "amountInCents": 5600000,
@@ -97,7 +97,7 @@
   },
   {
     "id": "co-js-110-1-1",
-    "image": "https://mainatural.com/wp-content/uploads/2025/07/MAnzanilla.png",
+    "image": "/products/Corporal/jabon-solido-calendula-manzanilla-mai-natural.png",
     "name": "Jabón Sólido - Caléndula & Manzanilla - Cosmética Natural Orgánica",
     "price": "$35.000",
     "amountInCents": 3500000,
@@ -113,7 +113,7 @@
   },
   {
     "id": "co-js-110-1",
-    "image": "https://mainatural.com/wp-content/uploads/2025/07/Carbon.png",
+    "image": "/products/Corporal/jabon-solido-carbon-activado-arroz-mai-natural.png",
     "name": "Jabón Sólido - Carbón Activado y Arroz - Cosmética Natural Orgánica",
     "price": "$35.000",
     "amountInCents": 3500000,
@@ -129,7 +129,7 @@
   },
   {
     "id": "co-js-67",
-    "image": "https://mainatural.com/wp-content/uploads/2025/07/Cacao.png",
+    "image": "/products/Corporal/jabon-solido-rosas-cacao-mai-natural.png",
     "name": "Jabón Sólido - Rosas & Cacao - Cosmética Natural Orgánica",
     "price": "$24.000",
     "amountInCents": 2400000,
@@ -145,7 +145,7 @@
   },
   {
     "id": "co-js-110-1-1-1",
-    "image": "https://mainatural.com/wp-content/uploads/2025/07/Ruda_Vervena.png",
+    "image": "/products/Corporal/jabon-solido-ruda-hierbabuena-verbena-mai-natural.png",
     "name": "Jabón Sólido - Ruda, Hierbabuena & Verbena - Cosmética Natural Orgánica",
     "price": "$35.000",
     "amountInCents": 3500000,
@@ -177,7 +177,7 @@
   },
   {
     "id": "kit-cuidado-corporal-mai",
-    "image": "https://mainatural.com/wp-content/uploads/2025/07/Carbon.png",
+    "image": "/products/Corporal/jabon-solido-carbon-activado-arroz-mai-natural.png",
     "name": "Kit Cuidado Corporal MAI",
     "price": "$63.000",
     "amountInCents": 6300000,
@@ -194,7 +194,7 @@
   },
   {
     "id": "kit-ritual-facial-mai",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Emolientev.png",
+    "image": "/products/Facial/rocio-primordial-emoliente-tonico-facial-mai-natural.png",
     "name": "Kit Ritual Facial MAI",
     "price": "$117.040",
     "amountInCents": 11704000,
@@ -211,7 +211,7 @@
   },
   {
     "id": "kit-rutina-capilar-mai",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/El-Perfume.png",
+    "image": "/products/Capilar/el-perfume-jardin-herbal-mai-natural.png",
     "name": "Kit Rutina Capilar MAI",
     "price": "$108.000",
     "amountInCents": 10800000,
@@ -228,7 +228,7 @@
   },
   {
     "id": "fa-lam-120",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Lavanda.png",
+    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
     "name": "Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador",
     "price": "$58.000",
     "amountInCents": 5800000,
@@ -244,7 +244,7 @@
   },
   {
     "id": "fa-lnd-70",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/LEche-Nutritiva-Dia-1.png",
+    "image": "/products/Facial/leche-nutritiva-dia-mai-natural.png",
     "name": "Leche Nutritiva - Día",
     "price": "$74.000",
     "amountInCents": 7400000,
@@ -260,7 +260,7 @@
   },
   {
     "id": "fa-lnn-70",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Leche-Nutritiva-Facial-Noche-1.png",
+    "image": "/products/Facial/leche-nutritiva-noche-mai-natural.png",
     "name": "Leche Nutritiva - Noche",
     "price": "$74.000",
     "amountInCents": 7400000,
@@ -276,7 +276,7 @@
   },
   {
     "id": "fa-rpt-70",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Emolientev.png",
+    "image": "/products/Facial/rocio-primordial-emoliente-tonico-facial-mai-natural.png",
     "name": "Rocio Primordial Emoliente - Tónico Facial",
     "price": "$59.000",
     "amountInCents": 5900000,
@@ -292,7 +292,7 @@
   },
   {
     "id": "fa-rpt-70-1",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Herbal.png",
+    "image": "/products/Facial/rocio-primordial-herbal-tonico-facial-mai-natural.png",
     "name": "Rocio Primordial Herbal - Tónico Facial",
     "price": "$59.000",
     "amountInCents": 5900000,
@@ -308,7 +308,7 @@
   },
   {
     "id": "fa-rcm-120",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Romero.png",
+    "image": "/products/Facial/romero-carbon-activado-mousse-cremoso-limpiador-mai-natural.png",
     "name": "Romero & Carbón Activado - Mousse Cremoso Limpiador",
     "price": "$58.000",
     "amountInCents": 5800000,
@@ -324,7 +324,7 @@
   },
   {
     "id": "mnk-001",
-    "image": "/products/capilar/shampoo-jardin-herbal-mai-natural/shampoo-jardin-herbal-mai-natural.png",
+    "image": "/products/Capilar/shampoo-jardin-herbal-mai-natural.png",
     "name": "Shampoo - Jardín Herbal",
     "price": "$68.000",
     "amountInCents": 6800000,
@@ -340,7 +340,7 @@
   },
   {
     "id": "kit-trio-capilar-esencial-mai",
-    "image": "https://mainatural.com/wp-content/uploads/2021/08/Shampoo-MAI-1.png",
+    "image": "/products/Capilar/shampoo-jardin-herbal-mai-natural.png",
     "name": "Kit Trio Capilar Esencial MAI",
     "price": "$182.000",
     "amountInCents": 18200000,
@@ -360,7 +360,7 @@
   },
   {
     "id": "kit-trio-facial-equilibrio-mai",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Emolientev.png",
+    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
     "name": "Kit Trio Facial Equilibrio MAI",
     "price": "$172.000",
     "amountInCents": 17200000,
@@ -380,7 +380,7 @@
   },
   {
     "id": "kit-trio-corporal-ritual-mai",
-    "image": "https://mainatural.com/wp-content/uploads/2025/07/Cacao.png",
+    "image": "/products/Corporal/jabon-solido-rosas-cacao-mai-natural.png",
     "name": "Kit Trio Corporal Ritual MAI",
     "price": "$84.000",
     "amountInCents": 8400000,
