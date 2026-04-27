@@ -26,7 +26,14 @@ export default function LoginPage() {
       }
 
       if (result?.success) {
-        router.push('/account');
+        const params = new URLSearchParams(window.location.search);
+        const callbackUrl = params.get('callbackUrl');
+        const nextUrl =
+          callbackUrl?.startsWith('/') && !callbackUrl.startsWith('//')
+            ? callbackUrl
+            : '/account';
+
+        router.push(nextUrl);
         router.refresh();
       }
     } catch {

@@ -2,6 +2,7 @@ import type { NextAuthConfig } from 'next-auth';
 
 const authConfig: NextAuthConfig = {
   providers: [],
+  trustHost: true,
   pages: {
     signIn: '/login',
   },
