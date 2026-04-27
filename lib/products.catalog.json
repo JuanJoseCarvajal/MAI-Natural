@@ -1,7 +1,7 @@
 [
   {
     "id": "fa-lam-120-1",
-    "image": "/products/Facial/rocio-primordial-emoliente-tonico-facial-mai-natural.png",
+    "image": "/products/Facial/agua-de-rosas-mai-natural.png",
     "name": "Agua de Rosas",
     "price": "$59.000",
     "amountInCents": 5900000,
@@ -17,7 +17,7 @@
   },
   {
     "id": "fa-ass-30",
-    "image": "/products/Facial/rocio-primordial-herbal-tonico-facial-mai-natural.png",
+    "image": "/products/Facial/aqua-suero-facial-mai-natural.png",
     "name": "Aqua - Suero Facial",
     "price": "$74.000",
     "amountInCents": 7400000,
@@ -49,7 +49,7 @@
   },
   {
     "id": "fa-cam-150",
-    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
+    "image": "/products/Facial/calendula-aloe-vera-manzanilla-mousse-cremoso-limpiador-mai-natural.png",
     "name": "Caléndula & Aloe Vera Manzanilla - Mousse Cremoso Limpiador",
     "price": "$62.000",
     "amountInCents": 6200000,
@@ -161,7 +161,7 @@
   },
   {
     "id": "fa-jpm-120",
-    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
+    "image": "/products/Facial/jazmin-petalos-de-rosa-mousse-espumoso-limpiador-mai-natural.png",
     "name": "Jazmín & Pétalos de Rosa - Mousse Espumoso Limpiador",
     "price": "$58.000",
     "amountInCents": 5800000,
