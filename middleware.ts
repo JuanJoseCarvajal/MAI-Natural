@@ -26,7 +26,12 @@ export default auth((request) => {
 
   if (isProtectedRoute) {
     if (!request.auth) {
-      return NextResponse.redirect(new URL('/login', request.url));
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set(
+        'callbackUrl',
+        `${request.nextUrl.pathname}${request.nextUrl.search}`
+      );
+      return NextResponse.redirect(loginUrl);
     }
 
     if (isAdminRoute) {
