@@ -33,7 +33,7 @@
   },
   {
     "id": "balsamo-jardin-herbal",
-    "image": "https://mainatural.com/wp-content/uploads/2021/08/Balsamo-MAI-1.png",
+    "image": "/products/capilar/balsamo-jardin-herbal-mai-natural/balsamo-jardin-herbal-mai-natural.png",
     "name": "Bálsamo - Jardín Herbal",
     "price": "$78.000",
     "amountInCents": 7800000,
@@ -65,7 +65,7 @@
   },
   {
     "id": "el-perfume-perfume-capilar",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/El-Perfume.png",
+    "image": "/products/capilar/el-perfume-capilar-mai-natural/el-perfume-capilar-mai-natural.png",
     "name": "El Perfume - Perfume Capilar",
     "price": "$52.000",
     "amountInCents": 5200000,
@@ -81,7 +81,7 @@
   },
   {
     "id": "ca-hcc-500",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Crema-para-peinar.png",
+    "image": "/products/capilar/herbal-curl-crema-para-peinar-mai-natural/herbal-curl-crema-para-peinar-mai-natural.png",
     "name": "Herbal Curl - Crema Para Peinar",
     "price": "$56.000",
     "amountInCents": 5600000,
@@ -324,7 +324,7 @@
   },
   {
     "id": "mnk-001",
-    "image": "https://mainatural.com/wp-content/uploads/2021/08/Shampoo-MAI-1.png",
+    "image": "/products/capilar/shampoo-jardin-herbal-mai-natural/shampoo-jardin-herbal-mai-natural.png",
     "name": "Shampoo - Jardín Herbal",
     "price": "$68.000",
     "amountInCents": 6800000,

@@ -7,6 +7,11 @@ import AppChrome from "@/components/common/AppChrome";
 export const metadata: Metadata = {
   title: "MAI Natural",
   description: "Cosmética natural colombiana",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
