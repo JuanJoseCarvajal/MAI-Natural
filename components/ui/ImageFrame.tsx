@@ -29,6 +29,7 @@ export default function ImageFrame({
         alt={alt}
         fill
         sizes={sizes}
+        unoptimized
         priority={loading === "eager"}
         className={cn("ds-image-subject", fitClass, imageClassName)}
       />

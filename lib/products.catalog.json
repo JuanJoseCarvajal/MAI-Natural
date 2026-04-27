@@ -1,7 +1,7 @@
 [
   {
     "id": "fa-lam-120-1",
-    "image": "https://mainatural.com/wp-content/uploads/2026/02/Botella_agua_rosas.png",
+    "image": "/products/Facial/rocio-primordial-emoliente-tonico-facial-mai-natural.png",
     "name": "Agua de Rosas",
     "price": "$59.000",
     "amountInCents": 5900000,
@@ -17,7 +17,7 @@
   },
   {
     "id": "fa-ass-30",
-    "image": "https://mainatural.com/wp-content/uploads/2021/08/Suero-Aqua-MAI-1.png",
+    "image": "/products/Facial/rocio-primordial-herbal-tonico-facial-mai-natural.png",
     "name": "Aqua - Suero Facial",
     "price": "$74.000",
     "amountInCents": 7400000,
@@ -49,7 +49,7 @@
   },
   {
     "id": "fa-cam-150",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Lavanda.png",
+    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
     "name": "Caléndula & Aloe Vera Manzanilla - Mousse Cremoso Limpiador",
     "price": "$62.000",
     "amountInCents": 6200000,
@@ -161,7 +161,7 @@
   },
   {
     "id": "fa-jpm-120",
-    "image": "https://mainatural.com/wp-content/uploads/2025/05/Jabon-Jazmin.png",
+    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
     "name": "Jazmín & Pétalos de Rosa - Mousse Espumoso Limpiador",
     "price": "$58.000",
     "amountInCents": 5800000,
