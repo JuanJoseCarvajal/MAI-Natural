@@ -90,10 +90,19 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
               <Link
                 key={item.id}
                 href={`/products/${item.id}`}
-                className="rounded-xl border border-slate-200 bg-white p-4 transition hover:shadow-md"
+                className="flex gap-3 rounded-xl border border-slate-200 bg-white p-3 transition hover:shadow-md"
               >
-                <p className="font-semibold text-brand-900">{item.name}</p>
-                <p className="text-sm text-slate-600">{item.price}</p>
+                <ImageFrame
+                  src={item.image}
+                  alt={item.name}
+                  frameClassName="h-16 w-16 shrink-0 rounded-lg"
+                  imageClassName="rounded-lg"
+                  fit="cover"
+                />
+                <div className="min-w-0">
+                  <p className="line-clamp-2 text-sm font-semibold text-brand-900">{item.name}</p>
+                  <p className="mt-1 text-sm text-slate-600">{item.price}</p>
+                </div>
               </Link>
             ))}
           </div>

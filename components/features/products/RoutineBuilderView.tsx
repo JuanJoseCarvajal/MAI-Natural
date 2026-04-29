@@ -24,10 +24,10 @@ const routineProfiles = [
   },
   {
     id: "corporal-regalo",
-    label: "Ritual corporal y regalo consciente",
+    label: "Ritual corporal completo",
     description:
-      "Seleccion de jabones artesanales para rotar segun el momento de la piel o regalar una experiencia MAI.",
-    productIds: ["co-js-110-1", "co-js-110-1-1", "co-js-67"],
+      "Una seleccion que combina limpieza artesanal, suavidad corporal y un toque aromatico para completar la experiencia MAI.",
+    productIds: ["co-js-110-1", "co-js-67", "el-perfume-perfume-capilar"],
   },
 ];
 
