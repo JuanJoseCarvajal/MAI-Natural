@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: "MAI Natural",
   description: "Cosmética natural colombiana",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.webp",
+    shortcut: "/favicon.webp",
+    apple: "/favicon.webp",
   },
 };
 
