@@ -181,46 +181,79 @@ const byCategory = {
   corporal: result.filter((p) => p.category === "corporal"),
 };
 
-const kits = [];
+const byId = new Map(result.map((product) => [product.id, product]));
 
-if (byCategory.facial.length >= 2) {
-  kits.push(
-    makeKit({
-      id: "kit-ritual-facial-mai",
-      name: "Kit Ritual Facial MAI",
-      image: byCategory.facial[0].image,
-      productList: byCategory.facial.slice(0, 2),
-      discountPct: 12,
-      benefits: ["Limpieza + tratamiento", "Ideal día/noche", "Ahorro frente a compra individual"],
-    })
-  );
+function pickProducts(ids) {
+  const products = ids.map((id) => byId.get(id)).filter(Boolean);
+  return products.length === ids.length ? products : [];
 }
 
-if (byCategory.capilar.length >= 2) {
-  kits.push(
-    makeKit({
-      id: "kit-rutina-capilar-mai",
-      name: "Kit Rutina Capilar MAI",
-      image: byCategory.capilar[0].image,
-      productList: byCategory.capilar.slice(0, 2),
-      discountPct: 10,
-      benefits: ["Nutrición y protección", "Rutina capilar completa", "Resultados progresivos"],
-    })
-  );
-}
+const curatedKitDefinitions = [
+  {
+    id: "kit-cuidado-corporal-mai",
+    name: "Kit Ducha, Piel y Aroma MAI",
+    imageId: "co-js-67",
+    productIds: ["co-js-67", "fa-lam-120-1", "el-perfume-perfume-capilar"],
+    discountPct: 10,
+    benefits: ["Limpieza + frescura + aroma", "Mezcla corporal y sensorial", "Ideal para regalo consciente"],
+  },
+  {
+    id: "kit-ritual-facial-mai",
+    name: "Kit Glow Facial Diario MAI",
+    imageId: "fa-ass-30",
+    productIds: ["fa-cam-150", "fa-rpt-70", "fa-ass-30"],
+    discountPct: 12,
+    benefits: ["Limpieza + tónico + suero", "Ideal para piel sensible", "Rutina facial completa"],
+  },
+  {
+    id: "kit-rutina-capilar-mai",
+    name: "Kit Jardín Herbal Capilar MAI",
+    imageId: "balsamo-jardin-herbal",
+    productIds: ["mnk-001", "balsamo-jardin-herbal", "el-perfume-perfume-capilar"],
+    discountPct: 10,
+    benefits: ["Limpieza + nutrición + perfume", "Rutina capilar completa", "Brillo y aroma botánico"],
+  },
+  {
+    id: "kit-trio-capilar-esencial-mai",
+    name: "Kit Definición Capilar MAI",
+    imageId: "ca-hcc-500",
+    productIds: ["mnk-001", "balsamo-jardin-herbal", "ca-hcc-500"],
+    discountPct: 9,
+    benefits: ["Limpieza + nutrición + definición", "Ideal para ondas y rizos", "Control sin rigidez"],
+  },
+  {
+    id: "kit-trio-facial-equilibrio-mai",
+    name: "Kit Equilibrio Facial MAI",
+    imageId: "fa-lam-120",
+    productIds: ["fa-lam-120", "fa-rpt-70-1", "fa-lnd-70"],
+    discountPct: 11,
+    benefits: ["Limpieza + equilibrio + hidratación", "Pensado para uso diario", "Textura fresca y ligera"],
+  },
+  {
+    id: "kit-trio-corporal-ritual-mai",
+    name: "Kit Ritual MAI de Bienestar",
+    imageId: "co-js-110-1",
+    productIds: ["co-js-110-1", "fa-lam-120-1", "fa-lnn-70"],
+    discountPct: 10,
+    benefits: ["Limpieza + bruma + nutrición", "Mezcla corporal y facial", "Ideal para cerrar el día"],
+  },
+];
 
-if (byCategory.corporal.length >= 2) {
-  kits.push(
-    makeKit({
-      id: "kit-cuidado-corporal-mai",
-      name: "Kit Cuidado Corporal MAI",
-      image: byCategory.corporal[0].image,
-      productList: byCategory.corporal.slice(0, 2),
-      discountPct: 10,
-      benefits: ["Limpieza + nutrición", "Ritual corporal consciente", "Edición recomendada"],
-    })
-  );
-}
+const kits = curatedKitDefinitions
+  .map((kit) => {
+    const productList = pickProducts(kit.productIds);
+    const imageProduct = byId.get(kit.imageId) || productList[0];
+    if (!productList.length || !imageProduct) return null;
+    return makeKit({
+      id: kit.id,
+      name: kit.name,
+      image: imageProduct.image,
+      productList,
+      discountPct: kit.discountPct,
+      benefits: kit.benefits,
+    });
+  })
+  .filter(Boolean);
 
 result.push(...kits);
 

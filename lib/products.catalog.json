@@ -177,54 +177,63 @@
   },
   {
     "id": "kit-cuidado-corporal-mai",
-    "image": "/products/Corporal/jabon-solido-carbon-activado-arroz-mai-natural.png",
-    "name": "Kit Cuidado Corporal MAI",
-    "price": "$63.000",
-    "amountInCents": 6300000,
-    "description": "Incluye Jabón Sólido - Carbón Activado y Arroz - Cosmética Natural Orgánica + Jabón Sólido - Caléndula & Manzanilla - Cosmética Natural Orgánica.",
+    "image": "/products/Corporal/jabon-solido-rosas-cacao-mai-natural.png",
+    "name": "Kit Ducha, Piel y Aroma MAI",
+    "price": "$121.500",
+    "amountInCents": 12150000,
+    "description": "Incluye Jabón Sólido - Rosas & Cacao + Agua de Rosas + El Perfume - Perfume Capilar. Una mezcla sensorial para limpiar, refrescar y cerrar el ritual con aroma botánico.",
     "category": "kits",
-    "badge": "Ahorra 10%",
+    "badge": "Ritual sensorial",
     "benefits": [
-      "Limpieza + nutrición",
-      "Ritual corporal consciente",
-      "Edición recomendada"
+      "Limpieza + frescura + aroma",
+      "Mezcla corporal y sensorial",
+      "Ideal para regalo consciente"
     ],
     "rating": 4.9,
-    "reviewsCount": 48
+    "reviewsCount": 42,
+    "sku": "KIT-DUCHA-AROMA-001",
+    "stock": 10,
+    "active": true
   },
   {
     "id": "kit-ritual-facial-mai",
-    "image": "/products/Facial/rocio-primordial-emoliente-tonico-facial-mai-natural.png",
-    "name": "Kit Ritual Facial MAI",
-    "price": "$117.040",
-    "amountInCents": 11704000,
-    "description": "Incluye Rocio Primordial Emoliente - Tónico Facial + Aqua - Suero Facial.",
+    "image": "/products/Facial/aqua-suero-facial-mai-natural.png",
+    "name": "Kit Glow Facial Diario MAI",
+    "price": "$171.600",
+    "amountInCents": 17160000,
+    "description": "Incluye Caléndula & Aloe Vera Manzanilla - Mousse Cremoso Limpiador + Rocio Primordial Emoliente - Tónico Facial + Aqua - Suero Facial. Limpia, prepara e hidrata para una piel luminosa.",
     "category": "kits",
-    "badge": "Ahorra 12%",
+    "badge": "Glow diario",
     "benefits": [
-      "Limpieza + tratamiento",
-      "Ideal día/noche",
-      "Ahorro frente a compra individual"
+      "Limpieza + tonico + suero",
+      "Ideal para piel sensible",
+      "Rutina facial completa"
     ],
     "rating": 4.9,
-    "reviewsCount": 48
+    "reviewsCount": 52,
+    "sku": "KIT-GLOW-FACIAL-001",
+    "stock": 12,
+    "active": true
   },
   {
     "id": "kit-rutina-capilar-mai",
-    "image": "/products/Capilar/el-perfume-jardin-herbal-mai-natural.png",
-    "name": "Kit Rutina Capilar MAI",
-    "price": "$108.000",
-    "amountInCents": 10800000,
-    "description": "Incluye El Perfume - Perfume Capilar + Shampoo - Jardín Herbal.",
+    "image": "/products/Capilar/balsamo-jardin-herbal-mai-natural.png",
+    "name": "Kit Jardin Herbal Capilar MAI",
+    "price": "$178.200",
+    "amountInCents": 17820000,
+    "description": "Incluye Shampoo - Jardín Herbal + Bálsamo - Jardín Herbal + El Perfume - Perfume Capilar. Limpieza, nutrición y aroma para una rutina capilar simple y completa.",
     "category": "kits",
-    "badge": "Ahorra 10%",
+    "badge": "Cabello suave",
     "benefits": [
-      "Nutrición y protección",
+      "Limpieza + nutricion + perfume",
       "Rutina capilar completa",
-      "Resultados progresivos"
+      "Brillo y aroma botanico"
     ],
     "rating": 4.9,
-    "reviewsCount": 48
+    "reviewsCount": 46,
+    "sku": "KIT-JARDIN-CAPILAR-001",
+    "stock": 12,
+    "active": true
   },
   {
     "id": "fa-lam-120",
@@ -340,61 +349,61 @@
   },
   {
     "id": "kit-trio-capilar-esencial-mai",
-    "image": "/products/Capilar/shampoo-jardin-herbal-mai-natural.png",
-    "name": "Kit Trio Capilar Esencial MAI",
-    "price": "$182.000",
-    "amountInCents": 18200000,
-    "description": "Incluye Shampoo - Jardín Herbal + Bálsamo - Jardín Herbal + Herbal Curl - Crema Para Peinar. Un trío pensado para limpiar, nutrir y definir la rutina capilar completa.",
+    "image": "/products/Capilar/herbal-curl-crema-para-peinar-mai-natural.png",
+    "name": "Kit Definicion Capilar MAI",
+    "price": "$183.820",
+    "amountInCents": 18382000,
+    "description": "Incluye Shampoo - Jardín Herbal + Bálsamo - Jardín Herbal + Herbal Curl - Crema Para Peinar. Un trío para limpiar, nutrir y definir con acabado natural.",
     "category": "kits",
-    "badge": "Trío recomendado",
+    "badge": "Definicion natural",
     "benefits": [
-      "Rutina capilar de 3 pasos",
-      "Limpieza + nutrición + definición",
-      "Ideal para empezar"
+      "Limpieza + nutricion + definicion",
+      "Ideal para ondas y rizos",
+      "Control sin rigidez"
     ],
     "rating": 4.9,
-    "reviewsCount": 24,
-    "sku": "KIT-TRIO-CAPILAR-001",
+    "reviewsCount": 31,
+    "sku": "KIT-DEFINICION-CAPILAR-001",
     "stock": 12,
     "active": true
   },
   {
     "id": "kit-trio-facial-equilibrio-mai",
     "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
-    "name": "Kit Trio Facial Equilibrio MAI",
-    "price": "$172.000",
-    "amountInCents": 17200000,
-    "description": "Incluye Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador + Rocio Primordial Emoliente - Tónico Facial + Aqua - Suero Facial. Una secuencia diaria para limpiar, preparar y tratar.",
+    "name": "Kit Equilibrio Facial MAI",
+    "price": "$169.990",
+    "amountInCents": 16999000,
+    "description": "Incluye Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador + Rocio Primordial Herbal - Tónico Facial + Leche Nutritiva - Día. Una rutina para limpiar, equilibrar e hidratar.",
     "category": "kits",
-    "badge": "Rutina guiada",
+    "badge": "Equilibrio diario",
     "benefits": [
-      "Rutina facial de 3 pasos",
-      "Limpieza + preparación + tratamiento",
-      "Pensado para uso diario"
+      "Limpieza + equilibrio + hidratacion",
+      "Pensado para uso diario",
+      "Textura fresca y ligera"
     ],
     "rating": 4.9,
-    "reviewsCount": 18,
-    "sku": "KIT-TRIO-FACIAL-001",
+    "reviewsCount": 28,
+    "sku": "KIT-EQUILIBRIO-FACIAL-001",
     "stock": 10,
     "active": true
   },
   {
     "id": "kit-trio-corporal-ritual-mai",
-    "image": "/products/Corporal/jabon-solido-rosas-cacao-mai-natural.png",
-    "name": "Kit Trio Corporal Ritual MAI",
-    "price": "$84.000",
-    "amountInCents": 8400000,
-    "description": "Incluye Jabón Sólido - Carbón Activado y Arroz + Jabón Sólido - Caléndula & Manzanilla + Jabón Sólido - Rosas & Cacao. Un ritual corporal completo para rotar según el momento de tu piel.",
+    "image": "/products/Corporal/jabon-solido-carbon-activado-arroz-mai-natural.png",
+    "name": "Kit Ritual MAI de Bienestar",
+    "price": "$151.200",
+    "amountInCents": 15120000,
+    "description": "Incluye Jabón Sólido - Carbón Activado y Arroz + Agua de Rosas + Leche Nutritiva - Noche. Limpieza corporal, bruma refrescante y nutrición facial para cerrar el día.",
     "category": "kits",
-    "badge": "Edición artesanal",
+    "badge": "Ritual noche",
     "benefits": [
-      "Trío corporal de rotación",
-      "Ideal para regalo o ritual personal",
-      "Selección artesanal"
+      "Limpieza + bruma + nutricion",
+      "Mezcla corporal y facial",
+      "Ideal para cerrar el dia"
     ],
     "rating": 4.9,
-    "reviewsCount": 16,
-    "sku": "KIT-TRIO-CORPORAL-001",
+    "reviewsCount": 24,
+    "sku": "KIT-RITUAL-BIENESTAR-001",
     "stock": 8,
     "active": true
   }
