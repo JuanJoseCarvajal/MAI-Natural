@@ -19,6 +19,15 @@ export interface User {
   updatedAt: Date;
 }
 
+export interface PasswordResetToken {
+  id: string;
+  tokenHash: string;
+  userId: string;
+  expiresAt: Date;
+  usedAt?: Date | null;
+  createdAt: Date;
+}
+
 export interface Appointment {
   id: string;
   userId: string;
@@ -63,6 +72,7 @@ export interface Order {
 
 // In-memory store para MVP (será reemplazado por Prisma en producción)
 const users: Map<string, User> = new Map();
+const passwordResetTokens: Map<string, PasswordResetToken> = new Map();
 const appointments: Map<string, Appointment> = new Map();
 const orders: Map<string, Order> = new Map();
 
@@ -136,6 +146,55 @@ export const db = {
     },
     async findMany() {
       return Array.from(users.values());
+    },
+  },
+
+  passwordResetToken: {
+    async create(args: {
+      data: Omit<PasswordResetToken, 'id' | 'createdAt' | 'usedAt'> & {
+        usedAt?: Date | null;
+      };
+    }) {
+      const id = randomUUID();
+      const token: PasswordResetToken = {
+        id,
+        ...args.data,
+        usedAt: args.data.usedAt ?? null,
+        createdAt: new Date(),
+      };
+      passwordResetTokens.set(id, token);
+      return token;
+    },
+    async findUnique(args: { where: { tokenHash: string } }) {
+      for (const token of passwordResetTokens.values()) {
+        if (token.tokenHash === args.where.tokenHash) {
+          return token;
+        }
+      }
+      return null;
+    },
+    async update(args: {
+      where: { id: string };
+      data: Partial<PasswordResetToken>;
+    }) {
+      const current = passwordResetTokens.get(args.where.id);
+      if (!current) return null;
+      const updated = { ...current, ...args.data };
+      passwordResetTokens.set(args.where.id, updated);
+      return updated;
+    },
+    async deleteMany(args: { where: { userId?: string; tokenHash?: string } }) {
+      let count = 0;
+      for (const [id, token] of passwordResetTokens) {
+        if (
+          (args.where.userId && token.userId === args.where.userId) ||
+          (args.where.tokenHash && token.tokenHash === args.where.tokenHash)
+        ) {
+          passwordResetTokens.delete(id);
+          count += 1;
+        }
+      }
+      return { count };
     },
   },
 

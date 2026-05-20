@@ -60,6 +60,7 @@ export default function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
+          autoComplete="email"
           required
         />
         <input
@@ -68,8 +69,14 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
+          autoComplete="current-password"
           required
         />
+        <div className="text-right">
+          <Link href="/forgot-password" className="text-sm font-semibold text-brand-700 hover:text-brand-900">
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </div>
         <button
           type="submit"
           disabled={loading}
