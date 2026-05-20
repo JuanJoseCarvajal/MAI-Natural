@@ -106,11 +106,12 @@ export const db = {
     async findUnique(args: { where: { email?: string; id?: string } }) {
       // Asegurar que la DB está inicializada
       initializeDatabase();
+      const lookupEmail = args.where.email?.toLowerCase();
       
       // Buscar usuario en la store
       for (const user of users.values()) {
         if (
-          (args.where.email && user.email === args.where.email) ||
+          (lookupEmail && user.email.toLowerCase() === lookupEmail) ||
           (args.where.id && user.id === args.where.id)
         ) {
           return user;
