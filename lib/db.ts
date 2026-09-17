@@ -4,6 +4,7 @@
 
 import bcrypt from 'bcryptjs';
 import { randomUUID } from 'crypto';
+import { holdsAppointmentSlot, appointmentsOverlap } from './consultation';
 
 // Pre-hash de la contraseña del usuario demo
 const DEMO_PASSWORD_HASH = bcrypt.hashSync('password123', 10);
@@ -201,6 +202,15 @@ export const db = {
 
   // Appointment operations
   appointment: {
+    // Atomic within this in-memory adapter. A production adapter needs a transaction.
+    async createIfAvailable(args: { data: Omit<Appointment, 'id' | 'createdAt' | 'updatedAt'> }) {
+      const active = Array.from(appointments.values()).filter(appointment => appointment.date === args.data.date && holdsAppointmentSlot(appointment));
+      if (active.length >= 2) throw new Error('Este día ya alcanzó el máximo de 2 citas disponibles.');
+      if (active.some(appointment => appointmentsOverlap(args.data.date, args.data.time, args.data.service, appointment))) throw new Error('Ese horario acaba de ocuparse. Elige otro momento.');
+      const appointment: Appointment = { ...args.data, id: randomUUID(), createdAt: new Date(), updatedAt: new Date() };
+      appointments.set(appointment.id, appointment);
+      return appointment;
+    },
     async findUnique(args: { where: { id: string } }) {
       return appointments.get(args.where.id) ?? null;
     },

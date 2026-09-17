@@ -1,6 +1,6 @@
 import { beforeEach, describe, it, expect } from "vitest";
 import { db } from "@/lib/db";
-import { createAppointment } from "./actions";
+import { createAppointment, getDayAvailability } from "./actions";
 
 async function clearAppointments() {
   const all = await db.appointment.findMany();
@@ -20,6 +20,20 @@ beforeEach(async () => {
 });
 
 describe("createAppointment", () => {
+  it("accepts only one concurrent request for the same slot", async () => {
+    const date = futureDate();
+    const results = await Promise.all([1, 2].map(i => createAppointment(`Prueba ${i}`, `test${i}@example.com`, "+573001234567", date, "09:00", "", "")));
+    expect(results.filter(result => result.success)).toHaveLength(1);
+    expect((await getDayAvailability(date)).slots).not.toContain("09:00");
+    const appointment = results.find(result => result.success)!.appointment!;
+    await db.appointment.update({ where: { id: appointment.id }, data: { status: "cancelled" } });
+    expect((await getDayAvailability(date)).slots).toContain("09:00");
+  });
+
+  it("rejects hours outside the offered schedule", async () => {
+    const result = await createAppointment("Prueba MAI", "test@example.com", "+573001234567", futureDate(), "23:00", "", "");
+    expect(result.error).toContain("horarios disponibles");
+  });
   it("crea la cita con inputs válidos y la deja en pending_payment", async () => {
     const date = futureDate();
     const result = await createAppointment(

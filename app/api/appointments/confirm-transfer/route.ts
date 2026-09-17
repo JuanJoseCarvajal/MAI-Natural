@@ -1,19 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { db } from "@/lib/db";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as {
-      appointmentId?: string;
-      transferReference?: string;
-    };
-
-    if (!body.appointmentId || !body.transferReference) {
-      return NextResponse.json(
-        { error: "appointmentId y transferReference son requeridos" },
-        { status: 400 }
-      );
-    }
+    const parsed = z.object({ appointmentId: z.string().uuid(), transferReference: z.string().trim().min(4).max(100) }).safeParse(await request.json());
+    if (!parsed.success) return NextResponse.json({ error: "Revisa la referencia de la solicitud y del comprobante" }, { status: 400 });
+    const body = parsed.data;
 
     const appointment = await db.appointment.findUnique({
       where: { id: body.appointmentId },
@@ -22,6 +15,9 @@ export async function POST(request: NextRequest) {
     if (!appointment) {
       return NextResponse.json({ error: "Cita no encontrada" }, { status: 404 });
     }
+
+    if (appointment.status === "payment_pending_verification") return NextResponse.json({ success: true });
+    if (appointment.status !== "pending_payment") return NextResponse.json({ error: "Esta solicitud ya no admite referencias de pago" }, { status: 409 });
 
     const paymentDeadline = new Date(appointment.createdAt);
     paymentDeadline.setDate(paymentDeadline.getDate() + 1);

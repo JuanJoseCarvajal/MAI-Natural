@@ -20,7 +20,7 @@ function buildDefaultMessage(pathname: string) {
 export default function WhatsAppAgentButton() {
   const pathname = usePathname();
   const [heroVisible, setHeroVisible] = useState(pathname === "/");
-  const hiddenRoutes = ["/admin", "/login", "/register"];
+  const hiddenRoutes = ["/admin", "/login", "/register", "/services"];
 
   useEffect(() => {
     const hero = document.querySelector(".botanical-hero");

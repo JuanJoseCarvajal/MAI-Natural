@@ -35,55 +35,9 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, date, time, service, notes } = body;
-
-    if (!name || !email || !phone || !date || !time) {
-      return NextResponse.json(
-        { error: 'Completa todos los campos requeridos' },
-        { status: 400 }
-      );
-    }
-
-    const existingUser = await db.user.findUnique({ where: { email } });
-    const user = existingUser
-      ? await db.user.update({
-          where: { email },
-          data: {
-            name,
-            phone,
-          },
-        })
-      : await db.user.create({
-          data: {
-            email,
-            name,
-            phone,
-            password: '',
-          },
-        });
-
-    if (!user) {
-      return NextResponse.json({ error: 'No fue posible preparar el usuario' }, { status: 500 });
-    }
-
-    const appointment = await db.appointment.create({
-      data: {
-        userId: user.id,
-        name,
-        email,
-        phone,
-        date,
-        time,
-        service: service || 'Consulta general',
-        notes: notes || '',
-        status: 'pending_payment',
-      },
-    });
-
-    return NextResponse.json(
-      { success: true, appointment },
-      { status: 201 }
-    );
+    const { createAppointment } = await import('@/app/(public)/services/actions');
+    const result = await createAppointment(body.name, body.email, body.phone, body.date, body.time, body.service ?? '', body.notes ?? '');
+    return NextResponse.json(result, { status: result.success ? 201 : 400 });
   } catch (error) {
     return NextResponse.json(
       { error: 'Error al crear la cita' },

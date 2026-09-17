@@ -1,150 +1,78 @@
 'use server';
 
+import { randomUUID } from 'crypto';
 import { db } from '@/lib/db';
 import { appointmentInputSchema } from '@/lib/validators/appointment';
+import { consultationInputSchema } from '@/lib/validators/consultation';
+import { appointmentInstant, appointmentsOverlap, consultationIntentions, consultationSlots, consultationTopics, holdsAppointmentSlot, initialConsultation } from '@/lib/consultation';
 
-export async function createAppointment(
-  name: string,
-  email: string,
-  phone: string,
-  date: string,
-  time: string,
-  service: string,
-  notes: string
-) {
+export async function createAppointment(name: string, email: string, phone: string, date: string, time: string, service: string, notes: string) {
+  const parsed = appointmentInputSchema.safeParse({ name, email, phone, date, time, service, notes });
+  if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? 'Datos inválidos', fieldErrors: parsed.error.flatten().fieldErrors };
+  const input = parsed.data;
+  if (appointmentInstant(input.date, input.time) <= Date.now()) return { error: 'La fecha y hora deben ser en el futuro' };
+  if (!consultationSlots.includes(input.time.slice(0, 5)) || (input.time.length > 5 && !input.time.endsWith(':00'))) return { error: 'Selecciona uno de los horarios disponibles' };
   try {
-    const parsed = appointmentInputSchema.safeParse({
-      name,
-      email,
-      phone,
-      date,
-      time,
-      service,
-      notes,
-    });
-
-    if (!parsed.success) {
-      const firstIssue = parsed.error.issues[0];
-      return {
-        error: firstIssue?.message ?? 'Datos inválidos',
-        fieldErrors: parsed.error.flatten().fieldErrors,
-      };
-    }
-
-    const input = parsed.data;
-
-    const existingUser = await db.user.findUnique({ where: { email: input.email } });
-    const user = existingUser
-      ? await db.user.update({
-          where: { email: input.email },
-          data: {
-            name: input.name,
-            phone: input.phone,
-          },
-        })
-      : await db.user.create({
-          data: {
-            email: input.email,
-            name: input.name,
-            phone: input.phone,
-            password: '',
-          },
-        });
-
-    if (!user) {
-      return { error: 'No fue posible preparar el usuario para la cita' };
-    }
-
-    const appointmentDateTime = new Date(`${input.date}T${input.time}`);
-    if (appointmentDateTime < new Date()) {
-      return { error: 'La fecha y hora deben ser en el futuro' };
-    }
-
-    const sameDayAppointments = (await db.appointment.findMany()).filter(
-      (appointment) => appointment.date === input.date
-    );
-
-    if (sameDayAppointments.length >= 2) {
-      return { error: 'Este día ya alcanzó el máximo de 2 citas disponibles.' };
-    }
-
-    const appointment = await db.appointment.create({
-      data: {
-        userId: user.id,
-        name: input.name,
-        email: input.email,
-        phone: input.phone,
-        date: input.date,
-        time: input.time,
-        service: input.service || 'Consulta general',
-        notes: input.notes,
-        status: 'pending_payment',
-      },
-    });
-
-    return {
-      success: true,
-      message: 'Cita reservada exitosamente',
-      appointment,
-    };
+    const appointment = await db.appointment.createIfAvailable({ data: {
+      ...input,
+      time: input.time.slice(0, 5),
+      userId: `guest:${randomUUID()}`,
+      service: input.service || 'Consulta general',
+      status: 'pending_payment',
+    } });
+    return { success: true, message: 'Solicitud recibida, pendiente de confirmación y pago', appointment };
   } catch (error) {
-    return {
-      error: error instanceof Error ? error.message : 'Error al reservar la cita',
-    };
+    return { error: error instanceof Error ? error.message : 'No fue posible guardar tu solicitud. Inténtalo de nuevo.' };
   }
+}
+
+export async function requestConsultation(values: unknown) {
+  const parsed = consultationInputSchema.safeParse(values);
+  if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? 'Revisa tus respuestas', fieldErrors: parsed.error.flatten().fieldErrors };
+  const input = parsed.data;
+  const topic = consultationTopics.find(option => option.id === input.topic)!;
+  const intention = consultationIntentions.find(option => option.id === input.intention)!;
+  const notes = [
+    `Motivo: ${topic.title}`,
+    `Intención: ${intention.title}`,
+    input.notes ? `Quiere compartir: ${input.notes}` : 'Prefiere conversar los detalles durante el encuentro.',
+    `Interés en conocer Círculo MAI: ${input.continuityInterest ? 'sí, sin suscripción ni cobro' : 'no solicitado'}`,
+    `Autoriza contacto para esta solicitud: ${new Date().toISOString()}`,
+  ].join('\n');
+  return createAppointment(input.name, input.email, input.phone, input.date, input.time, initialConsultation.name, notes);
 }
 
 export async function getDayAvailability(date: string) {
   try {
-    if (!date) {
-      return { count: 0, remaining: 2, isFull: false };
-    }
-
-    const sameDayAppointments = (await db.appointment.findMany()).filter(
-      (appointment) => appointment.date === date
-    );
-
-    const count = sameDayAppointments.length;
-    const remaining = Math.max(0, 2 - count);
-
-    return {
-      count,
-      remaining,
-      isFull: count >= 2,
-    };
-  } catch (error) {
-    return {
-      count: 0,
-      remaining: 2,
-      isFull: false,
-      error: 'No fue posible validar disponibilidad',
-    };
+    const parsed = appointmentInputSchema.shape.date.safeParse(date);
+    if (!parsed.success) return { count: 0, remaining: 0, isFull: true, slots: [] as string[], error: 'Elige una fecha válida' };
+    const active = (await db.appointment.findMany()).filter(appointment => appointment.date === date && holdsAppointmentSlot(appointment));
+    const slots = active.length >= 2 ? [] : consultationSlots.filter(time => appointmentInstant(date, time) > Date.now() && !active.some(appointment => appointmentsOverlap(date, time, initialConsultation.name, appointment)));
+    return { count: active.length, remaining: Math.max(0, 2 - active.length), isFull: slots.length === 0, slots };
+  } catch {
+    return { count: 0, remaining: 0, isFull: true, slots: [] as string[], error: 'No pudimos consultar los horarios. Intenta otra vez.' };
   }
 }
 
 export async function getUserAppointments(email: string) {
-  try {
-    const appointments = await db.appointment.findMany({ where: { email } });
-    return { appointments };
-  } catch (error) {
-    return { error: 'Error al obtener citas' };
-  }
+  const { auth } = await import('@/lib/auth');
+  const session = await auth();
+  if (!session?.user || (session.user.email !== email && (session.user as { role?: string }).role !== 'admin')) return { error: 'No autorizado' };
+  return { appointments: await db.appointment.findMany({ where: { email } }) };
 }
 
 export async function getAllAppointments() {
-  try {
-    const appointments = await db.appointment.findMany();
-    return { appointments };
-  } catch (error) {
-    return { error: 'Error al obtener citas' };
-  }
+  const { auth } = await import('@/lib/auth');
+  const session = await auth();
+  if ((session?.user as { role?: string } | undefined)?.role !== 'admin') return { error: 'No autorizado' };
+  return { appointments: await db.appointment.findMany() };
 }
 
 export async function cancelAppointment(appointmentId: string) {
-  try {
-    await db.appointment.delete({ where: { id: appointmentId } });
-    return { success: true, message: 'Cita cancelada' };
-  } catch (error) {
-    return { error: 'Error al cancelar la cita' };
-  }
+  const { auth } = await import('@/lib/auth');
+  const session = await auth();
+  const appointment = await db.appointment.findUnique({ where: { id: appointmentId } });
+  if (!session?.user || !appointment || (session.user.email !== appointment.email && (session.user as { role?: string }).role !== 'admin')) return { error: 'No autorizado' };
+  await db.appointment.update({ where: { id: appointmentId }, data: { status: 'cancelled' } });
+  return { success: true, message: 'Cita cancelada' };
 }
