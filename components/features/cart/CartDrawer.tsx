@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "./CartContext";
 import ImageFrame from "@/components/ui/ImageFrame";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 function formatCOP(cents: number) {
   return new Intl.NumberFormat("es-CO", {
@@ -177,7 +178,18 @@ export default function CartDrawer() {
             </p>
             <Link
               href="/checkout"
-              onClick={closeCart}
+              onClick={() => {
+                trackBeginCheckout(
+                  totalAmountInCents / 100,
+                  items.map((item) => ({
+                    item_id: item.id,
+                    item_name: item.name,
+                    price: item.amountInCents / 100,
+                    quantity: item.quantity,
+                  }))
+                );
+                closeCart();
+              }}
               className="block w-full rounded-full bg-brand-700 py-3 text-center text-sm font-bold text-white transition hover:bg-brand-900"
             >
               Crear orden

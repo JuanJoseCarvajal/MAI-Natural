@@ -1,11 +1,27 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { categoryLabels } from "@/lib/products";
 import AddToCartButton from "@/components/features/cart/AddToCartButton";
 import ImageFrame from "@/components/ui/ImageFrame";
 import { getAllProducts, getProductById } from "@/lib/products.server";
+import { absoluteUrl, buildMetadata, siteName } from "@/lib/seo";
 
-export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+type ProductDetailProps = { params: { id: string } };
+
+export async function generateMetadata({ params }: ProductDetailProps): Promise<Metadata> {
+  const product = await getProductById(params.id);
+  if (!product) return {};
+
+  return buildMetadata({
+    title: `${product.name} | ${siteName}`,
+    description: product.description,
+    path: `/products/${product.id}`,
+    image: product.image,
+  });
+}
+
+export default async function ProductDetailPage({ params }: ProductDetailProps) {
   const product = await getProductById(params.id);
 
   if (!product) {
@@ -16,9 +32,37 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
   const related = products
     .filter((item) => item.category === product.category && item.id !== product.id)
     .slice(0, 3);
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: absoluteUrl(product.image),
+    description: product.description,
+    sku: product.sku ?? product.id,
+    brand: { "@type": "Brand", name: siteName },
+    aggregateRating:
+      product.reviewsCount > 0
+        ? {
+            "@type": "AggregateRating",
+            ratingValue: product.rating,
+            reviewCount: product.reviewsCount,
+          }
+        : undefined,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "COP",
+      price: Math.round(product.amountInCents / 100),
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl(`/products/${product.id}`),
+    },
+  };
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <Link
         href="/products"
         className="inline-flex items-center gap-1 text-sm text-brand-700 hover:underline"

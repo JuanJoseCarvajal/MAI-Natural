@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useCart } from "@/components/features/cart/CartContext";
+import { trackAddToCart } from "@/lib/analytics";
 
 type Props = {
   id: string;
@@ -16,6 +17,12 @@ export default function AddToCartButton({ id, name, price, amountInCents, image 
 
   const handleAdd = () => {
     addItem({ id, name, price, amountInCents, image });
+    trackAddToCart({
+      item_id: id,
+      item_name: name,
+      price: amountInCents / 100,
+      quantity: 1,
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
   };

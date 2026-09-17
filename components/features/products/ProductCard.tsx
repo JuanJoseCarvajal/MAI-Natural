@@ -4,6 +4,7 @@ import { categoryLabels, type ProductCategory } from "@/lib/products";
 import { useCart } from "@/components/features/cart/CartContext";
 import ImageFrame from "@/components/ui/ImageFrame";
 import { useState } from "react";
+import { trackAddToCart } from "@/lib/analytics";
 
 type ProductCardProps = {
   id: string;
@@ -37,6 +38,12 @@ export default function ProductCard({
 
   const handleAdd = () => {
     addItem({ id, name, price, amountInCents, image });
+    trackAddToCart({
+      item_id: id,
+      item_name: name,
+      price: amountInCents / 100,
+      quantity: 1,
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
   };

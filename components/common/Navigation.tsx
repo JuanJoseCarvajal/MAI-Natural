@@ -11,6 +11,7 @@ const publicNavItems = [
   { href: "/products", label: "Productos" },
   { href: "/routines", label: "Rutinas" },
   { href: "/services", label: "Servicios" },
+  { href: "/blog", label: "Blog" },
   { href: "/subscriptions", label: "Club MAI", disabled: true, disabledLabel: "Proximamente" },
 ];
 
