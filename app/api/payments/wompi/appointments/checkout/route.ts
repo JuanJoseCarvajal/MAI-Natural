@@ -7,6 +7,10 @@ import {
 } from "@/lib/wompi";
 
 export async function POST(request: NextRequest) {
+  // Live charging is unsafe with the current volatile appointment adapter.
+  if (process.env.WOMPI_SANDBOX_ENABLED !== "true" || !process.env.WOMPI_PUBLIC_KEY?.startsWith("pub_test_") || !process.env.WOMPI_INTEGRITY_SECRET?.startsWith("test_integrity_")) {
+    return NextResponse.json({ error: "El pago en línea de citas no está disponible. Contacta al equipo para confirmar tu reserva." }, { status: 503 });
+  }
   try {
     const body = (await request.json()) as {
       appointmentId?: string;
@@ -16,7 +20,7 @@ export async function POST(request: NextRequest) {
       customerName?: string;
     };
 
-    if (!body.appointmentId || !body.amountInCents || body.amountInCents <= 0) {
+    if (!body.appointmentId || !Number.isSafeInteger(body.amountInCents) || !body.amountInCents || body.amountInCents <= 0) {
       return NextResponse.json(
         { error: "appointmentId y amountInCents son requeridos" },
         { status: 400 }
@@ -67,7 +71,7 @@ export async function POST(request: NextRequest) {
 
     const redirectUrl = `${appUrl}/services?appointment=${encodeURIComponent(
       body.appointmentId
-    )}&payment=success`;
+    )}&payment=pending`;
 
     const checkoutUrl = buildWompiCheckoutUrl({
       publicKey,

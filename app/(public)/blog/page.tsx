@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { blogPosts } from "@/lib/blog";
+import { getPublishedBlogPosts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata({
   title: "Blog de cosmetica natural y rutinas | MAI Natural",
@@ -12,17 +14,18 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function BlogPage() {
+  const blogPosts = getPublishedBlogPosts();
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-12 md:px-6">
       <section className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
-          Guia MAI
+          DIARIO MAI · UNA NUEVA HISTORIA CADA QUINCE DÍAS
         </p>
         <h1 className="mt-3 text-4xl font-extrabold leading-tight text-brand-900 md:text-5xl">
-          Blog de cosmetica natural, rutinas y bienestar
+          Historias para volver a ti.
         </h1>
         <p className="mt-4 text-lg text-slate-600">
-          Contenido pensado para atraer busquedas de alta intencion y llevar a cada lectora hacia productos, rutinas y asesoria personalizada.
+          Botánica cotidiana, pequeños rituales y preguntas que te ayudan a elegir. Un espacio para conocer tus productos y hacer tuyo el cuidado.
         </p>
       </section>
 
@@ -37,7 +40,7 @@ export default function BlogPage() {
                 src={post.heroImage}
                 alt={post.title}
                 fill
-                className="object-contain p-8"
+                className="object-cover"
                 sizes="(min-width: 768px) 33vw, 100vw"
               />
             </Link>

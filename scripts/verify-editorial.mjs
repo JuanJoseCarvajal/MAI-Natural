@@ -1,0 +1,55 @@
+import { createRequire } from "node:module";
+import assert from "node:assert/strict";
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.MAI_PLAYWRIGHT_MODULE || "playwright");
+const browser = await chromium.launch({ channel: "chrome", headless: true });
+const errors = [];
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+page.on("pageerror", error => errors.push(error.message));
+const base = "http://127.0.0.1:3000";
+const region = page.getByRole("region", { name: "Historias y productos del Diario MAI" });
+try {
+  assert.equal((await page.goto(base)).status(), 200);
+  await region.getByRole("button", { name: "Pausar carrusel" }).waitFor();
+  await region.getByRole("button", { name: "Pausar carrusel" }).click();
+  assert.equal(await region.getByRole("button", { name: "Reproducir carrusel" }).count(), 1, "first pointer click pauses");
+  await region.getByRole("button", { name: /Mostrar historia 1:/ }).click();
+  assert.equal(await region.getByRole("link", { name: /Leer historia:/ }).getAttribute("href"), "/blog/agua-de-rosas-un-momento-para-ti");
+  await region.getByRole("button", { name: "Historia siguiente" }).click();
+  assert.notEqual(await region.getByRole("link", { name: /Leer historia:/ }).getAttribute("href"), "/blog/agua-de-rosas-un-momento-para-ti");
+  assert.equal(await region.getByRole("button", { name: "Reproducir carrusel" }).count(), 1);
+  await region.getByRole("button", { name: /Mostrar historia 1:/ }).click();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: "/tmp/mai-editorial-desktop.png" });
+
+  await region.getByRole("button", { name: "Reproducir carrusel" }).click();
+  const before = await region.getByRole("link", { name: /Leer historia:/ }).getAttribute("href");
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(7300);
+  assert.notEqual(await region.getByRole("link", { name: /Leer historia:/ }).getAttribute("href"), before, "autoplay advances");
+  await page.getByRole("heading", { level: 1 }).click();
+  await region.getByRole("link", { name: /Leer historia:/ }).focus();
+  assert.equal(await region.getByRole("button", { name: "Reproducir carrusel" }).count(), 1, "focus stops rotation");
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  await region.getByRole("button", { name: "Reproducir carrusel" }).waitFor();
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true, "no horizontal overflow");
+  const box = await region.boundingBox();
+  assert.ok(box.height >= 400, "mobile carousel has visible height");
+  await region.scrollIntoViewIfNeeded();
+  await region.getByRole("button", { name: "Historia siguiente" }).click();
+  await region.getByRole("button", { name: /Mostrar historia 1:/ }).click();
+  await page.screenshot({ path: "/tmp/mai-editorial-mobile.png" });
+  await region.getByRole("link", { name: /Leer historia:/ }).click();
+  await page.waitForURL("**/blog/agua-de-rosas-un-momento-para-ti");
+  await page.getByRole("heading", { level: 1, name: /Agua de rosas/ }).waitFor();
+  assert.ok(await page.getByRole("link", { name: /Agua de Rosas/ }).count() > 0, "article links to its product");
+  assert.equal((await page.request.get(`${base}/blog/jardin-herbal-conoce-tu-rutina-capilar`)).status(), 404, "future article inaccessible");
+  const sitemap = await (await page.request.get(`${base}/sitemap.xml`)).text();
+  assert.ok(sitemap.includes("agua-de-rosas-un-momento-para-ti"));
+  assert.ok(!sitemap.includes("jardin-herbal-conoce-tu-rutina-capilar"));
+  assert.deepEqual(errors, [], "no browser runtime errors");
+  console.log("PASS desktop/mobile, navigation, autoplay, pause/focus, reduced motion, article-product links, future 404, sitemap dates, browser errors.");
+} finally { await browser.close(); }

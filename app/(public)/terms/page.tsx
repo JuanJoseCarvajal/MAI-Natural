@@ -1,65 +1,9 @@
 import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
+import styles from "@/styles/editorial.module.css";
+
+export const metadata = buildMetadata({ title: "Información de compra y atención | MAI Natural", description: "Consulta información sobre entregas, pagos y atención de tus compras en MAI Natural.", path: "/terms" });
 
 export default function TermsPage() {
-  return (
-    <main className="mx-auto max-w-4xl px-4 py-12 md:px-6">
-      <div className="mb-8">
-        <Link href="/subscriptions" className="text-sm font-semibold text-brand-700 hover:underline">
-          Volver al Club MAI
-        </Link>
-        <h1 className="mt-4 text-3xl font-extrabold text-brand-900">
-          Terminos del Club MAI
-        </h1>
-        <p className="mt-3 text-slate-600">
-          Estos terminos resumen las condiciones principales de las membresias y servicios de
-          acompanamiento de MAI Natural.
-        </p>
-      </div>
-
-      <div className="space-y-6 rounded-2xl bg-white p-6 text-sm leading-6 text-slate-700 shadow ring-1 ring-brand-100">
-        <section>
-          <h2 className="text-lg font-bold text-brand-900">Membresia</h2>
-          <p className="mt-2">
-            La membresia seleccionada habilita los beneficios descritos para cada plan mientras el
-            pago este activo y confirmado.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-brand-900">Pagos y renovaciones</h2>
-          <p className="mt-2">
-            Los pagos se realizan segun el ciclo elegido. MAI Natural puede validar manualmente los
-            pagos antes de activar beneficios, descuentos o accesos.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-brand-900">Cancelaciones</h2>
-          <p className="mt-2">
-            Puedes solicitar la cancelacion de tu membresia en cualquier momento. Los beneficios se
-            mantienen hasta el cierre del periodo ya pagado.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-brand-900">Acompanamiento</h2>
-          <p className="mt-2">
-            Las recomendaciones de rutina y bienestar son educativas y no reemplazan diagnostico,
-            tratamiento medico ni consulta con profesionales de salud.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-brand-900">Contacto</h2>
-          <p className="mt-2">
-            Para soporte sobre membresias, pagos o beneficios, escribenos a{" "}
-            <a href="mailto:info@mainatural.com" className="font-semibold text-brand-700 hover:underline">
-              info@mainatural.com
-            </a>
-            .
-          </p>
-        </section>
-      </div>
-    </main>
-  );
+  return <main className={styles.page}><div className={styles.terms}><header className={styles.hero}><Link href="/products" className="text-link">← Volver al catálogo</Link><p className="eyebrow mt-8">COMPRAR CON CLARIDAD</p><h1>Estamos aquí<br /><em>para ayudarte.</em></h1><p>Información práctica sobre tu compra y cómo contactarnos cuando lo necesites.</p></header><section><h2>Tu pedido y el envío</h2><p>El tiempo estimado de entrega es de 5 a 7 días hábiles. Consulta el costo de envío y el total de tu pedido antes de completar el pago. Si necesitas confirmar una entrega, escríbenos con la referencia de tu pedido.</p></section><section><h2>Precios y pagos</h2><p>Los precios se expresan en pesos colombianos (COP). Un pedido con pago pendiente permanece por confirmar hasta que se valide la transacción. Si pagas por transferencia, conserva tu comprobante para facilitar la validación.</p></section><section><h2>Ayuda con tu compra</h2><p>Para consultar una novedad de entrega, un cambio, una devolución o un pago, contáctanos con el número de pedido y una descripción de tu solicitud. Te orientaremos sobre los pasos a seguir.</p></section><section><h2>Club MAI</h2><p>Las suscripciones de Club MAI aún no están disponibles. Puedes explorar productos y servicios sin adquirir una membresía.</p></section><section><h2>Contacto</h2><p>Escríbenos a <a href="mailto:info@mainatural.com">info@mainatural.com</a> o por <a href="https://wa.me/573246847727" target="_blank" rel="noopener noreferrer">WhatsApp: +57 324 684 7727</a>.</p></section></div></main>;
 }

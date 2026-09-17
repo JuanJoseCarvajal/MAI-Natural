@@ -1,4 +1,4 @@
-import { bancolombiaConfig, formatWhatsappLink, getOrderPaymentSteps } from "@/lib/bank-transfer";
+import { bancolombiaConfig, formatWhatsappLink } from "@/lib/bank-transfer";
 import { sendTransactionalEmail } from "@/lib/email";
 
 export type CheckoutOrderItem = {
@@ -40,16 +40,17 @@ export async function sendOrderPendingConfirmationEmail(input: {
   totalInCents: number;
   items: CheckoutOrderItem[];
 }) {
-  const steps = getOrderPaymentSteps();
+  const steps = ["Espera nuestra confirmación de disponibilidad, costo de envío y valor final.", "Acepta el total final antes de transferir.", "Comparte el comprobante para validar tu pago."];
   const proofWhatsappUrl = formatWhatsappLink(
     bancolombiaConfig.proofWhatsapp,
     `Hola MAI, ya hice la consignacion del pedido ${input.orderId} y quiero enviar el comprobante.`
   );
 
+  const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]!));
   const itemsHtml = input.items
     .map(
       (item) =>
-        `<li>${item.name} x${item.quantity} - ${formatCOP(item.amountInCents * item.quantity)}</li>`
+        `<li>${escapeHtml(item.name)} x${item.quantity} - ${formatCOP(item.amountInCents * item.quantity)}</li>`
     )
     .join("");
 
@@ -60,23 +61,14 @@ export async function sendOrderPendingConfirmationEmail(input: {
   const html = `
     <div style="font-family: Arial, sans-serif; color: #163528; line-height: 1.6;">
       <h1 style="margin-bottom: 8px;">Tu orden fue creada</h1>
-      <p>Hola ${input.customerName}, tu pedido <strong>${input.orderId}</strong> fue creado con estado <strong>Pendiente de confirmacion</strong>.</p>
+      <p>Hola ${escapeHtml(input.customerName)}, tu pedido <strong>${input.orderId}</strong> fue creado con estado <strong>Pendiente de confirmacion</strong>.</p>
       <p><strong>Importante:</strong> esto confirma la creacion de la orden, pero el pago aun no esta confirmado.</p>
-      <p>Total de la orden: <strong>${formatCOP(input.totalInCents)}</strong></p>
+      <p>Subtotal de productos (envío por confirmar): <strong>${formatCOP(input.totalInCents)}</strong></p>
       <h2 style="margin-top: 24px;">Productos</h2>
       <ul>${itemsHtml}</ul>
       <h2 style="margin-top: 24px;">Como completar tu compra</h2>
       <ol>${steps.map((step) => `<li>${step}</li>`).join("")}</ol>
-      <h2 style="margin-top: 24px;">Datos Bancolombia</h2>
-      <p><strong>Banco:</strong> ${bancolombiaConfig.bankName}</p>
-      <p><strong>Tipo de cuenta:</strong> ${bancolombiaConfig.accountType}</p>
-      <p><strong>Numero de cuenta:</strong> ${bancolombiaConfig.accountNumber || "Pendiente por configurar"}</p>
-      <p><strong>Titular:</strong> ${bancolombiaConfig.accountHolder || "Pendiente por configurar"}</p>
-      ${
-        bancolombiaConfig.qrUrl
-          ? `<p><a href="${bancolombiaConfig.qrUrl}">Pagar con QR Bancolombia</a></p>`
-          : ""
-      }
+      <p>Antes de transferir, espera la confirmación del envío y el valor final. Te compartiremos los datos de pago junto con esa confirmación.</p>
       <h2 style="margin-top: 24px;">Enviar comprobante</h2>
       <p>Cuando realices la consignacion, envia el comprobante por alguno de estos canales:</p>
       <p><strong>Correo:</strong> ${bancolombiaConfig.proofEmail}</p>
@@ -88,7 +80,7 @@ export async function sendOrderPendingConfirmationEmail(input: {
   const text = [
     `Hola ${input.customerName}, tu pedido ${input.orderId} fue creado con estado Pendiente de confirmacion.`,
     "Esto confirma la creacion de la orden, pero el pago aun no esta confirmado.",
-    `Total: ${formatCOP(input.totalInCents)}`,
+    `Subtotal de productos, envío por confirmar: ${formatCOP(input.totalInCents)}`,
     "",
     "Productos:",
     itemsText,
@@ -96,12 +88,7 @@ export async function sendOrderPendingConfirmationEmail(input: {
     "Como completar tu compra:",
     ...steps,
     "",
-    "Datos Bancolombia:",
-    `Banco: ${bancolombiaConfig.bankName}`,
-    `Tipo de cuenta: ${bancolombiaConfig.accountType}`,
-    `Numero de cuenta: ${bancolombiaConfig.accountNumber || "Pendiente por configurar"}`,
-    `Titular: ${bancolombiaConfig.accountHolder || "Pendiente por configurar"}`,
-    bancolombiaConfig.qrUrl ? `QR: ${bancolombiaConfig.qrUrl}` : "",
+    "Espera la confirmación del envío, valor final y datos de pago antes de transferir.",
     "",
     "Enviar comprobante:",
     `Correo: ${bancolombiaConfig.proofEmail}`,
@@ -113,7 +100,7 @@ export async function sendOrderPendingConfirmationEmail(input: {
 
   return sendTransactionalEmail({
     to: input.customerEmail,
-    subject: `Orden ${input.orderId} creada - pendiente de consignacion`,
+    subject: `Pedido ${input.orderId} recibido - envío por confirmar`,
     html,
     text,
   });

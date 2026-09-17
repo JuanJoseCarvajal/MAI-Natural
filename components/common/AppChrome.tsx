@@ -15,8 +15,9 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <a href="#main-content" className="skip-link">Saltar al contenido</a>
       <Header />
-      <main className="min-h-[70vh]">{children}</main>
+      <main id="main-content" className="min-h-[70vh]" tabIndex={-1}>{children}</main>
       <Footer />
       <WhatsAppAgentButton />
     </>

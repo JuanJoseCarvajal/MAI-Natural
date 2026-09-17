@@ -1,3 +1,5 @@
+import campaigns from "@/lib/editorial-campaigns.json";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -12,9 +14,10 @@ export type BlogPost = {
     body: string[];
   }>;
   relatedProductCategory?: "facial" | "capilar" | "corporal" | "kits";
+  promotion?: { eyebrow: string; headline: string; productIds: string[] };
 };
 
-export const blogPosts: BlogPost[] = [
+const legacyPosts: BlogPost[] = [
   {
     slug: "rutina-facial-natural-piel-sensible",
     title: "Rutina facial natural para piel sensible: limpieza, tonico e hidratacion",
@@ -129,6 +132,18 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export function getBlogPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+export const allBlogPosts: BlogPost[] = [
+  ...campaigns.map((post) => ({ ...post, relatedProductCategory: post.relatedProductCategory as BlogPost["relatedProductCategory"] })),
+  ...legacyPosts,
+];
+
+// Evaluate at request/revalidation time, never once when the module is imported.
+export function getPublishedBlogPosts(now = new Date()): BlogPost[] {
+  return allBlogPosts
+    .filter((post) => Date.parse(post.publishedAt) <= now.getTime())
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+}
+
+export function getBlogPost(slug: string, now = new Date()) {
+  return getPublishedBlogPosts(now).find((post) => post.slug === slug);
 }

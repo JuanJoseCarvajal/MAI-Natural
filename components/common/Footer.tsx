@@ -1,27 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Footer() {
-  return (
-    <footer className="bg-brand-50 py-10 mt-12 border-t border-brand-100">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
-        <div className="font-semibold text-brand-900">&copy; {new Date().getFullYear()} MAI Natural</div>
-        <div className="text-center text-slate-500 text-sm">
-          <p>Cosmetica natural premium</p>
-          <p>Entregas estimadas de 5 a 7 dias habiles por produccion artesanal y personalizada.</p>
-          <div className="mt-2 flex flex-wrap justify-center gap-3">
-            <Link href="/blog" className="font-semibold text-brand-700 hover:underline">
-              Blog
-            </Link>
-            <Link href="/products" className="font-semibold text-brand-700 hover:underline">
-              Productos
-            </Link>
-            <Link href="/routines" className="font-semibold text-brand-700 hover:underline">
-              Rutinas
-            </Link>
-          </div>
-        </div>
-        <a href="mailto:info@mainatural.com" className="text-slate-500 text-sm underline">info@mainatural.com</a>
-      </div>
-    </footer>
-  );
+  return <footer className="site-footer"><div className="footer-top"><div className="footer-brand"><Image src="/ima/MAI-Logo.svg" alt="MAI Natural" width={130} height={76}/><p>Un momento para ti.<br />Un regreso a lo natural.</p><a href="mailto:info@mainatural.com">info@mainatural.com</a></div><div><p className="eyebrow">EXPLORA</p><Link href="/products?category=facial">Cuidado facial</Link><Link href="/products?category=capilar">Cuidado capilar</Link><Link href="/products?category=corporal">Cuidado corporal</Link><Link href="/routines">Kits y rutinas</Link></div><div><p className="eyebrow">CERCA DE TI</p><Link href="/services">Asesorías MAI</Link><Link href="/blog">Diario MAI</Link><Link href="/account/orders">Mis pedidos</Link><Link href="/terms">Información de compra</Link></div><div className="footer-note"><p className="eyebrow">A NUESTRO RITMO</p><p>Cosmética botánica de elaboración artesanal. Entrega estimada de 5 a 7 días hábiles.</p><Link href="/subscriptions">Club MAI · Próximamente ↗</Link><a href="https://wa.me/573246847727" target="_blank" rel="noopener noreferrer">Conversemos por WhatsApp ↗</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} MAI Natural</span><span>Colombia · Precios en COP</span><span>Hecho con intención.</span></div></footer>;
 }

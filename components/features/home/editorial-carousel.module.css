@@ -1,0 +1,25 @@
+.carousel { isolation:isolate; background:#e7dcc6; }
+.slide { position:absolute; inset:0; }
+.image { object-fit:cover; animation:appear .7s ease; }
+.topline { position:absolute; z-index:3; top:20px; left:24px; right:24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.topline>span { background:#f6f3ebe8; padding:9px 12px; color:#203c32; font-size:9px; letter-spacing:.14em; }
+.topline button { display:flex; align-items:center; gap:8px; padding:0 12px; min-height:44px; background:#f6f3ebe8; color:#203c32; font-size:20px; }
+.topline button span { font-size:10px; }
+.card { position:absolute; bottom:82px; left:26px; right:26px; padding:24px; background:#f6f3ebf5; border:1px solid #ffffff80; color:#203c32; }
+.eyebrow { font-size:9px; letter-spacing:.16em; margin-bottom:8px; }
+.card h2 { font-size:clamp(24px,2.7vw,37px); line-height:1.13; max-width:560px; }
+.links { display:flex; flex-wrap:wrap; align-items:center; gap:6px 25px; border-top:1px solid #c9cebe; margin-top:18px; padding-top:8px; }
+.links a { display:flex; align-items:center; justify-content:space-between; gap:13px; font-size:11px; min-height:44px; }
+.links a:first-child { font-weight:600; }
+.links a:hover { text-decoration:underline; text-underline-offset:4px; }
+.controls { position:absolute; bottom:20px; left:26px; right:26px; display:flex; justify-content:space-between; align-items:center; background:#f6f3ebf5; color:#203c32; height:46px; padding:0 6px; }
+.controls>button { width:44px; min-height:44px; font-size:22px; }
+.controls button:hover { background:#e6e8dc; }
+.dots { display:flex; }
+.dots button { width:32px; min-height:44px; display:grid; place-items:center; }
+.dots span { width:6px; height:6px; border:1px solid #365744; border-radius:50%; }
+.dots button[aria-pressed=true] span { background:#365744; }
+.counter { font-size:10px; letter-spacing:.1em; }
+@keyframes appear { from { opacity:.65; } to { opacity:1; } }
+@media(max-width:760px) { .carousel { aspect-ratio:auto; min-height:530px; }.topline { left:18px; right:18px; top:15px; }.card { left:18px; right:18px; bottom:75px; padding:18px; }.card h2 { font-size:29px; }.controls { left:18px; right:18px; bottom:15px; }.links { margin-top:12px; gap:0 18px; }.links a { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .image { animation:none; } }

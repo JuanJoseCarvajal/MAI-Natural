@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts, getBlogPost } from "@/lib/blog";
+import { getPublishedBlogPosts, getBlogPost } from "@/lib/blog";
 import { categoryLabels } from "@/lib/products";
 import { getAllProducts } from "@/lib/products.server";
 import { absoluteUrl, buildMetadata, siteName } from "@/lib/seo";
@@ -11,8 +11,11 @@ type BlogDetailProps = {
   params: { slug: string };
 };
 
+export const revalidate = 60;
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return getPublishedBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
 export function generateMetadata({ params }: BlogDetailProps): Metadata {
@@ -34,7 +37,9 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
   if (!post) notFound();
 
   const products = await getAllProducts();
-  const relatedProducts = post.relatedProductCategory
+  const relatedProducts = post.promotion
+    ? post.promotion.productIds.flatMap(id => products.filter(product => product.id === id))
+    : post.relatedProductCategory
     ? products.filter((product) => product.category === post.relatedProductCategory).slice(0, 3)
     : products.slice(0, 3);
 
@@ -56,7 +61,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
     <main className="mx-auto w-full max-w-4xl px-4 py-12 md:px-6">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }}
       />
       <Link href="/blog" className="text-sm font-semibold text-brand-700 hover:underline">
         Volver al blog
@@ -70,13 +75,14 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
           {post.title}
         </h1>
         <p className="mt-4 text-lg text-slate-600">{post.description}</p>
+        <p className="mt-4 text-xs text-slate-500">Diario MAI · <time dateTime={post.publishedAt}>{new Intl.DateTimeFormat("es-CO", { dateStyle: "long", timeZone: "America/Bogota" }).format(new Date(post.publishedAt))}</time></p>
         <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl bg-brand-50 ring-1 ring-brand-100">
           <Image
             src={post.heroImage}
             alt={post.title}
             fill
             priority
-            className="object-contain p-10"
+            className="object-cover"
             sizes="(min-width: 768px) 768px, 100vw"
           />
         </div>
@@ -122,6 +128,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
                 href={`/products/${product.id}`}
                 className="rounded-2xl border border-slate-200 bg-white p-4 transition hover:shadow-md"
               >
+                <div className="relative mb-4 aspect-square overflow-hidden"><Image src={product.image} alt={product.name} fill sizes="(min-width:768px) 250px, 90vw" className="object-cover" /></div>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
                   {categoryLabels[product.category]}
                 </p>

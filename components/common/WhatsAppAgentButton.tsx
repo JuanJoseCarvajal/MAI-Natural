@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const WHATSAPP_NUMBER = "573246847727";
 
@@ -18,7 +19,16 @@ function buildDefaultMessage(pathname: string) {
 
 export default function WhatsAppAgentButton() {
   const pathname = usePathname();
+  const [heroVisible, setHeroVisible] = useState(pathname === "/");
   const hiddenRoutes = ["/admin", "/login", "/register"];
+
+  useEffect(() => {
+    const hero = document.querySelector(".botanical-hero");
+    if (pathname !== "/" || !hero) { setHeroVisible(false); return; }
+    const observer = new IntersectionObserver(([entry]) => setHeroVisible(entry.isIntersecting));
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   if (hiddenRoutes.some((route) => pathname.startsWith(route))) {
     return null;
@@ -33,7 +43,7 @@ export default function WhatsAppAgentButton() {
     <button
       type="button"
       onClick={handleClick}
-      className="fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full bg-[#1f9d58] px-4 py-3 text-sm font-bold text-white shadow-2xl transition hover:bg-[#18884b]"
+      className={`fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full bg-[#1f9d58] px-4 py-3 text-sm font-bold text-white shadow-2xl transition hover:bg-[#18884b] ${heroVisible ? "max-[760px]:hidden" : ""}`}
       aria-label="Hablar con Agente MAI por WhatsApp"
     >
       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">

@@ -1,120 +1,31 @@
 import Link from "next/link";
-import { bancolombiaConfig, formatWhatsappLink, getOrderPaymentSteps } from "@/lib/bank-transfer";
-import { orderStatusLabels } from "@/lib/orders";
+import { db } from "@/lib/db";
+import { bancolombiaConfig, formatWhatsappLink } from "@/lib/bank-transfer";
+import { formatCOP, orderStatusLabels } from "@/lib/orders";
 
-type ResultPageProps = {
-  searchParams: {
-    orderId?: string;
-    status?: string;
-  };
-};
+export const dynamic = "force-dynamic";
+export const metadata = { title: "Estado de tu pedido | MAI Natural", robots: { index: false, follow: false } };
 
-export default function CheckoutResultPage({ searchParams }: ResultPageProps) {
-  const status = searchParams.status || "pending_confirmation";
-  const orderId = searchParams.orderId || "pendiente";
-  const proofWhatsappUrl = formatWhatsappLink(
-    bancolombiaConfig.proofWhatsapp,
-    `Hola MAI, ya hice la consignacion del pedido ${orderId} y quiero enviar mi comprobante.`
-  );
-  const steps = getOrderPaymentSteps();
-
-  return (
-    <main className="mx-auto max-w-3xl px-4 py-14">
-      <section className="rounded-2xl bg-white p-8 shadow ring-1 ring-slate-200">
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
-          Orden creada
-        </p>
-        <h1 className="mt-2 text-3xl font-bold text-brand-900">Tu pedido ya existe, ahora falta pagar la consignacion</h1>
-        <p className="mt-3 text-slate-700">
-          La orden fue creada correctamente y quedo en estado{" "}
-          <strong>{orderStatusLabels[status] ?? status}</strong>. Esto no significa que el pago ya
-          este confirmado.
-        </p>
-
-        <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-700">
-          <p>
-            <strong>Pedido:</strong> {orderId}
-          </p>
-          <p className="mt-2">
-            <strong>Estado actual:</strong> {orderStatusLabels[status] ?? status}
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-3 md:grid-cols-4">
-          {steps.map((step, index) => (
-            <div key={step} className="rounded-2xl border border-brand-100 bg-brand-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
-                Paso {index + 1}
-              </p>
-              <p className="mt-2 text-sm font-semibold text-brand-900">
-                {step.replace(/^Paso \d:\s*/, "")}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-brand-100 p-5">
-            <h2 className="text-lg font-bold text-brand-900">Realizar consignacion</h2>
-            <div className="mt-3 space-y-2 text-sm text-slate-700">
-              <p><strong>Banco:</strong> {bancolombiaConfig.bankName}</p>
-              <p><strong>Tipo de cuenta:</strong> {bancolombiaConfig.accountType}</p>
-              <p><strong>Numero:</strong> {bancolombiaConfig.accountNumber || "Por configurar"}</p>
-              <p><strong>Titular:</strong> {bancolombiaConfig.accountHolder || "Por configurar"}</p>
-            </div>
-            {bancolombiaConfig.qrUrl ? (
-              <a
-                href={bancolombiaConfig.qrUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-flex text-sm font-semibold text-brand-700 hover:underline"
-              >
-                Abrir QR Bancolombia
-              </a>
-            ) : null}
-          </div>
-
-          <div className="rounded-2xl border border-brand-100 p-5">
-            <h2 className="text-lg font-bold text-brand-900">Enviar comprobante</h2>
-            <p className="mt-3 text-sm text-slate-600">
-              Cuando termines la consignacion, comparte el comprobante por cualquiera de estos
-              canales.
-            </p>
-            <div className="mt-3 space-y-2 text-sm text-slate-700">
-              <p><strong>Correo:</strong> {bancolombiaConfig.proofEmail}</p>
-              <p><strong>WhatsApp:</strong> {bancolombiaConfig.proofWhatsapp}</p>
-            </div>
-            <a
-              href={proofWhatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-flex rounded-full border border-[#1f9d58] px-5 py-2.5 text-sm font-bold text-[#1f9d58] transition hover:bg-[#1f9d58] hover:text-white"
-            >
-              Enviar comprobante por WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <p className="mt-8 text-sm text-slate-600">
-          Tiempo estimado de entrega: 5 a 7 dias habiles. Cada producto se elabora de forma
-          personalizada y artesanal, uno a uno y nunca en masa.
-        </p>
-
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Link
-            href="/products"
-            className="rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-900"
-          >
-            Seguir comprando
-          </Link>
-          <Link
-            href="/account/orders"
-            className="rounded-full border border-brand-300 px-6 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-50"
-          >
-            Ver mis ordenes
-          </Link>
-        </div>
-      </section>
-    </main>
-  );
+export default async function CheckoutResultPage({ searchParams }: { searchParams: { orderId?: string; id?: string } }) {
+  const order = searchParams.orderId && /^[a-f0-9-]{36}$/.test(searchParams.orderId) ? await db.order.findUnique({ where: { id: searchParams.orderId } }) : null;
+  // Never infer a successful payment from URL status or a redirect alone.
+  let sandboxStatus: string | null = null;
+  if (order && searchParams.id && /^[a-zA-Z0-9-]{1,100}$/.test(searchParams.id) && process.env.WOMPI_SANDBOX_ENABLED === "true" && process.env.WOMPI_PUBLIC_KEY?.startsWith("pub_test_")) {
+    try {
+      const response = await fetch(`https://sandbox.wompi.co/v1/transactions/${encodeURIComponent(searchParams.id)}`, { cache: "no-store", signal: AbortSignal.timeout(5000) });
+      const { data } = await response.json();
+      if (response.ok && data.reference === `mai-${order.id}` && data.amount_in_cents === order.total && data.currency === "COP") {
+        sandboxStatus = ({ APPROVED: "Prueba aprobada", PENDING: "Prueba pendiente", DECLINED: "Prueba rechazada", ERROR: "Error en la prueba", VOIDED: "Prueba anulada" } as Record<string, string>)[data.status] || "Estado de prueba desconocido";
+      }
+    } catch { sandboxStatus = "No pudimos consultar la prueba. No vuelvas a pagar mientras verificas el estado."; }
+  }
+  const whatsapp = formatWhatsappLink(bancolombiaConfig.proofWhatsapp, order ? `Hola MAI, quiero confirmar el envío y el total de mi pedido ${order.id}.` : "Hola MAI, necesito ayuda para verificar mi pedido.");
+  return <section className="mx-auto max-w-2xl px-5 py-16 md:py-24"><div className="rounded-3xl border border-brand-100 bg-white p-7 md:p-12">
+    <p className="text-xs uppercase tracking-[.2em] text-brand-700">{order ? "Pedido recibido" : "Consulta de pedido"}</p><h1 className="mt-4 text-4xl text-brand-900">{order ? "Gracias por elegir cuidarte." : "Verifiquemos tu pedido."}</h1>
+    <p className="mt-5 leading-relaxed text-slate-600">{order ? "Recibimos tu selección. Te contactaremos para confirmar disponibilidad, envío y el valor final antes de la transferencia." : "No pudimos recuperar este pedido. Si ya lo enviaste o realizaste un pago, contacta al equipo antes de repetirlo."}</p>
+    {order && <div className="mt-7 space-y-3 rounded-2xl bg-brand-50 p-5 text-sm"><p className="break-all"><strong>Pedido:</strong> {order.id}</p><p><strong>Estado:</strong> {orderStatusLabels[order.status] || "En revisión"}</p><p><strong>Subtotal de productos:</strong> {formatCOP(order.total)}</p><p>Envío por confirmar. Conserva tu número de pedido.</p></div>}
+    {sandboxStatus && <p className="mt-5 rounded-xl bg-amber-50 p-4 text-sm" role="status">Sandbox · {sandboxStatus}. Es una simulación, no confirma un pago real.</p>}
+    <ol className="mt-8 space-y-5 text-sm text-slate-600"><li><strong className="text-brand-900">1. Confirmamos tu entrega.</strong><br />Revisa el costo de envío y acepta el total final.</li><li><strong className="text-brand-900">2. Te compartimos los datos de pago.</strong><br />Transfiere solo cuando tengas el valor final confirmado.</li><li><strong className="text-brand-900">3. Validamos tu comprobante.</strong><br />Te informaremos cuando el pago esté confirmado y preparemos tu pedido.</li></ol>
+    <a href={whatsapp} target="_blank" rel="noreferrer" className="mt-8 inline-flex w-full justify-center rounded-full bg-brand-900 px-5 py-4 text-center font-semibold text-white">Consultar mi pedido por WhatsApp ↗</a><Link href="/products" className="mt-5 block text-center text-sm text-brand-700 underline">Volver a la tienda</Link>
+  </div></section>;
 }

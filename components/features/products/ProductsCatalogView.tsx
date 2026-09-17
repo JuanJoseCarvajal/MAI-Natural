@@ -1,109 +1,33 @@
 "use client";
-
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import ProductCard from "@/components/features/products/ProductCard";
-import FilterChip from "@/components/ui/FilterChip";
-import StickyFilterBar from "@/components/ui/StickyFilterBar";
+import ProductCard from "./ProductCard";
 import { categoryLabels, type Product } from "@/lib/products";
-
-type ProductsCatalogViewProps = {
-  products: Product[];
-};
-
-export default function ProductsCatalogView({ products }: ProductsCatalogViewProps) {
-  const ALL_FILTER = "all";
-  const categories = useMemo(() => Object.entries(categoryLabels), []);
-  const [activeCategory, setActiveCategory] = useState(ALL_FILTER);
-  const visibleCategories =
-    activeCategory === ALL_FILTER
-      ? categories
-      : categories.filter(([key]) => key === activeCategory);
-
-  return (
-    <main className="max-w-6xl mx-auto px-4 mt-12 mb-16">
-      <h1 className="text-3xl font-extrabold text-brand-900 mb-3 text-center">Catalogo de Productos</h1>
-      <p className="mx-auto mb-10 max-w-3xl text-center text-slate-600">
-        Explora el catalogo por categoria y compra directo. Si quieres una experiencia guiada,
-        ahora las rutinas viven en una pagina independiente.
-      </p>
-
-      <section className="mb-12 rounded-[2rem] border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 shadow-sm md:p-8">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
-              Rutinas MAI
-            </p>
-            <h2 className="mt-3 text-2xl font-extrabold text-brand-900 md:text-3xl">
-              Ahora tienen su propia pagina independiente.
-            </h2>
-            <p className="mt-3 text-sm text-slate-600 md:text-base">
-              Separamos la experiencia guiada del catalogo para que puedas comprar por categoria o
-              entrar directo a construir una rutina segun tu necesidad.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/routines"
-              className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-900"
-            >
-              Ir a rutinas
-            </Link>
-            <Link
-              href="#categoria-kits"
-              className="rounded-full border border-brand-300 px-6 py-3 text-sm font-bold text-brand-900 transition hover:bg-brand-50"
-            >
-              Ver kits en catalogo
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <StickyFilterBar className="-mx-4 mb-10 px-4 py-3 supports-[backdrop-filter]:bg-white/75">
-        <div className="flex items-center justify-center gap-2 overflow-x-auto whitespace-nowrap">
-          <FilterChip
-            href="#"
-            onClick={(event) => {
-              event.preventDefault();
-              setActiveCategory(ALL_FILTER);
-            }}
-            active={activeCategory === ALL_FILTER}
-          >
-            Todos
-          </FilterChip>
-          {categories.map(([key, label]) => (
-            <FilterChip
-              key={key}
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                setActiveCategory(key);
-              }}
-              active={activeCategory === key}
-            >
-              {label}
-            </FilterChip>
-          ))}
-        </div>
-      </StickyFilterBar>
-
-      <div className="space-y-12">
-        {visibleCategories.map(([key, label]) => {
-          const categoryProducts = products.filter((item) => item.category === key);
-          if (categoryProducts.length === 0) return null;
-
-          return (
-            <section id={`categoria-${key}`} key={key} className="scroll-mt-28">
-              <h2 className="mb-6 text-2xl font-bold text-brand-900">{label}</h2>
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {categoryProducts.map((product) => (
-                  <ProductCard key={product.id} {...product} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
-      </div>
-    </main>
-  );
+import styles from "./products.module.css";
+const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+export default function ProductsCatalogView({ products }: { products: Product[] }) {
+  const [categories, setCategories] = useState<string[]>([]);
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("default");
+  const [budget, setBudget] = useState("all");
+  const visible = useMemo(() => {
+    const result = products.filter(p => (!categories.length || categories.includes(p.category)) && normalize(`${p.name} ${p.description} ${categoryLabels[p.category]}`).includes(normalize(query.trim())) && (budget === "all" || p.amountInCents <= Number(budget)));
+    if (sort === "asc") result.sort((a,b) => a.amountInCents-b.amountInCents);
+    if (sort === "desc") result.sort((a,b) => b.amountInCents-a.amountInCents);
+    if (sort === "name") result.sort((a,b) => a.name.localeCompare(b.name, "es"));
+    return result;
+  }, [products, categories, query, sort, budget]);
+  const toggle = (key: string) => setCategories(current => current.includes(key) ? current.filter(c => c !== key) : [...current,key]);
+  const reset = () => { setCategories([]); setQuery(""); setBudget("all"); };
+  return <main className={styles.catalog}>
+    <nav className={styles.breadcrumb} aria-label="Ruta de navegación"><Link href="/">Inicio</Link><span>/</span><span>Tienda</span></nav>
+    <header className={styles.catalogHeader}><div><p className={styles.eyebrow}>EL PODER DE LO SIMPLE</p><h1>Tu naturaleza.<br /><em>Tu ritual.</em></h1></div><div><p>Cuidado facial, capilar y corporal para encontrar ese momento que es solo tuyo.</p><Link href="/routines">Encuentra tu rutina <span aria-hidden="true">↗</span></Link></div></header>
+    <section className={styles.filters} aria-label="Filtrar productos">
+      <div className={styles.categoryFilters}><button onClick={() => setCategories([])} aria-pressed={!categories.length}>Todo el cuidado <span>{products.length}</span></button>{Object.entries(categoryLabels).map(([key,label]) => <button key={key} onClick={() => toggle(key)} aria-pressed={categories.includes(key)}>{label.replace("Cosmética Natural ", "")} <span>{products.filter(p => p.category === key).length}</span></button>)}</div>
+      <div className={styles.searchRow}><label className={styles.search}><span aria-hidden="true">⌕</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Busca tu próximo ritual…" aria-label="Buscar productos por nombre o necesidad" /></label><label className={styles.select}>Presupuesto<select value={budget} onChange={e => setBudget(e.target.value)}><option value="all">Todos los precios</option><option value="5000000">Hasta $50.000</option><option value="8000000">Hasta $80.000</option><option value="12000000">Hasta $120.000</option></select></label><label className={styles.select}>Ordenar por<select value={sort} onChange={e => setSort(e.target.value)}><option value="default">Orden del catálogo</option><option value="asc">Menor precio</option><option value="desc">Mayor precio</option><option value="name">Nombre: A–Z</option></select></label></div>
+    </section>
+    <div className={styles.results}><p role="status">{visible.length} {visible.length === 1 ? "producto" : "productos"}</p><div>{categories.map(key => <button key={key} onClick={() => toggle(key)} aria-label={`Quitar filtro ${categoryLabels[key as keyof typeof categoryLabels]}`}>{categoryLabels[key as keyof typeof categoryLabels].replace("Cosmética Natural ", "")} ×</button>)}{categories.length || query || budget !== "all" ? <button onClick={reset}>Limpiar filtros</button> : null}</div><span>Precios en pesos colombianos</span></div>
+    {visible.length ? <div className={styles.productGrid}>{visible.map(product => <ProductCard key={product.id} {...product} />)}</div> : <div className={styles.empty}><h2>No encontramos ese ritual.</h2><p>Prueba otra palabra o amplía los filtros para descubrir más opciones.</p><button onClick={reset}>Ver todos los productos</button></div>}
+    <aside className={styles.routineBanner}><div><p className={styles.eyebrow}>UN CUIDADO QUE VA CONTIGO</p><h2>Empieza con una rutina.</h2><p>Descubre cómo combinar tus productos en el día a día.</p></div><Link href="/routines">Explorar rutinas <span aria-hidden="true">↗</span></Link></aside>
+  </main>;
 }

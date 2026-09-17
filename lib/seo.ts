@@ -6,7 +6,7 @@ export const siteUrl = (
 
 export const siteName = "MAI Natural";
 export const defaultSeoDescription =
-  "Cosmetica natural colombiana para piel, cabello y bienestar, con formulas botanicas y acompaniamiento personalizado.";
+  "Cosmética natural colombiana para piel, cabello y bienestar. Descubre el cuidado facial, capilar y corporal de MAI Natural.";
 
 type SeoInput = {
   title: string;
@@ -46,7 +46,7 @@ export function buildMetadata({
       siteName,
       locale: "es_CO",
       type,
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+      images: [{ url: imageUrl, alt: title }],
       ...(publishedTime ? { publishedTime } : {}),
     },
     twitter: {
@@ -56,4 +56,9 @@ export function buildMetadata({
       images: [imageUrl],
     },
   };
+}
+
+/** Escape HTML-significant characters before embedding catalog content in a script. */
+export function serializeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }
