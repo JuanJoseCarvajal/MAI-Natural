@@ -1,3 +1,4 @@
+import { getWompiConfiguration } from "@/lib/wompi-server";
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { checkoutSchema } from "@/lib/validators/checkout";
@@ -14,6 +15,7 @@ export async function POST(request: NextRequest) {
     const parsed = checkoutSchema.safeParse(await request.json().catch(() => null));
     if (!parsed.success) return NextResponse.json({ error: parsed.error.issues[0]?.message || "Revisa tus datos." }, { status: 400 });
     const body = parsed.data;
+    if (body.paymentMethod === "wompi_sandbox" && !getWompiConfiguration().configured) return NextResponse.json({ error: "Wompi de pruebas no está configurado. Elige transferencia." }, { status: 503 });
     const { customerName, customerEmail, customerPhone } = body;
     const rawItems = body.items;
 
@@ -81,7 +83,7 @@ export async function POST(request: NextRequest) {
         total: totalInCents,
         status: "pending_confirmation",
         paymentStatus: "pending_confirmation",
-        paymentMethod: "bank_transfer_bancolombia",
+        paymentMethod: body.paymentMethod,
         shippingStatus: "pending_confirmation",
         discountCode: appliedDiscountCode,
         proofInstructions: `Enviar comprobante a ${bancolombiaConfig.proofEmail} o al WhatsApp ${bancolombiaConfig.proofWhatsapp}.`,
@@ -92,7 +94,7 @@ export async function POST(request: NextRequest) {
     let emailSent = false;
 
     try {
-      const result = await sendOrderPendingConfirmationEmail({
+      const result = body.paymentMethod === "wompi_sandbox" ? { sent: false } : await sendOrderPendingConfirmationEmail({
         customerEmail,
         customerName,
         orderId: order.id,

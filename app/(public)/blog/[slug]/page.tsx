@@ -8,7 +8,7 @@ import { getAllProducts } from "@/lib/products.server";
 import { absoluteUrl, buildMetadata, siteName } from "@/lib/seo";
 
 type BlogDetailProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export const revalidate = 60;
@@ -18,8 +18,8 @@ export function generateStaticParams() {
   return getPublishedBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: BlogDetailProps): Metadata {
-  const post = getBlogPost(params.slug);
+export async function generateMetadata({ params }: BlogDetailProps): Promise<Metadata> {
+  const post = getBlogPost((await params).slug);
   if (!post) return {};
 
   return buildMetadata({
@@ -33,7 +33,7 @@ export function generateMetadata({ params }: BlogDetailProps): Metadata {
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailProps) {
-  const post = getBlogPost(params.slug);
+  const post = getBlogPost((await params).slug);
   if (!post) notFound();
 
   const products = await getAllProducts();
@@ -58,13 +58,13 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
   };
 
   return (
-    <main className="mx-auto w-full max-w-4xl px-4 py-12 md:px-6">
+    <div className="mx-auto w-full max-w-4xl px-4 py-12 md:px-6">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }}
       />
       <Link href="/blog" className="text-sm font-semibold text-brand-700 hover:underline">
-        Volver al blog
+        Volver al Diario MAI
       </Link>
 
       <article className="mt-6">
@@ -102,9 +102,9 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
       </article>
 
       <section className="mt-12 rounded-2xl bg-brand-900 p-6 text-white">
-        <h2 className="text-2xl font-bold">Convierte esta guia en una rutina</h2>
+        <h2 className="text-2xl font-bold">Convierte esta guía en una rutina</h2>
         <p className="mt-2 text-brand-100">
-          Explora productos relacionados o arma una rutina guiada segun tu objetivo.
+          Explora productos relacionados o arma una rutina guiada según tu objetivo.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Link href="/routines" className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-brand-900">
@@ -139,6 +139,6 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
           </div>
         </section>
       ) : null}
-    </main>
+    </div>
   );
 }

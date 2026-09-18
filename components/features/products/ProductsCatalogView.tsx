@@ -19,7 +19,7 @@ export default function ProductsCatalogView({ products }: { products: Product[] 
   }, [products, categories, query, sort, budget]);
   const toggle = (key: string) => setCategories(current => current.includes(key) ? current.filter(c => c !== key) : [...current,key]);
   const reset = () => { setCategories([]); setQuery(""); setBudget("all"); };
-  return <main className={styles.catalog}>
+  return <div className={styles.catalog}>
     <nav className={styles.breadcrumb} aria-label="Ruta de navegación"><Link href="/">Inicio</Link><span>/</span><span>Tienda</span></nav>
     <header className={styles.catalogHeader}><div><p className={styles.eyebrow}>EL PODER DE LO SIMPLE</p><h1>Tu naturaleza.<br /><em>Tu ritual.</em></h1></div><div><p>Cuidado facial, capilar y corporal para encontrar ese momento que es solo tuyo.</p><Link href="/routines">Encuentra tu rutina <span aria-hidden="true">↗</span></Link></div></header>
     <section className={styles.filters} aria-label="Filtrar productos">
@@ -29,5 +29,5 @@ export default function ProductsCatalogView({ products }: { products: Product[] 
     <div className={styles.results}><p role="status">{visible.length} {visible.length === 1 ? "producto" : "productos"}</p><div>{categories.map(key => <button key={key} onClick={() => toggle(key)} aria-label={`Quitar filtro ${categoryLabels[key as keyof typeof categoryLabels]}`}>{categoryLabels[key as keyof typeof categoryLabels].replace("Cosmética Natural ", "")} ×</button>)}{categories.length || query || budget !== "all" ? <button onClick={reset}>Limpiar filtros</button> : null}</div><span>Precios en pesos colombianos</span></div>
     {visible.length ? <div className={styles.productGrid}>{visible.map(product => <ProductCard key={product.id} {...product} />)}</div> : <div className={styles.empty}><h2>No encontramos ese ritual.</h2><p>Prueba otra palabra o amplía los filtros para descubrir más opciones.</p><button onClick={reset}>Ver todos los productos</button></div>}
     <aside className={styles.routineBanner}><div><p className={styles.eyebrow}>UN CUIDADO QUE VA CONTIGO</p><h2>Empieza con una rutina.</h2><p>Descubre cómo combinar tus productos en el día a día.</p></div><Link href="/routines">Explorar rutinas <span aria-hidden="true">↗</span></Link></aside>
-  </main>;
+  </div>;
 }

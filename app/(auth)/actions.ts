@@ -74,27 +74,7 @@ export async function registerAction(
     });
 
     if (existingUser) {
-      if (existingUser.password) {
-        return { error: 'El correo ya está registrado' };
-      }
-
-      const hashedPassword = await bcrypt.hash(cleanPassword, 12);
-
-      await db.user.update({
-        where: { id: existingUser.id },
-        data: {
-          name: cleanName,
-          password: hashedPassword,
-        },
-      });
-
-      await signIn('credentials', {
-        email: cleanEmail,
-        password: cleanPassword,
-        redirect: false,
-      });
-
-      return { success: true };
+      return { error: 'Este correo ya tiene un registro. Recupera el acceso o contacta al equipo.' };
     }
 
     const hashedPassword = await bcrypt.hash(cleanPassword, 12);
@@ -155,7 +135,7 @@ export async function requestPasswordResetAction(email: string) {
       to: user.email,
       subject: 'Recupera tu contraseña en MAI Natural',
       html: `
-        <p>Hola${user.name ? ` ${user.name}` : ''},</p>
+        <p>Hola,</p>
         <p>Recibimos una solicitud para restablecer tu contraseña.</p>
         <p><a href="${resetUrl}">Crear una nueva contraseña</a></p>
         <p>Este enlace vence en ${RESET_TOKEN_TTL_MINUTES} minutos. Si no solicitaste este cambio, puedes ignorar este correo.</p>
@@ -169,7 +149,7 @@ export async function requestPasswordResetAction(email: string) {
     });
 
     if (!emailResult.sent) {
-      console.warn('Enlace de recuperación generado sin envío de correo:', resetUrl);
+      console.warn('No se pudo enviar el correo de recuperación.');
     }
 
     return { success: true };

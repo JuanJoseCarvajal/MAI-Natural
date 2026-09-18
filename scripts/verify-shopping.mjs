@@ -1,0 +1,30 @@
+import {createRequire} from 'node:module';
+import assert from 'node:assert/strict';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.MAI_PLAYWRIGHT_MODULE||'playwright');
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:390,height:844}});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+try {
+ await page.goto('http://127.0.0.1:3000/products/fa-lam-120-1');
+ await page.getByRole('button',{name:'Agregar al carrito',exact:true}).click();
+ await page.goto('http://127.0.0.1:3000/checkout');
+ await page.getByRole('heading',{name:'Tu cuidado, casi en casa.'}).waitFor();
+ const wompiStatus=await page.request.get('http://127.0.0.1:3000/api/payments/wompi/status');
+ assert.equal(wompiStatus.status(),200);
+ const wompi=await wompiStatus.json();
+ assert.equal(wompi.mode,'sandbox');
+ const wompiOption=page.getByRole('radio',{name:/Wompi/});
+ await wompiOption.waitFor();
+ assert.equal(await wompiOption.isDisabled(),!wompi.available);
+ await page.getByRole('button',{name:/Aumentar cantidad de/}).click();
+ await page.getByRole('button',{name:/Reducir cantidad de/}).click();
+ await page.getByRole('button',{name:/Crear pedido/}).click();
+ assert.equal(await page.locator('input[name=customerName]').evaluate(e=>e.validity.valueMissing),true);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ const response=await page.request.post('http://127.0.0.1:3000/api/orders',{data:{items:[{id:'fa-lam-120-1',quantity:-1}]}});
+ assert.equal(response.status(),400);
+ await page.screenshot({path:'/tmp/mai-checkout-audit.png',fullPage:true});
+ assert.deepEqual(errors,[]);
+ console.log('PASS product to persisted cart, quantity controls, checkout required fields, invalid server input, mobile width, no payments or emails sent.');
+}finally{await browser.close();}

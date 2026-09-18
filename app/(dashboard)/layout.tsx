@@ -1,6 +1,12 @@
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Mi cuenta | MAI Natural", robots: { index: false, follow: false }, alternates: { canonical: null } };
 import Link from "next/link";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+  if (!session?.user?.id) redirect("/login");
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
       <section className="rounded-2xl border bg-white p-4 shadow-sm">

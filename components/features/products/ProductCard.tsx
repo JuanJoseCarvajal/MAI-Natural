@@ -12,7 +12,7 @@ type ProductCardProps = { id: string; image: string; name: string; price: string
 export default function ProductCard({ id, image, name, price, amountInCents = 0, description, category, badge, stock }: ProductCardProps) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
   const unavailable = typeof stock === "number" && stock <= 0;
   function handleAdd() {

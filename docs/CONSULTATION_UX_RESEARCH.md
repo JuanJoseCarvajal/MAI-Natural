@@ -1,4 +1,4 @@
-# Encuentros con Nadia: estrategia y experiencia
+# Encuentros con Melina: estrategia y experiencia
 
 Investigación y propuesta del 17 de septiembre de 2026 para `/services`.
 
@@ -14,13 +14,13 @@ Se compararon modelos representativos; no es un censo de todos los servicios de 
 | [GOV.UK: estructura de formularios](https://www.gov.uk/service-manual/design/form-structure) | Preguntas divididas en pasos comprensibles | Cinco momentos, avance visible, volver y corregir sin perder respuestas |
 | [Baymard: pago](https://baymard.com/learn/payment-ux) | Claridad al revisar y terminar una operación | Resumen editable, precio visible y distinción entre solicitud, reporte de transferencia y confirmación |
 
-La [fuente oficial de EDIPO](https://edipo.org/edipo-net/) permite identificar el nombre José Luis Parise y su enseñanza. No demuestra formación, certificación ni afiliación de Nadia. La trayectoria de más de once años procede de la información aportada por la marca; no se inventan diplomas ni avales científicos.
+La [fuente oficial de EDIPO](https://edipo.org/edipo-net/) permite identificar el nombre José Luis Parise y su enseñanza. No demuestra formación, certificación ni afiliación de Melina. La trayectoria de más de once años procede de la información aportada por la marca; no se inventan diplomas ni avales científicos.
 
 ## Propuesta
 
 Invitación: «Tu cuidado empieza por escucharte». La persona elige un motivo, una intención, un momento, sus datos y revisa el encuentro. La respuesta al motivo reconoce su elección sin diagnosticar ni interpretar información íntima. Los detalles son opcionales; no se envían respuestas personales a analítica ni se guardan en almacenamiento del navegador.
 
-El encuentro ofrece escucha y una orientación inicial de cuidado cosmético. La mirada simbólica de Nadia se explica en una sección propia: iniciación, esoterismo, hermetismo, psicoanálisis y enseñanza de Parise. Se distingue de atención médica y psicoterapia, sin promesas de resultados ni atribuciones causales de enfermedades.
+El encuentro ofrece escucha y una orientación inicial de cuidado cosmético. La mirada simbólica de Melina se explica en una sección propia: iniciación, esoterismo, hermetismo, psicoanálisis y enseñanza de Parise. Se distingue de atención médica y psicoterapia, sin promesas de resultados ni atribuciones causales de enfermedades.
 
 La continuidad es el Círculo MAI: grupos quincenales, belleza, cosmética y autoformulación. El interés se solicita por separado, desmarcado por defecto; no inscribe ni cobra. No se activaron redes sociales.
 
@@ -28,7 +28,7 @@ La continuidad es el Círculo MAI: grupos quincenales, belleza, cosmética y aut
 
 - Se conserva la referencia existente del encuentro general: **30 minutos / $50.000 COP**. La marca debe confirmar duración y precio definitivo.
 - Modalidad y horario final se coordinan personalmente. La selección es una solicitud, no una cita confirmada.
-- Se conserva el límite existente de dos encuentros al día y los horarios existentes; no equivalen a una agenda externa de Nadia sincronizada.
+- Se conserva el límite existente de dos encuentros al día y los horarios existentes; no equivalen a una agenda externa de Melina sincronizada.
 - Suscripción, precio, apertura y condiciones del Círculo pendientes de definición. Se muestra «Próximamente».
 - Sin cuenta bancaria configurada no se muestran números ficticios ni un QR de pago.
 

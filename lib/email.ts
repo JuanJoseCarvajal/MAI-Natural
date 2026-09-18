@@ -17,10 +17,7 @@ export async function sendTransactionalEmail(input: SendEmailInput) {
   const { apiKey, from, replyTo } = getEmailConfig();
 
   if (!apiKey) {
-    console.warn("RESEND_API_KEY no configurada. Correo transaccional omitido.", {
-      to: input.to,
-      subject: input.subject,
-    });
+    console.warn("Correo transaccional no disponible: configuración pendiente.");
     return { sent: false, reason: "missing_api_key" as const };
   }
 

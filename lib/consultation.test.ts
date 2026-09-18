@@ -9,7 +9,7 @@ describe("consultation boundaries", () => {
   });
   it("releases cancelled and expired unpaid holds but keeps payments under review", () => {
     const now = Date.now();
-    const base = { date: "2026-10-01", time: "09:00", service: "Encuentro inicial con Nadia", createdAt: new Date(now - 86400001) };
+    const base = { date: "2026-10-01", time: "09:00", service: "Encuentro inicial con Melina", createdAt: new Date(now - 86400001) };
     expect(holdsAppointmentSlot({ ...base, status: "cancelled" }, now)).toBe(false);
     expect(holdsAppointmentSlot({ ...base, status: "pending_payment" }, now)).toBe(false);
     expect(holdsAppointmentSlot({ ...base, status: "payment_pending_verification" }, now)).toBe(true);

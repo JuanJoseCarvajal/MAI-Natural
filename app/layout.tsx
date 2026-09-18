@@ -9,7 +9,7 @@ import { buildMetadata, defaultSeoDescription, siteName, siteUrl } from "@/lib/s
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   ...buildMetadata({
-    title: `${siteName} | Cosmetica natural colombiana`,
+    title: `${siteName} | Cosmética natural colombiana`,
     description: defaultSeoDescription,
     path: "/",
   }),

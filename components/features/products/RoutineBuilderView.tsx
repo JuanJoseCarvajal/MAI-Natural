@@ -34,7 +34,7 @@ export default function RoutineBuilderView({ products }: { products: Product[] }
     openCart();
   }
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <header className={styles.hero}>
         <p className="eyebrow">EL ARTE DE CUIDARTE</p>
         <h1>Tu ritmo.<br /><em>Tu ritual.</em></h1>
@@ -69,6 +69,6 @@ export default function RoutineBuilderView({ products }: { products: Product[] }
         </div>
       </section>
       <section className={styles.banner}><p className="eyebrow">CUIDADO CON INTENCIÓN</p><h2>Una pausa que empieza contigo.</h2><p>Descubre nuestras asesorías si prefieres elegir con acompañamiento.</p><Link className="text-link" href="/services">Conocer las asesorías ↗</Link></section>
-    </main>
+    </div>
   );
 }

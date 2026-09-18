@@ -46,7 +46,7 @@ export default async function AccountOrdersPage() {
 
   const [orders, appointments] = await Promise.all([
     db.order.findMany({ where: { userId } }),
-    db.appointment.findMany({ where: { email } }),
+    db.appointment.findMany({ where: { userId } }),
   ]);
 
   const sortedOrders = [...orders].sort(

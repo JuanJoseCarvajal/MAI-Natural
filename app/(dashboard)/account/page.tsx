@@ -13,7 +13,7 @@ export default async function AccountPage() {
   }
 
   const [appointments, orders] = await Promise.all([
-    db.appointment.findMany({ where: { email } }),
+    db.appointment.findMany({ where: { userId } }),
     db.order.findMany({ where: { userId } }),
   ]);
 

@@ -86,33 +86,12 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Programas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="rounded-xl bg-gradient-to-br from-brand-900 to-brand-700 p-6 text-white shadow">
-          <p className="text-xs font-semibold tracking-wide text-brand-100">PROGRAMA DE SUSCRIPCION</p>
-          <h2 className="mt-2 text-2xl font-bold">Compra suscripción y ten descuentos</h2>
-          <p className="mt-3 text-sm text-brand-100">
-            Recibe tus productos favoritos de forma periódica con beneficios exclusivos y ahorro en cada entrega.
-          </p>
-          <button className="mt-5 rounded-full bg-white px-5 py-2 text-sm font-bold text-brand-900 hover:bg-brand-100">
-            Ver planes de suscripción
-          </button>
-        </div>
-
-        <div className="rounded-xl bg-white p-6 shadow ring-1 ring-brand-100">
-          <p className="text-xs font-semibold tracking-wide text-brand-700">PROGRAMA DE REFERIDOS</p>
-          <h2 className="mt-2 text-2xl font-bold text-brand-900">Vuélvete embajador MAI</h2>
-          <p className="mt-3 text-sm text-slate-700">
-            Comparte tu código y gana descuentos. Tú recibes beneficio y la persona referida también.
-          </p>
-          <div className="mt-4 rounded-lg bg-brand-50 px-4 py-3 text-sm text-brand-900 ring-1 ring-brand-100">
-            Código sugerido: <strong>MAI-USUARIO-10</strong>
-          </div>
-          <button className="mt-5 rounded-full border border-brand-300 px-5 py-2 text-sm font-bold text-brand-900 hover:bg-brand-50">
-            Activar mi código
-          </button>
-        </div>
-      </div>
+      <section className="rounded-xl bg-brand-900 p-8 text-white">
+        <p className="text-xs tracking-widest">CÍRCULO MAI · EN PREPARACIÓN</p>
+        <h2 className="mt-3 text-3xl">Tu cuidado puede abrir nuevas preguntas.</h2>
+        <p className="mt-4 text-sm leading-7">Estamos preparando un espacio de estudio quincenal con Melina. Las inscripciones aún no están abiertas; puedes conocer la propuesta o empezar por un encuentro individual.</p>
+        <Link href="/subscriptions" className="mt-5 inline-block rounded bg-white px-5 py-3 text-sm text-brand-900">Conocer el Círculo MAI →</Link>
+      </section>
 
       {/* Quick Actions */}
       <div className="rounded-lg bg-white p-6 shadow ring-1 ring-brand-100">

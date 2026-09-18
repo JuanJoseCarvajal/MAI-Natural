@@ -1,5 +1,5 @@
 export const initialConsultation = {
-  name: "Encuentro inicial con Nadia",
+  name: "Encuentro inicial con Melina",
   durationMinutes: 30,
   amountInCents: 5000000,
   priceLabel: "$50.000 COP",

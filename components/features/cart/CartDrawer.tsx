@@ -56,6 +56,8 @@ export default function CartDrawer() {
 
       {/* Drawer panel */}
       <aside
+        inert={!isOpen}
+        aria-hidden={!isOpen}
         role="dialog"
         aria-modal="true"
         aria-label="Carrito de compras"

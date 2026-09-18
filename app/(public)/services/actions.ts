@@ -13,10 +13,12 @@ export async function createAppointment(name: string, email: string, phone: stri
   if (appointmentInstant(input.date, input.time) <= Date.now()) return { error: 'La fecha y hora deben ser en el futuro' };
   if (!consultationSlots.includes(input.time.slice(0, 5)) || (input.time.length > 5 && !input.time.endsWith(':00'))) return { error: 'Selecciona uno de los horarios disponibles' };
   try {
+    const { auth } = await import("@/lib/auth");
+    const session = await auth();
     const appointment = await db.appointment.createIfAvailable({ data: {
       ...input,
       time: input.time.slice(0, 5),
-      userId: `guest:${randomUUID()}`,
+      userId: session?.user?.id || `guest:${randomUUID()}`,
       service: input.service || 'Consulta general',
       status: 'pending_payment',
     } });
@@ -58,7 +60,7 @@ export async function getUserAppointments(email: string) {
   const { auth } = await import('@/lib/auth');
   const session = await auth();
   if (!session?.user || (session.user.email !== email && (session.user as { role?: string }).role !== 'admin')) return { error: 'No autorizado' };
-  return { appointments: await db.appointment.findMany({ where: { email } }) };
+  return { appointments: await db.appointment.findMany({ where: (session.user as { role?: string }).role === "admin" ? { email } : { userId: session.user.id } }) };
 }
 
 export async function getAllAppointments() {
@@ -72,7 +74,7 @@ export async function cancelAppointment(appointmentId: string) {
   const { auth } = await import('@/lib/auth');
   const session = await auth();
   const appointment = await db.appointment.findUnique({ where: { id: appointmentId } });
-  if (!session?.user || !appointment || (session.user.email !== appointment.email && (session.user as { role?: string }).role !== 'admin')) return { error: 'No autorizado' };
+  if (!session?.user || !appointment || (session.user.id !== appointment.userId && (session.user as { role?: string }).role !== 'admin')) return { error: 'No autorizado' };
   await db.appointment.update({ where: { id: appointmentId }, data: { status: 'cancelled' } });
   return { success: true, message: 'Cita cancelada' };
 }

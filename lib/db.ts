@@ -2,12 +2,8 @@
 // Nota: Para producción, configurar Prisma adecuadamente
 // Ver: SETUP.md para instrucciones de Prisma + PostgreSQL
 
-import bcrypt from 'bcryptjs';
 import { randomUUID } from 'crypto';
 import { holdsAppointmentSlot, appointmentsOverlap } from './consultation';
-
-// Pre-hash de la contraseña del usuario demo
-const DEMO_PASSWORD_HASH = bcrypt.hashSync('password123', 10);
 
 export interface User {
   id: string;
@@ -45,6 +41,8 @@ export interface Appointment {
 }
 
 export interface Order {
+  wompiTransactionId?: string;
+  wompiStatus?: string;
   id: string;
   userId: string;
   customerName: string;
@@ -83,18 +81,6 @@ let isInitialized = false;
 function initializeDatabase() {
   if (isInitialized) return;
   
-  const demoUser: User = {
-    id: 'demo-user-1',
-    email: 'hola@mainatural.com',
-    name: 'Administracion MAI',
-    password: DEMO_PASSWORD_HASH,
-    phone: '+34 666 666 666',
-    role: 'admin',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-  users.set(demoUser.id, demoUser);
   isInitialized = true;
 }
 

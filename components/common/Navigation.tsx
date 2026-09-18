@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
-const links = [{href:"/products",label:"La tienda"},{href:"/routines",label:"Tu ritual"},{href:"/services",label:"Asesorías"},{href:"/blog",label:"Diario MAI"}];
+const links = [{href:"/products",label:"La tienda"},{href:"/routines",label:"Tu ritual"},{href:"/services",label:"Asesorías"},{href:"/blog",label:"Diario MAI"},{href:"/subscriptions",label:"Círculo MAI"}];
 export default function Navigation() {
   const pathname = usePathname();
   const {data:session} = useSession();

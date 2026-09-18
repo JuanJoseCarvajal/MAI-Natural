@@ -16,7 +16,9 @@ export async function GET(request: NextRequest) {
           return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
         }
       }
-      const userAppointments = await db.appointment.findMany({ where: { email } });
+      const role = (session?.user as { role?: string })?.role;
+      if (!session?.user?.id) return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+      const userAppointments = await db.appointment.findMany({ where: role === "admin" ? { email } : { userId: session.user.id } });
       return NextResponse.json({ appointments: userAppointments });
     }
 
@@ -34,7 +36,8 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== "object") return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
     const { createAppointment } = await import('@/app/(public)/services/actions');
     const result = await createAppointment(body.name, body.email, body.phone, body.date, body.time, body.service ?? '', body.notes ?? '');
     return NextResponse.json(result, { status: result.success ? 201 : 400 });
@@ -55,7 +58,6 @@ export async function DELETE(request: NextRequest) {
 
     const role = (session.user as { role?: string }).role;
     const sessionUserId = (session.user as { id?: string }).id;
-    const sessionEmail = session.user.email;
 
     const { searchParams } = new URL(request.url);
     const appointmentId = searchParams.get('id');
@@ -75,8 +77,7 @@ export async function DELETE(request: NextRequest) {
 
     const canManageAppointment =
       role === 'admin' ||
-      (sessionUserId && appointment.userId === sessionUserId) ||
-      (sessionEmail && appointment.email === sessionEmail);
+      (sessionUserId && appointment.userId === sessionUserId);
 
     if (!canManageAppointment) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 403 });

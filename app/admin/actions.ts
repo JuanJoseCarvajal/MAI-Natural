@@ -28,6 +28,7 @@ async function ensureAdmin() {
 
 export async function isUserAdmin(email: string) {
   try {
+    await ensureAdmin();
     const user = await db.user.findUnique({ where: { email } });
     return user?.role === 'admin';
   } catch (error) {
@@ -59,7 +60,7 @@ export async function getAllUsers() {
   try {
     await ensureAdmin();
     const users = await db.user.findMany();
-    return { users };
+    return { users: users.map(({ password, ...user }) => user) };
   } catch (error) {
     return { error: 'Error al obtener usuarios', users: [] };
   }

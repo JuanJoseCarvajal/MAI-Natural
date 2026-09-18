@@ -7,16 +7,16 @@ import { buildMetadata } from "@/lib/seo";
 export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Blog de cosmetica natural y rutinas | MAI Natural",
+  title: "Diario MAI: cosmética natural y rutinas | MAI Natural",
   description:
-    "Guias de cosmetica natural, cuidado facial, cuidado capilar y regalos conscientes para elegir mejor tu rutina MAI.",
+    "Guías de cosmética natural, cuidado facial, cuidado capilar y regalos conscientes para elegir mejor tu rutina MAI.",
   path: "/blog",
 });
 
 export default function BlogPage() {
   const blogPosts = getPublishedBlogPosts();
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-12 md:px-6">
+    <div className="mx-auto w-full max-w-6xl px-4 py-12 md:px-6">
       <section className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
           DIARIO MAI · UNA NUEVA HISTORIA CADA QUINCE DÍAS
@@ -64,6 +64,6 @@ export default function BlogPage() {
           </article>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

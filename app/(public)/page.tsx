@@ -1,3 +1,4 @@
+import { absoluteUrl, serializeJsonLd } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/features/products/ProductCard";
@@ -21,6 +22,10 @@ export default async function PublicHomePage() {
   const featuredProducts = ["fa-lam-120-1", "fa-ass-30", "mnk-001", "balsamo-jardin-herbal"].map(id => products.find(p => p.id === id)).filter((p): p is typeof products[number] => Boolean(p));
   return (
     <div className="home-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd({ "@context": "https://schema.org", "@graph": [
+        { "@type": "Organization", "@id": absoluteUrl("/#organization"), name: "MAI Natural", url: absoluteUrl("/"), logo: absoluteUrl("/ima/MAI-Logo.svg") },
+        { "@type": "WebSite", "@id": absoluteUrl("/#website"), name: "MAI Natural", url: absoluteUrl("/"), inLanguage: "es-CO", publisher: { "@id": absoluteUrl("/#organization") } }
+      ] }) }} />
       <section className="botanical-hero">
         <div className="hero-copy">
           <p className="eyebrow"><span className="tiny-leaf">✳</span> COSMÉTICA NATURAL COLOMBIANA</p>

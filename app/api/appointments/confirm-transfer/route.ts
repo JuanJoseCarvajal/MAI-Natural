@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 
 export async function POST(request: NextRequest) {
   try {
-    const parsed = z.object({ appointmentId: z.string().uuid(), transferReference: z.string().trim().min(4).max(100) }).safeParse(await request.json());
+    const parsed = z.object({ appointmentId: z.string().uuid(), transferReference: z.string().trim().min(4).max(100) }).safeParse(await request.json().catch(() => null));
     if (!parsed.success) return NextResponse.json({ error: "Revisa la referencia de la solicitud y del comprobante" }, { status: 400 });
     const body = parsed.data;
 

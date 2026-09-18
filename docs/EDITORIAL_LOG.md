@@ -30,3 +30,10 @@ Registrar cada futura acción con fecha real, campaña, pieza, estado y URL veri
 - Vista móvil de 390 px sin desbordamiento horizontal, controles accesibles y movimiento reducido respetado. El botón flotante de WhatsApp se oculta mientras la portada está visible en móvil para no taparlos.
 - Primera guía accesible y enlazada a sus productos. Entrega futura devuelve 404 y no aparece en sitemap.
 - Sin errores de ejecución en el navegador durante el recorrido comprobado.
+
+## Revisión del calendario — 18 septiembre 2026
+
+- Fecha de referencia del heartbeat: 18 septiembre, 09:06 America/Bogota. Comprobación ejecutada localmente el mismo día; no constituye verificación HTTP de producción.
+- Leídos estrategia, registro y las seis campañas del JSON. No corresponde una nueva entrega: continúa vigente `mai-ritual-01-rosas`; la siguiente es `mai-ritual-02-jardin`, el 1 de octubre a las 09:00 de Colombia.
+- Ejecutado `pnpm exec vitest run lib/editorial.test.ts`: cinco pruebas aprobadas sobre fechas, orden del carrusel, exclusión de productos no disponibles, cadencia y referencias de productos/imágenes.
+- No se modificaron fechas ni contenidos, no se desplegó y no se publicaron redes sociales. No se comprobó disponibilidad pública en esta revisión sin nueva entrega.

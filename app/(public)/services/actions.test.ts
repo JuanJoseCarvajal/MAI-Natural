@@ -1,6 +1,8 @@
-import { beforeEach, describe, it, expect } from "vitest";
+import { beforeEach, describe, it, expect, vi } from "vitest";
 import { db } from "@/lib/db";
 import { createAppointment, getDayAvailability } from "./actions";
+
+vi.mock("@/lib/auth", () => ({ auth: vi.fn(async () => null) }));
 
 async function clearAppointments() {
   const all = await db.appointment.findMany();

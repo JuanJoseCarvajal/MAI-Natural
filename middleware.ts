@@ -25,7 +25,7 @@ export default auth((request) => {
   );
 
   if (isProtectedRoute) {
-    if (!request.auth) {
+    if (!request.auth?.user?.id) {
       const loginUrl = new URL('/login', request.url);
       loginUrl.searchParams.set(
         'callbackUrl',

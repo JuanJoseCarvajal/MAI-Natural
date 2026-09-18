@@ -1,20 +1,11 @@
 import { NextResponse } from "next/server";
 
-// Stub endpoint — integrate with Wompi recurring charges when ready
-export async function POST(request: Request) {
-  const body = (await request.json()) as {
-    plan?: string;
-    name?: string;
-    email?: string;
-    billing?: string;
-  };
-
-  if (!body.plan || !body.email || !body.name) {
-    return NextResponse.json({ error: "Datos incompletos" }, { status: 400 });
-  }
-
-  // TODO: create Wompi recurring charge
-  // await createSubscription({ plan: body.plan, email: body.email, billing: body.billing });
-
-  return NextResponse.json({ ok: true });
+// Fail closed: no enrollment until verified payments and persistent memberships exist.
+// Do not read or retain personal data while enrollment is unavailable.
+export async function POST() {
+  return NextResponse.json({
+    ok: false,
+    code: "ENROLLMENT_CLOSED",
+    error: "Las inscripciones al Círculo MAI aún no están abiertas. Puedes conocer la propuesta en /subscriptions.",
+  }, { status: 403, headers: { "Cache-Control": "no-store" } });
 }
