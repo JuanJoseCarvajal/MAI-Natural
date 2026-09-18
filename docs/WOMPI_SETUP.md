@@ -39,7 +39,7 @@ Pruebas automatizadas con fixtures, sin llamar al proveedor ni usar tarjetas: ac
 
 ## Requisitos pendientes para producción
 
-Pedidos y estados de pago siguen en memoria. Antes de habilitar dinero real: adaptar almacenamiento persistente y transaccional, definir envío/total aceptado, control de inventario, reconciliación e idempotencia durable, política de reintentos y devoluciones, avisos al equipo, credenciales de producción y prueba extremo a extremo del webhook en HTTPS. La integración no habilita suscripciones ni cobros de asesorías: corresponde a pedidos de productos.
+Pedidos y estados de pago siguen en memoria. Antes de habilitar dinero real: adaptar almacenamiento persistente y transaccional, definir envío/total aceptado, control de inventario, reconciliación e idempotencia durable, política de reintentos y devoluciones, avisos al equipo, credenciales de producción y prueba extremo a extremo del webhook en HTTPS. La integración permite simulaciones de pedidos y asesorías iniciales; no habilita suscripciones ni cobros reales.
 
 Fuentes oficiales consultadas:
 - https://docs.wompi.co/docs/colombia/widget-checkout-web/
@@ -49,3 +49,7 @@ Fuentes oficiales consultadas:
 ## Integración en main
 
 Verificación local del 18 de septiembre: 54 pruebas automatizadas aprobadas. `.env.local` se retira del seguimiento de Git y se conserva únicamente en el equipo; cada despliegue requiere variables privadas propias. Retirarlo no borra versiones anteriores del historial: revisar y rotar credenciales que hayan estado presentes en commits anteriores antes de producción.
+
+## Asesorías
+
+La solicitud ofrece transferencia y Wompi sandbox cuando está configurado. La API de asesorías toma los $50.000 COP del servidor, exige solicitud inicial pendiente dentro de 24 horas y usa referencia estable `mai-appointment-<id>`. El retorno `/services/payment` compara referencia e importe con el proveedor. El webhook guarda el estado de prueba sin confirmar la cita; aprobaciones repetidas son idempotentes. Verificación de esta sesión: comercio sandbox HTTP 200; producción `/api/payments/wompi/status` HTTP 200 con `available:false`. Faltan variables privadas en Hostinger y prueba extremo a extremo para verificar la integración allí.

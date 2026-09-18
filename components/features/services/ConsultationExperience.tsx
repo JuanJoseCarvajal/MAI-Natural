@@ -1,5 +1,6 @@
 "use client";
 
+import WompiPaymentButton from "@/components/features/payments/WompiPaymentButton";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -44,6 +45,8 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
   const submittingRef = useRef(false);
   const topic = consultationTopics.find(option => option.id === form.topic);
   const intention = consultationIntentions.find(option => option.id === form.intention);
+  const [wompiAvailable, setWompiAvailable] = useState(false);
+  useEffect(() => { let active = true; fetch("/api/payments/wompi/status").then(r => r.json()).then(data => { if (active) setWompiAvailable(data.available === true); }).catch(() => {}); return () => { active = false; }; }, []);
   const hasBank = Boolean(bank.accountNumber && bank.accountHolder);
 
   useEffect(() => {
@@ -179,6 +182,8 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
           <p>Gracias, {form.name.split(" ")[0]}. Recibimos tu solicitud para el {dateLabel(form.date)} a las {form.time}, hora de Colombia.</p>
           <div className={styles.note}><strong>Pendiente de confirmación y pago</strong><p>El equipo revisará tu solicitud y coordinará contigo los detalles del encuentro. Aún no es una cita confirmada.</p></div>
           <p className={styles.reference}>Tu referencia: <code>{reservation.id}</code></p>
+          <p className={styles.helper}>Transferencia Bancolombia: validación por el equipo. Wompi: simulación de pruebas, sin cobros reales ni confirmación de cita.</p>
+          {wompiAvailable ? <WompiPaymentButton appointmentId={reservation.id} /> : <p className={styles.helper}>Wompi no está habilitado en este momento. Coordina tu pago por transferencia con el equipo.</p>}
           {hasBank ? <details className={styles.payment}><summary>Ver instrucciones de pago · {initialConsultation.priceLabel}</summary><p>Transferencia a {bank.bankName}. Conserva tu comprobante; reportar una referencia no confirma el pago.</p><dl><dt>Tipo de cuenta</dt><dd>{bank.accountType}</dd><dt>Cuenta</dt><dd>{bank.accountNumber}</dd><dt>Titular</dt><dd>{bank.accountHolder}</dd></dl><p>La referencia se puede reportar durante las 24 horas posteriores a la solicitud.</p><label htmlFor="transfer-reference">Referencia del comprobante</label><input id="transfer-reference" value={transferReference} onChange={event => setTransferReference(event.target.value)} maxLength={100} disabled={reported} /><button type="button" className={styles.primary} disabled={reporting || reported} onClick={reportTransfer}>{reported ? "Referencia recibida" : reporting ? "Enviando…" : "Reportar transferencia"}</button><p role="status">{paymentMessage}</p></details> : <p className={styles.helper}>Consulta con el equipo las instrucciones de pago y la modalidad antes de transferir.</p>}
           <a className={styles.primary} href={`mailto:info@mainatural.com?subject=${encodeURIComponent(`Mi encuentro MAI · ${reservation.id}`)}`}>Consultar mi solicitud <span aria-hidden="true">↗</span></a>
           <p className={styles.helper}>Conserva tu referencia. Puedes escribir a info@mainatural.com para resolver dudas o solicitar un cambio.</p>

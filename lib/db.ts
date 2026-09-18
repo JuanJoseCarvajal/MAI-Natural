@@ -26,6 +26,8 @@ export interface PasswordResetToken {
 }
 
 export interface Appointment {
+  wompiTransactionId?: string;
+  wompiStatus?: string;
   id: string;
   userId: string;
   name: string;

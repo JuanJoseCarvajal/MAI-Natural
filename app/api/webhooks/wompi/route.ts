@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { initialConsultation } from "@/lib/consultation";
 import { db } from "@/lib/db";
 import { fetchWompiTransaction, getWompiConfiguration, verifyWompiEvent } from "@/lib/wompi-server";
 
@@ -14,6 +15,13 @@ export async function POST(request: NextRequest) {
   try {
     // Re-query Wompi: never trust unsigned fields or stale/replayed payload status.
     const transaction = await fetchWompiTransaction(event.data.transaction.id);
+    if (transaction.reference.startsWith("mai-appointment-")) {
+      const appointment = await db.appointment.findUnique({ where: { id: transaction.reference.slice("mai-appointment-".length) } });
+      if (!appointment || appointment.service !== initialConsultation.name || transaction.amount_in_cents !== initialConsultation.amountInCents) return NextResponse.json({ error: "El pago no coincide con la asesoría" }, { status: 409 });
+      if (appointment.wompiTransactionId && appointment.wompiTransactionId !== transaction.id) return NextResponse.json({ error: "Otra transacción ya está asociada" }, { status: 409 });
+      if (appointment.wompiStatus !== "APPROVED") await db.appointment.update({ where: { id: appointment.id }, data: { wompiTransactionId: transaction.id, wompiStatus: transaction.status } });
+      return NextResponse.json({ received: true, sandbox: true });
+    }
     const orderId = transaction.reference.replace(/^mai-/, "");
     const order = await db.order.findUnique({ where: { id: orderId } });
     if (!order) return NextResponse.json({ error: "Pedido no encontrado" }, { status: 404 });
