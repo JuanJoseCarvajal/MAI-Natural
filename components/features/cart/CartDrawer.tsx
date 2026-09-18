@@ -176,7 +176,7 @@ export default function CartDrawer() {
               Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa.
             </p>
             <p className="text-xs text-brand-800">
-              Metodo de pago unico: <strong>Consignacion Bancolombia</strong>.
+              <strong>Transferencia Bancolombia</strong> para tu compra. <strong>Wompi</strong> está en fase de pruebas y no realiza cobros reales. Consulta las opciones disponibles al continuar.
             </p>
             <Link
               href="/checkout"

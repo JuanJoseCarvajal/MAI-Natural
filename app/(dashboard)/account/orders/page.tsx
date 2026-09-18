@@ -102,7 +102,7 @@ export default async function AccountOrdersPage() {
                         Total: <strong>{formatCOP(order.total)}</strong>
                       </p>
                       <p className="mt-1 text-sm text-slate-600">
-                        Pago: <strong>Consignacion Bancolombia</strong>
+                        Pago: <strong>{order.paymentMethod === "wompi_sandbox" ? "Wompi · simulación sin cobro real" : order.paymentMethod === "bank_transfer_bancolombia" ? "Transferencia Bancolombia" : "Por confirmar con el equipo"}</strong>
                       </p>
                       {order.trackingNumber ? (
                         <p className="mt-1 text-sm text-slate-600">

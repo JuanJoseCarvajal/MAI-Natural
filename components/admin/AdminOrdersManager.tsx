@@ -155,8 +155,8 @@ export default function AdminOrdersManager({
                       {formatCOP(order.total)}
                       <p className="mt-1 text-xs font-normal text-slate-500">
                         {order.paymentMethod === "bank_transfer_bancolombia"
-                          ? "Consignacion Bancolombia"
-                          : order.paymentMethod ?? "Sin definir"}
+                          ? "Transferencia Bancolombia"
+                          : order.paymentMethod === "wompi_sandbox" ? "Wompi · prueba, no despachar" : order.paymentMethod ?? "Sin definir"}
                       </p>
                     </td>
                     <td className="px-6 py-4">
