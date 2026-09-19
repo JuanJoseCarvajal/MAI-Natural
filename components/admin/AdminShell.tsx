@@ -1,5 +1,6 @@
 "use client";
 
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -97,7 +98,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           </nav>
         </div>
 
-        <main id="admin-content" tabIndex={-1} className="mx-auto max-w-7xl p-4 md:p-8">{children}</main>
+        <main id="admin-content" tabIndex={-1} className="mx-auto max-w-7xl p-4 md:p-8"><Breadcrumbs />{children}</main>
       </div>
     </div>
   );

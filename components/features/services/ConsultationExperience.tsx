@@ -163,7 +163,6 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
   }
 
   return <div className={styles.page}>
-    <div className={styles.breadcrumb}><Link href="/">MAI Natural</Link><span aria-hidden="true">/</span><span>Encuentros con Melina</span></div>
     <section className={styles.experience}>
       <div className={styles.invitation}>
         <p className="eyebrow">ASESORÍAS · UN ESPACIO PARA TI</p>

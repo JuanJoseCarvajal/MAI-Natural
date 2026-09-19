@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,9 +64,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }}
       />
-      <Link href="/blog" className="text-sm font-semibold text-brand-700 hover:underline">
-        Volver al Diario MAI
-      </Link>
+      <Breadcrumbs items={[{ label: "Diario MAI", href: "/blog" }, { label: post.title }]} />
 
       <article className="mt-6">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">

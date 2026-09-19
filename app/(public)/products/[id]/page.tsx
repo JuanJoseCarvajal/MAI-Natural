@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -26,7 +27,7 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
   ]};
   return <div className={styles.detail}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(structuredData)}} />
-    <nav className={styles.breadcrumb} aria-label="Ruta de navegación"><Link href="/">Inicio</Link><span>/</span><Link href="/products">Tienda</Link><span>/</span><span aria-current="page">{product.name}</span></nav>
+    <Breadcrumbs items={[{ label: "Tienda", href: "/products" }, { label: product.name }]} />
     <div className={styles.detailGrid}>
       <ImageFrame src={product.image} alt={product.name} loading="eager" fit="contain" frameClassName={styles.detailImage} sizes="(max-width: 640px) 90vw, 48vw" />
       <div className={styles.detailInfo}><p className={styles.eyebrow}>{categoryLabels[product.category]}</p><h1>{product.name}</h1><p className={styles.detailPrice}>{product.price}<span>COP</span></p><p className={styles.priceNote}>Envío calculado antes de confirmar tu pedido.</p><p className={styles.detailDescription}>{product.description}</p>

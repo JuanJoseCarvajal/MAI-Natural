@@ -20,7 +20,6 @@ export default function ProductsCatalogView({ products }: { products: Product[] 
   const toggle = (key: string) => setCategories(current => current.includes(key) ? current.filter(c => c !== key) : [...current,key]);
   const reset = () => { setCategories([]); setQuery(""); setBudget("all"); };
   return <div className={styles.catalog}>
-    <nav className={styles.breadcrumb} aria-label="Ruta de navegación"><Link href="/">Inicio</Link><span>/</span><span>Tienda</span></nav>
     <header className={styles.catalogHeader}><div><p className={styles.eyebrow}>EL PODER DE LO SIMPLE</p><h1>Tu naturaleza.<br /><em>Tu ritual.</em></h1></div><div><p>Cuidado facial, capilar y corporal para encontrar ese momento que es solo tuyo.</p><Link href="/routines">Encuentra tu rutina <span aria-hidden="true">↗</span></Link></div></header>
     <section className={styles.filters} aria-label="Filtrar productos">
       <div className={styles.categoryFilters}><button onClick={() => setCategories([])} aria-pressed={!categories.length}>Todo el cuidado <span>{products.length}</span></button>{Object.entries(categoryLabels).map(([key,label]) => <button key={key} onClick={() => toggle(key)} aria-pressed={categories.includes(key)}>{label.replace("Cosmética Natural ", "")} <span>{products.filter(p => p.category === key).length}</span></button>)}</div>
