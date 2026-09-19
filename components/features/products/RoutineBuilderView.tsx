@@ -1,74 +1,51 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/components/features/cart/CartContext";
-import { trackAddToCart } from "@/lib/analytics";
+import { trackAddToCart, trackEvent } from "@/lib/analytics";
 import type { Product } from "@/lib/products";
-import styles from "@/styles/editorial.module.css";
-
-const profiles = [
-  { id: "capilar", label: "Tu ritual capilar", description: "Tres productos para acompañar el lavado y el peinado.", steps: ["Limpieza", "Acondicionamiento", "Peinado"], productIds: ["mnk-001", "balsamo-jardin-herbal", "ca-hcc-500"] },
-  { id: "facial", label: "Tu ritual facial", description: "Una selección para descubrir el cuidado del rostro, paso a paso.", steps: ["Limpieza", "Tónico", "Suero"], productIds: ["fa-lam-120", "fa-rpt-70", "fa-ass-30"] },
-  { id: "corporal", label: "Un momento para ti", description: "Dos opciones de jabón para alternar y un perfume para tu cabello.", steps: ["Jabón corporal", "Otra opción de jabón", "Aroma capilar"], productIds: ["co-js-110-1", "co-js-67", "el-perfume-perfume-capilar"] },
-];
-const formatPrice = (cents: number) => new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(cents / 100);
-
+import { baseRituals, canAddSelection, canSelectProduct, selectionTotal } from "@/lib/rituals";
+import styles from "./rituals.module.css";
+const money = (cents: number) => new Intl.NumberFormat("es-CO", {style:"currency",currency:"COP",maximumFractionDigits:0}).format(cents / 100);
+const categories = [{id:"all",label:"Todo"},{id:"facial",label:"Rostro"},{id:"capilar",label:"Cabello"},{id:"corporal",label:"Cuerpo"}];
 export default function RoutineBuilderView({ products }: { products: Product[] }) {
-  const { addItem, openCart } = useCart();
-  const [selectedId, setSelectedId] = useState(profiles[0].id);
-  const selected = profiles.find((profile) => profile.id === selectedId) ?? profiles[0];
-  const selection = selected.productIds.map((id) => products.find((product) => product.id === id));
-  const available = selection.every((product) => product && product.active !== false && typeof product.stock === "number" && product.stock > 0);
-  const total = selection.reduce((sum, product) => sum + (product?.amountInCents ?? 0), 0);
-  const complete = selection.every(Boolean);
-  const whatsapp = `https://wa.me/573246847727?text=${encodeURIComponent(`Hola MAI, quiero orientación sobre ${selected.label.toLowerCase()}.`)}`;
-  function addRoutine() {
-    if (!available) return;
-    selection.forEach((product) => {
-      if (!product) return;
-      addItem({ id: product.id, name: product.name, price: product.price, amountInCents: product.amountInCents, image: product.image });
-      trackAddToCart({ item_id: product.id, item_name: product.name, price: product.amountInCents / 100, quantity: 1 });
-    });
-    openCart();
-  }
-  return (
-    <div className={styles.page}>
-      <header className={styles.hero}>
-        <p className="eyebrow">EL ARTE DE CUIDARTE</p>
-        <h1>Tu ritmo.<br /><em>Tu ritual.</em></h1>
-        <p>No necesitas empezar con todo. Encuentra una selección de productos para hacer del cuidado un momento tuyo.</p>
-        <Link href="/products" className="text-link">Explorar todos los productos ↗</Link>
-      </header>
-      <section className={styles.routineLayout} aria-label="Elige tu rutina">
-        <fieldset className={styles.selector}>
-          <legend className="eyebrow">01 / ELIGE TU MOMENTO</legend>
-          {profiles.map((profile, index) => (
-            <label key={profile.id} className={`${styles.option} ${selectedId === profile.id ? styles.selected : ""}`}>
-              <input type="radio" name="routine" value={profile.id} checked={selectedId === profile.id} onChange={() => setSelectedId(profile.id)} />
-              <span><small>0{index + 1}</small><strong>{profile.label}</strong><span>{profile.description}</span></span>
-            </label>
-          ))}
-          <p className={styles.note}>Consulta el modo de uso de cada producto. Si necesitas ayuda para elegir, estamos cerca.</p>
-          <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="text-link">Recibir orientación por WhatsApp ↗</a>
-        </fieldset>
-        <div className={styles.routineResult}>
-          <div aria-live="polite"><p className="eyebrow">02 / TU SELECCIÓN</p><h2>{selected.label}</h2></div>
-          <ol className={styles.steps}>
-            {selection.map((product, index) => (
-              <li key={selected.productIds[index]}>
-                <div className={styles.stepImage}>{product ? <Image src={product.image} alt={product.name} fill sizes="(min-width: 900px) 220px, 40vw" className="object-contain p-5" /> : <span>Producto no disponible</span>}</div>
-                <p className="eyebrow">0{index + 1} / {selected.steps[index]}</p>
-                {product ? <><Link href={`/products/${product.id}`} className={styles.productName}>{product.name}</Link><p>{product.price} <small>COP</small></p></> : <p>Por ahora no disponible</p>}
-              </li>
-            ))}
-          </ol>
-          <div className={styles.totalRow}><div><span>Subtotal de la selección</span><strong>{complete ? `${formatPrice(total)} COP` : "Selección incompleta"}</strong><small>Envío calculado al finalizar la compra.</small></div><button type="button" className="mai-button" disabled={!available} onClick={addRoutine}>Agregar los 3 productos ↗</button></div>
-          {!available ? <p className={styles.note} role="status">Necesitamos confirmar disponibilidad de esta selección. Escríbenos para ayudarte a elegir.</p> : null}
-        </div>
-      </section>
-      <section className={styles.banner}><p className="eyebrow">CUIDADO CON INTENCIÓN</p><h2>Una pausa que empieza contigo.</h2><p>Descubre nuestras asesorías si prefieres elegir con acompañamiento.</p><Link className="text-link" href="/services">Conocer las asesorías ↗</Link></section>
-    </div>
-  );
+ const {items,addItem,openCart}=useCart();
+ const [mode,setMode]=useState("facial");
+ const [chosen,setChosen]=useState<string[]>([]);
+ const [category,setCategory]=useState("all");
+ const [name,setName]=useState("");
+ const [message,setMessage]=useState("");
+ const [added,setAdded]=useState(false);
+ const lock=useRef(false);
+ const result=useRef<HTMLDivElement>(null);
+ const custom=mode==="custom";
+ const profile=baseRituals.find(p=>p.id===mode) ?? baseRituals[0];
+ const kit=products.find(p=>p.id===profile.kitId);
+ const catalog=products.filter(p=>p.category!=="kits" && p.active!==false && p.amountInCents>0);
+ const selection=(custom?chosen:profile.productIds).map(id=>products.find(p=>p.id===id)).filter((p):p is Product=>Boolean(p));
+ const purchase=custom?selection:kit?[kit]:[];
+ const available=canAddSelection(purchase,items) && (custom ? chosen.length===selection.length : selection.length===profile.productIds.length);
+ const total=selectionTotal(purchase);
+ const title=custom?(name.trim() || "Mi ritual MAI"):profile.label;
+ useEffect(()=>{try{const raw=JSON.parse(sessionStorage.getItem("mai-custom-ritual")||"null");if(raw&&Array.isArray(raw.ids)){setChosen([...new Set<string>(raw.ids.filter((id:unknown)=>typeof id==="string"&&products.some(p=>p.id===id&&p.category!=="kits"&&p.active!==false)))].slice(0,6));setName(typeof raw.name==="string"?raw.name.slice(0,60):"");}}catch{/* An unavailable draft must not block choosing products. */}},[products]); // Revalidate a saved selection against the current catalog.
+ function remember(ids:string[],label=name){try{sessionStorage.setItem("mai-custom-ritual",JSON.stringify({ids,name:label}));}catch{}}
+ function choose(next:string){setMode(next);setAdded(false);lock.current=false;setMessage("");trackEvent("ritual_path_selected",{ritual_type:next});requestAnimationFrame(()=>result.current?.focus());}
+ function customize(){const ids=[...profile.productIds];setChosen(ids);remember(ids);choose("custom");trackEvent("ritual_customize",{base:profile.id});}
+ function toggle(product:Product){setAdded(false);lock.current=false;let next:string[];if(chosen.includes(product.id))next=chosen.filter(id=>id!==product.id);else{if(chosen.length>=6){setMessage("Tu selección tiene 6 productos. Quita uno para elegir otro.");return;}next=[...chosen,product.id];}setChosen(next);remember(next);setMessage(chosen.includes(product.id)?`${product.name} retirado de tu selección.`:`${product.name} añadido a tu selección.`);}
+ function add(){if(!available||lock.current)return;lock.current=true;purchase.forEach(p=>{addItem({id:p.id,name:p.name,price:p.price,amountInCents:p.amountInCents,image:p.image});trackAddToCart({item_id:p.id,item_name:p.name,price:p.amountInCents/100,quantity:1});});setAdded(true);setMessage("Tu selección está en la bolsa. Puedes revisar las cantidades antes de continuar.");trackEvent("ritual_added_to_cart",{ritual_type:mode,product_count:purchase.length,value:total/100,currency:"COP"});openCart();}
+ const whatsapp=`https://wa.me/573246847727?text=${encodeURIComponent(`Hola MAI, quiero orientación sobre ${title}. Mi selección: ${selection.map(p=>p.name).join("; ") || "aún por definir"}. ${purchase.length?`Subtotal de referencia: ${money(total)} COP. `:""}Quiero confirmar disponibilidad y cómo elegir los productos.`)}`;
+ return <div className={styles.page}>
+  <header className={styles.hero}><div><p className={styles.eyebrow}>TU RITUAL MAI</p><h1>El cuidado empieza<br/>por <em>elegirte.</em></h1><p>Dos rituales para empezar. Una selección que puedes hacer tuya. Elige lo que tiene sentido para tu momento, sin llevarte más de lo que necesitas.</p><a href="#elige-tu-ritual" className={styles.textLink}>Encuentra tu punto de partida ↓</a></div><div className={styles.heroNote}><span aria-hidden="true">01 — 02 — tú</span><p>Un gesto.<br/>Un momento.<br/><em>Tu manera de cuidarte.</em></p><small>Cosmética natural · Hecha en Colombia</small></div></header>
+  <section id="elige-tu-ritual" className={styles.paths} aria-labelledby="ritual-path-title"><div className={styles.sectionHead}><p className={styles.eyebrow}>01 / TU PUNTO DE PARTIDA</p><h2 id="ritual-path-title">¿Por dónde quieres empezar?</h2><p>Elige una base o combina productos a tu manera.</p></div>
+  <div className={styles.pathGrid}>{baseRituals.map((p,index)=>{const bundle=products.find(x=>x.id===p.kitId);return <button type="button" key={p.id} aria-pressed={mode===p.id} aria-controls="ritual-selection" onClick={()=>choose(p.id)} className={`${styles.path} ${mode===p.id?styles.active:""}`}><div className={styles.pathImage}>{bundle&&<Image src={bundle.image} alt="" fill sizes="(max-width:700px) 85vw, 30vw" className="object-contain p-5"/>}<span>0{index+1} / {p.label}</span></div><div className={styles.pathText}><h3>{p.title}</h3><p>{p.description}</p><strong>{bundle?`${money(bundle.amountInCents)} COP · kit de 3 productos`:"Consultar disponibilidad"}</strong><span>{mode===p.id?"Estás explorando este ritual ✓":"Explorar ritual ↗"}</span></div></button>;})}
+  <button type="button" aria-pressed={custom} aria-controls="ritual-selection" onClick={()=>choose("custom")} className={`${styles.customPath} ${custom?styles.active:""}`}><span className={styles.eyebrow}>03 / A TU MANERA</span><span className={styles.customMark} aria-hidden="true">+</span><h3>Crea el tuyo.</h3><p>Rostro, cabello y cuerpo. Agrupa hasta 6 productos en una selección propia, con el precio siempre a la vista.</p><strong>Eliges tú · pagas lo que sumas</strong><span>{custom?"Estás creando tu ritual ✓":"Armar mi selección ↗"}</span></button></div></section>
+  <section id="ritual-selection" className={styles.builder} aria-labelledby="selection-title"><div ref={result} tabIndex={-1} className={styles.sectionHead}><p className={styles.eyebrow}>02 / {custom?"HAZLO TUYO":"CONOCE TU RITUAL"}</p><h2 id="selection-title">{custom?"Tu cuidado, a tu manera.":profile.label}</h2><p>{custom?"Puedes comenzar desde cero o adaptar una de las bases. Selecciona una unidad de cada producto; podrás ajustar cantidades en la bolsa.":profile.note}</p></div>
+  <div className={styles.builderGrid}><div>
+  {!custom?<><ol className={styles.steps}>{profile.productIds.map((id,index)=>{const product=products.find(p=>p.id===id);return <li key={id}><div className={styles.stepImage}>{product?<Image src={product.image} alt={product.name} fill sizes="(max-width:700px) 28vw, 220px" className="object-contain p-4"/>:<span>Por confirmar</span>}</div><p className={styles.eyebrow}>0{index+1} / {profile.steps[index]}</p>{product?<h3><Link href={`/products/${id}`}>{product.name}</Link></h3>:<p>Producto no disponible</p>}</li>})}</ol><div className={styles.adapt}><h3>¿Cambiarías algo?</h3><p>Usa estos productos como punto de partida y agrega o quita lo que prefieras. Al personalizar se aplican los precios individuales, no el precio del kit.</p><button type="button" onClick={customize} className={styles.secondary}>Adaptar este ritual ↗</button></div></>:<><label className={styles.nameField}>Dale un nombre (opcional)<input maxLength={60} value={name} placeholder="Mi pausa de los domingos" onChange={e=>{setName(e.target.value);remember(chosen,e.target.value)}}/><small>El nombre acompaña tu consulta de orientación; no solicita un empaque especial.</small></label><fieldset className={styles.filters}><legend>Explora por cuidado</legend>{categories.map(c=><label key={c.id}><input type="radio" name="ritual-category" checked={category===c.id} onChange={()=>setCategory(c.id)}/><span>{c.label}</span></label>)}</fieldset><div className={styles.productGrid}>{catalog.filter(p=>category==="all"||p.category===category).map(p=>{const picked=chosen.includes(p.id);const disabled=!picked&&(!canAddSelection([p],items)||chosen.length>=6);return <article key={p.id} className={picked?styles.picked:styles.product}><div className={styles.productImage}><Image src={p.image} alt="" fill sizes="(max-width:700px) 40vw, 220px" className="object-contain p-4"/></div><h3><Link href={`/products/${p.id}`}>{p.name}</Link></h3><p>{money(p.amountInCents)} COP</p><button type="button" aria-pressed={picked} disabled={disabled} aria-label={`${picked?"Quitar":"Elegir"} ${p.name}`} onClick={()=>toggle(p)}>{picked?"Elegido ✓ · quitar":!canSelectProduct(p)?"No disponible":chosen.length>=6?"Selección completa":"Elegir +"}</button></article>})}</div></>}
+  </div><aside id="ritual-summary" className={styles.summary} aria-label="Resumen de tu ritual"><p className={styles.eyebrow}>TU SELECCIÓN</p><h3>{title}</h3>{custom?<><p role="status">{selection.length} de 6 productos elegidos</p>{selection.length?<ul>{selection.map(p=><li key={p.id}><span>{p.name}<small>{money(p.amountInCents)} COP</small></span><button type="button" aria-label={`Retirar ${p.name} de mi ritual`} onClick={()=>toggle(p)}>×</button></li>)}</ul>:<p className={styles.empty}>Tu primer producto puede ser ese que ya conoces o uno que quieres descubrir.</p>}</>:<p>Un kit de 3 productos. En la bolsa aparecerá como <strong>{kit?.name ?? "kit por confirmar"}</strong>.</p>}
+  <div className={styles.total}><span>{custom?"Subtotal de productos":"Precio del kit"}</span><strong>{purchase.length?`${money(total)} COP`:"Elige tu primer producto"}</strong><small>Envío por cotizar y aceptar antes del pago.</small></div><button type="button" className={styles.primary} disabled={!available||added} onClick={add}>{added?"Agregado a tu bolsa ✓":custom?`Agregar mi selección${selection.length?` (${selection.length})`:""} ↗`:"Agregar el kit a mi bolsa ↗"}</button>{added&&<button type="button" className={styles.secondary} onClick={openCart}>Revisar mi bolsa</button>}{custom&&<p className={styles.finePrint}>Los productos personalizados se agregan como artículos individuales, sin descuento automático. Si ya tienes alguno, se suma una unidad a su cantidad.</p>}{!available&&purchase.length>0&&<p role="status" className={styles.finePrint}>Revisa disponibilidad o cantidades en tu bolsa antes de añadir esta selección.</p>}<p role="status" className={styles.finePrint}>{message}</p><a href={whatsapp} target="_blank" rel="noopener noreferrer" className={styles.textLink}>Consultar esta selección por WhatsApp ↗</a></aside></div></section>
+  <section className={styles.help}><div><p className={styles.eyebrow}>ELEGIR TAMBIÉN ES CUIDARTE</p><h2>¿Prefieres comenzar<br/>con una conversación?</h2><p>Melina puede acompañarte a revisar tus hábitos y elegir un punto de partida. Crear una selección aquí no equivale a una formulación personalizada.</p><Link href="/services" className={styles.textLink}>Conocer las asesorías ↗</Link></div><div className={styles.faq}>{[["¿El kit cuesta lo mismo que los productos sueltos?","Cada kit tiene su propio precio en el catálogo. Al adaptar un ritual sumamos los precios individuales; verás el subtotal antes de agregarlo."],["¿Puedo combinar rostro, cabello y cuerpo?","Sí. En «Crea el tuyo» puedes elegir hasta 6 productos distintos. La selección no implica que deban mezclarse o usarse todos juntos: sigue las indicaciones de cada producto."],["¿Cómo se confirma mi pedido?","En la bolsa puedes revisar cantidades. El equipo confirma disponibilidad, envío y total para la transferencia Bancolombia. Wompi, cuando está habilitado, funciona en modo de pruebas sin cobros reales."]].map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+ {custom&&<a href="#ritual-summary" className={styles.mobileSummary}><span>{selection.length} productos · {money(total)} COP</span><strong>Ver mi selección ↑</strong></a>}
+ </div>;
 }
