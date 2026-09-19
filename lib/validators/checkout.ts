@@ -1,7 +1,8 @@
 import { z } from "zod";
 
 export const checkoutSchema = z.object({
-  paymentMethod: z.enum(["bank_transfer_bancolombia", "wompi_sandbox", "wompi"]).default("bank_transfer_bancolombia"),
+  paymentMethod: z.enum(["wompi_sandbox", "wompi"]).default("wompi"),
+  expectedTotalInCents: z.number().int().positive().safe().optional(),
   customerName: z.string().trim().min(3, "Escribe tu nombre completo.").max(100),
   customerEmail: z.string().trim().email("Revisa tu correo electrónico.").max(200).transform(value => value.toLowerCase()),
   customerPhone: z.string().trim().regex(/^(?:\+?57\s?)?3\d{9}$/, "Escribe un celular colombiano de 10 dígitos."),

@@ -9,7 +9,7 @@ function getEmailConfig() {
   return {
     apiKey: process.env.RESEND_API_KEY,
     from: process.env.ORDER_NOTIFICATION_FROM_EMAIL || "MAI Natural <hola@mainatural.com>",
-    replyTo: process.env.ORDER_NOTIFICATION_REPLY_TO || process.env.ORDER_PROOF_EMAIL,
+    replyTo: process.env.ORDER_NOTIFICATION_REPLY_TO,
   };
 }
 

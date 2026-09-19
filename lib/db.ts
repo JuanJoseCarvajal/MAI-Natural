@@ -72,18 +72,24 @@ export interface Order {
   shippingStatus?: string;
   trackingNumber?: string | null;
   discountCode?: string | null;
-  proofInstructions?: string | null;
-  proofSubmittedAt?: Date | null;
   notes?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
 
-// In-memory store para MVP (será reemplazado por Prisma en producción)
-const users: Map<string, User> = new Map();
-const passwordResetTokens: Map<string, PasswordResetToken> = new Map();
-const appointments: Map<string, Appointment> = new Map();
-const orders: Map<string, Order> = new Map();
+// Sandbox memory must be shared by Next.js server actions and route bundles.
+// Production payments still require the persistent PostgreSQL adapter.
+const memoryHost = globalThis as typeof globalThis & {
+  maiMemoryDatabase?: {
+    users: Map<string, User>;
+    passwordResetTokens: Map<string, PasswordResetToken>;
+    appointments: Map<string, Appointment>;
+    orders: Map<string, Order>;
+  };
+};
+const { users, passwordResetTokens, appointments, orders } = memoryHost.maiMemoryDatabase ??= {
+  users: new Map(), passwordResetTokens: new Map(), appointments: new Map(), orders: new Map(),
+};
 
 // Flag para controlar si se ha inicializado la BD
 let isInitialized = false;

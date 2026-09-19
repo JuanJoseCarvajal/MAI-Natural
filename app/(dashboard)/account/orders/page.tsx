@@ -22,9 +22,9 @@ const appointmentStatusLabels: Record<string, string> = {
 
 const paymentStatusLabels: Record<string, string> = {
   pending_confirmation: 'Pendiente de confirmacion',
-  proof_submitted: 'Comprobante recibido',
+  proof_submitted: 'Pendiente de revisión',
   confirmed: 'Pago confirmado',
-  rejected: 'Comprobante rechazado',
+  rejected: 'Pago rechazado',
 };
 
 function formatCOP(value: number) {
@@ -102,15 +102,12 @@ export default async function AccountOrdersPage() {
                         Total: <strong>{formatCOP(order.total)}</strong>
                       </p>
                       <p className="mt-1 text-sm text-slate-600">
-                        Pago: <strong>{order.paymentMethod === "wompi_sandbox" ? "Wompi · simulación sin cobro real" : order.paymentMethod === "wompi" ? "Wompi · pago real" : order.paymentMethod === "bank_transfer_bancolombia" ? "Transferencia Bancolombia" : "Por confirmar con el equipo"}</strong>
+                        Pago: <strong>{order.paymentMethod === "wompi_sandbox" ? "Wompi · simulación sin cobro real" : order.paymentMethod === "wompi" ? "Wompi · pago real" : "Pago no disponible · consultar al equipo"}</strong>
                       </p>
                       {order.trackingNumber ? (
                         <p className="mt-1 text-sm text-slate-600">
                           Guía: <strong>{order.trackingNumber}</strong>
                         </p>
-                      ) : null}
-                      {order.proofInstructions ? (
-                        <p className="mt-2 text-sm text-slate-600">{order.proofInstructions}</p>
                       ) : null}
                     </div>
                     <div className="flex flex-col gap-2 text-sm">

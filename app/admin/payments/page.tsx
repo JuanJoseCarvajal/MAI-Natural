@@ -4,8 +4,8 @@ import { getAllOrders, getAllAppointments } from "@/app/admin/actions";
 export default async function AdminPaymentsPage() {
   const [{ orders }, { appointments }] = await Promise.all([getAllOrders(), getAllAppointments()]);
 
-  const pendingTransfers = appointments.filter((appointment) =>
-    ["pending_payment", "payment_pending_verification"].includes(appointment.status)
+  const pendingPayments = appointments.filter((appointment) =>
+    appointment.paymentStatus !== "confirmed" && ["pending_payment", "payment_pending_verification"].includes(appointment.status)
   ).length;
 
   return (
@@ -17,12 +17,12 @@ export default async function AdminPaymentsPage() {
           </p>
           <h1 className="mt-2 text-3xl font-bold text-brand-900">Pagos</h1>
           <p className="mt-2 max-w-3xl text-sm text-slate-600">
-            Valida las transferencias recibidas. Usa el filtro Wompi para revisar simulaciones; una aprobación de prueba no es un cobro real.
+            Consulta los pagos verificados por Wompi. Las simulaciones se identifican por separado y no representan cobros reales.
           </p>
         </div>
         <div className="rounded-3xl border border-amber-200 bg-amber-50 px-5 py-4">
           <p className="text-sm text-amber-700">Citas con pago pendiente</p>
-          <p className="mt-1 text-3xl font-extrabold text-amber-800">{pendingTransfers}</p>
+          <p className="mt-1 text-3xl font-extrabold text-amber-800">{pendingPayments}</p>
         </div>
       </section>
 

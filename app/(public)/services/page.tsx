@@ -1,6 +1,5 @@
 import ConsultationExperience from '@/components/features/services/ConsultationExperience';
 import { buildMetadata } from '@/lib/seo';
-import { bancolombiaConfig } from '@/lib/bank-transfer';
 
 export const metadata = buildMetadata({
   title: 'Asesoría personal con Melina Jimenez Isaza | MAI Natural',
@@ -9,10 +8,5 @@ export const metadata = buildMetadata({
 });
 
 export default function ServicesPage() {
-  return <ConsultationExperience bank={{
-    bankName: bancolombiaConfig.bankName,
-    accountType: bancolombiaConfig.accountType,
-    accountNumber: bancolombiaConfig.accountNumber,
-    accountHolder: bancolombiaConfig.accountHolder,
-  }} />;
+  return <ConsultationExperience />;
 }

@@ -6,7 +6,7 @@ import { buildWompiCheckoutUrl, buildWompiIntegritySignature } from "@/lib/wompi
 
 export async function POST(request: NextRequest) {
   const config = getWompiConfiguration();
-  if (!await wompiReady()) return NextResponse.json({ error: "Wompi no está disponible. Coordina la transferencia con el equipo." }, { status: 503 });
+  if (!await wompiReady()) return NextResponse.json({ error: "Wompi no está disponible. Intenta nuevamente más tarde." }, { status: 503 });
   const body = await request.json().catch(() => null);
   if (typeof body?.appointmentId !== "string" || !/^[a-f0-9-]{36}$/i.test(body.appointmentId)) return NextResponse.json({ error: "Solicitud inválida" }, { status: 400 });
   return databaseTransaction(async () => {

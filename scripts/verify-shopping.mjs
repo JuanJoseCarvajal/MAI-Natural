@@ -14,12 +14,14 @@ try {
  assert.equal(wompiStatus.status(),200);
  const wompi=await wompiStatus.json();
  assert.ok(['sandbox','production'].includes(wompi.mode));
- const wompiOption=page.getByRole('radio',{name:/Wompi/});
- await wompiOption.waitFor();
- assert.equal(await wompiOption.isDisabled(),!wompi.available);
+ await page.getByText(/Wompi · (pago seguro|entorno de pruebas)/,{exact:true}).waitFor();
+ assert.equal(await page.getByRole('radio').count(),0);
+ assert.equal(await page.getByRole('button',{name:/Wompi.*(→|prueba)/}).isDisabled(),true);
+ await page.locator('input[name=city]').fill('Medellín');
+ assert.equal(await page.getByRole('button',{name:/Wompi.*(→|prueba)/}).isDisabled(),!wompi.available);
  await page.getByRole('button',{name:/Aumentar cantidad de/}).click();
  await page.getByRole('button',{name:/Reducir cantidad de/}).click();
- await page.getByRole('button',{name:/Crear pedido/}).click();
+ if(wompi.available) await page.getByRole('button',{name:/Wompi.*(→|prueba)/}).click();
  assert.equal(await page.locator('input[name=customerName]').evaluate(e=>e.validity.valueMissing),true);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
  const response=await page.request.post('http://127.0.0.1:3000/api/orders',{data:{items:[{id:'fa-lam-120-1',quantity:-1}]}});
@@ -27,9 +29,14 @@ try {
  await page.screenshot({path:'/tmp/mai-checkout-audit.png',fullPage:true});
  await page.route('**/api/payments/wompi/status',route=>route.fulfill({json:{available:true,mode:'production'}}));
  await page.reload();
- await page.getByRole('radio',{name:/Wompi · pago seguro/}).waitFor();
- assert.equal(await page.getByRole('radio',{name:/Wompi · pago seguro/}).isEnabled(),true);
- assert.ok(await page.getByText('Primero confirmamos disponibilidad y envío.',{exact:false}).isVisible());
+ await page.getByText('Wompi · pago seguro',{exact:true}).waitFor();
+ assert.equal(await page.getByRole('radio').count(),0);
+ assert.ok(await page.getByText('Al continuar abrirás Wompi',{exact:false}).isVisible());
+ await page.route('**/api/payments/wompi/status',route=>route.fulfill({json:{available:false,mode:'production'}}));
+ await page.reload();
+ await page.getByText('Wompi no está disponible temporalmente.',{exact:false}).waitFor();
+ assert.equal(await page.getByRole('button',{name:/Wompi.*(→|prueba)/}).isDisabled(),true);
+ assert.equal(await page.getByText(/transferencia|consignación|comprobante/i).count(),0);
  assert.deepEqual(errors,[]);
  console.log('PASS product to persisted cart, quantity controls, checkout required fields, invalid server input, mobile width, no payments or emails sent.');
 }finally{await browser.close();}

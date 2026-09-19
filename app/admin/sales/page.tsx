@@ -66,7 +66,7 @@ export default async function AdminSalesPage() {
           <article className="rounded-2xl bg-brand-50 p-4">
             <p className="font-semibold text-brand-900">Pagos</p>
             <p className="mt-2 text-sm text-slate-700">
-              Centraliza la validación manual de transferencias para no frenar confirmaciones de
+              Consulta los pagos verificados por Wompi para dar seguimiento a
               citas ni envíos.
             </p>
           </article>

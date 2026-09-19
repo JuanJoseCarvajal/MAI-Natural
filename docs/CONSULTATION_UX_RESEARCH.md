@@ -12,7 +12,7 @@ Se compararon modelos representativos; no es un censo de todos los servicios de 
 | [Kiehl’s España](https://www.kiehls.es/servicio-consultavirtual/servicio-consulta-virtual.html) | Diferencia consultas de 20, 30 y 40 minutos por necesidad | Un punto de entrada claro, sin obligar a elegir entre tratamientos antes de conversar |
 | [Curology](https://curology.com/why-curology/) | Evaluación, plan individual y seguimiento | Separar el primer encuentro del acompañamiento opcional. MAI no adopta sus prestaciones médicas |
 | [GOV.UK: estructura de formularios](https://www.gov.uk/service-manual/design/form-structure) | Preguntas divididas en pasos comprensibles | Cinco momentos, avance visible, volver y corregir sin perder respuestas |
-| [Baymard: pago](https://baymard.com/learn/payment-ux) | Claridad al revisar y terminar una operación | Resumen editable, precio visible y distinción entre solicitud, reporte de transferencia y confirmación |
+| [Baymard: pago](https://baymard.com/learn/payment-ux) | Claridad al revisar y terminar una operación | Resumen editable, precio visible y distinción entre solicitud, pago con Wompi y confirmación |
 
 La [fuente oficial de EDIPO](https://edipo.org/edipo-net/) permite identificar el nombre José Luis Parise y su enseñanza. No demuestra formación, certificación ni afiliación de Melina. La trayectoria de más de once años procede de la información aportada por la marca; no se inventan diplomas ni avales científicos.
 
@@ -38,7 +38,7 @@ Eventos sin datos personales: `consultation_start`, `consultation_step_view` con
 
 ## Implementación y límites
 
-Validación de contacto y consentimiento, fechas reales y hora de Colombia, control de solicitudes concurrentes dentro de la instancia, liberación de cancelaciones y reservas impagadas vencidas, revisión de resumen, teclado, foco entre pasos y movimiento reducido. El reporte de transferencia queda pendiente de verificación y no puede reabrir citas canceladas o confirmadas.
+Validación de contacto y consentimiento, fechas reales y hora de Colombia, control de solicitudes concurrentes dentro de la instancia, liberación de cancelaciones y reservas impagadas vencidas, revisión de resumen, teclado, foco entre pasos y movimiento reducido. La confirmación del pago depende de la verificación con Wompi; no reabre citas canceladas.
 
 **El adaptador de citas actual (`lib/db.ts`) usa memoria del proceso.** No garantiza persistencia al reiniciar ni exclusión de horarios entre instancias. Antes de ofrecer reservas operativas en producción se necesita almacenamiento persistente con control transaccional y un canal de notificación al equipo. La página no afirma enviar correos automáticamente. Esta implementación no despliega ni activa una suscripción.
 

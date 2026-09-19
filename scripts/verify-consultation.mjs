@@ -7,6 +7,9 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const errors = [];
 page.on("pageerror", error => errors.push(error.message));
 const base = "http://127.0.0.1:3000";
+// Exercise payment recovery without contacting Wompi or submitting real payments.
+await page.route("**/api/payments/wompi/status", route => route.fulfill({ json: { available: true, mode: "sandbox" } }));
+await page.route("**/api/payments/wompi/appointments/checkout", route => route.fulfill({ status: 503, json: { error: "Apertura Wompi interrumpida para prueba local" } }));
 try {
   assert.equal((await page.goto(`${base}/services`)).status(), 200);
   await page.getByRole("heading", { name: /¿Y si esta vez/ }).waitFor();
@@ -38,11 +41,11 @@ try {
   await page.getByRole("button", { name: "Cambiar mis datos" }).click();
   assert.equal(await page.getByLabel("Tu correo electrónico").inputValue(), "consulta-test@example.com");
   await page.getByRole("button", { name: "Revisar mi encuentro" }).click();
-  await page.getByRole("button", { name: "Solicitar mi encuentro" }).click();
+  await page.getByRole("button", { name: "Continuar a Wompi · prueba", exact: true }).click();
   await page.locator("dialog[open]").getByRole("alert").waitFor();
   await page.getByRole("checkbox", { name: /Autorizo a MAI/ }).check();
   assert.equal(await page.getByRole("checkbox", { name: /Me gustaría conocer el Círculo/ }).isChecked(), false);
-  await page.getByRole("button", { name: "Solicitar mi encuentro" }).click();
+  await page.getByRole("button", { name: "Continuar a Wompi · prueba", exact: true }).click();
   await page.getByText("Pendiente de confirmación y pago", { exact: true }).waitFor();
   assert.equal(await page.locator("dialog[open]").count(), 0);
   await page.getByRole("status").getByText("Tu solicitud fue recibida", { exact: true }).waitFor();

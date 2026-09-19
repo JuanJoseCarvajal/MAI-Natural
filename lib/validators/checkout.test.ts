@@ -3,6 +3,7 @@ import { checkoutSchema } from "./checkout";
 
 const valid = { customerName: "Ana María", customerEmail: "ANA@example.com", customerPhone: "3001234567", city: "Bogotá, D.C.", address: "Calle 10 # 20-30", items: [{ id: "shampoo", quantity: 2 }] };
 describe("checkout trust boundary", () => {
+  it("rejects retired payment methods", () => { expect(checkoutSchema.safeParse({ ...valid, paymentMethod: "bank_transfer_bancolombia" }).success).toBe(false); expect(checkoutSchema.parse(valid).paymentMethod).toBe("wompi"); });
   it("accepts guest details and normalizes email", () => {
     expect(checkoutSchema.parse(valid).customerEmail).toBe("ana@example.com");
     expect(checkoutSchema.safeParse({ ...valid, customerPhone: "+573001234567" }).success).toBe(true);

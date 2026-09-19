@@ -30,8 +30,8 @@ Tras verificar almacenamiento, cuenta de administrador, credenciales y URL de ev
 
 ## Operación y validación final
 
-- Productos: el cliente solicita el pedido; el administrador confirma disponibilidad y guarda envío en «Revisar y gestionar pedido». Comparte el enlace del pedido. El cliente ve subtotal, envío y total; al aceptar se bloquea la cotización. El navegador nunca fija el importe.
-- Asesorías: el importe viene del servidor. El pago queda registrado aparte; el equipo confirma el horario. Un pago tardío no reserva automáticamente un horario ocupado.
+- Productos y Tu Ritual: envío de $15.000 COP en Medellín y $25.000 COP fuera de Medellín, calculado por la misma regla en interfaz y servidor. El cliente revisa subtotal, envío y total; el servidor recalcula y abre Wompi directamente, sin esperar una cotización manual. Si el total ha cambiado se solicita revisarlo de nuevo. El navegador nunca fija el importe.
+- Asesorías: al finalizar el formulario se abre Wompi directamente; el importe viene del servidor. El pago queda registrado aparte; el equipo confirma el horario. Un pago tardío no reserva automáticamente un horario ocupado.
 - Confirmar un pago Wompi desde un selector manual no está permitido. Usar la consulta del proveedor en el backoffice cuando sea necesaria la reconciliación de un pedido.
 - Verificar una compra real autorizada por el titular: resultado en Wompi, evento recibido, pedido confirmado en backoffice y conservación tras reinicio. No realizar cargos de prueba reales sin acuerdo del titular. Las pruebas automatizadas no realizan cargos.
 - Si un pago queda pendiente, falla o requiere otro intento, consultar su referencia con el equipo antes de generar otro pedido. No se generan automáticamente nuevas referencias ni reembolsos.

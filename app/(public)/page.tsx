@@ -55,7 +55,7 @@ export default async function PublicHomePage() {
         ["¿Cómo elijo mis productos?", "Explora el catálogo por cuidado facial, capilar o corporal. En Rutinas puedes ver una selección por necesidad. Si todavía tienes dudas, solicita una asesoría."],
         ["¿Cuánto tarda mi pedido?", "La entrega estimada es de 5 a 7 días hábiles por nuestra elaboración artesanal. El destino y las condiciones de envío se revisan antes de confirmar tu pedido."],
         ["¿Necesito crear una cuenta para comprar?", "Puedes continuar como invitada o invitado desde el carrito. Te pediremos los datos necesarios para gestionar tu pedido y su entrega."],
-        ["¿Qué opciones de pago hay?", "Puedes comprar por transferencia Bancolombia; confirmamos envío, total y recepción del pago con nuestro equipo. El checkout indica la disponibilidad de Wompi y distingue claramente los pagos reales de las simulaciones."],
+        ["¿Qué opciones de pago hay?", "Pagas exclusivamente con Wompi. Revisa tus datos, el envío y el total en el checkout; después continúa a Wompi para completar el pago. Si estás en un entorno de pruebas, lo indicaremos antes de continuar."],
       ].map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
     </div>
   );

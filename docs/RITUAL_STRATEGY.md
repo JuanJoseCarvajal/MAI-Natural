@@ -21,7 +21,7 @@ Estos son referentes de patrones de experiencia, no evidencia de que un diseño 
 6. Consulta opcional: WhatsApp recibe el listado elegido y subtotal de referencia al abrir el enlace; no se envían mensajes automáticamente. Asesorías tienen CTA propio.
 
 ## Conversión y contexto colombiano
-Precios COP del catálogo; envío por cotizar y aceptar, sin fingir un cálculo disponible. Métodos descritos conforme a su estado: transferencia, Wompi de pruebas cuando esté habilitado. No se exige registro, correo ni respuestas de salud para armar la selección. No se promete que todos los productos deban usarse simultáneamente.
+Precios COP del catálogo; envío y total visibles en checkout. Pago exclusivamente con Wompi. Envío: $15.000 COP en Medellín y $25.000 fuera de Medellín, calculado según la ciudad y verificado por el servidor. No se exige registro, correo ni respuestas de salud para armar la selección. No se promete que todos los productos deban usarse simultáneamente.
 
 ## Medición
 Eventos sin nombre personal ni texto libre: ritual_path_selected (facial/capilar/custom), ritual_customize, ritual_added_to_cart con tipo, número de referencias y valor COP. Se conservan add_to_cart por SKU. Solo se envían si el sitio tiene analytics configurado.

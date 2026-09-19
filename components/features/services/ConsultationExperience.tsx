@@ -1,5 +1,6 @@
 "use client";
 
+import { openWompiCheckout } from "@/lib/wompi-client";
 import WompiPaymentButton from "@/components/features/payments/WompiPaymentButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,6 @@ import { consultationContactSchema } from "@/lib/validators/consultation";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./consultation.module.css";
 
-type Bank = { bankName: string; accountType: string; accountNumber: string; accountHolder: string };
 type FormValues = { topic: string; intention: string; notes: string; date: string; time: string; name: string; email: string; phone: string; continuityInterest: boolean; consent: boolean };
 const stepNames = ["Tu motivo", "Tu intención", "Tu momento", "Tu contacto", "Tu encuentro"];
 const titles = ["¿Qué te trae hasta aquí?", "¿Qué te gustaría llevarte?", "Hagamos espacio para conversar.", "¿Cómo podemos encontrarte?", "Este es tu punto de partida."];
@@ -20,7 +20,7 @@ function dateLabel(date: string) {
   return date ? new Intl.DateTimeFormat("es-CO", { dateStyle: "long", timeZone: "America/Bogota" }).format(new Date(`${date}T12:00:00-05:00`)) : "Por elegir";
 }
 
-export default function ConsultationExperience({ bank }: { bank: Bank }) {
+export default function ConsultationExperience() {
   const [isOpen, setIsOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -35,10 +35,6 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
   const [availabilityAttempt, setAvailabilityAttempt] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [reservation, setReservation] = useState<{ id: string } | null>(null);
-  const [transferReference, setTransferReference] = useState("");
-  const [reporting, setReporting] = useState(false);
-  const [reported, setReported] = useState(false);
-  const [paymentMessage, setPaymentMessage] = useState("");
   const [started, setStarted] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const wizard = useRef<HTMLDivElement>(null);
@@ -48,7 +44,6 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
   const [wompiMode, setWompiMode] = useState("sandbox");
   const [wompiAvailable, setWompiAvailable] = useState(false);
   useEffect(() => { let active = true; fetch("/api/payments/wompi/status").then(r => r.json()).then(data => { if (active) { setWompiAvailable(data.available === true); setWompiMode(data.mode === "production" ? "production" : "sandbox"); } }).catch(() => {}); return () => { active = false; }; }, []);
-  const hasBank = Boolean(bank.accountNumber && bank.accountHolder);
 
   useEffect(() => {
     const modal = dialog.current;
@@ -128,6 +123,7 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
     }
     if (step < 4) { setStep(value => value + 1); return; }
     if (!form.consent) { setError("Autoriza el uso de tus datos para gestionar el encuentro."); return; }
+    if (!wompiAvailable) { setError("Wompi no está disponible temporalmente. Tus respuestas se conservan."); return; }
     submittingRef.current = true;
     setSubmitting(true);
     try {
@@ -136,6 +132,8 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
         setIsOpen(false);
         setReservation({ id: result.appointment.id });
         setShowToast(true);
+        try { await openWompiCheckout({ appointmentId: result.appointment.id }); }
+        catch (cause) { setError(cause instanceof Error ? cause.message : "No pudimos abrir Wompi. Retoma el pago desde tu solicitud."); }
         trackEvent("consultation_request_submitted", { service: "initial", currency: "COP", value: initialConsultation.amountInCents / 100 });
       } else {
         if (result.fieldErrors) {
@@ -147,20 +145,6 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
       }
     } catch { setError("No pudimos conectar. Tus respuestas siguen aquí; inténtalo nuevamente."); }
     finally { submittingRef.current = false; setSubmitting(false); }
-  }
-
-  async function reportTransfer() {
-    if (!reservation || reporting || reported) return;
-    if (transferReference.trim().length < 4) { setPaymentMessage("Escribe la referencia que aparece en tu comprobante."); return; }
-    setReporting(true);
-    try {
-      const response = await fetch("/api/appointments/confirm-transfer", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ appointmentId: reservation.id, transferReference: transferReference.trim() }) });
-      const data = await response.json();
-      if (!response.ok || !data.success) throw new Error(data.error || "No pudimos recibir la referencia.");
-      setReported(true);
-      setPaymentMessage("Referencia recibida. El equipo debe verificar el pago antes de confirmar tu encuentro.");
-    } catch (cause) { setPaymentMessage(cause instanceof Error ? cause.message : "Revisa tu conexión e intenta de nuevo."); }
-    finally { setReporting(false); }
   }
 
   return <div className={styles.page}>
@@ -181,10 +165,10 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
           <h2 ref={successHeading} tabIndex={-1}>El primer paso<br /><em>ya está dado.</em></h2>
           <p>Gracias, {form.name.split(" ")[0]}. Recibimos tu solicitud para el {dateLabel(form.date)} a las {form.time}, hora de Colombia.</p>
           <div className={styles.note}><strong>Pendiente de confirmación y pago</strong><p>El equipo revisará tu solicitud y coordinará contigo los detalles del encuentro. Aún no es una cita confirmada.</p></div>
+          {error && <p className={styles.error} role="alert">{error}</p>}
           <p className={styles.reference}>Tu referencia: <code>{reservation.id}</code></p>
-          <p className={styles.helper}>{wompiMode === "production" ? "Paga por transferencia Bancolombia o con Wompi. El equipo confirma contigo el horario después de verificar el pago." : "Transferencia Bancolombia: validación por el equipo. Wompi: simulación de pruebas, sin cobros reales ni confirmación de cita."}</p>
-          {wompiAvailable ? <WompiPaymentButton mode={wompiMode} appointmentId={reservation.id} /> : <p className={styles.helper}>Wompi no está habilitado en este momento. Coordina tu pago por transferencia con el equipo.</p>}
-          {hasBank ? <details className={styles.payment}><summary>Ver instrucciones de pago · {initialConsultation.priceLabel}</summary><p>Transferencia a {bank.bankName}. Conserva tu comprobante; reportar una referencia no confirma el pago.</p><dl><dt>Tipo de cuenta</dt><dd>{bank.accountType}</dd><dt>Cuenta</dt><dd>{bank.accountNumber}</dd><dt>Titular</dt><dd>{bank.accountHolder}</dd></dl><p>La referencia se puede reportar durante las 24 horas posteriores a la solicitud.</p><label htmlFor="transfer-reference">Referencia del comprobante</label><input id="transfer-reference" value={transferReference} onChange={event => setTransferReference(event.target.value)} maxLength={100} disabled={reported} /><button type="button" className={styles.primary} disabled={reporting || reported} onClick={reportTransfer}>{reported ? "Referencia recibida" : reporting ? "Enviando…" : "Reportar transferencia"}</button><p role="status">{paymentMessage}</p></details> : <p className={styles.helper}>Consulta con el equipo las instrucciones de pago y la modalidad antes de transferir.</p>}
+          <p className={styles.helper}>{wompiMode === "production" ? "Paga de forma segura con Wompi. El equipo confirma contigo el horario después de verificar el pago." : "Wompi: simulación de pruebas, sin cobros reales ni confirmación de cita."}</p>
+          {wompiAvailable ? <WompiPaymentButton mode={wompiMode} appointmentId={reservation.id} /> : <p className={styles.helper}>Wompi no está habilitado en este momento. Tu solicitud se conserva; vuelve a intentarlo más tarde.</p>}
           <a className={styles.primary} href={`mailto:info@mainatural.com?subject=${encodeURIComponent(`Mi encuentro MAI · ${reservation.id}`)}`}>Consultar mi solicitud <span aria-hidden="true">↗</span></a>
           <p className={styles.helper}>Conserva tu referencia. Puedes escribir a info@mainatural.com para resolver dudas o solicitar un cambio.</p>
         </div> : <div className={styles.launch}>
@@ -218,8 +202,8 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
             {step === 4 && <><div className={styles.review}>{[{label:"Quiero conversar sobre",value:topic?.title,to:0},{label:"Me gustaría",value:intention?.title,to:1},{label:"Mi momento",value:`${dateLabel(form.date)} · ${form.time} (Colombia)`,to:2},{label:"Mis datos",value:`${form.name} · ${form.email} · ${form.phone}`,to:3}].map(row => <div key={row.label}><div><span>{row.label}</span><p>{row.value}</p></div><button type="button" onClick={() => changeStep(row.to)} aria-label={`Cambiar ${row.label.toLowerCase()}`}>Cambiar</button></div>)}{form.notes && <div><div><span>Mi pregunta</span><p>{form.notes}</p></div><button type="button" onClick={() => changeStep(1)}>Cambiar</button></div>}</div><div className={styles.total}><div>Encuentro inicial con Melina<small>{initialConsultation.durationMinutes} minutos · sin suscripción</small></div><strong>{initialConsultation.priceLabel}</strong></div><label className={styles.checkbox}><input type="checkbox" checked={form.continuityInterest} onChange={event => update("continuityInterest",event.target.checked)} /><span>Me gustaría conocer el Círculo MAI cuando esté disponible.<small>Opcional. No activa una membresía ni genera cobros.</small></span></label><label className={styles.checkbox}><input type="checkbox" checked={form.consent} onChange={event => update("consent",event.target.checked)} /><span>Autorizo a MAI a usar mis respuestas y datos de contacto para gestionar este encuentro. <Link href="/terms#asesorias" target="_blank" rel="noopener noreferrer">Ver información de atención</Link>.</span></label></>}
           </div>
           {error && <p className={styles.error} role="alert">{error}</p>}
-          <div className={styles.wizardBottom}>{step > 0 ? <button type="button" className={styles.back} disabled={submitting} onClick={() => changeStep(step - 1)}>← Volver</button> : <span className={styles.startNote}>A tu ritmo. Paso a paso.</span>}<button type="submit" className={styles.primary} disabled={submitting || (step === 2 && checking)}>{submitting ? "Enviando tu solicitud…" : step === 4 ? "Solicitar mi encuentro" : step === 3 ? "Revisar mi encuentro" : "Continuar"}<span aria-hidden="true">→</span></button></div>
-          <p className={styles.footerNote}>{step === 4 ? "Enviar la solicitud no realiza ningún cobro. La confirmación es personal." : "Puedes volver y cambiar tus respuestas antes de enviar."}</p>
+          <div className={styles.wizardBottom}>{step > 0 ? <button type="button" className={styles.back} disabled={submitting} onClick={() => changeStep(step - 1)}>← Volver</button> : <span className={styles.startNote}>A tu ritmo. Paso a paso.</span>}<button type="submit" className={styles.primary} disabled={submitting || (step === 2 && checking) || (step === 4 && !wompiAvailable)}>{submitting ? "Abriendo Wompi…" : step === 4 ? (wompiMode === "sandbox" ? "Continuar a Wompi · prueba" : "Pagar mi encuentro con Wompi") : step === 3 ? "Revisar mi encuentro" : "Continuar"}<span aria-hidden="true">→</span></button></div>
+          <p className={styles.footerNote}>{step === 4 ? (wompiAvailable ? wompiMode === "sandbox" ? "Abriremos Wompi en modo de prueba. No se realizará un cobro real." : "Pagarás el valor mostrado en Wompi. El equipo confirmará contigo el horario del encuentro." : "Wompi no está disponible temporalmente. Tus respuestas se conservan.") : "Puedes volver y cambiar tus respuestas antes de enviar."}</p>
         </form>
         </div>
       </div>
@@ -238,7 +222,7 @@ export default function ConsultationExperience({ bank }: { bank: Bank }) {
       ["¿Necesito conocer estas enseñanzas?", "No necesitas conocimientos previos ni compartir una creencia específica. Las referencias simbólicas forman parte de la mirada de Melina; puedes preguntar por el enfoque y decidir qué quieres explorar."],
       ["¿Es una consulta médica o psicológica?", "Es un espacio de orientación cosmética y exploración personal. Las referencias al psicoanálisis y a tradiciones simbólicas no lo convierten en psicoterapia ni en atención médica. No se ofrecen diagnósticos clínicos ni se sustituyen tratamientos profesionales."],
       ["¿Me suscribo al reservar?", "No. El encuentro inicial es independiente. Si más adelante quieres profundizar, podrás conocer las condiciones del Círculo MAI y decidir. En este momento las suscripciones aún no están abiertas."],
-      ["¿Cómo se confirma la cita?", "Envía tu solicitud con el horario que prefieres. El equipo revisará disponibilidad, modalidad y pago contigo. Una solicitud o una referencia de transferencia por sí solas no confirman la cita. Para consultar o cambiar tu solicitud, escribe a info@mainatural.com."],
+      ["¿Cómo se confirma la cita?", "Elige tu horario, revisa el valor y continúa directamente a Wompi para pagar. Verificamos el resultado con Wompi y el equipo confirma contigo el horario y la modalidad. Para consultar o cambiar tu solicitud, escribe a info@mainatural.com."],
     ].map(([question,answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
   </div>;
 }

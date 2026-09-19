@@ -194,8 +194,8 @@ export default async function AdminPage() {
         </Link>
         <Link href="/admin/payments" className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">Pagos</p>
-          <h3 className="mt-2 text-xl font-bold text-brand-900">Validar transferencias</h3>
-          <p className="mt-2 text-sm text-slate-600">Seguimiento de pagos pendientes y conciliación manual.</p>
+          <h3 className="mt-2 text-xl font-bold text-brand-900">Revisar pagos Wompi</h3>
+          <p className="mt-2 text-sm text-slate-600">Seguimiento de pagos y verificación de transacciones con Wompi.</p>
         </Link>
         <Link href="/admin/shipping" className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">Envíos</p>
