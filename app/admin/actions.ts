@@ -1,10 +1,12 @@
 'use server';
 
-import { fetchWompiTransaction } from '@/lib/wompi-server';
+import { randomUUID } from 'node:crypto';
+import { reconcileWompi } from '@/lib/wompi-reconciliation';
+import { fetchWompiTransaction, getWompiConfiguration } from '@/lib/wompi-server';
 import { isPaidOrder, validateOrderPatch } from '@/lib/admin-order';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
-import { db } from '@/lib/db';
+import { db, databaseTransaction } from '@/lib/db';
 import {
   createDiscount,
   deleteDiscount,
@@ -226,6 +228,7 @@ export async function updateAdminOrder(
   }
 ) {
   await ensureAdmin();
+  return databaseTransaction(async () => {
   const current = await db.order.findUnique({ where: { id } });
   if (!current) throw new Error('Pedido no encontrado. Actualiza la página.');
   const patch = validateOrderPatch(current, input);
@@ -236,6 +239,7 @@ export async function updateAdminOrder(
   revalidatePath('/admin/shipping');
   revalidatePath('/admin/sales');
   return { success: true, order };
+  });
 }
 
 export async function updateAdminUserRole(id: string, role: string) {
@@ -283,7 +287,27 @@ export async function verifyAdminWompiOrder(orderId: string, transactionId: stri
   if (transaction.reference !== `mai-${order.id}` || transaction.amount_in_cents !== order.total) throw new Error('La referencia o el importe de Wompi no coincide con este pedido.');
   if (order.wompiTransactionId && order.wompiTransactionId !== transaction.id) throw new Error('Este pedido ya tiene otra transacción asociada.');
   if (order.wompiStatus === 'APPROVED' && transaction.status !== 'APPROVED') throw new Error('El proveedor devolvió un cambio que requiere revisión manual.');
-  const updated = await db.order.update({ where: { id: orderId }, data: { paymentMethod: 'wompi_sandbox', wompiTransactionId: transaction.id, wompiStatus: transaction.status, paymentStatus: `sandbox_${transaction.status.toLowerCase()}` } });
+  const mode = getWompiConfiguration().mode;
+  if (mode === 'sandbox' && order.paymentMethod !== 'wompi') {
+    await db.order.update({ where: { id: orderId }, data: { paymentMethod: 'wompi_sandbox' } });
+  }
+  await reconcileWompi(transaction, mode);
+  const updated = await db.order.findUnique({ where: { id: orderId } });
   revalidatePath('/admin'); revalidatePath('/admin/orders'); revalidatePath('/admin/payments'); revalidatePath('/admin/sales'); revalidatePath('/checkout/result');
   return { order: updated };
+}
+
+export async function quoteAdminOrder(orderId: string, shippingInCents: number) {
+  await ensureAdmin();
+  if (!Number.isSafeInteger(shippingInCents) || shippingInCents < 0 || shippingInCents > 100000000) throw new Error('Revisa el costo de envío.');
+  const order = await databaseTransaction(async () => {
+    const current = await db.order.findUnique({ where: { id: orderId } });
+    if (!current || current.paymentMethod !== 'wompi' || current.paymentStarted || current.wompiTransactionId || current.status === 'cancelled') throw new Error('No se puede modificar una cotización después de iniciar el pago.');
+    const subtotalInCents = current.subtotalInCents ?? current.total;
+    const total = subtotalInCents + shippingInCents;
+    if (!Number.isSafeInteger(total) || total <= 0) throw new Error('Total inválido.');
+    return db.order.update({ where: { id: orderId }, data: { subtotalInCents, shippingInCents, total, quoteVersion: randomUUID() } });
+  });
+  revalidatePath('/admin/orders'); revalidatePath('/checkout/result');
+  return { order };
 }

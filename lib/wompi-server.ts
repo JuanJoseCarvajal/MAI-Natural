@@ -1,3 +1,4 @@
+import { databaseReady } from "./postgres-store";
 import { createHash, timingSafeEqual } from "crypto";
 import { z } from "zod";
 
@@ -5,21 +6,33 @@ export function getWompiConfiguration() {
   const publicKey = process.env.WOMPI_PUBLIC_KEY || "";
   const integritySecret = process.env.WOMPI_INTEGRITY_SECRET || "";
   const eventsSecret = process.env.WOMPI_EVENTS_SECRET || "";
-  const configured = process.env.WOMPI_SANDBOX_ENABLED === "true" && publicKey.startsWith("pub_test_") && integritySecret.startsWith("test_integrity_") && eventsSecret.startsWith("test_events_");
-  return { configured, publicKey, integritySecret, eventsSecret, apiUrl: "https://sandbox.wompi.co/v1" };
+  const production = process.env.WOMPI_MODE === "production";
+  const mode = production ? "production" : "sandbox";
+  const prefix = production ? "prod" : "test";
+  let secureOrigin = false;
+  try { const url = new URL(process.env.NEXT_PUBLIC_APP_URL || ""); secureOrigin = url.protocol === "https:" && !url.username && !url.password; } catch {}
+  const credentialsConfigured = publicKey.startsWith(`pub_${prefix}_`) && integritySecret.startsWith(`${prefix}_integrity_`) && eventsSecret.startsWith(`${prefix}_events_`) &&
+    (production ? process.env.DATABASE_DRIVER === "postgres" && secureOrigin : process.env.WOMPI_SANDBOX_ENABLED === "true");
+  const configured = credentialsConfigured && (!production || process.env.WOMPI_PRODUCTION_ENABLED === "true");
+  return { configured, credentialsConfigured, mode, publicKey, integritySecret, eventsSecret, apiUrl: production ? "https://production.wompi.co/v1" : "https://sandbox.wompi.co/v1" };
+}
+
+export async function wompiReady() {
+  const config = getWompiConfiguration();
+  return config.configured && (config.mode === "sandbox" || await databaseReady());
 }
 
 export const wompiEventSchema = z.object({
   event: z.literal("transaction.updated"),
-  environment: z.literal("test"),
+  environment: z.enum(["test", "prod"]),
   timestamp: z.number().int().positive(),
   data: z.object({ transaction: z.object({ id: z.string().regex(/^[a-zA-Z0-9-]{1,100}$/) }).passthrough() }),
   signature: z.object({ properties: z.array(z.string().min(1).max(100)).min(1).max(30), checksum: z.string().regex(/^[a-fA-F0-9]{64}$/) }),
 });
 
-export function verifyWompiEvent(input: unknown, secret: string) {
+export function verifyWompiEvent(input: unknown, secret: string, environment: "test" | "prod" = "test") {
   const result = wompiEventSchema.safeParse(input);
-  if (!result.success || !secret) return null;
+  if (!result.success || !secret || result.data.environment !== environment) return null;
   const event = result.data;
   if (!event.signature.properties.includes("transaction.id")) return null;
   const values: string[] = [];
@@ -48,7 +61,7 @@ export const wompiTransactionSchema = z.object({
 export async function fetchWompiTransaction(id: string) {
   if (!/^[a-zA-Z0-9-]{1,100}$/.test(id)) throw new Error("Transacción inválida");
   const config = getWompiConfiguration();
-  if (!config.configured) throw new Error("Wompi no configurado");
+  if (!config.credentialsConfigured) throw new Error("Wompi no configurado");
   const response = await fetch(`${config.apiUrl}/transactions/${encodeURIComponent(id)}`, { cache: "no-store", signal: AbortSignal.timeout(8000) });
   if (!response.ok) throw new Error("No se pudo verificar la transacción");
   const result = wompiTransactionSchema.parse((await response.json()).data);

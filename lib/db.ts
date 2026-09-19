@@ -1,6 +1,6 @@
-// Adaptador de base de datos compatible
-// Nota: Para producción, configurar Prisma adecuadamente
-// Ver: SETUP.md para instrucciones de Prisma + PostgreSQL
+// PostgreSQL is explicitly selected; connection errors never fall back to memory.
+import { persistentDatabaseEnabled, postgresOperation } from "./postgres-store";
+export { databaseTransaction } from "./postgres-store";
 
 import { randomUUID } from 'crypto';
 import { holdsAppointmentSlot, appointmentsOverlap } from './consultation';
@@ -26,6 +26,9 @@ export interface PasswordResetToken {
 }
 
 export interface Appointment {
+  paymentMode?: "sandbox" | "production";
+  paymentAmountInCents?: number;
+  paymentStatus?: string;
   wompiTransactionId?: string;
   wompiStatus?: string;
   id: string;
@@ -43,6 +46,11 @@ export interface Appointment {
 }
 
 export interface Order {
+  subtotalInCents?: number;
+  shippingInCents?: number;
+  quoteVersion?: string;
+  acceptedQuoteVersion?: string;
+  paymentStarted?: boolean;
   wompiTransactionId?: string;
   wompiStatus?: string;
   id: string;
@@ -89,7 +97,7 @@ function initializeDatabase() {
 // Inicializar inmediatamente
 initializeDatabase();
 
-export const db = {
+const memoryDb = {
   // User operations
   user: {
     async findUnique(args: { where: { email?: string; id?: string } }) {
@@ -281,3 +289,12 @@ export const db = {
     },
   },
 };
+
+// Preserve the existing typed API while selecting storage at request time.
+export const db: typeof memoryDb = Object.fromEntries(
+  Object.entries(memoryDb).map(([kind, methods]) => [kind, Object.fromEntries(
+    Object.entries(methods).map(([operation, handler]) => [operation, (...args: unknown[]) =>
+      persistentDatabaseEnabled() ? postgresOperation(kind, operation, args[0]) : (handler as (...values: unknown[]) => unknown)(...args)
+    ])
+  )])
+) as typeof memoryDb;

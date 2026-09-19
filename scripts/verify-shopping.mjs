@@ -13,7 +13,7 @@ try {
  const wompiStatus=await page.request.get('http://127.0.0.1:3000/api/payments/wompi/status');
  assert.equal(wompiStatus.status(),200);
  const wompi=await wompiStatus.json();
- assert.equal(wompi.mode,'sandbox');
+ assert.ok(['sandbox','production'].includes(wompi.mode));
  const wompiOption=page.getByRole('radio',{name:/Wompi/});
  await wompiOption.waitFor();
  assert.equal(await wompiOption.isDisabled(),!wompi.available);
@@ -25,6 +25,11 @@ try {
  const response=await page.request.post('http://127.0.0.1:3000/api/orders',{data:{items:[{id:'fa-lam-120-1',quantity:-1}]}});
  assert.equal(response.status(),400);
  await page.screenshot({path:'/tmp/mai-checkout-audit.png',fullPage:true});
+ await page.route('**/api/payments/wompi/status',route=>route.fulfill({json:{available:true,mode:'production'}}));
+ await page.reload();
+ await page.getByRole('radio',{name:/Wompi · pago seguro/}).waitFor();
+ assert.equal(await page.getByRole('radio',{name:/Wompi · pago seguro/}).isEnabled(),true);
+ assert.ok(await page.getByText('Primero confirmamos disponibilidad y envío.',{exact:false}).isVisible());
  assert.deepEqual(errors,[]);
  console.log('PASS product to persisted cart, quantity controls, checkout required fields, invalid server input, mobile width, no payments or emails sent.');
 }finally{await browser.close();}

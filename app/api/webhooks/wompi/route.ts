@@ -1,39 +1,22 @@
-import { NextRequest, NextResponse } from "next/server";
-import { initialConsultation } from "@/lib/consultation";
-import { db } from "@/lib/db";
-import { fetchWompiTransaction, getWompiConfiguration, verifyWompiEvent } from "@/lib/wompi-server";
-
+import { NextRequest, NextResponse } from 'next/server';
+import { fetchWompiTransaction, getWompiConfiguration, verifyWompiEvent } from '@/lib/wompi-server';
+import { reconcileWompi } from '@/lib/wompi-reconciliation';
 export async function POST(request: NextRequest) {
   const config = getWompiConfiguration();
-  if (!config.configured) return NextResponse.json({ error: "Wompi no disponible" }, { status: 503 });
+  const productionEndpoint = request.nextUrl.pathname.endsWith('/production');
+  if (!config.credentialsConfigured || productionEndpoint !== (config.mode === 'production')) return NextResponse.json({ error: 'Wompi no disponible para este entorno' }, { status: 503 });
   const raw = await request.text();
-  if (raw.length > 65536) return NextResponse.json({ error: "Evento demasiado grande" }, { status: 413 });
+  if (raw.length > 65536) return NextResponse.json({ error: 'Evento demasiado grande' }, { status: 413 });
   let input: unknown;
-  try { input = JSON.parse(raw); } catch { return NextResponse.json({ error: "Evento inválido" }, { status: 400 }); }
-  const event = verifyWompiEvent(input, config.eventsSecret);
-  if (!event) return NextResponse.json({ error: "Firma o evento inválido" }, { status: 401 });
+  try { input = JSON.parse(raw); } catch { return NextResponse.json({ error: 'Evento inválido' }, { status: 400 }); }
+  const event = verifyWompiEvent(input, config.eventsSecret, productionEndpoint ? 'prod' : 'test');
+  if (!event) return NextResponse.json({ error: 'Firma o evento inválido' }, { status: 401 });
   try {
-    // Re-query Wompi: never trust unsigned fields or stale/replayed payload status.
     const transaction = await fetchWompiTransaction(event.data.transaction.id);
-    if (transaction.reference.startsWith("mai-appointment-")) {
-      const appointment = await db.appointment.findUnique({ where: { id: transaction.reference.slice("mai-appointment-".length) } });
-      if (!appointment || appointment.service !== initialConsultation.name || transaction.amount_in_cents !== initialConsultation.amountInCents) return NextResponse.json({ error: "El pago no coincide con la asesoría" }, { status: 409 });
-      if (appointment.wompiTransactionId && appointment.wompiTransactionId !== transaction.id) return NextResponse.json({ error: "Otra transacción ya está asociada" }, { status: 409 });
-      if (appointment.wompiStatus !== "APPROVED") await db.appointment.update({ where: { id: appointment.id }, data: { wompiTransactionId: transaction.id, wompiStatus: transaction.status } });
-      return NextResponse.json({ received: true, sandbox: true });
-    }
-    const orderId = transaction.reference.replace(/^mai-/, "");
-    const order = await db.order.findUnique({ where: { id: orderId } });
-    if (!order) return NextResponse.json({ error: "Pedido no encontrado" }, { status: 404 });
-    if (order.paymentMethod !== "wompi_sandbox" || transaction.reference !== `mai-${order.id}` || transaction.amount_in_cents !== order.total) return NextResponse.json({ error: "El pago no coincide con el pedido" }, { status: 409 });
-    if (order.wompiTransactionId && order.wompiTransactionId !== transaction.id) return NextResponse.json({ error: "Otra transacción ya está asociada" }, { status: 409 });
-    if (order.wompiStatus === "APPROVED" || order.wompiStatus === transaction.status) return NextResponse.json({ received: true, sandbox: true });
-    await db.order.update({ where: { id: order.id }, data: {
-      wompiTransactionId: transaction.id, wompiStatus: transaction.status,
-      paymentStatus: `sandbox_${transaction.status.toLowerCase()}`,
-    } });
-    return NextResponse.json({ received: true, sandbox: true });
-  } catch {
-    return NextResponse.json({ error: "Verificación temporalmente no disponible" }, { status: 503 });
+    await reconcileWompi(transaction, config.mode);
+    return NextResponse.json({ received: true, sandbox: config.mode === 'sandbox' });
+  } catch (error) {
+    const mismatch = error instanceof Error && /no coincide|ya está asociada/.test(error.message);
+    return NextResponse.json({ error: mismatch ? 'El pago no coincide con la solicitud' : 'Verificación temporalmente no disponible' }, { status: mismatch ? 409 : 503 });
   }
 }

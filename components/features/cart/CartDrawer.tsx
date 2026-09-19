@@ -176,7 +176,7 @@ export default function CartDrawer() {
               Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa.
             </p>
             <p className="text-xs text-brand-800">
-              <strong>Transferencia Bancolombia</strong> para tu compra. <strong>Wompi</strong> está en fase de pruebas y no realiza cobros reales. Consulta las opciones disponibles al continuar.
+              <strong>Transferencia Bancolombia</strong> para tu compra. <strong>Wompi</strong> según disponibilidad en el checkout. Allí verás si está habilitado para pagos reales o solo para pruebas.
             </p>
             <Link
               href="/checkout"

@@ -100,7 +100,7 @@ export default function AdminAppointmentsManager({
                       <p className="font-semibold text-brand-900">{appointment.name}</p>
                       <p className="text-xs text-slate-500">{appointment.email}</p>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-700">{appointment.service}{appointment.wompiStatus && <p className="mt-2 text-amber-800">Wompi: {adminStatusLabels[`sandbox_${appointment.wompiStatus.toLowerCase()}`] ?? "Prueba por revisar"}. No confirma pago real.</p>}</td>
+                    <td className="px-6 py-4 text-sm text-slate-700">{appointment.service}{appointment.wompiStatus && <p className="mt-2 text-amber-800">{appointment.paymentMode === "production" ? `Wompi · pago real: ${appointment.paymentStatus === "confirmed" ? "confirmado" : appointment.wompiStatus}. Coordina el horario antes de confirmar la cita.` : `Wompi: ${adminStatusLabels[`sandbox_${appointment.wompiStatus.toLowerCase()}`] ?? "Prueba por revisar"}. No confirma pago real.`}</p>}</td>
                     <td className="px-6 py-4 text-sm text-slate-700">
                       {appointment.date} · {appointment.time}
                     </td>
