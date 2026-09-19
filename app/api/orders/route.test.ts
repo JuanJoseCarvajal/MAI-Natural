@@ -11,7 +11,7 @@ import { getShippingInCents } from "@/lib/shipping";
 const details = { customerName: "Prueba MAI", customerEmail: "fixture@example.com", customerPhone: "3001234567", city: "Bogotá", address: "Calle 10 # 20-30", items: [{ id: "fixture", quantity: 1 }], paymentMethod: "wompi", expectedTotalInCents: 7500000 };
 const request = (changes = {}) => new NextRequest("https://mainatural.com/api/orders", { method: "POST", body: JSON.stringify({ ...details, ...changes }) });
 beforeEach(() => { vi.stubEnv("DATABASE_DRIVER", "memory"); vi.mocked(wompiReady).mockResolvedValue(true); });
-afterEach(() => vi.unstubAllEnvs());
+afterEach(() => { vi.unstubAllEnvs(); });
 describe("direct Wompi checkout", () => {
   it("creates a server-priced total and shipping quote ready for Wompi", async () => {
     const response = await POST(request());

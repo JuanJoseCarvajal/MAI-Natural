@@ -2,6 +2,7 @@
 
 import { openWompiCheckout } from "@/lib/wompi-client";
 import WompiPaymentButton from "@/components/features/payments/WompiPaymentButton";
+import PaymentRedirectOverlay from "@/components/features/payments/PaymentRedirectOverlay";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -147,7 +148,7 @@ export default function ConsultationExperience() {
     finally { submittingRef.current = false; setSubmitting(false); }
   }
 
-  return <div className={styles.page}>
+  return <div className={styles.page}>{submitting && <PaymentRedirectOverlay mode={wompiMode} />}
     <section className={styles.experience}>
       <div className={styles.invitation}>
         <p className="eyebrow">ASESORÍAS · UN ESPACIO PARA TI</p>

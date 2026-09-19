@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { getShippingInCents } from "@/lib/shipping";
 import { openWompiCheckout } from "@/lib/wompi-client";
+import PaymentRedirectOverlay from "@/components/features/payments/PaymentRedirectOverlay";
 import { useSession } from "next-auth/react";
 import { useCart } from "@/components/features/cart/CartContext";
 import ImageFrame from "@/components/ui/ImageFrame";
@@ -69,7 +70,7 @@ export default function CheckoutPage() {
 
   if (!items.length) return <section className="mx-auto max-w-xl px-6 py-24 text-center"><p className="text-xs uppercase tracking-[.2em]">Tu ritual empieza aquí</p><h1 className="mt-4 text-4xl text-brand-900">Tu bolsa está esperando.</h1><p className="mt-4 text-slate-600">Encuentra el cuidado que se siente bien para ti.</p><Link className="mt-8 inline-flex rounded-full bg-brand-900 px-8 py-4 text-white" href="/products">Explorar productos →</Link></section>;
 
-  return <section className="mx-auto max-w-6xl px-5 py-12 md:py-20">
+  return <section className="mx-auto max-w-6xl px-5 py-12 md:py-20">{loading && <PaymentRedirectOverlay mode={wompiMode} />}
     <Link href="/products" className="text-sm text-brand-700">← Seguir explorando</Link>
     <div className="mb-10 mt-8"><p className="text-xs font-semibold uppercase tracking-[.22em] text-brand-700">Un paso más cerca de tu ritual</p><h1 className="mt-3 text-4xl text-brand-900 md:text-5xl">Tu cuidado, casi en casa.</h1><p className="mt-4 text-slate-600">Compra como invitado. No necesitas crear una cuenta.</p></div>
     <ol className="mb-8 flex flex-wrap gap-6 border-y border-brand-100 py-5 text-sm"><li className="font-semibold text-brand-900">01 · Datos y entrega</li><li className="text-slate-600">02 · Revisar total</li><li className="text-slate-600">03 · Pagar con Wompi</li></ol>
@@ -93,7 +94,7 @@ export default function CheckoutPage() {
         {shippingInCents === null && <p role="status" className="mt-4 text-sm text-amber-800">Indica tu ciudad para ver el envío y el total antes de pagar.</p>}
         {createdOrder && <p className="mt-4 text-sm"><Link className="underline" href={`/checkout/result?orderId=${createdOrder.id}`}>Consultar el pedido creado y retomar su pago</Link></p>}
         {error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-4 text-sm text-red-800">{error}</p>}
-        <button type="submit" disabled={loading || validating || !wompiAvailable || shippingInCents === null} className="mt-6 min-h-14 w-full rounded-full bg-brand-900 px-4 py-4 font-semibold text-white disabled:opacity-50">{loading ? "Abriendo Wompi…" : createdOrder ? "Retomar pago con Wompi →" : wompiMode === "sandbox" ? "Continuar a Wompi · prueba →" : "Pagar con Wompi →"}</button><p className="mt-4 text-center text-xs text-slate-500">Al continuar aceptas los <Link href="/terms" className="underline">términos</Link> y la <Link href="/terms#privacidad" className="underline">información sobre uso de tus datos</Link>.</p>
+        <button type="submit" disabled={loading || validating || !wompiAvailable || shippingInCents === null} className="mt-6 min-h-14 w-full rounded-full bg-brand-900 px-4 py-4 font-semibold text-white disabled:opacity-50">{loading ? "Redirigiendo a Wompi…" : createdOrder ? "Retomar pago con Wompi →" : wompiMode === "sandbox" ? "Continuar a Wompi · prueba →" : "Pagar con Wompi →"}</button><p className="mt-4 text-center text-xs text-slate-500">Al continuar aceptas los <Link href="/terms" className="underline">términos</Link> y la <Link href="/terms#privacidad" className="underline">información sobre uso de tus datos</Link>.</p>
       </aside>
     </form>
   </section>;
