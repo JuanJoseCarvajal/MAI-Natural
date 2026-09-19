@@ -22,9 +22,9 @@ export type Product = {
 };
 
 export const categoryLabels: Record<ProductCategory, string> = {
-  facial: "Cosmética Natural Facial",
-  capilar: "Cosmética Natural Capilar",
-  corporal: "Cosmética Natural Corporal",
+  facial: "Formulaciones Botánicas de Autor · Facial",
+  capilar: "Formulaciones Botánicas de Autor · Capilar",
+  corporal: "Formulaciones Botánicas de Autor · Corporal",
   kits: "Kits y Rutinas",
 };
 

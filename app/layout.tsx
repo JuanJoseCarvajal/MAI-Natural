@@ -9,17 +9,17 @@ import { buildMetadata, defaultSeoDescription, siteName, siteUrl } from "@/lib/s
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   ...buildMetadata({
-    title: `${siteName} | Cosmética natural colombiana`,
+    title: `${siteName} | Formulaciones botánicas de autor`,
     description: defaultSeoDescription,
     path: "/",
   }),
   applicationName: siteName,
   keywords: [
-    "cosmetica natural",
-    "cosmetica natural colombiana",
-    "rutina facial natural",
-    "shampoo natural",
-    "productos naturales para la piel",
+    "formulaciones botánicas de autor",
+    "cosmética de autor colombiana",
+    "cuidado facial de autor",
+    "cuidado capilar de autor",
+    "elaborado uno a uno",
   ],
   icons: {
     icon: "/favicon.webp",

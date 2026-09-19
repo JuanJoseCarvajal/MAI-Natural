@@ -38,7 +38,7 @@ const defaultForm: ProductFormState = {
   description: "",
   category: "facial",
   badge: "",
-  benefits: "Cosmética natural\nIngredientes botánicos\nHecho con intención",
+  benefits: "Formulación botánica de autor\nIngredientes botánicos\nElaborado uno a uno",
   rating: "4.8",
   reviewsCount: "0",
   sku: "",

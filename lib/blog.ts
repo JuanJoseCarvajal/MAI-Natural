@@ -27,7 +27,7 @@ const legacyPosts: BlogPost[] = [
     publishedAt: "2026-07-02",
     readTime: "5 min",
     heroImage: "/products/Facial/agua-de-rosas-mai-natural.png",
-    keywords: ["rutina facial natural", "piel sensible", "cosmetica natural facial"],
+    keywords: ["rutina facial de autor", "piel sensible", "formulaciones botánicas de autor"],
     relatedProductCategory: "facial",
     sections: [
       {
@@ -69,7 +69,7 @@ const legacyPosts: BlogPost[] = [
     publishedAt: "2026-07-02",
     readTime: "4 min",
     heroImage: "/products/Capilar/shampoo-jardin-herbal-mai-natural.png",
-    keywords: ["shampoo natural", "cabello rizado", "cosmetica natural capilar"],
+    keywords: ["shampoo de autor", "cabello rizado", "formulaciones botánicas de autor"],
     relatedProductCategory: "capilar",
     sections: [
       {
@@ -97,20 +97,20 @@ const legacyPosts: BlogPost[] = [
   },
   {
     slug: "regalos-cosmetica-natural-artesanal",
-    title: "Regalos de cosmetica natural artesanal: ideas para sorprender con bienestar",
+    title: "Regalos de formulaciones botánicas de autor: ideas para sorprender con bienestar",
     description:
-      "Ideas de regalos de cosmetica natural artesanal para cumpleanos, fechas especiales y detalles corporativos con sentido.",
+      "Ideas de regalos de formulaciones botánicas de autor elaboradas uno a uno para cumpleaños, fechas especiales y detalles corporativos con sentido.",
     category: "Regalos conscientes",
     publishedAt: "2026-07-02",
     readTime: "4 min",
     heroImage: "/products/Corporal/crema-corporal-rosas-cacao-mai-natural.png",
-    keywords: ["regalos cosmetica natural", "cosmetica artesanal", "regalos bienestar"],
+    keywords: ["regalos de autor", "formulaciones botánicas", "regalos bienestar"],
     relatedProductCategory: "corporal",
     sections: [
       {
         heading: "Un regalo de cuidado se usa, se siente y se recuerda",
         body: [
-          "La cosmetica natural artesanal funciona muy bien como regalo porque transforma un detalle en ritual. No es solo un producto: es una invitacion a pausar y cuidarse.",
+          "Las formulaciones botánicas de autor funcionan muy bien como regalo porque transforman un detalle en ritual. No es solo un producto: es una invitación a pausar y cuidarse.",
           "Para elegir mejor, piensa en la persona: piel seca, amor por aromas suaves, interes por rutinas simples o gusto por productos corporales.",
         ],
       },

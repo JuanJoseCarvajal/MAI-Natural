@@ -7,9 +7,9 @@ import { buildMetadata } from "@/lib/seo";
 export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Diario MAI: cosmética natural y rutinas | MAI Natural",
+  title: "Diario MAI: formulaciones botánicas de autor | MAI Natural",
   description:
-    "Guías de cosmética natural, cuidado facial, cuidado capilar y regalos conscientes para elegir mejor tu rutina MAI.",
+    "Historias sobre formulaciones botánicas de autor, cuidado facial, cuidado capilar y rituales MAI.",
   path: "/blog",
 });
 

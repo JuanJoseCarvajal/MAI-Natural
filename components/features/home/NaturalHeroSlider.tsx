@@ -24,7 +24,7 @@ const SLIDES: Slide[] = [
   },
   {
     src: "https://images.pexels.com/photos/6621434/pexels-photo-6621434.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    alt: "Cosecha botanica en manos para cosmetica natural",
+    alt: "Formulación botánica de autor elaborada uno a uno",
   },
 ];
 

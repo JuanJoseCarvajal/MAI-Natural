@@ -29,7 +29,7 @@ export default function ProductCard({ id, image, name, price, amountInCents = 0,
       <span className={styles.imageArrow} aria-hidden="true">↗</span>
     </Link>
     <div className={styles.cardBody}>
-      {category ? <p className={styles.category}>{categoryLabels[category].replace("Cosmética Natural ", "Cuidado ")}</p> : null}
+      {category ? <p className={styles.category}>{categoryLabels[category].replace("Formulaciones Botánicas de Autor · ", "Cuidado ")}</p> : null}
       <h3><Link href={`/products/${id}`}>{name}</Link></h3>
       <p className={styles.description}>{description}</p>
       <p className={styles.price}>{price} <span>COP</span></p>

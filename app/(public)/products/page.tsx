@@ -4,9 +4,9 @@ import { getAllProducts } from "@/lib/products.server";
 import { absoluteUrl, buildMetadata, serializeJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Cosmética natural en Colombia: facial, capilar y corporal | MAI Natural",
+  title: "Formulaciones botánicas de autor en Colombia | MAI Natural",
   description:
-    "Encuentra cosmética natural MAI para tu piel, cabello y cuerpo. Compara precios en pesos colombianos y descubre productos, kits y rutinas botánicas.",
+    "Descubre formulaciones botánicas de autor para piel, cabello y cuerpo, elaboradas uno a uno por MAI.",
   path: "/products",
 });
 
@@ -15,7 +15,7 @@ export default async function ProductsPage() {
   const collection = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Cosmética natural MAI",
+    name: "Formulaciones botánicas de autor MAI",
     url: absoluteUrl("/products"),
     mainEntity: {
       "@type": "ItemList",

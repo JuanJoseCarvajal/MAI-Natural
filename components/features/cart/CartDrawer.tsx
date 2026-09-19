@@ -96,7 +96,7 @@ export default function CartDrawer() {
               <span className="text-5xl">🌿</span>
               <p className="text-slate-700 font-medium">Tu carrito está vacío</p>
               <p className="text-sm text-slate-500">
-                Explora nuestros productos naturales y agrega tus favoritos.
+                Explora nuestras formulaciones botánicas de autor y agrega tus favoritas.
               </p>
               <Link
                 href="/products"

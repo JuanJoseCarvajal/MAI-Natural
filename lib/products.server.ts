@@ -72,7 +72,7 @@ export async function createProduct(input: AdminProductInput) {
     badge: input.badge?.trim() || undefined,
     benefits: input.benefits?.length
       ? input.benefits.map((benefit) => benefit.trim()).filter(Boolean)
-      : ["Cosmética natural", "Ingredientes botánicos", "Hecho con intención"],
+      : ["Formulación botánica de autor", "Ingredientes botánicos", "Elaborado uno a uno"],
     rating: input.rating ?? 4.8,
     reviewsCount: input.reviewsCount ?? 0,
     sku: input.sku?.trim() || undefined,

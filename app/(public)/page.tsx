@@ -28,15 +28,15 @@ export default async function PublicHomePage() {
       ] }) }} />
       <section className="botanical-hero">
         <div className="hero-copy">
-          <p className="eyebrow"><span className="tiny-leaf">✳</span> COSMÉTICA NATURAL COLOMBIANA</p>
+          <p className="eyebrow"><span className="tiny-leaf">✳</span> FORMULACIONES BOTÁNICAS DE AUTOR</p>
           <h1>Volver a lo natural.<br /><em>Volver a ti.</em></h1>
           <p className="hero-description">El cuidado empieza con una pausa. Descubre rituales botánicos para tu piel, tu cabello y ese momento que es solo tuyo.</p>
           <div className="hero-actions"><Link href="/products" className="mai-button">Descubrir productos <span aria-hidden="true">↗</span></Link><Link href="/routines" className="text-link">Encuentra tu ritual <span aria-hidden="true">→</span></Link></div>
-          <div className="hero-footnote"><span className="hero-line" /><p>Hecho con intención.<br /><strong>Cuidado que se siente.</strong></p></div>
+          <div className="hero-footnote"><span className="hero-line" /><p>Formulado uno a uno.<br /><strong>Cuidado que se siente.</strong></p></div>
         </div>
         <EditorialHeroCarousel slides={editorialSlides} />
       </section>
-      <div className="benefit-ribbon" aria-label="Nuestra propuesta"><span>Ingredientes botánicos</span><i aria-hidden="true">✳</i><span>Elaboración artesanal</span><i aria-hidden="true">✳</i><span>Asesoría personalizada</span><i aria-hidden="true">✳</i><span>Una rutina a tu ritmo</span></div>
+      <div className="benefit-ribbon" aria-label="Nuestra propuesta"><span>Formulaciones botánicas de autor</span><i aria-hidden="true">✳</i><span>Elaborado uno a uno</span><i aria-hidden="true">✳</i><span>Asesoría personalizada</span><i aria-hidden="true">✳</i><span>Una rutina a tu ritmo</span></div>
 
       <section className="editorial-section">
         <div className="section-heading"><div><p className="eyebrow">TU NATURALEZA, TU RITUAL</p><h2>¿Por dónde quieres empezar?</h2></div><Link href="/products" className="text-link">Todo el catálogo <span aria-hidden="true">↗</span></Link></div>
@@ -47,13 +47,13 @@ export default async function PublicHomePage() {
 
       <section className="ritual-story"><div className="ritual-photo"><Image src="/products/Facial/calendula-aloe-vera-manzanilla-mousse-cremoso-limpiador-mai-natural.png" alt="Limpiador botánico de caléndula, aloe vera y manzanilla MAI" fill sizes="(max-width: 760px) 100vw, 50vw" /></div><div className="ritual-copy"><p className="eyebrow">MENOS COMPLICACIONES, MÁS CONSTANCIA</p><h2>Tu cuidado no necesita más pasos.<br /><em>Necesita los tuyos.</em></h2><p>Empieza por lo que buscas, conoce cada producto y construye una rutina que tenga sentido para ti.</p><ol className="ritual-steps"><li><span>01</span> Elige lo que quieres cuidar</li><li><span>02</span> Descubre una selección de productos</li><li><span>03</span> Haz espacio para tu ritual</li></ol><Link href="/routines" className="mai-button mai-button-light">Encontrar mi rutina <span aria-hidden="true">↗</span></Link></div></section>
 
-      <section className="editorial-section care-values"><div><p className="eyebrow">EL UNIVERSO MAI</p><h2>Natural en esencia.<br /><em>Cercano por naturaleza.</em></h2></div><div className="values-list"><article><span>01</span><div><h3>El tiempo de lo artesanal</h3><p>Elaboramos cada producto con cuidado. Entrega estimada de 5 a 7 días hábiles; confirma las condiciones para tu destino al comprar.</p></div></article><article><span>02</span><div><h3>Elegir con tranquilidad</h3><p>Conoce los productos, compara sus precios y encuentra una rutina sin añadir pasos que no necesitas.</p></div></article><article><span>03</span><div><h3>Estamos para acompañarte</h3><p>Si tienes dudas, conversemos. Nuestra asesoría te ayuda a conocer el catálogo y elegir con más claridad.</p><Link href="/services" className="text-link">Conocer las asesorías ↗</Link></div></article></div></section>
+      <section className="editorial-section care-values"><div><p className="eyebrow">EL UNIVERSO MAI</p><h2>Formulaciones de autor.<br /><em>Elaboradas una a una.</em></h2></div><div className="values-list"><article><span>01</span><div><h3>El tiempo de cada formulación</h3><p>Elaboramos cada producto uno a uno. Entrega estimada de 5 a 7 días hábiles; confirma las condiciones para tu destino al comprar.</p></div></article><article><span>02</span><div><h3>Elegir con tranquilidad</h3><p>Conoce los productos, compara sus precios y encuentra una rutina sin añadir pasos que no necesitas.</p></div></article><article><span>03</span><div><h3>Estamos para acompañarte</h3><p>Si tienes dudas, conversemos. Nuestra asesoría te ayuda a conocer el catálogo y elegir con más claridad.</p><Link href="/services" className="text-link">Conocer las asesorías ↗</Link></div></article></div></section>
 
       <section className="editorial-section journal-section"><div className="section-heading"><div><p className="eyebrow">EL DIARIO MAI</p><h2>Un poco de inspiración para cuidarte.</h2></div><Link href="/blog" className="text-link">Leer el diario ↗</Link></div><div className="journal-grid">{blogPosts.slice(0,3).map(post => <article key={post.slug}><Link href={`/blog/${post.slug}`} className="journal-image"><Image src={post.heroImage} alt="" fill sizes="(max-width: 640px) 100vw, 33vw" /></Link><p className="eyebrow">{post.category} · {post.readTime}</p><h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3><Link href={`/blog/${post.slug}`} className="text-link">Leer historia ↗</Link></article>)}</div></section>
 
       <section className="home-faq editorial-section"><div><p className="eyebrow">ANTES DE EMPEZAR</p><h2>Hablemos de tu compra.</h2></div><div>{[
         ["¿Cómo elijo mis productos?", "Explora el catálogo por cuidado facial, capilar o corporal. En Rutinas puedes ver una selección por necesidad. Si todavía tienes dudas, solicita una asesoría."],
-        ["¿Cuánto tarda mi pedido?", "La entrega estimada es de 5 a 7 días hábiles por nuestra elaboración artesanal. El destino y las condiciones de envío se revisan antes de confirmar tu pedido."],
+        ["¿Cuánto tarda mi pedido?", "La entrega estimada es de 5 a 7 días hábiles porque cada formulación se elabora uno a uno. El destino y las condiciones de envío se revisan antes de confirmar tu pedido."],
         ["¿Necesito crear una cuenta para comprar?", "Puedes continuar como invitada o invitado desde el carrito. Te pediremos los datos necesarios para gestionar tu pedido y su entrega."],
         ["¿Qué opciones de pago hay?", "Pagas exclusivamente con Wompi. Revisa tus datos, el envío y el total en el checkout; después continúa a Wompi para completar el pago. Si estás en un entorno de pruebas, lo indicaremos antes de continuar."],
       ].map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>

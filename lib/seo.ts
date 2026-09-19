@@ -6,7 +6,7 @@ export const siteUrl = (
 
 export const siteName = "MAI Natural";
 export const defaultSeoDescription =
-  "Cosmética natural colombiana para piel, cabello y bienestar. Descubre el cuidado facial, capilar y corporal de MAI Natural.";
+  "Formulaciones botánicas de autor, elaboradas uno a uno en Colombia para piel, cabello y bienestar.";
 
 type SeoInput = {
   title: string;
