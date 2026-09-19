@@ -10,7 +10,7 @@ export default async function AdminOrdersPage() {
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
           Comercio
         </p>
-        <h1 className="mt-2 text-3xl font-bold text-brand-900">Órdenes</h1>
+        <h1 className="mt-2 text-3xl font-bold text-brand-900">Pedidos</h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-600">
           Supervisa el flujo completo de pedidos: estado operativo, verificación de pago y avance
           del despacho.

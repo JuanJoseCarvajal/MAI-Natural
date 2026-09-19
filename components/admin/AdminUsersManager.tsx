@@ -1,5 +1,6 @@
 "use client";
 
+import { formatAdminDate } from "@/lib/admin-order";
 import { useState, useTransition } from "react";
 import { updateAdminUserRole } from "@/app/admin/actions";
 import type { User } from "@/lib/db";
@@ -10,6 +11,8 @@ type AdminUsersManagerProps = {
 
 export default function AdminUsersManager({ initialUsers }: AdminUsersManagerProps) {
   const [users, setUsers] = useState(initialUsers);
+  const [query, setQuery] = useState("");
+  const visible = users.filter(user=>[user.name,user.email,user.phone].join(" ").toLowerCase().includes(query.trim().toLowerCase()));
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
 
@@ -50,40 +53,44 @@ export default function AdminUsersManager({ initialUsers }: AdminUsersManagerPro
       </section>
 
       {message ? (
-        <p className="rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
+        <p role="status" aria-live="polite" className="rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
       ) : null}
 
+      <label className="grid gap-2 text-sm font-medium">Buscar usuarios<input type="search" className="rounded-xl border border-slate-300 p-3" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Nombre, correo o teléfono" /></label>
+      <p role="status" className="text-sm text-slate-600">{visible.length} usuarios encontrados</p>
       <section className="overflow-hidden rounded-3xl border border-brand-100 bg-white shadow-sm">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" role="region" aria-label="Listado administrativo; desplázate para ver todas las columnas" tabIndex={0}>
           <table className="min-w-full">
             <thead className="bg-slate-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Usuario</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Email</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Teléfono</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Rol</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Registro</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Usuario</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Email</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Teléfono</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Rol</th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">Registro</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {users.map((user) => (
+              {visible.length === 0 && <tr><td colSpan={5} className="p-8 text-center">No hay usuarios que coincidan con tu búsqueda.</td></tr>}
+              {visible.map((user) => (
                 <tr key={user.id}>
                   <td className="px-6 py-4 font-medium text-brand-900">{user.name || "-"}</td>
                   <td className="px-6 py-4 text-sm text-slate-700">{user.email}</td>
                   <td className="px-6 py-4 text-sm text-slate-700">{user.phone || "-"}</td>
                   <td className="px-6 py-4">
                     <select
+                      aria-label={`Rol de ${user.name || user.email}`}
                       value={user.role}
                       onChange={(event) => handleRoleChange(user.id, event.target.value)}
                       disabled={isPending}
                       className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
                     >
-                      <option value="user">user</option>
-                      <option value="admin">admin</option>
+                      <option value="user">Cliente</option>
+                      <option value="admin">Administrador</option>
                     </select>
                   </td>
                   <td className="px-6 py-4 text-sm text-slate-700">
-                    {new Date(user.createdAt).toLocaleDateString("es-CO")}
+                    {formatAdminDate(user.createdAt)}
                   </td>
                 </tr>
               ))}

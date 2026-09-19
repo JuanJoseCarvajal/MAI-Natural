@@ -1,3 +1,4 @@
+import { isPaidOrder } from "@/lib/admin-order";
 import { getAllOrders, getAllAdminProducts } from "@/app/admin/actions";
 
 function formatCOP(value: number) {
@@ -11,9 +12,9 @@ function formatCOP(value: number) {
 export default async function AdminSalesPage() {
   const [{ orders }, { products }] = await Promise.all([getAllOrders(), getAllAdminProducts()]);
 
-  const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
-  const paidOrders = orders.filter((order) => order.status === "paid").length;
-  const averageTicket = orders.length > 0 ? totalRevenue / orders.length : 0;
+  const totalRevenue = orders.filter(isPaidOrder).reduce((sum, order) => sum + order.total, 0);
+  const paidOrders = orders.filter(isPaidOrder).length;
+  const averageTicket = paidOrders > 0 ? totalRevenue / paidOrders : 0;
   const averageProductValue =
     products.length > 0
       ? products.reduce((sum, product) => sum + product.amountInCents, 0) / products.length
@@ -27,14 +28,13 @@ export default async function AdminSalesPage() {
         </p>
         <h1 className="mt-2 text-3xl font-bold text-brand-900">Ventas</h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-          Lectura ejecutiva del desempeño comercial para tomar decisiones de catálogo, pricing y
-          operación.
+          Solo pagos reales confirmados. Los pedidos pendientes y las pruebas Wompi no se incluyen en los ingresos.
         </p>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm">
-          <p className="text-sm text-slate-500">Facturación</p>
+          <p className="text-sm text-slate-500">Cobros confirmados</p>
           <p className="mt-2 text-3xl font-extrabold text-brand-900">{formatCOP(totalRevenue)}</p>
         </div>
         <div className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm">
@@ -42,7 +42,7 @@ export default async function AdminSalesPage() {
           <p className="mt-2 text-3xl font-extrabold text-brand-900">{paidOrders}</p>
         </div>
         <div className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm">
-          <p className="text-sm text-slate-500">Ticket promedio</p>
+          <p className="text-sm text-slate-500">Promedio por pedido pagado</p>
           <p className="mt-2 text-3xl font-extrabold text-brand-900">{formatCOP(averageTicket)}</p>
         </div>
         <div className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm">

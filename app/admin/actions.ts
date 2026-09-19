@@ -1,5 +1,7 @@
 'use server';
 
+import { fetchWompiTransaction } from '@/lib/wompi-server';
+import { isPaidOrder, validateOrderPatch } from '@/lib/admin-order';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
@@ -104,8 +106,8 @@ export async function getAdminOverview() {
 
     const lowStockProducts = products.filter((product) => (product.stock ?? 0) <= 5).length;
     const activeProducts = products.filter((product) => product.active !== false).length;
-    const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
-    const paidOrders = orders.filter((order) => (order.paymentStatus ?? 'pending_confirmation') === 'confirmed').length;
+    const totalRevenue = orders.filter(isPaidOrder).reduce((sum, order) => sum + order.total, 0);
+    const paidOrders = orders.filter(isPaidOrder).length;
     const shipmentsInProgress = orders.filter((order) =>
       ['confirmed', 'preparing_order', 'order_sent', 'order_in_route'].includes(
         order.shippingStatus ?? order.status
@@ -204,7 +206,9 @@ export async function deleteAdminProduct(id: string) {
 
 export async function updateAdminAppointmentStatus(id: string, status: string) {
   await ensureAdmin();
+  if (!['pending_payment', 'payment_pending_verification', 'confirmed', 'cancelled', 'expired_payment_window'].includes(status)) throw new Error('Estado de cita inválido');
   const appointment = await db.appointment.update({ where: { id }, data: { status } });
+  if (!appointment) throw new Error('Cita no encontrada');
   revalidatePath('/admin');
   revalidatePath('/admin/appointments');
   return { success: true, appointment };
@@ -222,17 +226,10 @@ export async function updateAdminOrder(
   }
 ) {
   await ensureAdmin();
-  const order = await db.order.update({
-    where: { id },
-    data: {
-      status: input.status,
-      paymentStatus: input.paymentStatus,
-      paymentMethod: input.paymentMethod,
-      shippingStatus: input.shippingStatus,
-      trackingNumber: input.trackingNumber,
-      notes: input.notes,
-    },
-  });
+  const current = await db.order.findUnique({ where: { id } });
+  if (!current) throw new Error('Pedido no encontrado. Actualiza la página.');
+  const patch = validateOrderPatch(current, input);
+  const order = await db.order.update({ where: { id }, data: patch });
   revalidatePath('/admin');
   revalidatePath('/admin/orders');
   revalidatePath('/admin/payments');
@@ -243,10 +240,15 @@ export async function updateAdminOrder(
 
 export async function updateAdminUserRole(id: string, role: string) {
   await ensureAdmin();
+  if (!['user', 'admin'].includes(role)) throw new Error('Rol inválido');
+  const session = await auth();
+  if (session?.user?.id === id && role !== 'admin') throw new Error('No puedes retirar tu propio acceso administrativo.');
   const user = await db.user.update({ where: { id }, data: { role } });
   revalidatePath('/admin');
   revalidatePath('/admin/users');
-  return { success: true, user };
+  if (!user) throw new Error("Usuario no encontrado");
+  const { password: _password, ...safeUser } = user;
+  return { success: true, user: safeUser };
 }
 
 export async function createAdminDiscount(input: AdminDiscountInput) {
@@ -271,4 +273,17 @@ export async function deleteAdminDiscount(id: string) {
   revalidatePath('/admin/discounts');
   revalidatePath('/checkout');
   return { success: true };
+}
+
+export async function verifyAdminWompiOrder(orderId: string, transactionId: string) {
+  await ensureAdmin();
+  const order = await db.order.findUnique({ where: { id: orderId } });
+  if (!order) throw new Error('Pedido no encontrado.');
+  const transaction = await fetchWompiTransaction(transactionId.trim());
+  if (transaction.reference !== `mai-${order.id}` || transaction.amount_in_cents !== order.total) throw new Error('La referencia o el importe de Wompi no coincide con este pedido.');
+  if (order.wompiTransactionId && order.wompiTransactionId !== transaction.id) throw new Error('Este pedido ya tiene otra transacción asociada.');
+  if (order.wompiStatus === 'APPROVED' && transaction.status !== 'APPROVED') throw new Error('El proveedor devolvió un cambio que requiere revisión manual.');
+  const updated = await db.order.update({ where: { id: orderId }, data: { paymentMethod: 'wompi_sandbox', wompiTransactionId: transaction.id, wompiStatus: transaction.status, paymentStatus: `sandbox_${transaction.status.toLowerCase()}` } });
+  revalidatePath('/admin'); revalidatePath('/admin/orders'); revalidatePath('/admin/payments'); revalidatePath('/admin/sales'); revalidatePath('/checkout/result');
+  return { order: updated };
 }

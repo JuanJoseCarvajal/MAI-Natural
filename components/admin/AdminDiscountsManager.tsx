@@ -65,6 +65,8 @@ export default function AdminDiscountsManager({
   const [discounts, setDiscounts] = useState(initialDiscounts);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<DiscountFormState>(defaultForm);
+  const [query, setQuery] = useState("");
+  const visible = discounts.filter(d=>[d.code,d.description].join(" ").toLowerCase().includes(query.trim().toLowerCase()));
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
 
@@ -266,7 +268,7 @@ export default function AdminDiscountsManager({
         </div>
 
         {message ? (
-          <p className="mt-4 rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
+          <p role="status" aria-live="polite" className="mt-4 rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
         ) : null}
 
         <button
@@ -281,8 +283,10 @@ export default function AdminDiscountsManager({
 
       <section className="rounded-3xl border border-brand-100 bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-bold text-brand-900">Códigos activos y configurables</h2>
+        <label className="mt-5 grid gap-2 text-sm font-medium">Buscar descuentos<input type="search" value={query} onChange={e=>setQuery(e.target.value)} className="rounded-xl border border-slate-300 p-3" placeholder="Código o descripción" /></label>
+        <p role="status" className="mt-3 text-sm">{visible.length} descuentos encontrados</p>
         <div className="mt-6 space-y-3">
-          {discounts.map((discount) => (
+          {visible.map((discount) => (
             <article key={discount.id} className="rounded-2xl border border-slate-200 p-4">
               <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div>

@@ -17,8 +17,7 @@ export default async function AdminPaymentsPage() {
           </p>
           <h1 className="mt-2 text-3xl font-bold text-brand-900">Pagos</h1>
           <p className="mt-2 max-w-3xl text-sm text-slate-600">
-            Valida transferencias, monitorea pedidos pagados y centraliza el estado de cobro de la
-            operación.
+            Valida las transferencias recibidas. Usa el filtro Wompi para revisar simulaciones; una aprobación de prueba no es un cobro real.
           </p>
         </div>
         <div className="rounded-3xl border border-amber-200 bg-amber-50 px-5 py-4">

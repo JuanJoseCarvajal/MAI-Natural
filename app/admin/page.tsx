@@ -1,3 +1,4 @@
+import { adminStatusLabels } from "@/lib/admin-order";
 import Link from "next/link";
 import { getAdminOverview } from "@/app/admin/actions";
 
@@ -42,7 +43,7 @@ export default async function AdminPage() {
             </p>
           </div>
           <div className="rounded-3xl bg-white/12 px-5 py-4 backdrop-blur">
-            <p className="text-sm text-brand-100">Ventas acumuladas</p>
+            <p className="text-sm text-brand-100">Cobros reales confirmados</p>
             <p className="mt-1 text-3xl font-extrabold">{formatCOP(metrics.totalRevenue)}</p>
           </div>
         </div>
@@ -100,7 +101,7 @@ export default async function AdminPage() {
                       </p>
                     </div>
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-900 ring-1 ring-brand-100">
-                      {appointment.status}
+                      {adminStatusLabels[appointment.status] ?? "Estado por revisar"}
                     </span>
                   </div>
                 </article>
@@ -174,7 +175,7 @@ export default async function AdminPage() {
                       </div>
                       <div className="text-right">
                         <p className="font-semibold text-brand-900">{formatCOP(order.total)}</p>
-                        <p className="text-xs text-slate-500">{order.status}</p>
+                        <p className="text-xs text-slate-500">{adminStatusLabels[order.status] ?? "Estado por revisar"}</p>
                       </div>
                     </div>
                   </article>

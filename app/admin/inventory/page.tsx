@@ -3,9 +3,10 @@ import { getAllAdminProducts } from "@/app/admin/actions";
 import { categoryLabels } from "@/lib/products";
 
 export default async function AdminInventoryPage() {
-  const { products } = await getAllAdminProducts();
+  const { products: allProducts } = await getAllAdminProducts();
+  const products = [...allProducts].sort((a,b)=>(a.stock ?? 0)-(b.stock ?? 0));
 
-  const lowStockProducts = products.filter((product) => (product.stock ?? 0) <= 5);
+  const lowStockProducts = products.filter((product) => (product.stock ?? 0) > 0 && (product.stock ?? 0) <= 5);
   const outOfStockProducts = products.filter((product) => (product.stock ?? 0) === 0);
 
   return (
@@ -46,30 +47,31 @@ export default async function AdminInventoryPage() {
 
       <section className="overflow-hidden rounded-3xl border border-brand-100 bg-white shadow-sm">
         <div className="border-b border-slate-200 px-6 py-5">
-          <h2 className="text-xl font-bold text-brand-900">Vista operativa de inventario</h2>
+          <h2 className="text-xl font-bold text-brand-900">Inventario · menor stock primero</h2>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" role="region" aria-label="Inventario ordenado por menor stock" tabIndex={0}>
           <table className="min-w-full">
             <thead className="bg-slate-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Producto
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
                   SKU
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Categoría
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Stock
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
                   Estado
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
+              {products.length === 0 && <tr><td colSpan={5} className="p-8 text-center">No hay productos registrados. Agrega un producto desde el catálogo.</td></tr>}
               {products.map((product) => {
                 const stock = product.stock ?? 0;
                 const stockClass =

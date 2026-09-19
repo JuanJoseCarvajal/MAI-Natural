@@ -69,6 +69,8 @@ export default function AdminProductsManager({
   initialProducts,
 }: AdminProductsManagerProps) {
   const [products, setProducts] = useState(initialProducts);
+  const [query, setQuery] = useState("");
+  const visible = products.filter(p=>[p.name,p.sku,p.id].join(" ").toLowerCase().includes(query.trim().toLowerCase()));
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<ProductFormState>(defaultForm);
   const [message, setMessage] = useState<string>("");
@@ -167,9 +169,9 @@ export default function AdminProductsManager({
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
                 Editor
               </p>
-              <h1 className="mt-2 text-2xl font-bold text-brand-900">
+              <h2 id="product-editor" tabIndex={-1} className="mt-2 text-2xl font-bold text-brand-900">
                 {editingId ? "Editar producto" : "Crear producto"}
-              </h1>
+              </h2>
             </div>
             {editingId ? (
               <button
@@ -303,7 +305,7 @@ export default function AdminProductsManager({
           </div>
 
           {message ? (
-            <p className="mt-4 rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
+            <p role="status" aria-live="polite" className="mt-4 rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
           ) : null}
 
           <button
@@ -326,8 +328,11 @@ export default function AdminProductsManager({
             </div>
           </div>
 
+          <label className="mt-5 grid gap-2 text-sm font-medium">Buscar productos<input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Nombre o SKU" className="rounded-xl border border-slate-300 p-3" /></label>
+          <p role="status" className="mt-3 text-sm">{visible.length} productos encontrados</p>
           <div className="mt-6 space-y-3">
-            {products.map((product) => (
+            {visible.length === 0 && <p>No hay productos que coincidan con la búsqueda.</p>}
+            {visible.map((product) => (
               <article key={product.id} className="rounded-2xl border border-slate-200 p-4">
                 <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                   <div>
@@ -354,6 +359,8 @@ export default function AdminProductsManager({
                     <button
                       type="button"
                       onClick={() => {
+                        document.getElementById("product-editor")?.scrollIntoView({ behavior: "instant", block: "start" });
+                        document.getElementById("product-editor")?.focus();
                         setEditingId(product.id);
                         setForm(productToForm(product));
                       }}
@@ -363,6 +370,8 @@ export default function AdminProductsManager({
                     </button>
                     <button
                       type="button"
+                      disabled={isPending}
+                      aria-label={`Eliminar ${product.name}`}
                       onClick={() => handleDelete(product.id)}
                       className="rounded-full border border-red-200 px-4 py-2 text-sm font-semibold text-red-700"
                     >

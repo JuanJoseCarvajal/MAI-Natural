@@ -1,0 +1,7 @@
+.admin-workspace :where(a,button,input,select,textarea,summary):focus-visible { outline: 3px solid #b45309; outline-offset: 3px; }
+.admin-workspace :where(button,input,select,summary) { min-height: 44px; }
+.admin-workspace :where(input,select,textarea):disabled { cursor: not-allowed; }
+.admin-workspace :where(td,dd) { overflow-wrap: anywhere; }
+.admin-workspace table { font-variant-numeric: tabular-nums; }
+.admin-workspace caption { padding: 1rem; text-align: left; }
+@media (prefers-reduced-motion: reduce) { .admin-workspace *, .admin-workspace *::before, .admin-workspace *::after { transition: none !important; animation: none !important; } }
