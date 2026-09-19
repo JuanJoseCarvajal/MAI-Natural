@@ -42,3 +42,14 @@ Tras verificar almacenamiento, cuenta de administrador, credenciales y URL de ev
 `pnpm test:run` incluye PostgreSQL embebido (PGlite) con reapertura del almacenamiento, rollback, exclusión de reservas concurrentes, aceptación de cotización, importe del servidor y eventos de producción simulados. El cliente de red `pg` está simulado en esa suite; TLS, conectividad y comportamiento entre procesos deben verificarse contra la base de Hostinger antes de activar cobros.
 
 Fuente: [ambientes y llaves](https://docs.wompi.co/docs/colombia/ambientes-y-llaves/) y [eventos](https://docs.wompi.co/docs/colombia/eventos/).
+
+## Supabase conectado desde Hostinger
+
+La integración usa `pg` y la conexión PostgreSQL del servidor. No necesita `@supabase/supabase-js` ni el `db.js` genérico del panel. Las variables de API Supabase agregadas automáticamente por Hostinger no sustituyen `DATABASE_URL`.
+
+1. En Supabase, abrir **Connect → Session pooler** y copiar la URI PostgreSQL (puerto 5432, compatible con IPv4). Sustituir el marcador de contraseña por la contraseña de la base; codificar caracteres especiales de la contraseña para URI.
+2. Guardar esa URI como `DATABASE_URL` privada en Hostinger. Usar TLS con verificación del certificado según la configuración de Supabase.
+3. En **SQL Editor → New query**, ejecutar todo `migrations/001-persistent-records.sql` con el rol `postgres`. Es equivalente a `pnpm db:migrate`; no es necesario ejecutar ambos. Incluye RLS y revoca acceso de `anon`/`authenticated` a las tablas privadas.
+4. Solo después de crear las tablas, configurar `DATABASE_DRIVER=postgres` y redesplegar. Mantener `WOMPI_PRODUCTION_ENABLED=false` hasta verificar la conexión y configurar Wompi.
+
+Referencia: https://supabase.com/docs/guides/database/connecting-to-postgres

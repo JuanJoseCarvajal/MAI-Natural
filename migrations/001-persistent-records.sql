@@ -10,5 +10,18 @@ CREATE TABLE IF NOT EXISTS mai_records (
 CREATE UNIQUE INDEX IF NOT EXISTS mai_user_email ON mai_records (lower(data->>'email')) WHERE kind = 'user';
 CREATE UNIQUE INDEX IF NOT EXISTS mai_token_hash ON mai_records ((data->>'tokenHash')) WHERE kind = 'passwordResetToken';
 CREATE UNIQUE INDEX IF NOT EXISTS mai_wompi_transaction ON mai_records ((data->>'wompiTransactionId')) WHERE data->>'wompiTransactionId' IS NOT NULL;
+-- Server-only tables: deny Data API access with public/anonymous keys.
+ALTER TABLE mai_records ENABLE ROW LEVEL SECURITY;
+ALTER TABLE mai_schema ENABLE ROW LEVEL SECURITY;
+REVOKE ALL ON mai_records, mai_schema FROM PUBLIC;
+DO $$
+BEGIN
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
+    REVOKE ALL ON mai_records, mai_schema FROM anon;
+  END IF;
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'authenticated') THEN
+    REVOKE ALL ON mai_records, mai_schema FROM authenticated;
+  END IF;
+END $$;
 INSERT INTO mai_schema (version) VALUES (1) ON CONFLICT DO NOTHING;
 COMMIT;
