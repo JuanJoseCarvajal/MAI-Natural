@@ -26,7 +26,7 @@ const legacyPosts: BlogPost[] = [
     category: "Cuidado facial",
     publishedAt: "2026-07-02",
     readTime: "5 min",
-    heroImage: "/products/Facial/agua-de-rosas-mai-natural.png",
+    heroImage: "/products/autor/fa-lnd-70-1.png",
     keywords: ["rutina facial de autor", "piel sensible", "formulaciones botánicas de autor"],
     relatedProductCategory: "facial",
     sections: [
@@ -68,7 +68,7 @@ const legacyPosts: BlogPost[] = [
     category: "Cuidado capilar",
     publishedAt: "2026-07-02",
     readTime: "4 min",
-    heroImage: "/products/Capilar/shampoo-jardin-herbal-mai-natural.png",
+    heroImage: "/products/autor/mnk-001-1.png",
     keywords: ["shampoo de autor", "cabello rizado", "formulaciones botánicas de autor"],
     relatedProductCategory: "capilar",
     sections: [
@@ -103,7 +103,7 @@ const legacyPosts: BlogPost[] = [
     category: "Regalos conscientes",
     publishedAt: "2026-07-02",
     readTime: "4 min",
-    heroImage: "/products/Corporal/crema-corporal-rosas-cacao-mai-natural.png",
+    heroImage: "/products/autor/crema-corporal-1.png",
     keywords: ["regalos de autor", "formulaciones botánicas", "regalos bienestar"],
     relatedProductCategory: "corporal",
     sections: [

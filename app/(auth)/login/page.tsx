@@ -1,4 +1,6 @@
 'use client';
+import { SiteText } from "@/components/common/SiteText";
+
 
 import { useState } from 'react';
 import { loginAction } from '../actions';
@@ -29,7 +31,7 @@ export default function LoginPage() {
         const params = new URLSearchParams(window.location.search);
         const callbackUrl = params.get('callbackUrl');
         const nextUrl =
-          callbackUrl?.startsWith('/') && !callbackUrl.startsWith('//')
+          callbackUrl?.startsWith('/') && !callbackUrl.startsWith('//') && !/[\\\u0000-\u001f]/.test(callbackUrl)
             ? callbackUrl
             : '/account';
 
@@ -45,7 +47,7 @@ export default function LoginPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Iniciar sesión</h1>
+      <h1 className="text-2xl font-bold text-brand-900"><SiteText id="b5ee06e692bef30850db">{"Iniciar sesión"}</SiteText></h1>
       
       {error && (
         <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
@@ -73,9 +75,7 @@ export default function LoginPage() {
           required
         />
         <div className="text-right">
-          <Link href="/forgot-password" className="text-sm font-semibold text-brand-700 hover:text-brand-900">
-            ¿Olvidaste tu contraseña?
-          </Link>
+          <Link href="/forgot-password" className="text-sm font-semibold text-brand-700 hover:text-brand-900"><SiteText id="dbc75a7793cf71ac2307">{"¿Olvidaste tu contraseña?"}</SiteText></Link>
         </div>
         <button
           type="submit"
@@ -86,11 +86,8 @@ export default function LoginPage() {
         </button>
       </form>
 
-      <p className="mt-4 text-center text-sm text-gray-600">
-        ¿No tienes cuenta?{' '}
-        <Link href="/register" className="text-brand-700 hover:text-brand-900 font-semibold">
-          Regístrate
-        </Link>
+      <p className="mt-4 text-center text-sm text-gray-600"><SiteText id="1d1241d42ab4bb33ee5e">{"¿No tienes cuenta?"}</SiteText>{' '}
+        <Link href="/register" className="text-brand-700 hover:text-brand-900 font-semibold"><SiteText id="ff4e154c507e4f5362b0">{"Regístrate"}</SiteText></Link>
       </p>
     </div>
   );

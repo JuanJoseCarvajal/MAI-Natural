@@ -1,4 +1,6 @@
 "use client";
+import { SiteText } from "@/components/common/SiteText";
+
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -69,9 +71,7 @@ export default function CartDrawer() {
         <header className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
           <div className="flex items-center gap-2">
             <span className="text-xl">🛒</span>
-            <h2 className="text-lg font-bold text-brand-900">
-              Tu carrito
-            </h2>
+            <h2 className="text-lg font-bold text-brand-900"><SiteText id="ba18b65621c38f686546">{"Tu carrito"}</SiteText></h2>
             {totalItems > 0 ? (
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-700 text-xs font-bold text-white">
                 {totalItems}
@@ -94,17 +94,13 @@ export default function CartDrawer() {
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
               <span className="text-5xl">🌿</span>
-              <p className="text-slate-700 font-medium">Tu carrito está vacío</p>
-              <p className="text-sm text-slate-500">
-                Explora nuestras formulaciones botánicas de autor y agrega tus favoritas.
-              </p>
+              <p className="text-slate-700 font-medium"><SiteText id="9381614bbf241274ed38">{"Tu carrito está vacío"}</SiteText></p>
+              <p className="text-sm text-slate-500"><SiteText id="eaa9c98f27622ce09e06">{"Explora nuestras formulaciones botánicas de autor y agrega tus favoritas."}</SiteText></p>
               <Link
                 href="/products"
                 onClick={closeCart}
                 className="mt-2 rounded-full bg-brand-700 px-6 py-2.5 text-sm font-semibold text-white hover:bg-brand-900"
-              >
-                Ir a la tienda
-              </Link>
+              ><SiteText id="c08954e0a0f1d37b3c06">{"Ir a la tienda"}</SiteText></Link>
             </div>
           ) : (
             <ul className="space-y-4">
@@ -167,17 +163,13 @@ export default function CartDrawer() {
         {items.length > 0 ? (
           <footer className="border-t border-slate-200 px-5 py-5 space-y-3">
             <div className="flex items-center justify-between text-base font-semibold text-slate-800">
-              <span>Subtotal</span>
+              <span><SiteText id="1da8581a7bc00832ede9">{"Subtotal"}</SiteText></span>
               <span className="text-brand-700 font-bold">
                 {formatCOP(totalAmountInCents)}
               </span>
             </div>
-            <p className="text-xs text-slate-500">
-              Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa.
-            </p>
-            <p className="text-xs text-brand-800">
-              Paga con <strong>Wompi</strong>. Revisa tus datos, el envío y el total antes de continuar al pago seguro.
-            </p>
+            <p className="text-xs text-slate-500"><SiteText id="15b38a60df97997f37bd">{"Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa."}</SiteText></p>
+            <p className="text-xs text-brand-800"><SiteText id="3d7404091d15db82c70a">{"Paga con "}</SiteText><strong><SiteText id="79c8e046abb7ccfae096">{"Wompi"}</SiteText></strong><SiteText id="409b4c7a47d71ffc0009">{". Revisa tus datos, el envío y el total antes de continuar al pago seguro."}</SiteText></p>
             <Link
               href="/checkout"
               onClick={() => {
@@ -193,15 +185,11 @@ export default function CartDrawer() {
                 closeCart();
               }}
               className="block w-full rounded-full bg-brand-700 py-3 text-center text-sm font-bold text-white transition hover:bg-brand-900"
-            >
-              Continuar al pago con Wompi
-            </Link>
+            ><SiteText id="514dec265e0e81ed654d">{"Continuar al pago con Wompi"}</SiteText></Link>
             <button
               onClick={closeCart}
               className="block w-full rounded-full border border-slate-300 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-            >
-              Seguir comprando
-            </button>
+            ><SiteText id="0df3f53a24f66d4202a9">{"Seguir comprando"}</SiteText></button>
           </footer>
         ) : null}
       </aside>

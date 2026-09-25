@@ -1,4 +1,6 @@
 'use client';
+import { SiteText } from "@/components/common/SiteText";
+
 
 import { useState } from 'react';
 import { signOut } from 'next-auth/react';
@@ -64,7 +66,7 @@ export default function AccountProfileForm({ initialUser }: AccountProfileFormPr
         onSubmit={handleSubmit}
         className="space-y-4 rounded-lg bg-white p-6 shadow ring-1 ring-brand-100"
       >
-        <h2 className="text-lg font-semibold text-brand-900">Informacion personal</h2>
+        <h2 className="text-lg font-semibold text-brand-900"><SiteText id="cb145e86a8ed76b28e56">{"Informacion personal"}</SiteText></h2>
 
         {message ? (
           <div
@@ -77,9 +79,7 @@ export default function AccountProfileForm({ initialUser }: AccountProfileFormPr
         ) : null}
 
         <div>
-          <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700">
-            Nombre completo
-          </label>
+          <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700"><SiteText id="7452f715cfe2ec3562ff">{"Nombre completo"}</SiteText></label>
           <input
             type="text"
             id="name"
@@ -92,9 +92,7 @@ export default function AccountProfileForm({ initialUser }: AccountProfileFormPr
         </div>
 
         <div>
-          <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700">
-            Correo electronico
-          </label>
+          <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700"><SiteText id="5ddf50b6a1b03b12210e">{"Correo electronico"}</SiteText></label>
           <input
             type="email"
             id="email"
@@ -103,13 +101,11 @@ export default function AccountProfileForm({ initialUser }: AccountProfileFormPr
             className="w-full rounded-lg border bg-slate-50 px-3 py-2"
             disabled
           />
-          <p className="mt-1 text-xs text-slate-500">Tu correo se gestiona desde la cuenta de acceso.</p>
+          <p className="mt-1 text-xs text-slate-500"><SiteText id="f1b1a6f0817bffc185cb">{"Tu correo se gestiona desde la cuenta de acceso."}</SiteText></p>
         </div>
 
         <div>
-          <label htmlFor="phone" className="mb-1 block text-sm font-medium text-slate-700">
-            Telefono
-          </label>
+          <label htmlFor="phone" className="mb-1 block text-sm font-medium text-slate-700"><SiteText id="d9ac71ce7040e3a5002b">{"Telefono"}</SiteText></label>
           <input
             type="tel"
             id="phone"
@@ -131,16 +127,13 @@ export default function AccountProfileForm({ initialUser }: AccountProfileFormPr
       </form>
 
       <div className="space-y-4 rounded-lg bg-white p-6 shadow ring-1 ring-brand-100">
-        <h2 className="text-lg font-semibold text-brand-900">Sesion</h2>
-        <p className="text-sm text-slate-600">
-          Estas conectado como <strong>{formData.email}</strong>
+        <h2 className="text-lg font-semibold text-brand-900"><SiteText id="d0a431d98c4536a81647">{"Sesion"}</SiteText></h2>
+        <p className="text-sm text-slate-600"><SiteText id="957469d88be717f22d1c">{"Estas conectado como "}</SiteText><strong>{formData.email}</strong>
         </p>
         <button
           onClick={() => signOut()}
           className="w-full rounded-lg border-2 border-red-600 px-6 py-2 font-semibold text-red-600 hover:bg-red-50"
-        >
-          Cerrar sesion
-        </button>
+        ><SiteText id="6a269dc3f1710acb9f00">{"Cerrar sesion"}</SiteText></button>
       </div>
     </div>
   );

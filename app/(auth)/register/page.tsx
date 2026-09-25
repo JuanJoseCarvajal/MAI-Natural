@@ -1,4 +1,6 @@
 'use client';
+import { SiteText } from "@/components/common/SiteText";
+
 
 import { useState } from 'react';
 import { registerAction } from '../actions';
@@ -46,7 +48,7 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Crear cuenta</h1>
+      <h1 className="text-2xl font-bold text-brand-900"><SiteText id="c32a3b3109c3c062d922">{"Crear cuenta"}</SiteText></h1>
       
       {error && (
         <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
@@ -102,11 +104,8 @@ export default function RegisterPage() {
         </button>
       </form>
 
-      <p className="mt-4 text-center text-sm text-gray-600">
-        ¿Ya tienes cuenta?{' '}
-        <Link href="/login" className="text-brand-700 hover:text-brand-900 font-semibold">
-          Inicia sesión
-        </Link>
+      <p className="mt-4 text-center text-sm text-gray-600"><SiteText id="c2feeac2357da3cbc227">{"¿Ya tienes cuenta?"}</SiteText>{' '}
+        <Link href="/login" className="text-brand-700 hover:text-brand-900 font-semibold"><SiteText id="e261948776a4b3e2ba7c">{"Inicia sesión"}</SiteText></Link>
       </p>
     </div>
   );

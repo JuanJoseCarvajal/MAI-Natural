@@ -5,6 +5,8 @@ export type ProductCategory =
   | "kits";
 
 export type Product = {
+  images?: string[];
+  variants?: { id: string; name: string; image: string }[];
   id: string;
   image: string;
   name: string;
@@ -20,6 +22,17 @@ export type Product = {
   stock?: number;
   active?: boolean;
 };
+
+/** Resolve only canonical, purchasable catalog entries, never client prices. */
+export function resolveProduct(products: Product[], id: string): Product | undefined {
+  const [baseId, variantId, extra] = id.split("~");
+  if (extra !== undefined) return undefined;
+  const product = products.find(item => item.id === baseId);
+  if (!product || product.active === false || !Number.isSafeInteger(product.amountInCents) || product.amountInCents <= 0) return undefined;
+  if (!product.variants?.length) return variantId === undefined ? product : undefined;
+  const variant = product.variants.find(item => item.id === variantId);
+  return variant ? { ...product, id, name: `${product.name} · ${variant.name}`, image: variant.image } : undefined;
+}
 
 export const categoryLabels: Record<ProductCategory, string> = {
   facial: "Formulaciones Botánicas de Autor · Facial",

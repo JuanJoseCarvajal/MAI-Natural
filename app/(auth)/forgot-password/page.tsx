@@ -1,4 +1,6 @@
 'use client';
+import { SiteText } from "@/components/common/SiteText";
+
 
 import Link from 'next/link';
 import { useState } from 'react';
@@ -36,10 +38,8 @@ export default function ForgotPasswordPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Recuperar contraseña</h1>
-      <p className="mt-2 text-sm text-gray-600">
-        Ingresa tu correo y te enviaremos un enlace para crear una contraseña nueva.
-      </p>
+      <h1 className="text-2xl font-bold text-brand-900"><SiteText id="5c4811a7e80682516f51">{"Recuperar contraseña"}</SiteText></h1>
+      <p className="mt-2 text-sm text-gray-600"><SiteText id="fcfa45fb738e301447da">{"Ingresa tu correo y te enviaremos un enlace para crear una contraseña nueva."}</SiteText></p>
 
       {error && (
         <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
@@ -48,9 +48,7 @@ export default function ForgotPasswordPage() {
       )}
 
       {sent && (
-        <div className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-700">
-          Si el correo existe, recibirás un enlace de recuperación en unos minutos.
-        </div>
+        <div className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-700"><SiteText id="4a20e18e851ef3235104">{"Si el correo existe, recibirás un enlace de recuperación en unos minutos."}</SiteText></div>
       )}
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -73,9 +71,7 @@ export default function ForgotPasswordPage() {
       </form>
 
       <p className="mt-4 text-center text-sm text-gray-600">
-        <Link href="/login" className="font-semibold text-brand-700 hover:text-brand-900">
-          Volver a iniciar sesión
-        </Link>
+        <Link href="/login" className="font-semibold text-brand-700 hover:text-brand-900"><SiteText id="94ec35f921df398b4d15">{"Volver a iniciar sesión"}</SiteText></Link>
       </p>
     </div>
   );

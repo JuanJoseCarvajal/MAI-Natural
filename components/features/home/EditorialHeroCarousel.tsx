@@ -1,4 +1,6 @@
 "use client";
+import { SiteText } from "@/components/common/SiteText";
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -82,7 +84,7 @@ export default function EditorialHeroCarousel({ slides }: { slides: EditorialSli
       }}
     >
       <div className={styles.topline}>
-        <span>DEL DIARIO A TU RITUAL</span>
+        <span><SiteText id="64b01d01e00795b04238">{"DEL DIARIO A TU RITUAL"}</SiteText></span>
         {slides.length > 1 && <button type="button" onPointerDown={() => { rotationBeforePointer.current = playing; }} onClick={() => { setPlaying(!(rotationBeforePointer.current ?? playing)); rotationBeforePointer.current = null; }} aria-label={playing ? "Pausar carrusel" : "Reproducir carrusel"}>{playing ? "Ⅱ" : "▷"}<span>{playing ? "Pausar" : "Reproducir"}</span></button>}
       </div>
       <div className={styles.slide} role="group" aria-roledescription="diapositiva" aria-label={`${current + 1} de ${slides.length}: ${slide.productName}`}>
@@ -93,7 +95,7 @@ export default function EditorialHeroCarousel({ slides }: { slides: EditorialSli
             <h2>{slide.headline}</h2>
           </div>
           <div className={styles.links}>
-            <Link href={`/blog/${slide.slug}`} onClick={() => track("article")} aria-label={`Leer historia: ${slide.articleTitle}`}>Leer historia <span aria-hidden="true">↗</span></Link>
+            <Link href={`/blog/${slide.slug}`} onClick={() => track("article")} aria-label={`Leer historia: ${slide.articleTitle}`}><SiteText id="b77fada2c6d4fe472c8f">{"Leer historia "}</SiteText><span aria-hidden="true">↗</span></Link>
             <Link href={`/products/${slide.productId}`} onClick={() => track("product")} aria-label={`Ver producto: ${slide.productName}`}>{slide.productName} <span aria-hidden="true">→</span></Link>
           </div>
         </div>

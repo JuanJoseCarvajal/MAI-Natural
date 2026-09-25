@@ -1,0 +1,18 @@
+.gallery{position:relative;min-width:0}
+.frame{position:relative;display:block;width:100%;aspect-ratio:3/4;overflow:hidden;border:0;padding:0;background:#eee8de;cursor:zoom-in}
+.frame img{object-fit:cover;transition:transform .45s ease}
+.expand{position:absolute;right:12px;bottom:12px;background:#fffE;color:#24362c;padding:6px 10px;border-radius:20px;font-size:12px}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8px;background:#faf8f3;color:#24362c;font-size:13px}
+.controls button{min-width:44px;min-height:44px;border:1px solid #d4d9cf;border-radius:50%;background:white}
+.thumbnails{display:flex;gap:8px;overflow:auto;padding:12px 0}
+.thumbnails button{flex:none;border:2px solid transparent;padding:2px}
+.thumbnails button[aria-pressed=true]{border-color:#375341}
+.thumbnails img{width:64px;height:80px;object-fit:cover}
+.dialog{width:min(96vw,1100px);max-width:96vw;max-height:96dvh;padding:12px;background:#faf8f3;border:0;border-radius:12px;color:#24362c}
+.dialog::backdrop{background:#000b}
+.large{position:relative;height:calc(90dvh - 120px)}
+.large img{object-fit:contain}
+.close{display:block;margin-left:auto;min-height:44px;padding:8px 16px;border:1px solid #d4d9cf;border-radius:20px}
+.gallery button:focus-visible{outline:3px solid #a77743;outline-offset:3px}
+@media(hover:hover){.frame:hover img{transform:scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.frame img{transition:none}}

@@ -1,4 +1,6 @@
 'use client';
+import { SiteText } from "@/components/common/SiteText";
+
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -50,10 +52,8 @@ export default function ResetPasswordForm({ token }: { token: string }) {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Nueva contraseña</h1>
-      <p className="mt-2 text-sm text-gray-600">
-        Crea una contraseña segura para volver a entrar a tu cuenta.
-      </p>
+      <h1 className="text-2xl font-bold text-brand-900"><SiteText id="f79786f03a74378201c4">{"Nueva contraseña"}</SiteText></h1>
+      <p className="mt-2 text-sm text-gray-600"><SiteText id="5e5c24f0ba408069b981">{"Crea una contraseña segura para volver a entrar a tu cuenta."}</SiteText></p>
 
       {error && (
         <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
@@ -62,9 +62,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
       )}
 
       {success && (
-        <div className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-700">
-          Tu contraseña fue actualizada. Te llevaremos al inicio de sesión.
-        </div>
+        <div className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-700"><SiteText id="15f054afe50892db2dab">{"Tu contraseña fue actualizada. Te llevaremos al inicio de sesión."}</SiteText></div>
       )}
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -98,9 +96,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
       </form>
 
       <p className="mt-4 text-center text-sm text-gray-600">
-        <Link href="/login" className="font-semibold text-brand-700 hover:text-brand-900">
-          Volver a iniciar sesión
-        </Link>
+        <Link href="/login" className="font-semibold text-brand-700 hover:text-brand-900"><SiteText id="6c461968a61a8c8826c8">{"Volver a iniciar sesión"}</SiteText></Link>
       </p>
     </div>
   );

@@ -1,0 +1,47 @@
+const assert = require('node:assert/strict');
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+(async () => {
+ const browser = await chromium.launch({headless:true,channel:'chrome'});
+ try {
+  const page=await browser.newPage({viewport:{width:1440,height:1000}});
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('http://127.0.0.1:3100/products',{waitUntil:'domcontentloaded'});
+  assert.equal(await page.locator('article').count(),18);
+  await page.getByRole('button',{name:'Ampliar imagen de Bálsamos Labiales',exact:true}).click();
+  const gallery=page.getByRole('dialog',{name:'Galería de Bálsamos Labiales'});
+  assert.equal(await gallery.isVisible(),true);
+  await gallery.getByRole('button',{name:'Foto siguiente de Bálsamos Labiales'}).click();
+  assert.match(await gallery.innerText(),/2 \/ 4/);
+  await page.keyboard.press('Escape');assert.equal(await gallery.isVisible(),false);
+  await page.goto('http://127.0.0.1:3100/products/balsamos-labiales',{waitUntil:'domcontentloaded'});
+  await page.getByLabel('Elige los componentes').selectOption('mandarina');
+  assert.equal(await page.getByLabel('Elige los componentes').inputValue(),'mandarina');
+  await page.waitForFunction(()=>Array.from(document.querySelectorAll('button[aria-label^="Ampliar imagen"] img')).every(img=>img.complete&&img.naturalWidth>0));
+  await page.screenshot({path:'/tmp/mai-balsamos-desktop.png'});
+  await page.setViewportSize({width:390,height:844});
+  await page.waitForFunction(()=>Array.from(document.querySelectorAll('button[aria-label^="Ampliar imagen"] img')).every(img=>img.complete&&img.naturalWidth>0));
+  await page.screenshot({path:'/tmp/mai-balsamos-mobile.png'});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  const catalog=require('../lib/products.catalog.json');
+  await page.evaluate(item=>localStorage.setItem('mai-cart',JSON.stringify([{...item,quantity:1}])),catalog.find(p=>p.id==='mnk-001'));
+  await page.route('**/api/payments/wompi/status',route=>route.fulfill({json:{available:true,mode:'production'}}));
+  let orders=0;
+  await page.route('**/api/orders',async route=>{orders++;await route.fulfill({json:{order:{id:'test-existing',quoteVersion:'test-quote'}}});});
+  let release;
+  await page.route('**/api/payments/wompi/checkout',async route=>{await new Promise(resolve=>release=resolve);await route.fulfill({status:503,json:{error:'Prueba de conexión lenta. Tu pedido se conserva.'}});});
+  await page.goto('http://127.0.0.1:3100/checkout',{waitUntil:'domcontentloaded'});
+  for(const [name,value] of Object.entries({customerName:'Prueba Local',customerEmail:'fixture@example.com',customerPhone:'3001234567',city:'Medellín',address:'Calle 10 # 20-30'}))await page.locator('input[name="'+name+'"]').fill(value);
+  await page.getByRole('button',{name:'Pagar con Wompi →',exact:true}).click();
+  const overlay=page.getByRole('dialog',{name:'Preparando tu pago con Wompi'});
+  await overlay.waitFor();
+  await page.keyboard.press('Escape');assert.equal(await overlay.isVisible(),true);
+  assert.equal(await overlay.getByRole('button').count(),0);
+  await overlay.getByText(/La conexión está tardando/).waitFor({timeout:12000});
+  await page.screenshot({path:'/tmp/mai-pago-espera-mobile.png'});
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('mai-cart')).length),1);
+  release();await overlay.waitFor({state:'hidden'});
+  assert.equal(orders,1);assert.equal(await page.getByRole('button',{name:'Retomar pago con Wompi →'}).isVisible(),true);
+  assert.deepEqual(errors,[]);
+  console.log('PASS: 18 productos; carrusel, ampliación, Escape, selector de variantes, móvil sin desbordamiento; espera lenta de pago sin botones, Escape bloqueado, carrito conservado y reintento del mismo pedido. Sin cobros ni escrituras de producción.');
+ } finally {await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

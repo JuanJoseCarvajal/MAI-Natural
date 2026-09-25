@@ -34,7 +34,7 @@ async function writeCatalogFile(products: Product[]) {
 
 export async function getAllProducts() {
   const products = await readCatalogFile();
-  return products.filter((product) => product.active !== false && product.amountInCents > 0);
+  return products.filter((product) => product.active !== false);
 }
 
 export async function getAllProductsForAdmin() {

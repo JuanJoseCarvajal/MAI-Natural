@@ -20,6 +20,8 @@ vi.mock('pg', () => ({ Pool: class {
 import { initialConsultation } from './consultation';
 import { db, databaseTransaction } from './db';
 import { databaseReady } from './postgres-store';
+import { readSiteContent, writeSiteContent, siteTextCatalog, validateContentChanges } from './site-content';
+import { consumeLoginAttempt } from './login-security';
 import { reconcileWompi } from './wompi-reconciliation';
 import { POST as checkout } from '@/app/api/payments/wompi/checkout/route';
 import { POST as webhook } from '@/app/api/webhooks/wompi/route';
@@ -32,6 +34,27 @@ beforeAll(async()=>{ directory=await mkdtemp(join(tmpdir(),'mai-pg-test-')); run
 afterAll(async()=>{await runtime.engine.close();await rm(directory,{recursive:true,force:true});});
 afterEach(()=>{runtime.unavailable=false;vi.unstubAllEnvs();vi.unstubAllGlobals();});
 describe('Persistent Wompi production safeguards (embedded PostgreSQL)',()=>{
+ it('migrates CMS privately, publishes atomically and rejects stale revisions',async()=>{
+   config();await runtime.engine.exec(await readFile('migrations/002-admin-content.sql','utf8'));
+   const key=Object.keys(siteTextCatalog)[0],actor=randomUUID();
+   await writeSiteContent([{key,value:'Texto publicado',revision:0}],actor);
+   expect((await readSiteContent()).find(row=>row.key===key)?.value).toBe('Texto publicado');
+   await expect(writeSiteContent([{key,value:'Texto obsoleto',revision:0}],actor)).rejects.toThrow('Otra sesión');
+   await writeSiteContent([{key,value:'Texto actualizado',revision:1}],actor);
+   const audit=await runtime.engine.query('SELECT * FROM mai_content_audit WHERE key=$1',[key]);expect(audit.rows).toHaveLength(2);
+   for(const role of ['anon','authenticated']) {await runtime.engine.exec(`SET ROLE ${role}`);try {for(const table of ['mai_site_content','mai_content_audit','mai_login_limits'])await expect(runtime.engine.query(`SELECT * FROM ${table}`)).rejects.toThrow('permission denied');}finally{await runtime.engine.exec('RESET ROLE');}}
+ });
+ it('rejects forged keys, duplicate fields and script markup',()=>{
+   const key=Object.keys(siteTextCatalog)[0];
+   for(const item of [{key:'__proto__',value:'x',revision:0},{key,value:'<script>alert(1)</script>',revision:0},{key,value:'x',revision:-1}]) expect(()=>validateContentChanges([item])).toThrow();
+   const item={key,value:'texto',revision:0};expect(()=>validateContentChanges([item,item])).toThrow();
+ });
+ it('limits login attempts across concurrent requests using persistent counters',async()=>{
+   config();const email=`${randomUUID()}@example.com`;
+   const result=await Promise.allSettled(Array.from({length:12},()=>consumeLoginAttempt(email)));
+   expect(result.filter(r=>r.status==='fulfilled')).toHaveLength(10);
+   expect(result.filter(r=>r.status==='rejected')).toHaveLength(2);
+ });
  it('persists orders after closing and reopening the database, restoring Dates',async()=>{config(); const order=await newOrder();await runtime.engine.close();runtime.engine=new PGlite(directory); const saved=await db.order.findUnique({where:{id:order.id}});expect(saved?.total).toBe(6000000);expect(saved?.createdAt).toBeInstanceOf(Date);expect(await databaseReady()).toBe(true);});
  it('rolls back business operations and never falls back to memory',async()=>{config();let id='';await expect(databaseTransaction(async()=>{id=(await newOrder()).id;throw new Error('rollback');})).rejects.toThrow('rollback');expect(await db.order.findUnique({where:{id}})).toBeNull();runtime.unavailable=true;expect(await wompiReady()).toBe(false);await expect(newOrder()).rejects.toThrow('offline');});
  it('requires explicit activation, matching credentials and durable database',async()=>{config();expect(getWompiConfiguration().configured).toBe(true);vi.stubEnv('DATABASE_DRIVER','memory');expect(getWompiConfiguration().configured).toBe(false);config();vi.stubEnv('WOMPI_EVENTS_SECRET','test_events_fixture');expect(getWompiConfiguration().configured).toBe(false);config();vi.stubEnv('WOMPI_PRODUCTION_ENABLED','false');expect(getWompiConfiguration().configured).toBe(false);expect(getWompiConfiguration().credentialsConfigured).toBe(true);});

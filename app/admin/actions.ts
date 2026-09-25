@@ -6,6 +6,9 @@ import { fetchWompiTransaction, getWompiConfiguration } from '@/lib/wompi-server
 import { isPaidOrder, validateOrderPatch } from '@/lib/admin-order';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
+import { requireAdmin } from '@/lib/admin-access';
+import { ADMIN_EMAIL } from '@/lib/admin-policy';
+import { adminProductSchema, adminDiscountSchema } from '@/lib/validators/admin';
 import { db, databaseTransaction } from '@/lib/db';
 import {
   createDiscount,
@@ -23,11 +26,7 @@ import {
 } from '@/lib/products.server';
 
 async function ensureAdmin() {
-  const session = await auth();
-  const role = (session?.user as { role?: string } | undefined)?.role;
-  if (!session?.user || role !== 'admin') {
-    throw new Error('No autorizado');
-  }
+  await requireAdmin();
 }
 
 export async function isUserAdmin(email: string) {
@@ -157,6 +156,7 @@ export async function getAdminOverview() {
 }
 
 function normalizeProductInput(input: AdminProductInput): AdminProductInput {
+  input = adminProductSchema.parse(input);
   return {
     ...input,
     image: input.image.trim(),
@@ -243,6 +243,9 @@ export async function updateAdminOrder(
 }
 
 export async function updateAdminUserRole(id: string, role: string) {
+  await requireAdmin();
+  const target = await db.user.findUnique({ where: { id } });
+  if (role === 'admin' && target?.email.toLowerCase() !== ADMIN_EMAIL) throw new Error('Solo la cuenta administrativa autorizada puede recibir este rol.');
   await ensureAdmin();
   if (!['user', 'admin'].includes(role)) throw new Error('Rol inválido');
   const session = await auth();
@@ -257,7 +260,7 @@ export async function updateAdminUserRole(id: string, role: string) {
 
 export async function createAdminDiscount(input: AdminDiscountInput) {
   await ensureAdmin();
-  const discount = await createDiscount(input);
+  const discount = await createDiscount(adminDiscountSchema.parse(input));
   revalidatePath('/admin/discounts');
   revalidatePath('/checkout');
   return { success: true, discount };
@@ -265,7 +268,7 @@ export async function createAdminDiscount(input: AdminDiscountInput) {
 
 export async function updateAdminDiscount(id: string, input: AdminDiscountInput) {
   await ensureAdmin();
-  const discount = await updateDiscount(id, input);
+  const discount = await updateDiscount(id, adminDiscountSchema.parse(input));
   revalidatePath('/admin/discounts');
   revalidatePath('/checkout');
   return { success: true, discount };

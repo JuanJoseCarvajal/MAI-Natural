@@ -1,410 +1,342 @@
 [
   {
-    "id": "fa-lam-120-1",
-    "image": "/products/Facial/agua-de-rosas-mai-natural.png",
-    "name": "Agua de Rosas",
-    "price": "$59.000",
-    "amountInCents": 5900000,
-    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-ass-30",
-    "image": "/products/Facial/aqua-suero-facial-mai-natural.png",
-    "name": "Aqua - Suero Facial",
-    "price": "$74.000",
-    "amountInCents": 7400000,
-    "description": "Ilumina tu rostro desde la primera aplicación con una fórmula botánica que hidrata, suaviza y potencia tu glow natural. Agrégalo hoy a tu rutina y siente una piel más viva, fresca y luminosa.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "balsamo-jardin-herbal",
-    "image": "/products/Capilar/balsamo-jardin-herbal-mai-natural.png",
-    "name": "Bálsamo - Jardín Herbal",
-    "price": "$78.000",
-    "amountInCents": 7800000,
-    "description": "Descubre una fórmula botánica pensada para transformar tu rutina en una experiencia sensorial, efectiva y consciente. Pruébalo hoy y enamórate de una piel y cabello que se ven tan bien como se sienten.",
-    "category": "capilar",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-cam-150",
-    "image": "/products/Facial/calendula-aloe-vera-manzanilla-mousse-cremoso-limpiador-mai-natural.png",
-    "name": "Caléndula & Aloe Vera Manzanilla - Mousse Cremoso Limpiador",
-    "price": "$62.000",
-    "amountInCents": 6200000,
-    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "el-perfume-perfume-capilar",
-    "image": "/products/Capilar/el-perfume-jardin-herbal-mai-natural.png",
-    "name": "El Perfume - Perfume Capilar",
-    "price": "$52.000",
-    "amountInCents": 5200000,
-    "description": "Perfuma y protege tu cabello con una bruma botánica que deja una estela elegante, suave y memorable. Llévalo contigo y enamora con cada movimiento.",
-    "category": "capilar",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "ca-hcc-500",
-    "image": "/products/Capilar/herbal-curl-crema-para-peinar-mai-natural.png",
-    "name": "Herbal Curl - Crema Para Peinar",
-    "price": "$56.000",
-    "amountInCents": 5600000,
-    "description": "Descubre una fórmula botánica pensada para transformar tu rutina en una experiencia sensorial, efectiva y consciente. Pruébalo hoy y enamórate de una piel y cabello que se ven tan bien como se sienten.",
-    "category": "capilar",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "co-js-110-1-1",
-    "image": "/products/Corporal/jabon-solido-calendula-manzanilla-mai-natural.png",
-    "name": "Jabón Sólido - Caléndula & Manzanilla - Formulación Botánica de Autor",
-    "price": "$35.000",
-    "amountInCents": 3500000,
-    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
-    "category": "corporal",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "co-js-110-1",
-    "image": "/products/Corporal/jabon-solido-carbon-activado-arroz-mai-natural.png",
-    "name": "Jabón Sólido - Carbón Activado y Arroz - Formulación Botánica de Autor",
-    "price": "$35.000",
-    "amountInCents": 3500000,
-    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
-    "category": "corporal",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "co-js-67",
-    "image": "/products/Corporal/jabon-solido-rosas-cacao-mai-natural.png",
-    "name": "Jabón Sólido - Rosas & Cacao - Formulación Botánica de Autor",
-    "price": "$24.000",
-    "amountInCents": 2400000,
-    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
-    "category": "corporal",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "co-js-110-1-1-1",
-    "image": "/products/Corporal/jabon-solido-ruda-hierbabuena-verbena-mai-natural.png",
-    "name": "Jabón Sólido - Ruda, Hierbabuena & Verbena - Formulación Botánica de Autor",
-    "price": "$35.000",
-    "amountInCents": 3500000,
-    "description": "Envuelve tu piel en nutrición intensa y suavidad aterciopelada con una fórmula corporal que hidrata y realza su luminosidad. Un mimo diario que se siente y se nota.",
-    "category": "corporal",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-jpm-120",
-    "image": "/products/Facial/jazmin-petalos-de-rosa-mousse-espumoso-limpiador-mai-natural.png",
-    "name": "Jazmín & Pétalos de Rosa - Mousse Espumoso Limpiador",
-    "price": "$58.000",
-    "amountInCents": 5800000,
-    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "kit-cuidado-corporal-mai",
-    "image": "/products/Corporal/jabon-solido-rosas-cacao-mai-natural.png",
-    "name": "Kit Ducha, Piel y Aroma MAI",
-    "price": "$121.500",
-    "amountInCents": 12150000,
-    "description": "Incluye Jabón Sólido - Rosas & Cacao + Agua de Rosas + El Perfume - Perfume Capilar. Una mezcla sensorial para limpiar, refrescar y cerrar el ritual con aroma botánico.",
-    "category": "kits",
-    "badge": "Ritual sensorial",
-    "benefits": [
-      "Limpieza + frescura + aroma",
-      "Mezcla corporal y sensorial",
-      "Ideal para regalo consciente"
-    ],
-    "rating": 4.9,
-    "reviewsCount": 42,
-    "sku": "KIT-DUCHA-AROMA-001",
-    "stock": 10,
-    "active": true
-  },
-  {
-    "id": "kit-ritual-facial-mai",
-    "image": "/products/Facial/aqua-suero-facial-mai-natural.png",
-    "name": "Kit Glow Facial Diario MAI",
-    "price": "$171.600",
-    "amountInCents": 17160000,
-    "description": "Incluye Caléndula & Aloe Vera Manzanilla - Mousse Cremoso Limpiador + Rocio Primordial Emoliente - Tónico Facial + Aqua - Suero Facial. Limpia, prepara e hidrata para una piel luminosa.",
-    "category": "kits",
-    "badge": "Glow diario",
-    "benefits": [
-      "Limpieza + tonico + suero",
-      "Ideal para piel sensible",
-      "Rutina facial completa"
-    ],
-    "rating": 4.9,
-    "reviewsCount": 52,
-    "sku": "KIT-GLOW-FACIAL-001",
-    "stock": 12,
-    "active": true
-  },
-  {
-    "id": "kit-rutina-capilar-mai",
-    "image": "/products/Capilar/balsamo-jardin-herbal-mai-natural.png",
-    "name": "Kit Jardin Herbal Capilar MAI",
-    "price": "$178.200",
-    "amountInCents": 17820000,
-    "description": "Incluye Shampoo - Jardín Herbal + Bálsamo - Jardín Herbal + El Perfume - Perfume Capilar. Limpieza, nutrición y aroma para una rutina capilar simple y completa.",
-    "category": "kits",
-    "badge": "Cabello suave",
-    "benefits": [
-      "Limpieza + nutricion + perfume",
-      "Rutina capilar completa",
-      "Brillo y aroma botanico"
-    ],
-    "rating": 4.9,
-    "reviewsCount": 46,
-    "sku": "KIT-JARDIN-CAPILAR-001",
-    "stock": 12,
-    "active": true
-  },
-  {
-    "id": "fa-lam-120",
-    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
-    "name": "Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador",
-    "price": "$58.000",
-    "amountInCents": 5800000,
-    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-lnd-70",
-    "image": "/products/Facial/leche-nutritiva-dia-mai-natural.png",
-    "name": "Leche Nutritiva - Día",
-    "price": "$74.000",
-    "amountInCents": 7400000,
-    "description": "Empieza cada mañana con hidratación profunda, textura sedosa y un acabado saludable que enamora a primera vista. Tu piel se ve equilibrada, luminosa y lista para el día.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-lnn-70",
-    "image": "/products/Facial/leche-nutritiva-noche-mai-natural.png",
-    "name": "Leche Nutritiva - Noche",
-    "price": "$74.000",
-    "amountInCents": 7400000,
-    "description": "Mientras duermes, tu piel se regenera con una mezcla nutritiva de activos botánicos que reconforta y revitaliza. Despierta con el rostro más suave, descansado y visiblemente radiante.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-rpt-70",
-    "image": "/products/Facial/rocio-primordial-emoliente-tonico-facial-mai-natural.png",
-    "name": "Rocio Primordial Emoliente - Tónico Facial",
-    "price": "$59.000",
-    "amountInCents": 5900000,
-    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-rpt-70-1",
-    "image": "/products/Facial/rocio-primordial-herbal-tonico-facial-mai-natural.png",
-    "name": "Rocio Primordial Herbal - Tónico Facial",
-    "price": "$59.000",
-    "amountInCents": 5900000,
-    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "fa-rcm-120",
-    "image": "/products/Facial/romero-carbon-activado-mousse-cremoso-limpiador-mai-natural.png",
-    "name": "Romero & Carbón Activado - Mousse Cremoso Limpiador",
-    "price": "$58.000",
-    "amountInCents": 5800000,
-    "description": "Purifica sin resecar con una espuma botánica que limpia a profundidad y deja una sensación de piel limpia, cómoda y luminosa. Ideal para convertir tu limpieza diaria en un ritual que sí provoca repetir.",
-    "category": "facial",
-    "benefits": [
-      "Cosmética natural",
-      "Ingredientes botánicos",
-      "Hecho con intención"
-    ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
     "id": "mnk-001",
-    "image": "/products/Capilar/shampoo-jardin-herbal-mai-natural.png",
-    "name": "Shampoo - Jardín Herbal",
+    "name": "Shampoo Líquido",
+    "category": "capilar",
+    "image": "/products/autor/mnk-001-1.png",
+    "images": [
+      "/products/autor/mnk-001-1.png"
+    ],
     "price": "$68.000",
     "amountInCents": 6800000,
     "description": "Limpieza profunda y gentil en un solo paso para un cabello más fuerte, suelto y con brillo natural. Dale a tu melena el cuidado consciente que merece y notarás la diferencia desde el primer lavado.",
-    "category": "capilar",
     "benefits": [
       "Cosmética natural",
       "Ingredientes botánicos",
       "Hecho con intención"
     ],
-    "rating": 4.8,
-    "reviewsCount": 32
-  },
-  {
-    "id": "kit-trio-capilar-esencial-mai",
-    "image": "/products/Capilar/herbal-curl-crema-para-peinar-mai-natural.png",
-    "name": "Kit Definicion Capilar MAI",
-    "price": "$183.820",
-    "amountInCents": 18382000,
-    "description": "Incluye Shampoo - Jardín Herbal + Bálsamo - Jardín Herbal + Herbal Curl - Crema Para Peinar. Un trío para limpiar, nutrir y definir con acabado natural.",
-    "category": "kits",
-    "badge": "Definicion natural",
-    "benefits": [
-      "Limpieza + nutricion + definicion",
-      "Ideal para ondas y rizos",
-      "Control sin rigidez"
-    ],
-    "rating": 4.9,
-    "reviewsCount": 31,
-    "sku": "KIT-DEFINICION-CAPILAR-001",
-    "stock": 12,
+    "rating": 0,
+    "reviewsCount": 0,
     "active": true
   },
   {
-    "id": "kit-trio-facial-equilibrio-mai",
-    "image": "/products/Facial/lavanda-acido-salicilico-mousse-cremoso-limpiador-mai-natural.png",
-    "name": "Kit Equilibrio Facial MAI",
-    "price": "$169.990",
-    "amountInCents": 16999000,
-    "description": "Incluye Lavanda & Ácido Salicílico - Mousse Cremoso Limpiador + Rocio Primordial Herbal - Tónico Facial + Leche Nutritiva - Día. Una rutina para limpiar, equilibrar e hidratar.",
-    "category": "kits",
-    "badge": "Equilibrio diario",
-    "benefits": [
-      "Limpieza + equilibrio + hidratacion",
-      "Pensado para uso diario",
-      "Textura fresca y ligera"
+    "id": "acondicionador-leave-in",
+    "name": "Acondicionador Leave In Botánico",
+    "category": "capilar",
+    "image": "/products/autor/acondicionador-leave-in-1.png",
+    "images": [
+      "/products/autor/acondicionador-leave-in-1.png"
     ],
-    "rating": 4.9,
-    "reviewsCount": 28,
-    "sku": "KIT-EQUILIBRIO-FACIAL-001",
-    "stock": 10,
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
     "active": true
   },
   {
-    "id": "kit-trio-corporal-ritual-mai",
-    "image": "/products/Corporal/jabon-solido-carbon-activado-arroz-mai-natural.png",
-    "name": "Kit Ritual MAI de Bienestar",
-    "price": "$151.200",
-    "amountInCents": 15120000,
-    "description": "Incluye Jabón Sólido - Carbón Activado y Arroz + Agua de Rosas + Leche Nutritiva - Noche. Limpieza corporal, bruma refrescante y nutrición facial para cerrar el día.",
-    "category": "kits",
-    "badge": "Ritual noche",
-    "benefits": [
-      "Limpieza + bruma + nutricion",
-      "Mezcla corporal y facial",
-      "Ideal para cerrar el dia"
+    "id": "mascarilla-capilar",
+    "name": "Mascarilla Capilar",
+    "category": "capilar",
+    "image": "/products/autor/mascarilla-capilar-1.png",
+    "images": [
+      "/products/autor/mascarilla-capilar-1.png",
+      "/products/autor/mascarilla-capilar-2.png"
     ],
-    "rating": 4.9,
-    "reviewsCount": 24,
-    "sku": "KIT-RITUAL-BIENESTAR-001",
-    "stock": 8,
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "shampoo-solido-fortaleza",
+    "name": "Shampoo Sólido Fortaleza",
+    "category": "capilar",
+    "image": "/products/autor/shampoo-solido-fortaleza-1.png",
+    "images": [
+      "/products/autor/shampoo-solido-fortaleza-1.png",
+      "/products/autor/shampoo-solido-fortaleza-2.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "shampoo-solido-ayurvedico",
+    "name": "Shampoo Sólido Ayurvédico",
+    "category": "capilar",
+    "image": "/products/autor/shampoo-solido-ayurvedico-1.png",
+    "images": [
+      "/products/autor/shampoo-solido-ayurvedico-1.png",
+      "/products/autor/shampoo-solido-ayurvedico-2.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "shampoo-solido-vital",
+    "name": "Shampoo Sólido Vital",
+    "category": "capilar",
+    "image": "/products/autor/shampoo-solido-vital-1.png",
+    "images": [
+      "/products/autor/shampoo-solido-vital-1.png",
+      "/products/autor/shampoo-solido-vital-2.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "acondicionador-solido-normal",
+    "name": "Acondicionador Sólido Normal",
+    "category": "capilar",
+    "image": "/products/autor/acondicionador-solido-normal-1.png",
+    "images": [
+      "/products/autor/acondicionador-solido-normal-1.png",
+      "/products/autor/acondicionador-solido-normal-2.png",
+      "/products/autor/acondicionador-solido-normal-3.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "acondicionador-solido-crespos",
+    "name": "Acondicionador Sólido Crespos",
+    "category": "capilar",
+    "image": "/products/autor/acondicionador-solido-crespos-1.png",
+    "images": [
+      "/products/autor/acondicionador-solido-crespos-1.png",
+      "/products/autor/acondicionador-solido-crespos-2.png",
+      "/products/autor/acondicionador-solido-crespos-3.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "tonico-capilar",
+    "name": "Tónico Capilar",
+    "category": "capilar",
+    "image": "/products/autor/foto-pendiente.svg",
+    "images": [],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "ca-hcc-500",
+    "name": "Crema de Peinar Herbal Curl",
+    "category": "capilar",
+    "image": "/products/autor/ca-hcc-500-1.png",
+    "images": [
+      "/products/autor/ca-hcc-500-1.png",
+      "/products/autor/ca-hcc-500-2.png"
+    ],
+    "price": "$56.000",
+    "amountInCents": 5600000,
+    "description": "Descubre una fórmula botánica pensada para transformar tu rutina en una experiencia sensorial, efectiva y consciente. Pruébalo hoy y enamórate de una piel y cabello que se ven tan bien como se sienten.",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "espuma-lavanda-ortiga",
+    "name": "Jabón Espumoso Facial Lavanda y Ortiga",
+    "category": "facial",
+    "image": "/products/autor/espuma-lavanda-ortiga-1.png",
+    "images": [
+      "/products/autor/espuma-lavanda-ortiga-1.png",
+      "/products/autor/espuma-lavanda-ortiga-2.png",
+      "/products/autor/espuma-lavanda-ortiga-3.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "fa-lnd-70",
+    "name": "Leche Nutritiva Día",
+    "category": "facial",
+    "image": "/products/autor/fa-lnd-70-1.png",
+    "images": [
+      "/products/autor/fa-lnd-70-1.png",
+      "/products/autor/fa-lnd-70-2.png"
+    ],
+    "price": "$74.000",
+    "amountInCents": 7400000,
+    "description": "Empieza cada mañana con hidratación profunda, textura sedosa y un acabado saludable que enamora a primera vista. Tu piel se ve equilibrada, luminosa y lista para el día.",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "fa-lnn-70",
+    "name": "Leche Nutritiva Noche",
+    "category": "facial",
+    "image": "/products/autor/fa-lnn-70-1.png",
+    "images": [
+      "/products/autor/fa-lnn-70-1.png",
+      "/products/autor/fa-lnn-70-2.png"
+    ],
+    "price": "$74.000",
+    "amountInCents": 7400000,
+    "description": "Mientras duermes, tu piel se regenera con una mezcla nutritiva de activos botánicos que reconforta y revitaliza. Despierta con el rostro más suave, descansado y visiblemente radiante.",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "contorno-ojos",
+    "name": "Contorno de Ojos",
+    "category": "facial",
+    "image": "/products/autor/contorno-ojos-1.png",
+    "images": [
+      "/products/autor/contorno-ojos-1.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "fa-lam-120-1",
+    "name": "Agua de Rosas",
+    "category": "facial",
+    "image": "/products/autor/fa-lam-120-1-1.png",
+    "images": [
+      "/products/autor/fa-lam-120-1-1.png"
+    ],
+    "price": "$59.000",
+    "amountInCents": 5900000,
+    "description": "Refresca, equilibra y prepara tu piel con una bruma botánica que se siente como un ritual de bienestar instantáneo. Úsalo a diario y convierte cada aplicación en un momento de autocuidado irresistible.",
+    "benefits": [
+      "Cosmética natural",
+      "Ingredientes botánicos",
+      "Hecho con intención"
+    ],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "elixir-facial-capilar",
+    "name": "Elixir Facial y Capilar",
+    "category": "facial",
+    "image": "/products/autor/elixir-facial-capilar-1.png",
+    "images": [
+      "/products/autor/elixir-facial-capilar-1.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true
+  },
+  {
+    "id": "balsamos-labiales",
+    "name": "Bálsamos Labiales",
+    "category": "facial",
+    "image": "/products/autor/balsamos-labiales-1.png",
+    "images": [
+      "/products/autor/balsamos-labiales-1.png",
+      "/products/autor/balsamos-labiales-2.png",
+      "/products/autor/balsamos-labiales-3.png",
+      "/products/autor/balsamos-labiales-4.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
+    "active": true,
+    "variants": [
+      {
+        "id": "maracuya",
+        "name": "Maracuyá",
+        "image": "/products/autor/balsamos-labiales-2.png"
+      },
+      {
+        "id": "hierbabuena-albahaca",
+        "name": "Hierbabuena & Albahaca",
+        "image": "/products/autor/balsamos-labiales-4.png"
+      },
+      {
+        "id": "mandarina",
+        "name": "Mandarina",
+        "image": "/products/autor/balsamos-labiales-3.png"
+      }
+    ]
+  },
+  {
+    "id": "crema-corporal",
+    "name": "Crema Corporal Naranja Coco Karité",
+    "category": "corporal",
+    "image": "/products/autor/crema-corporal-1.png",
+    "images": [
+      "/products/autor/crema-corporal-1.png",
+      "/products/autor/crema-corporal-2.png"
+    ],
+    "price": "Precio por confirmar",
+    "amountInCents": 0,
+    "description": "Formulación botánica de autor. Ficha de producto pendiente de confirmación.",
+    "benefits": [],
+    "rating": 0,
+    "reviewsCount": 0,
     "active": true
   }
 ]

@@ -5,6 +5,7 @@ import path from "path";
 import type { CartItem } from "@/components/features/cart/CartContext";
 import type { DiscountCode, DiscountEvaluation } from "@/lib/discounts";
 import { getAllProductsForAdmin } from "@/lib/products.server";
+import { resolveProduct } from "@/lib/products";
 
 const discountsPath = path.join(process.cwd(), "lib", "discounts.catalog.json");
 
@@ -134,7 +135,7 @@ export async function evaluateDiscountCode(
   const products = await getAllProductsForAdmin();
   const enrichedItems = items
     .map((item) => {
-      const product = products.find((product) => product.id === item.id);
+      const product = resolveProduct(products, item.id);
       if (!product) return null;
       return {
         ...item,
@@ -153,6 +154,7 @@ export async function evaluateDiscountCode(
       } => Boolean(item)
     );
 
+  if (enrichedItems.length !== items.length) return { valid: false, message: "Revisa los productos de tu carrito.", discountAmountInCents: 0, discountedSubtotalInCents: 0, matchedItemIds: [] };
   const subtotal = enrichedItems.reduce((sum, item) => sum + item.lineTotal, 0);
 
   if (discount.minimumSubtotalInCents && subtotal < discount.minimumSubtotalInCents) {
@@ -170,7 +172,7 @@ export async function evaluateDiscountCode(
     if (discount.scope === "kits") return item.product.category === "kits";
     if (discount.scope === "category") return item.product.category === discount.category;
     if (discount.scope === "products") {
-      return discount.productIds?.includes(item.product.id) ?? false;
+      return discount.productIds?.includes(item.product.id.split("~")[0]) ?? false;
     }
     return false;
   });

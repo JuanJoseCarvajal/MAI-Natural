@@ -1,4 +1,6 @@
 'use client';
+import { SiteText } from "@/components/common/SiteText";
+
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
@@ -73,22 +75,20 @@ export default function AccountAppointmentsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Mis citas</h1>
-      <p className="mt-2 text-slate-700">Aquí verás tus citas agendadas y podrás gestionarlas.</p>
+      <h1 className="text-2xl font-bold text-brand-900"><SiteText id="8f46d5cf8decb49c362a">{"Mis citas"}</SiteText></h1>
+      <p className="mt-2 text-slate-700"><SiteText id="f9c225713e20f6f60890">{"Aquí verás tus citas agendadas y podrás gestionarlas."}</SiteText></p>
 
       {loading ? (
         <div className="mt-6 text-center">
-          <p className="text-slate-600">Cargando citas...</p>
+          <p className="text-slate-600"><SiteText id="35be82b6b9e562898e8b">{"Cargando citas..."}</SiteText></p>
         </div>
       ) : appointments.length === 0 ? (
         <div className="mt-6 rounded-xl bg-slate-50 p-6 text-center">
-          <p className="text-slate-700">No tienes citas agendadas aún.</p>
+          <p className="text-slate-700"><SiteText id="3eaf770078315178d19f">{"No tienes citas agendadas aún."}</SiteText></p>
           <Link
             href="/services"
             className="mt-4 inline-block rounded-full bg-brand-700 px-6 py-2 font-semibold text-white hover:bg-brand-900"
-          >
-            Agendar una cita
-          </Link>
+          ><SiteText id="450e3d430b383d8ccc55">{"Agendar una cita"}</SiteText></Link>
         </div>
       ) : (
         <div className="mt-6 space-y-4">
@@ -101,11 +101,10 @@ export default function AccountAppointmentsPage() {
                 <div>
                   <h3 className="font-semibold text-brand-900">{appointment.service}</h3>
                   <p className="mt-1 text-sm text-slate-600">
-                    📅 {new Date(appointment.date).toLocaleDateString('es-ES')} a las {appointment.time}
+                    📅 {new Date(appointment.date).toLocaleDateString('es-ES')}<SiteText id="7c7603ec274f45cf1cf6">{" a las "}</SiteText>{appointment.time}
                   </p>
                   <p className="text-sm text-slate-600">📞 {appointment.phone}</p>
-                  <p className="mt-2 text-sm font-medium text-brand-800">
-                    Estado: {appointmentStatusLabels[appointment.status] ?? appointment.status}
+                  <p className="mt-2 text-sm font-medium text-brand-800"><SiteText id="84e74f3dfc70909b1777">{"Estado: "}</SiteText>{appointmentStatusLabels[appointment.status] ?? appointment.status}
                   </p>
                   {appointment.notes ? (
                     <p className="mt-2 text-sm text-slate-600">📝 {appointment.notes}</p>
@@ -115,9 +114,7 @@ export default function AccountAppointmentsPage() {
                   <button
                     onClick={() => handleCancel(appointment.id)}
                     className="rounded-lg border border-red-200 px-3 py-1 text-sm text-red-600 hover:bg-red-50"
-                  >
-                    Cancelar
-                  </button>
+                  ><SiteText id="99540173fdd5fa0d289f">{"Cancelar"}</SiteText></button>
                 ) : null}
               </div>
             </div>

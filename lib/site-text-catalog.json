@@ -1,0 +1,2914 @@
+{
+  "5c4811a7e80682516f51": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Recuperar contraseña"
+  },
+  "fcfa45fb738e301447da": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Ingresa tu correo y te enviaremos un enlace para crear una contraseña nueva."
+  },
+  "4a20e18e851ef3235104": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Si el correo existe, recibirás un enlace de recuperación en unos minutos."
+  },
+  "94ec35f921df398b4d15": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Volver a iniciar sesión"
+  },
+  "b5ee06e692bef30850db": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Iniciar sesión"
+  },
+  "dbc75a7793cf71ac2307": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "¿Olvidaste tu contraseña?"
+  },
+  "1d1241d42ab4bb33ee5e": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "¿No tienes cuenta?"
+  },
+  "ff4e154c507e4f5362b0": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Regístrate"
+  },
+  "c32a3b3109c3c062d922": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Crear cuenta"
+  },
+  "c2feeac2357da3cbc227": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "¿Ya tienes cuenta?"
+  },
+  "e261948776a4b3e2ba7c": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Inicia sesión"
+  },
+  "f79786f03a74378201c4": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Nueva contraseña"
+  },
+  "5e5c24f0ba408069b981": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Crea una contraseña segura para volver a entrar a tu cuenta."
+  },
+  "15f054afe50892db2dab": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Tu contraseña fue actualizada. Te llevaremos al inicio de sesión."
+  },
+  "6c461968a61a8c8826c8": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Volver a iniciar sesión"
+  },
+  "8f46d5cf8decb49c362a": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "Mis citas"
+  },
+  "f9c225713e20f6f60890": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "Aquí verás tus citas agendadas y podrás gestionarlas."
+  },
+  "35be82b6b9e562898e8b": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "Cargando citas..."
+  },
+  "3eaf770078315178d19f": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "No tienes citas agendadas aún."
+  },
+  "450e3d430b383d8ccc55": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "Agendar una cita"
+  },
+  "7c7603ec274f45cf1cf6": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": " a las "
+  },
+  "84e74f3dfc70909b1777": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "Estado: "
+  },
+  "99540173fdd5fa0d289f": {
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "text": "Cancelar"
+  },
+  "2340201ea790f21011c6": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Historial de pedidos y citas"
+  },
+  "2d48db65ff87170a9408": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Desde aquí puedes seguir el estado de tus pedidos de productos y revisar el estado de tus citas agendadas."
+  },
+  "252eb4a745c8fc8817f2": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Pedidos de productos"
+  },
+  "8ec302a2279ec3557d25": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Estados disponibles: preparando orden, pedido enviado, pedido en ruta y entregado."
+  },
+  "ff42a867555715db0c3b": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Comprar productos"
+  },
+  "7e76f96324e237adf7c9": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Aún no tienes pedidos de productos registrados."
+  },
+  "27325662b26d2c2fae95": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Pedido "
+  },
+  "ca3ef0cd774cd3460267": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Creado el "
+  },
+  "f81effe39987cea32e38": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Total: "
+  },
+  "0484a73ab58b1f566da1": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Pago: "
+  },
+  "bde6dc717f7aba6717af": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Guía: "
+  },
+  "a95e291c0cd2d0c21b7d": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Historial de citas"
+  },
+  "2cff25dc9af1cdbab166": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Aquí ves el estado de tus agendamientos y su validación de pago."
+  },
+  "4ac10eca86709fb8f294": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Agendar cita"
+  },
+  "46af679a3e333f208116": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Aún no tienes citas registradas."
+  },
+  "d8cab8d68a1a7f2d022a": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Resumen de tu cuenta"
+  },
+  "e3e1050bccd964d7edb4": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Aquí ves el estado de tus pedidos y tus citas en un solo lugar."
+  },
+  "e65095c30ae264e180a5": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Historial de pedidos"
+  },
+  "90b9dda80bb60ccba712": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Ver historial →"
+  },
+  "94bd3ae6733b05934e1f": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Citas registradas"
+  },
+  "0ee2951f763a0bdd39c9": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Ver citas →"
+  },
+  "9ecc7ba6a9803a2ca384": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "PEDIDOS"
+  },
+  "052f2591abb67113c19f": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Sigue el estado de cada orden"
+  },
+  "6d211725feeca72e3b30": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Consulta si tu pedido está en preparación, enviado, en ruta o entregado."
+  },
+  "fd65454a6e071e7c672a": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Ver mis pedidos"
+  },
+  "28ff6c5d5a0cdf96197a": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "PERFIL"
+  },
+  "b204e90d72fb0f3bd193": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Mantén tus datos al día"
+  },
+  "3d4bb728daeedab00d08": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Actualiza tu contacto para recibir confirmaciones de pago, envío y agendamiento."
+  },
+  "be4df0f36aeaaba9ebee": {
+    "source": "app/(dashboard)/account/page.tsx",
+    "text": "Editar perfil"
+  },
+  "43efa3b56b07787b5ed8": {
+    "source": "app/(dashboard)/account/profile/page.tsx",
+    "text": "Perfil"
+  },
+  "87857bce41c9395fde1e": {
+    "source": "app/(dashboard)/account/profile/page.tsx",
+    "text": "Configura tus datos personales y preferencias."
+  },
+  "3afd7068ff1faebadd79": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": "Mis citas"
+  },
+  "ff36fb1da241cb1b79b0": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": "Aquí verás tus citas agendadas."
+  },
+  "de0c65ab919124b8e145": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": "Cargando citas..."
+  },
+  "bf299a2e3fb0e57de5c4": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": "No tienes citas agendadas aún."
+  },
+  "1cb65978d584482206ea": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": "Agendar una cita"
+  },
+  "961104a9452bcbaf2b77": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": " a las"
+  },
+  "be0ea1f2f2d8369cc33f": {
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "text": "Cancelar"
+  },
+  "a5fb0ea92b54e7d22028": {
+    "source": "app/(dashboard)/dashboard/orders/page.tsx",
+    "text": "Mis ordenes"
+  },
+  "7267d762ebf55567ee50": {
+    "source": "app/(dashboard)/dashboard/orders/page.tsx",
+    "text": "Aqui veras tu historial de compras."
+  },
+  "240cb332f448c4dfea9e": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Resumen de tu cuenta"
+  },
+  "800d64853501116c649b": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Aquí solo ves lo importante: tus citas y tus órdenes creadas."
+  },
+  "998fcb7291eb2c0a204e": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Citas Agendadas"
+  },
+  "ae31f5043ffb738d5277": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Ver todas →"
+  },
+  "53749d149e19a33a4064": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Órdenes creadas"
+  },
+  "f4fa6381476a8b471edf": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "CÍRCULO MAI · EN PREPARACIÓN"
+  },
+  "553705fd1624079a1239": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Tu cuidado puede abrir nuevas preguntas."
+  },
+  "90a3d86874a42cac2099": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Estamos preparando un espacio de estudio quincenal con Melina. Las inscripciones aún no están abiertas; puedes conocer la propuesta o empezar por un encuentro individual."
+  },
+  "e7dbb2b909c9c0eb27b8": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Conocer el Círculo MAI →"
+  },
+  "85c25a0b1aaf2d86129c": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Acciones Rápidas"
+  },
+  "a4a82bde3ac41de73c10": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Agendar Cita"
+  },
+  "3e03f8941a1f0ae54bf5": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Reservar servicio"
+  },
+  "24f35ea7d13535c520f9": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Ver Productos"
+  },
+  "21ae7211756dd650aa22": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Explorar catálogo"
+  },
+  "70e26d0ecf76d4a5f446": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Mis citas y órdenes"
+  },
+  "2c3ba36a2960e496e715": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Ver historial creado"
+  },
+  "911ef4fd81b1a2287ad3": {
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "text": "Consejo: mantén tu perfil actualizado para acelerar futuras compras y reservas."
+  },
+  "eba8f3e9772849befa9f": {
+    "source": "app/(public)/blog/[slug]/page.tsx",
+    "text": "Diario MAI · "
+  },
+  "15d94bd0b04612b18cf5": {
+    "source": "app/(public)/blog/[slug]/page.tsx",
+    "text": "Convierte esta guía en una rutina"
+  },
+  "731c6cb86191add3ba25": {
+    "source": "app/(public)/blog/[slug]/page.tsx",
+    "text": "Explora productos relacionados o arma una rutina guiada según tu objetivo."
+  },
+  "2d9206b22ebece78511b": {
+    "source": "app/(public)/blog/[slug]/page.tsx",
+    "text": "Armar rutina"
+  },
+  "1ae92819b06c427aa022": {
+    "source": "app/(public)/blog/[slug]/page.tsx",
+    "text": "Ver productos"
+  },
+  "31eef25d8a0fecd6d1fc": {
+    "source": "app/(public)/blog/[slug]/page.tsx",
+    "text": "Productos relacionados"
+  },
+  "977c20abd7d099915033": {
+    "source": "app/(public)/blog/page.tsx",
+    "text": "DIARIO MAI · UNA NUEVA HISTORIA CADA QUINCE DÍAS"
+  },
+  "5c958d32e12477556959": {
+    "source": "app/(public)/blog/page.tsx",
+    "text": "Historias para volver a ti."
+  },
+  "76967cd3647b9373debb": {
+    "source": "app/(public)/blog/page.tsx",
+    "text": "Botánica cotidiana, pequeños rituales y preguntas que te ayudan a elegir. Un espacio para conocer tus productos y hacer tuyo el cuidado."
+  },
+  "fdc0db5b3eaee52e04da": {
+    "source": "app/(public)/blog/page.tsx",
+    "text": "Leer guia"
+  },
+  "b48cede21580f4453e7b": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Tu ritual empieza aquí"
+  },
+  "cd2c4fd8e12ab0f0c12a": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Tu bolsa está esperando."
+  },
+  "8dca1a1e1a0737fafc08": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Encuentra el cuidado que se siente bien para ti."
+  },
+  "6fc10f637a3e271cb047": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Explorar productos →"
+  },
+  "d12c52d1436b6c0c0580": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "← Seguir explorando"
+  },
+  "354d9a5b546d89f5ea1e": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Un paso más cerca de tu ritual"
+  },
+  "8f5758136a01782ee8c8": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Tu cuidado, casi en casa."
+  },
+  "c1d7264a26fcf2c32b8a": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Compra como invitado. No necesitas crear una cuenta."
+  },
+  "f40cda8c4e349c96403d": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "01 · Datos y entrega"
+  },
+  "a5914c4c56d0705ef7e6": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "02 · Revisar total"
+  },
+  "2e0fe7aba28d4b2159c5": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "03 · Pagar con Wompi"
+  },
+  "2cdf958cec4364135847": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "01. Tus datos"
+  },
+  "7a035f103f263b593b5d": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Usaremos estos datos para coordinar tu pedido."
+  },
+  "4a3850e5ea5b347e0b63": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Nombre completo"
+  },
+  "62906bdd086f4167fb6f": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Correo electrónico"
+  },
+  "3c2bc77cafe62dd9cec8": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Celular / WhatsApp"
+  },
+  "742e6ac478ea259d8ff9": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "10 dígitos, con o sin +57."
+  },
+  "9c904548cb53cdcd6ab9": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "02. ¿Dónde te lo enviamos?"
+  },
+  "15b13b434a94b4f25d05": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Ciudad o municipio"
+  },
+  "b80f080e949fd7d1e73d": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Dirección, barrio y apartamento"
+  },
+  "c6ab033eb72180d15d60": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Envío: $15.000 en Medellín y $25.000 fuera de Medellín. El total se actualiza según tu ciudad."
+  },
+  "332d3d18377e6a176af7": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "03. Paga con Wompi"
+  },
+  "3d5d2bc50505be5bdc5d": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Completarás el pago en la página segura de Wompi."
+  },
+  "3a724d9fb5c5d7ac1533": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Tu selección "
+  },
+  "d07ba85cdbd64794fe09": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Quitar"
+  },
+  "4be3ee10131fbd3aade7": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "¿Tienes un código de descuento?"
+  },
+  "6beabe48e79a606c6a48": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Código"
+  },
+  "17c9ffcaa5a9d9d8bdea": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Productos"
+  },
+  "bbe22aec812f21711a06": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Descuento"
+  },
+  "c2a6d16d819c0fb97a4b": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Envío"
+  },
+  "2f9390c1a64a138a0beb": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Valores en pesos colombianos. Revisamos precios y disponibilidad al crear tu pedido. El total incluye el envío mostrado."
+  },
+  "c2da22358375971ae0ad": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Indica tu ciudad para ver el envío y el total antes de pagar."
+  },
+  "85473a67aa8e3b9689fe": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Consultar el pedido creado y retomar su pago"
+  },
+  "b71b801fa5e290284413": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Al continuar aceptas los "
+  },
+  "0d0035d66bfb6185a234": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "términos"
+  },
+  "54a5e4d38b45c1a4555a": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": " y la "
+  },
+  "1993af921fb756214e47": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "información sobre uso de tus datos"
+  },
+  "2a86a793d709054895fb": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Pedido:"
+  },
+  "ff2aea656d772c138434": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Estado:"
+  },
+  "bae0a98b17ba24783d75": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Subtotal de productos:"
+  },
+  "e33a98401b2a32868ff7": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Envío:"
+  },
+  "8ab4aa9f7b4a5488370c": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Total final:"
+  },
+  "c9ea735217b1b5544451": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": " Conserva tu número de pedido."
+  },
+  "1b87e7f9818d85906d9e": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Consultar mi pedido por WhatsApp ↗"
+  },
+  "be02b2f4692834149316": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Volver a la tienda"
+  },
+  "0040a1a069bf91299613": {
+    "source": "app/(public)/page.tsx",
+    "text": " FORMULACIONES BOTÁNICAS DE AUTOR"
+  },
+  "66e6259e4b4ff8e6a16a": {
+    "source": "app/(public)/page.tsx",
+    "text": "Volver a lo natural."
+  },
+  "7d2ed90e853d00f1d759": {
+    "source": "app/(public)/page.tsx",
+    "text": "Volver a ti."
+  },
+  "042e06020690ef1deb8b": {
+    "source": "app/(public)/page.tsx",
+    "text": "El cuidado empieza con una pausa. Descubre rituales botánicos para tu piel, tu cabello y ese momento que es solo tuyo."
+  },
+  "2bb097523c91e50803bf": {
+    "source": "app/(public)/page.tsx",
+    "text": "Descubrir productos "
+  },
+  "7c72104e3acd96e6701c": {
+    "source": "app/(public)/page.tsx",
+    "text": "Encuentra tu ritual "
+  },
+  "9c06be703de5e650dd6c": {
+    "source": "app/(public)/page.tsx",
+    "text": "Formulado uno a uno."
+  },
+  "6c3f6151dd8dc33688a4": {
+    "source": "app/(public)/page.tsx",
+    "text": "Cuidado que se siente."
+  },
+  "079c82f4057b19ccd11d": {
+    "source": "app/(public)/page.tsx",
+    "text": "Formulaciones botánicas de autor"
+  },
+  "a5324c5c1ba60f93e390": {
+    "source": "app/(public)/page.tsx",
+    "text": "Elaborado uno a uno"
+  },
+  "244000cb11499039b36c": {
+    "source": "app/(public)/page.tsx",
+    "text": "Asesoría personalizada"
+  },
+  "1dd1b8dea4e652cbfee8": {
+    "source": "app/(public)/page.tsx",
+    "text": "Una rutina a tu ritmo"
+  },
+  "66332d2226717eb1de94": {
+    "source": "app/(public)/page.tsx",
+    "text": "TU NATURALEZA, TU RITUAL"
+  },
+  "30f0f5b6402689983d81": {
+    "source": "app/(public)/page.tsx",
+    "text": "¿Por dónde quieres empezar?"
+  },
+  "b4395d208e1636809c26": {
+    "source": "app/(public)/page.tsx",
+    "text": "Todo el catálogo "
+  },
+  "7a78a005c8a147872ed8": {
+    "source": "app/(public)/page.tsx",
+    "text": "LA SELECCIÓN MAI"
+  },
+  "7dcb24797b5b4b14cafd": {
+    "source": "app/(public)/page.tsx",
+    "text": "Pequeños gestos. "
+  },
+  "b803ec1e0a5f8e110665": {
+    "source": "app/(public)/page.tsx",
+    "text": "Mucho cuidado."
+  },
+  "dcbdab263a28fb42c7d7": {
+    "source": "app/(public)/page.tsx",
+    "text": "Explorar productos "
+  },
+  "06d9f45991890069f530": {
+    "source": "app/(public)/page.tsx",
+    "text": "MENOS COMPLICACIONES, MÁS CONSTANCIA"
+  },
+  "6edcef3a00105b5e11bb": {
+    "source": "app/(public)/page.tsx",
+    "text": "Tu cuidado no necesita más pasos."
+  },
+  "3ea2d340f7ade062b3ee": {
+    "source": "app/(public)/page.tsx",
+    "text": "Necesita los tuyos."
+  },
+  "2535278361aed13e66c0": {
+    "source": "app/(public)/page.tsx",
+    "text": "Empieza por lo que buscas, conoce cada producto y construye una rutina que tenga sentido para ti."
+  },
+  "9e55e9a2601df6ef98ec": {
+    "source": "app/(public)/page.tsx",
+    "text": " Elige lo que quieres cuidar"
+  },
+  "4db29ef4332e1f9d1f7c": {
+    "source": "app/(public)/page.tsx",
+    "text": " Descubre una selección de productos"
+  },
+  "d2b8713dcd21ce8ee074": {
+    "source": "app/(public)/page.tsx",
+    "text": " Haz espacio para tu ritual"
+  },
+  "9756770b7d4219b241ab": {
+    "source": "app/(public)/page.tsx",
+    "text": "Encontrar mi rutina "
+  },
+  "86396f2b367f17024cfd": {
+    "source": "app/(public)/page.tsx",
+    "text": "EL UNIVERSO MAI"
+  },
+  "9b5bf029121d7551e0b3": {
+    "source": "app/(public)/page.tsx",
+    "text": "Formulaciones de autor."
+  },
+  "f1c93db42d8de73e94f5": {
+    "source": "app/(public)/page.tsx",
+    "text": "Elaboradas una a una."
+  },
+  "bbb8f3f9291e5868ee31": {
+    "source": "app/(public)/page.tsx",
+    "text": "El tiempo de cada formulación"
+  },
+  "31bfaffb47bc2f5333b2": {
+    "source": "app/(public)/page.tsx",
+    "text": "Elaboramos cada producto uno a uno. Entrega estimada de 5 a 7 días hábiles; confirma las condiciones para tu destino al comprar."
+  },
+  "0699239ba520dee08906": {
+    "source": "app/(public)/page.tsx",
+    "text": "Elegir con tranquilidad"
+  },
+  "3529f25651a29adc01d4": {
+    "source": "app/(public)/page.tsx",
+    "text": "Conoce los productos, compara sus precios y encuentra una rutina sin añadir pasos que no necesitas."
+  },
+  "67ff0d1961733a817481": {
+    "source": "app/(public)/page.tsx",
+    "text": "Estamos para acompañarte"
+  },
+  "d911bda54992d0f77d3c": {
+    "source": "app/(public)/page.tsx",
+    "text": "Si tienes dudas, conversemos. Nuestra asesoría te ayuda a conocer el catálogo y elegir con más claridad."
+  },
+  "ceb10c119bd31f80fe08": {
+    "source": "app/(public)/page.tsx",
+    "text": "Conocer las asesorías ↗"
+  },
+  "8298f488f625ecbf3ed6": {
+    "source": "app/(public)/page.tsx",
+    "text": "EL DIARIO MAI"
+  },
+  "11f3385a00dc41b8a2e2": {
+    "source": "app/(public)/page.tsx",
+    "text": "Un poco de inspiración para cuidarte."
+  },
+  "55f0939b0065acb3b84d": {
+    "source": "app/(public)/page.tsx",
+    "text": "Leer el diario ↗"
+  },
+  "b98f5572ff5c49d119e2": {
+    "source": "app/(public)/page.tsx",
+    "text": "Leer historia ↗"
+  },
+  "514f6b301c1d7a77a347": {
+    "source": "app/(public)/page.tsx",
+    "text": "ANTES DE EMPEZAR"
+  },
+  "fe1d3544e07d1d97d3d4": {
+    "source": "app/(public)/page.tsx",
+    "text": "Hablemos de tu compra."
+  },
+  "6539c299f7388a51c22c": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "COP"
+  },
+  "b56903e541b63c5d3296": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Envío calculado antes de confirmar tu pedido."
+  },
+  "f14bfe15e1a5eccae27a": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Este producto está agotado por ahora."
+  },
+  "02007e67434af499db57": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Precio pendiente de confirmación."
+  },
+  "64d5d48f2d8c8272c4b6": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Formulación de autor."
+  },
+  "5295e1b37eac2b98a30a": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": " Elaborada uno a uno, producto a producto."
+  },
+  "a167be8fd1e60de8e796": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Entrega estimada: 5 a 7 días hábiles."
+  },
+  "ac50c57ee5a598d356ae": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Paga con Wompi. En el checkout verás el envío y el total antes de continuar al pago seguro. Las pruebas se identifican y no realizan cobros reales."
+  },
+  "58fc11ffa85367216e54": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Lo que hace parte de tu ritual"
+  },
+  "37460bf97f9bcf02924a": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Compra y entrega"
+  },
+  "3c746d8e385d96bd85d4": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Revisa tus datos y el total con envío en el checkout. Después continúa directamente a Wompi para completar tu pago."
+  },
+  "2651daa6303fadcf30ce": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Consulta nuestros términos de compra y políticas."
+  },
+  "287e0357b0f89482759f": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Encuentra tu rutina"
+  },
+  "3851a236b0dbe529cb19": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Combina el cuidado de tu piel, cabello y cuerpo con una rutina para tu día a día."
+  },
+  "6b10bac646f393a4803b": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Explorar las rutinas MAI ↗"
+  },
+  "8a81ec777a9192e7cb80": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "SIGUE EXPLORANDO"
+  },
+  "deba4b0f98c235951042": {
+    "source": "app/(public)/products/[id]/page.tsx",
+    "text": "Un ritual se complementa."
+  },
+  "e619d92661e85568d35c": {
+    "source": "app/(public)/services/payment/page.tsx",
+    "text": "Tu asesoría · resultado de Wompi"
+  },
+  "b5d1b02801a105c400cf": {
+    "source": "app/(public)/services/payment/page.tsx",
+    "text": "El equipo confirma contigo el horario, la modalidad y la recepción del pago. No envíes un segundo pago sin consultar."
+  },
+  "cf803d2196f9e0939b64": {
+    "source": "app/(public)/services/payment/page.tsx",
+    "text": "Volver a asesorías"
+  },
+  "c662999905f0f1ce3665": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "CÍRCULO MAI · EN PREPARACIÓN"
+  },
+  "73a9b477c56365734cdf": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Hay preguntas"
+  },
+  "56ba67bcb1bbfc682d00": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "que merecen"
+  },
+  "353cdf3dbdff2577339a": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "más de un encuentro."
+  },
+  "5677800df2e0ae5fc8c9": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Lo que empieza con una conversación puede convertirse en una nueva manera de mirarte. Un espacio para estudiar, compartir y darle continuidad a tus preguntas junto a Melina."
+  },
+  "8752d452fb10cec67812": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Empezar por mi encuentro ↗"
+  },
+  "a2c5abe42ed5a82b4056": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Descubrir el Círculo ↓"
+  },
+  "90369d0f213828f26fce": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "El encuentro inicial es independiente. No te suscribe ni activa cobros recurrentes."
+  },
+  "57be1d83b2285588980b": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Escuchar."
+  },
+  "88fffe1d2598e69fa908": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Preguntar."
+  },
+  "1845b53705f2f9cc94a2": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Volver a ti."
+  },
+  "24e622e1cb2f3a01512c": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "UNA EXPLORACIÓN COMPARTIDA"
+  },
+  "729f112daa70b7f45528": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "LA PROPUESTA QUE ESTAMOS PREPARANDO"
+  },
+  "2aac7de852b6ad52e07d": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "El cuidado como"
+  },
+  "0505d5a760c00ef4b744": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "punto de partida."
+  },
+  "e4ab916c03a084b1eb27": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "01 / EL RITMO"
+  },
+  "e5ec1ec8ad905212b4cc": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Encontrarnos cada quince días"
+  },
+  "45f4df35e84a31d2157f": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Grupos de estudio quincenales para dar espacio a las preguntas y volver a ellas con nuevas perspectivas."
+  },
+  "ed2fd703acb9792326f0": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "02 / LA MIRADA"
+  },
+  "29cc1bfcee50edc96e49": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Belleza y algo más"
+  },
+  "13c3a0fa80f01c2daaa4": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Cosmética, hábitos y autoformulación: explorar cómo te nombras, qué eliges y cómo participas en tu propia realidad."
+  },
+  "7ece2c27ffa3d2c1da58": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "03 / TU DECISIÓN"
+  },
+  "c301ce30bf392205540b": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Continuar con intención"
+  },
+  "0e0fff1d7ba0896f7db3": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Conocer el enfoque de Melina en un encuentro personal y decidir después si quieres profundizar en grupo."
+  },
+  "c8f735e9fe6130afcfb4": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "A TU RITMO"
+  },
+  "742d1951d76753cd0bde": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Primero, una conversación."
+  },
+  "a5d5ce2041a5ebe12cb0": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "El siguiente paso lo eliges tú."
+  },
+  "63467d111866222f024c": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Melina Jimenez Isaza, creadora de MAI, acompaña este recorrido desde su experiencia cosmética y su mirada de exploración personal."
+  },
+  "278be896b91b13b0d547": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Inscripciones aún no abiertas"
+  },
+  "fe49a762c4fc85fba27a": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Publicaremos precio, modalidad, calendario y condiciones de renovación y cancelación antes de ofrecer una membresía. Hoy no se reciben pagos ni altas al Círculo."
+  },
+  "6f4f04687497f6ffff8e": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Conocer mi primer encuentro ↗"
+  },
+  "8afe9d8037ce00682aa0": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Mientras tanto, explorar el Diario MAI →"
+  },
+  "c5dd2a85eecb908585aa": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Antes de dar"
+  },
+  "cd51c5b5af9d4492a104": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "el siguiente paso."
+  },
+  "5336c31cd7921750bf11": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "← Volver al catálogo"
+  },
+  "0344d0d5e7190ca8e1f4": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "COMPRAR CON CLARIDAD"
+  },
+  "9f906569696723dbd853": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Estamos aquí"
+  },
+  "74f8f998612a103ba1a6": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "para ayudarte."
+  },
+  "23d8d6489121419579ca": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Información práctica sobre tu compra y cómo contactarnos cuando lo necesites."
+  },
+  "8a810c6f1d09ace0d4ff": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Tu pedido y el envío"
+  },
+  "de1a8b41c1d38f39cb73": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "El tiempo estimado de entrega es de 5 a 7 días hábiles. El envío cuesta $15.000 COP en Medellín y $25.000 COP fuera de Medellín. El checkout muestra el envío y el total antes de continuar directamente a Wompi. Si necesitas confirmar una entrega, escríbenos con la referencia de tu pedido."
+  },
+  "d7cd20f3420ab6486512": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Precios y pagos"
+  },
+  "0b5fd0b9cc6c3ff0ecc1": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Los precios se expresan en pesos colombianos (COP). Un pedido con pago pendiente permanece por confirmar hasta que se valide la transacción. Los pagos se realizan exclusivamente mediante Wompi. El checkout muestra la disponibilidad y el entorno de Wompi. En producción, verificamos el pago directamente con el proveedor; una simulación de pruebas no constituye una compra pagada ni activa el despacho. Al finalizar la solicitud de asesoría, continúas directamente a Wompi para pagar el valor mostrado. El pago y la confirmación del horario se gestionan por separado; Círculo MAI no admite cobros ni suscripciones activas."
+  },
+  "6f5f88535915bee7dfbe": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Ayuda con tu compra"
+  },
+  "74515d9084027ee528cd": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Para consultar una novedad de entrega, un cambio, una devolución o un pago, contáctanos con el número de pedido y una descripción de tu solicitud. Te orientaremos sobre los pasos a seguir."
+  },
+  "98cf5528290f93c55a16": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Encuentros con Melina"
+  },
+  "12ec971cae553608da7b": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "La solicitud permite coordinar un encuentro de orientación cosmética y exploración personal. No constituye atención médica ni psicoterapia. El equipo confirmará horario, modalidad y pago antes de dar la cita por confirmada."
+  },
+  "54abf418c9a0673139cf": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Usamos tus respuestas y datos de contacto para gestionar esta solicitud. Comparte solo lo necesario; puedes reservar los detalles personales para la conversación. Para consultar, corregir o solicitar la eliminación de tus datos, escribe a info@mainatural.com. El interés opcional en Círculo MAI no activa una suscripción ni autoriza cobros."
+  },
+  "bc6f74bde97831f6c285": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Círculo MAI"
+  },
+  "fd989509463eec2a4dbb": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Las suscripciones de Círculo MAI aún no están disponibles. Puedes explorar productos y servicios sin adquirir una membresía."
+  },
+  "4b3df080373072214691": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Uso de tus datos"
+  },
+  "31ca89cfa7f4493c2da4": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Los datos de contacto y entrega que proporcionas se utilizan para gestionar tus solicitudes, pedidos, pagos y atención. Evita incluir información sensible en campos abiertos. La solicitud de una asesoría o un pedido no activa una suscripción al Círculo MAI."
+  },
+  "a08546c2122d819dc688": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Para consultar, corregir o solicitar la eliminación de tus datos, escribe a info@mainatural.com e indica la referencia de tu solicitud cuando la tengas. Nunca envíes contraseñas ni datos completos de tarjetas por estos canales."
+  },
+  "f3b936241c9bf4e5f623": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Contacto"
+  },
+  "77dbfa25d51af7396b79": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "Escríbenos a "
+  },
+  "13b23d5b67b662d5e4a1": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "info@mainatural.com"
+  },
+  "04604986792e3b982003": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": " o por "
+  },
+  "5813b0fed72fd9fa1cde": {
+    "source": "app/(public)/terms/page.tsx",
+    "text": "WhatsApp: +57 324 684 7727"
+  },
+  "73ec3c5e32e3d5a35b95": {
+    "source": "components/common/AppChrome.tsx",
+    "text": "Saltar al contenido"
+  },
+  "0cea9730ff73e81318b0": {
+    "source": "components/common/Footer.tsx",
+    "text": "Un momento para ti."
+  },
+  "675a32b41e5e2e60aab5": {
+    "source": "components/common/Footer.tsx",
+    "text": "Una formulación para tu ritual."
+  },
+  "a61d9765e394012a04fd": {
+    "source": "components/common/Footer.tsx",
+    "text": "info@mainatural.com"
+  },
+  "d1235e1aff62c5fe2729": {
+    "source": "components/common/Footer.tsx",
+    "text": "EXPLORA"
+  },
+  "dd97aa94187fdf9fcca4": {
+    "source": "components/common/Footer.tsx",
+    "text": "Cuidado facial"
+  },
+  "70b9adb908564c5de5c3": {
+    "source": "components/common/Footer.tsx",
+    "text": "Cuidado capilar"
+  },
+  "d22bab7d82532d17fe79": {
+    "source": "components/common/Footer.tsx",
+    "text": "Cuidado corporal"
+  },
+  "7c15133f5582cbe9524e": {
+    "source": "components/common/Footer.tsx",
+    "text": "Kits y rutinas"
+  },
+  "ee7509843b70fa4128a4": {
+    "source": "components/common/Footer.tsx",
+    "text": "CERCA DE TI"
+  },
+  "fb6bc45dae5c337fcb51": {
+    "source": "components/common/Footer.tsx",
+    "text": "Asesorías MAI"
+  },
+  "3f066c0f3dc856fb65e8": {
+    "source": "components/common/Footer.tsx",
+    "text": "Diario MAI"
+  },
+  "35b283563185fe313d52": {
+    "source": "components/common/Footer.tsx",
+    "text": "Mis pedidos"
+  },
+  "a69e3d1ccb189d32a600": {
+    "source": "components/common/Footer.tsx",
+    "text": "Información de compra"
+  },
+  "d9380d072425d82a61d2": {
+    "source": "components/common/Footer.tsx",
+    "text": "A NUESTRO RITMO"
+  },
+  "9d0f431464a44edaed5f": {
+    "source": "components/common/Footer.tsx",
+    "text": "Formulaciones botánicas de autor, elaboradas uno a uno. Entrega estimada de 5 a 7 días hábiles."
+  },
+  "568f4fd7c3a70b0e9968": {
+    "source": "components/common/Footer.tsx",
+    "text": "Círculo MAI · Próximamente ↗"
+  },
+  "1c1b3d889a22060c99b5": {
+    "source": "components/common/Footer.tsx",
+    "text": "Conversemos por WhatsApp ↗"
+  },
+  "2f65ed7f9eeb68697490": {
+    "source": "components/common/Footer.tsx",
+    "text": " MAI Natural"
+  },
+  "b00e82ce588cc86b8081": {
+    "source": "components/common/Footer.tsx",
+    "text": "Colombia · Precios en COP"
+  },
+  "c753e06a7a4d32eb2d9e": {
+    "source": "components/common/Footer.tsx",
+    "text": "Hecho con intención."
+  },
+  "d884ea73fb52445c303b": {
+    "source": "components/common/Header.tsx",
+    "text": "Hecho uno a uno, para cuidarte cada día. "
+  },
+  "bc7d8b291ebe245e1904": {
+    "source": "components/common/Header.tsx",
+    "text": "Descubre tu ritual "
+  },
+  "3609bda2f5c882a16c27": {
+    "source": "components/common/Header.tsx",
+    "text": "COSMÉTICA"
+  },
+  "3afbbf0405495fa20cff": {
+    "source": "components/common/Header.tsx",
+    "text": "DE AUTOR"
+  },
+  "d44b42378e35c1dd8856": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Mi cuenta"
+  },
+  "0fe6320a77731e118b9b": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Salir"
+  },
+  "71d9a02f279a1677591e": {
+    "source": "components/common/WhatsAppAgentButton.tsx",
+    "text": "W"
+  },
+  "f4e91f1ce89cac8aaa37": {
+    "source": "components/common/WhatsAppAgentButton.tsx",
+    "text": "Agente MAI por WhatsApp"
+  },
+  "9b75fc58503b14737c30": {
+    "source": "components/common/WhatsAppAgentButton.tsx",
+    "text": "WhatsApp"
+  },
+  "cb145e86a8ed76b28e56": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Informacion personal"
+  },
+  "7452f715cfe2ec3562ff": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Nombre completo"
+  },
+  "5ddf50b6a1b03b12210e": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Correo electronico"
+  },
+  "f1b1a6f0817bffc185cb": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Tu correo se gestiona desde la cuenta de acceso."
+  },
+  "d9ac71ce7040e3a5002b": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Telefono"
+  },
+  "d0a431d98c4536a81647": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Sesion"
+  },
+  "957469d88be717f22d1c": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Estas conectado como "
+  },
+  "6a269dc3f1710acb9f00": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Cerrar sesion"
+  },
+  "ba18b65621c38f686546": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Tu carrito"
+  },
+  "9381614bbf241274ed38": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Tu carrito está vacío"
+  },
+  "eaa9c98f27622ce09e06": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Explora nuestras formulaciones botánicas de autor y agrega tus favoritas."
+  },
+  "c08954e0a0f1d37b3c06": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Ir a la tienda"
+  },
+  "1da8581a7bc00832ede9": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Subtotal"
+  },
+  "15b38a60df97997f37bd": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa."
+  },
+  "3d7404091d15db82c70a": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Paga con "
+  },
+  "79c8e046abb7ccfae096": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Wompi"
+  },
+  "409b4c7a47d71ffc0009": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": ". Revisa tus datos, el envío y el total antes de continuar al pago seguro."
+  },
+  "514dec265e0e81ed654d": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Continuar al pago con Wompi"
+  },
+  "0df3f53a24f66d4202a9": {
+    "source": "components/features/cart/CartDrawer.tsx",
+    "text": "Seguir comprando"
+  },
+  "64b01d01e00795b04238": {
+    "source": "components/features/home/EditorialHeroCarousel.tsx",
+    "text": "DEL DIARIO A TU RITUAL"
+  },
+  "b77fada2c6d4fe472c8f": {
+    "source": "components/features/home/EditorialHeroCarousel.tsx",
+    "text": "Leer historia "
+  },
+  "65940dbe5baa49cd534f": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": "Preparando tu pago con Wompi"
+  },
+  "d9ebc6dfd94db16a562d": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": "Serás redirigido a Wompi para completar tu "
+  },
+  "823412a7cd58d2aaff9f": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": ". No cierres esta ventana ni pulses atrás."
+  },
+  "16efde1c378891fde484": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": "Estamos verificando tu pedido…"
+  },
+  "4ca6a0904e20b66149cf": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "Se abrirá Wompi en modo de pruebas. No uses datos de pago reales. "
+  },
+  "eccc76a0d5ff7f02db49": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": " Tu solicitud se conserva; no necesitas crearla otra vez."
+  },
+  "3523f6e81ccde3b2be29": {
+    "source": "components/features/products/ProductCard.tsx",
+    "text": "COP"
+  },
+  "6dbc4dfe3657689d4791": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "EL PODER DE LO SIMPLE"
+  },
+  "5872e8d355ac4bd86654": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Tu naturaleza."
+  },
+  "058f4c1756f54a193eac": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Tu ritual."
+  },
+  "540018251b2f0e1c9c75": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Cuidado facial, capilar y corporal para encontrar ese momento que es solo tuyo."
+  },
+  "576f0cab11eaa8e39fd5": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Encuentra tu rutina "
+  },
+  "96961b1308eac652cb99": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Todo el cuidado "
+  },
+  "637392d0e859838b84a0": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Presupuesto"
+  },
+  "9e7e01cfa48322182fe0": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Todos los precios"
+  },
+  "3504ba6d54d9a0b1e12b": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Hasta $50.000"
+  },
+  "96b228c61fd02f55ded9": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Hasta $80.000"
+  },
+  "1945c62c5f0bc92bb19a": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Hasta $120.000"
+  },
+  "ee37ca853beda562de11": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Ordenar por"
+  },
+  "cb69701aa2bbb9577ec8": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Orden del catálogo"
+  },
+  "8ef1de5c065746fce66f": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Menor precio"
+  },
+  "19becd3cf7cc09c331f8": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Mayor precio"
+  },
+  "dbd786168e1468a17fc2": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Nombre: A–Z"
+  },
+  "206a7b9d738f475f644c": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": " ×"
+  },
+  "553257363e763e123b36": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Limpiar filtros"
+  },
+  "74e04aa60103aef2f304": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Precios en pesos colombianos"
+  },
+  "0049794bcda9e5ae6ba7": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "No encontramos ese ritual."
+  },
+  "0889683e53a9fba4ad06": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Prueba otra palabra o amplía los filtros para descubrir más opciones."
+  },
+  "1d1c09d47cb0093c534c": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Ver todos los productos"
+  },
+  "52fd4820307dbd1c93fd": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "UN CUIDADO QUE VA CONTIGO"
+  },
+  "d43961bd3675476fa739": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Empieza con una rutina."
+  },
+  "c59499f18540f8201878": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Descubre cómo combinar tus productos en el día a día."
+  },
+  "4890c24c79d6a7bf00c2": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Explorar rutinas "
+  },
+  "b2f4ddf541add7c93750": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "TU RITUAL MAI"
+  },
+  "57da2412347b90a077a9": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "El cuidado empieza"
+  },
+  "68d7eef45213b9c39024": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "por "
+  },
+  "1c0fb61abfbdf51fa0e6": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "elegirte."
+  },
+  "b9dee116910bb887a6bc": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Dos rituales para empezar. Una selección que puedes hacer tuya. Elige lo que tiene sentido para tu momento, sin llevarte más de lo que necesitas."
+  },
+  "9357cbf283999274f088": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Encuentra tu punto de partida ↓"
+  },
+  "f37f09c0c9dacd2e1342": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "01 — 02 — tú"
+  },
+  "67a2d6ddf2edaf51286f": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Un gesto."
+  },
+  "9a8ed7243aeb86ed4e29": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Un momento."
+  },
+  "7a57c4cbcf490b25d801": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Tu manera de cuidarte."
+  },
+  "f45b87a4209f85cc4a16": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Formulaciones botánicas de autor · Elaboradas uno a uno en Colombia"
+  },
+  "f89609db0977720ac885": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "01 / TU PUNTO DE PARTIDA"
+  },
+  "36b0c5bc706d4b5af255": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "¿Por dónde quieres empezar?"
+  },
+  "64b38368a419358e8cba": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Elige una base o combina productos a tu manera."
+  },
+  "4cb5d4210c5776e91bc4": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "03 / A TU MANERA"
+  },
+  "ab5b3e64153e7bfee08c": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Crea el tuyo."
+  },
+  "c7e3c7c55724733960e2": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Rostro, cabello y cuerpo. Agrupa hasta 6 productos en una selección propia, con el precio siempre a la vista."
+  },
+  "adcccf60694037cec52a": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Eliges tú · pagas lo que sumas"
+  },
+  "af416c118f0dff4f886c": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Por confirmar"
+  },
+  "163a22631fe0386ed54c": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Producto no disponible"
+  },
+  "35e4638a9a503cc55e42": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "¿Cambiarías algo?"
+  },
+  "e20f7b09b3d8a6239e64": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Usa estos productos como punto de partida y agrega o quita lo que prefieras. Al personalizar se aplican los precios individuales, no el precio del kit."
+  },
+  "38c4d7f07f9d67de49e5": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Adaptar este ritual ↗"
+  },
+  "90ca3da85071543322e1": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Dale un nombre (opcional)"
+  },
+  "2e25d28902769178e218": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "El nombre acompaña tu consulta de orientación; no solicita un empaque especial."
+  },
+  "fc7543e23ef143837dde": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Explora por cuidado"
+  },
+  "d3cac8d2f5c94df1c523": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": " COP"
+  },
+  "50282fee2b29096250aa": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "TU SELECCIÓN"
+  },
+  "ea17e0af334fd63f448f": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": " de 6 productos elegidos"
+  },
+  "397f8d0c5c69f44d3e13": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "×"
+  },
+  "51eab8e46f9f76730c31": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Tu primer producto puede ser ese que ya conoces o uno que quieres descubrir."
+  },
+  "40d4496484d4b044d837": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Un kit de 3 productos. En la bolsa aparecerá como "
+  },
+  "5fb9cefbd98f59ee2f18": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Envío y total en el checkout. Pago seguro con Wompi."
+  },
+  "0baec2bed750d5becc5e": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Revisar mi bolsa"
+  },
+  "3f817f900becafbc0185": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Los productos personalizados se agregan como artículos individuales, sin descuento automático. Si ya tienes alguno, se suma una unidad a su cantidad."
+  },
+  "9ca88126f660cd61d471": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Revisa disponibilidad o cantidades en tu bolsa antes de añadir esta selección."
+  },
+  "2b6a40416fc3e7503f47": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Consultar esta selección por WhatsApp ↗"
+  },
+  "ef49b33f84c8c5c0dc21": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "ELEGIR TAMBIÉN ES CUIDARTE"
+  },
+  "c287be90d8f0b49a3028": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "¿Prefieres comenzar"
+  },
+  "cc7c38baebdc02e95b04": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "con una conversación?"
+  },
+  "1ec217d78f9b68f4aad7": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Melina puede acompañarte a revisar tus hábitos y elegir un punto de partida. Crear una selección aquí no equivale a una formulación personalizada."
+  },
+  "3bb078692efcf2be7577": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Conocer las asesorías ↗"
+  },
+  "b8cda311f58e975d50f5": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": " productos · "
+  },
+  "3dfe4a1f8cd9d58ecd47": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Ver mi selección ↑"
+  },
+  "c3c9187086f118a7e529": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "ASESORÍAS · UN ESPACIO PARA TI"
+  },
+  "f8ef36c24155e04c8512": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu cuidado empieza"
+  },
+  "ca63943a244583b30b57": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "por "
+  },
+  "f5e75dd9fd10742a1146": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "escucharte."
+  },
+  "571281845845a79732ce": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "A veces, lo que buscas va más allá de una rutina. Un encuentro con Melina para mirar tu caso con atención, hacer nuevas preguntas y encontrar por dónde empezar."
+  },
+  "4f056b69ef609bf6fda4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "m."
+  },
+  "a099b6d0666384fae314": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Melina Jimenez Isaza"
+  },
+  "a9dbc6ef592b720b5c1b": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Creadora de MAI · Más de 11 años de trayectoria"
+  },
+  "0869321a454f18abf624": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Un encuentro personal"
+  },
+  "7d303b5406af6f0ff717": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": " minutos"
+  },
+  "76437381f394dff7ba80": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No hace falta saber exactamente qué decir."
+  },
+  "827f63e2d38910eb9f1f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Podemos empezar por una pregunta."
+  },
+  "82e811e38de5337e275d": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Conoce la mirada de Melina "
+  },
+  "638efc51caf5ebfa397e": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "El primer paso"
+  },
+  "478683edfd514d6788bf": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "ya está dado."
+  },
+  "5f3c585d5af2ade6d17d": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Gracias, "
+  },
+  "e0cecff9a0285bfdb21b": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": ". Recibimos tu solicitud para el "
+  },
+  "390d965ec6cc633bb5ef": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": " a las "
+  },
+  "60473bccfea5e2b6297d": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": ", hora de Colombia."
+  },
+  "266931d55f08864cb8a4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Pendiente de confirmación y pago"
+  },
+  "934c7d29bd1d35c1c957": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "El equipo revisará tu solicitud y coordinará contigo los detalles del encuentro. Aún no es una cita confirmada."
+  },
+  "bac6886eccda6f4ba0f2": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu referencia: "
+  },
+  "1c74cb758e5af78a3153": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Wompi no está habilitado en este momento. Tu solicitud se conserva; vuelve a intentarlo más tarde."
+  },
+  "e117125bf49618688bca": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Consultar mi solicitud "
+  },
+  "ddbc11d0792cf491c446": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Conserva tu referencia. Puedes escribir a info@mainatural.com para resolver dudas o solicitar un cambio."
+  },
+  "888287a89eada0fe6ba6": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "UNA PREGUNTA PUEDE ABRIR OTRO CAMINO"
+  },
+  "01597aee56c795617aab": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Y si esta vez"
+  },
+  "00a9168e710447e54c00": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "empiezas por"
+  },
+  "3fab4effa62d66c1f44e": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "escucharte a ti?"
+  },
+  "0dc3805f387a4840cb17": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Hay algo que quieres cuidar. Quizás también algo que quieres comprender. Démosle un espacio."
+  },
+  "954bafb4056cd4ef2f81": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Mai "
+  },
+  "357628f6547e84b04164": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "UN ESPACIO PARA TI"
+  },
+  "c8a68048995dedcbe255": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Pausar y salir "
+  },
+  "4597634543a4c7fc131f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "×"
+  },
+  "4a1c245474854834455c": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "ENCUENTROS CON MELINA"
+  },
+  "02b168875486efff80ec": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Por un momento,"
+  },
+  "36e203e490e28e5bc362": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "el centro eres tú."
+  },
+  "0ccb362bdf362c08b640": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No hay respuestas perfectas."
+  },
+  "028b92402ba921f747a3": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Solo un lugar para empezar."
+  },
+  "54ff3e75a416e3c5ed0b": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Qué te trae hasta aquí?"
+  },
+  "3a0e644cb7fffa11b605": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Lo que buscas en el encuentro"
+  },
+  "fbdaaec13629b9dedc77": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Quieres dejar una pregunta? "
+  },
+  "45011998ff909aee2e1c": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Opcional"
+  },
+  "1414f8e1862454db4bd6": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Una idea que te gustaría conversar"
+  },
+  "122bd4a906acbacbf9f3": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Puedes dejarlo en blanco y hablarlo con Melina. No hace falta compartir información íntima ni datos de salud aquí."
+  },
+  "39f160444b9b2a9d9fa7": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "ENCUENTRO INICIAL"
+  },
+  "4cb89dd70da553d6d21e": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Escucha + orientación de cuidado"
+  },
+  "5d1a4e6b165f56993693": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": " minutos · pago único"
+  },
+  "008ade0f27bc622396ce": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Qué día te gustaría?"
+  },
+  "294fa1e05a1ef8457bdd": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Al elegir el día te mostraremos los horarios que puedes solicitar."
+  },
+  "21ca7e1dca9a10c15ba2": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Consultando horarios…"
+  },
+  "6b6d9a2bea188ef24209": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Volver a consultar"
+  },
+  "1186215aadaa8ed00f3c": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No hay horarios para ese día. Probemos con otra fecha."
+  },
+  "fd90b11f77204ca8f4f0": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Elige tu hora · Colombia"
+  },
+  "49837fdcccbdcee706bd": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "El equipo confirmará contigo el horario y la modalidad. Los productos y el acompañamiento posterior no están incluidos en este valor."
+  },
+  "a76993e9588d9612ac77": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Para coordinar este encuentro contigo. No necesitas crear una cuenta."
+  },
+  "7ba54b7473b0b617b383": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Cambiar"
+  },
+  "346452b660c2864f9b8e": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Mi pregunta"
+  },
+  "6fb216a9e639b5730a9f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Encuentro inicial con Melina"
+  },
+  "d174d037bd2a58742c63": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": " minutos · sin suscripción"
+  },
+  "c635e18f18046556ff21": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Me gustaría conocer el Círculo MAI cuando esté disponible."
+  },
+  "af2a7ce3997a2eed3aa8": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Opcional. No activa una membresía ni genera cobros."
+  },
+  "4fbc92db363ccf1e2082": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Autorizo a MAI a usar mis respuestas y datos de contacto para gestionar este encuentro. "
+  },
+  "9c9d6896b06bfffdde9d": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Ver información de atención"
+  },
+  "46bc98dc9f89a8ab7e86": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "← Volver"
+  },
+  "c4bed34e8b777df0c79b": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "A tu ritmo. Paso a paso."
+  },
+  "7de0810dfa05c1758013": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu solicitud fue recibida"
+  },
+  "fab729ed77f35136c45a": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "El primer paso está dado. Tu encuentro queda pendiente de confirmación y pago."
+  },
+  "4fe2e7df6287389bd573": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "LA PERSONA DETRÁS DE MAI"
+  },
+  "7eec858d274c9bdd6b75": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Una mirada que"
+  },
+  "a6224d0fecd9a1b6a695": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "se detiene en ti."
+  },
+  "69ca47a894f8663f9eb4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Melina Jimenez Isaza, creadora de MAI, dedica este espacio a escuchar cada caso desde más de 11 años de trayectoria en el universo del cuidado."
+  },
+  "27b71f881e2e66abe18f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Su experiencia cosmética dialoga con el estudio de la iniciación, el esoterismo, el hermetismo, el psicoanálisis y la enseñanza de José Luis Parise. Son referencias para explorar lo que a veces queda fuera de la rutina: las palabras, los hábitos y las preguntas que aún no has formulado."
+  },
+  "b3234837fe67d2402d5b": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Lo que ves. Lo que sientes."
+  },
+  "2effbbace25397c6221c": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Lo que todavía no has nombrado."
+  },
+  "2a3b59a039993d7bdb30": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "LA BELLEZA DE HABITARSE"
+  },
+  "d6378c6e08806bca12fe": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "El producto es una parte."
+  },
+  "93c071b06b0a975551a4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu historia también importa."
+  },
+  "b55d3ce603d9f1162c3f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "UN CAMINO QUE SE CONSTRUYE CONTIGO"
+  },
+  "1254fe51801139878d53": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Primero, encontrarnos."
+  },
+  "0a590ea5f8f7643cccc0": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Después, tú decides."
+  },
+  "851a0d15afe78f50b120": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "01 / ESCUCHAR"
+  },
+  "1b6f75d17a9d174066e4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu encuentro inicial"
+  },
+  "5de137227afb3ae187b1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Un espacio personal para compartir tu situación, revisar tu cuidado y abrir preguntas junto a Melina."
+  },
+  "0caf9fa31a3cfa5a4e54": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "02 / DAR FORMA"
+  },
+  "7547cb662cd48c794863": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Una primera orientación"
+  },
+  "f176bc4d08846fcb7506": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "A partir de la conversación, una propuesta inicial de cuidado cosmético y próximos pasos acordes con lo conversado."
+  },
+  "e8e3a37da6c9eb785d20": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "03 / PROFUNDIZAR"
+  },
+  "b86d29ea5c80a185332f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Un proceso, si lo deseas"
+  },
+  "be74893b72e31c665bc6": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "La posibilidad de continuar el estudio y la exploración personal. El primer encuentro no te compromete a una suscripción."
+  },
+  "2d90cb9fa09176c73b2e": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "CÍRCULO MAI · PRÓXIMAMENTE"
+  },
+  "53595cfffc476a26de76": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Hay preguntas que"
+  },
+  "e423d791b82198885d16": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "merecen continuidad."
+  },
+  "187c33011d97e256c2d6": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Un espacio de análisis y estudio en grupo, con encuentros quincenales sobre belleza, cosmética y autoformulación: preguntarte cómo te nombras, qué eliges y cómo participas en la construcción de tu propia realidad."
+  },
+  "453605ba7d015580296f": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Empezar por mi encuentro "
+  },
+  "5e1b667a26ce70c9dfa6": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "EL RITMO"
+  },
+  "23183e083cfa5f4281b0": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Grupos de estudio quincenales"
+  },
+  "5edcafbcf390711d586a": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "LA EXPLORACIÓN"
+  },
+  "73701985e1bd7ed70cca": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Belleza, cuidado y realidad propia"
+  },
+  "3fe6a1a19c1024302487": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "TU DECISIÓN"
+  },
+  "49b3abae90e3398fff15": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Continuidad opcional después del encuentro"
+  },
+  "a4e6347d72a46eb6f44d": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Las inscripciones aún no están abiertas. Precio y condiciones se comunicarán antes de que decidas suscribirte."
+  },
+  "c80ee9277d9a7504eccc": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "ANTES DE CONVERSAR"
+  },
+  "8968d2d75753371054e3": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Un poco de claridad"
+  },
+  "4e37613ec330a51e61a1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "para empezar."
+  },
+  "26e77447bd469cce20a8": {
+    "source": "components/ui/Calendar.tsx",
+    "text": "Calendario placeholder (integra aqui tu libreria de calendario)."
+  },
+  "navigation:/": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Inicio"
+  },
+  "navigation:/products": {
+    "source": "components/common/Navigation.tsx",
+    "text": "La tienda"
+  },
+  "navigation:/routines": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Tu ritual"
+  },
+  "navigation:/services": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Asesorías"
+  },
+  "navigation:/blog": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Diario MAI"
+  },
+  "navigation:/subscriptions": {
+    "source": "components/common/Navigation.tsx",
+    "text": "Círculo MAI"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:title": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Agua de rosas: un pequeño ritual para volver a ti"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:description": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Una guía para conocer Agua de Rosas MAI, revisar su lugar en tu rutina y elegir con calma, sin sumar pasos por costumbre."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:category": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Botánica cotidiana"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:readTime": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "3 min"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:0:heading": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Un ritual que sí cabe en tu día"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:0:body:0": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Hay días en los que cuidarte significa hacer espacio entre una tarea y otra. No necesitas convertir el baño en una colección interminable de productos. Una rutina también puede ser un momento breve, elegido con intención y repetido sin prisa."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:0:body:1": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Agua de Rosas forma parte del catálogo facial de MAI. Su propuesta es una bruma botánica para acompañar ese momento de cuidado. Antes de incorporarla, conoce su presentación, revisa la etiqueta y piensa qué lugar tendría entre los productos que ya utilizas. Comprar con claridad también es una forma de cuidarte."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:1:heading": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Tres preguntas antes de añadir un producto"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:1:body:0": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Primero: ¿qué estás buscando? Tal vez disfrutas una textura ligera, quieres conocer una bruma o te interesa el aroma de las rosas. Nombrar esa preferencia es más útil que comprar una rutina completa por impulso."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:1:body:1": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Segundo: ¿ya tienes un producto que ocupa ese lugar? No hace falta duplicar pasos. Y tercero: ¿conoces las indicaciones y los ingredientes de esta fórmula? El nombre de una planta no resume todo lo que contiene un cosmético. Consulta la información del envase y pide ayuda si necesitas aclararla."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:2:heading": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Hazlo tuyo, sin convertirlo en una obligación"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:2:body:0": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Deja tu producto en un lugar donde puedas seguir sus condiciones de conservación y leer sus instrucciones. Elige un momento tranquilo para conocerlo y evita estrenar varios productos a la vez: así te resultará más fácil reconocer tus preferencias."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:2:body:1": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Sigue siempre el modo de uso de la etiqueta. Esta guía no propone dosis, combinaciones de activos ni resultados que no estén documentados para el producto. Si tienes una duda particular sobre tu piel, resuélvela con un profesional antes de adaptar tu rutina."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:3:heading": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Empieza por conocer, después decide"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:3:body:0": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Abajo encontrarás Agua de Rosas y un limpiador del catálogo facial para explorar sus fichas por separado. Son opciones para conocer; no tienes que comprar ambas ni completar una cantidad mínima de pasos."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:section:3:body:1": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Puedes guardar esta guía y volver cuando lo necesites. Si prefieres conversar, en Asesorías MAI encuentras el espacio para preguntar por el catálogo. El objetivo es que elijas una rutina que puedas disfrutar y sostener, no una lista cada vez más larga."
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:promotion:eyebrow": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "BOTÁNICA COTIDIANA"
+  },
+  "blog:agua-de-rosas-un-momento-para-ti:promotion:headline": {
+    "source": "Diario / agua-de-rosas-un-momento-para-ti",
+    "text": "Una pausa entre pétalos."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:title": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Jardín Herbal: cómo elegir tu rutina capilar con intención"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:description": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Shampoo, bálsamo y crema para peinar: conoce el lugar de cada producto en el catálogo MAI antes de elegir tu rutina capilar."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:category": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Cuidado capilar"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:readTime": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "3 min"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:0:heading": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Empieza por observar tu día a día"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:0:body:0": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Tu rutina capilar tiene que convivir con tu vida: el tiempo que tienes, cómo te gusta llevar el cabello y los productos que disfrutas usar. Antes de elegir, piensa qué parte de tu rutina quieres revisar. Puede ser el lavado, el momento de acondicionar o el peinado."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:0:body:1": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "No hay una frecuencia de lavado que este artículo pueda fijar para todas las personas. Tampoco una combinación universal. La propuesta de Jardín Herbal es abrir una conversación sobre tus preferencias y ayudarte a recorrer el catálogo con una pregunta concreta."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:1:heading": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Conoce los productos por su función"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:1:body:0": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "En MAI encuentras Shampoo Jardín Herbal, Bálsamo Jardín Herbal y Herbal Curl, una crema para peinar. Sus nombres distinguen tres tipos de producto; no significan que debas comprarlos todos. Revisa la ficha de cada uno y confirma sus indicaciones antes de decidir."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:1:body:1": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Un buen punto de partida es identificar qué tienes en casa y qué estás buscando reemplazar. Si tu interés está en el lavado, empieza por la ficha del shampoo. Si quieres explorar otro momento de cuidado, conoce el bálsamo o la crema para peinar por separado."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:2:heading": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Una selección no es una obligación"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:2:body:0": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "La sección Rutinas reúne productos para facilitar la exploración. Úsala como una lista que puedes evaluar, no como una promesa de resultados. Compara el valor de cada producto y verifica la selección antes de llevarla al carrito."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:2:body:1": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Al recibir un cosmético, sigue su etiqueta para aplicación, enjuague y conservación. Evita deducir el modo de uso solo por su nombre. Si necesitas más información sobre la fórmula o tienes una condición del cuero cabelludo, busca orientación adecuada antes de cambiar tu cuidado."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:3:heading": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Tu próxima decisión puede ser pequeña"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:3:body:0": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "No necesitas renovar todo al mismo tiempo. Lee las fichas relacionadas al final de esta guía, anota tus dudas y elige el paso que tenga más sentido para ti. También puedes guardar el artículo para consultarlo cuando se termine tu producto actual."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:section:3:body:1": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "La constancia se construye con decisiones que caben en la vida real. En MAI queremos acompañarte a conocer las opciones, sin convertir cada momento de cuidado en una lista de tareas."
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:promotion:eyebrow": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "TU JARDÍN COTIDIANO"
+  },
+  "blog:jardin-herbal-conoce-tu-rutina-capilar:promotion:headline": {
+    "source": "Diario / jardin-herbal-conoce-tu-rutina-capilar",
+    "text": "Un ritual a tu ritmo."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:title": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Limpieza facial: elegir sin complicarte la rutina"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:description": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Una guía de compra para comparar limpiadores MAI, revisar sus indicaciones y hacer preguntas útiles antes de elegir."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:category": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Cuidado facial"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:readTime": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "3 min"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:0:heading": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Comprar con una pregunta concreta"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:0:body:0": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Frente a varias opciones de limpieza facial, es fácil elegir solo por el nombre o por una foto. Una pregunta más útil es: ¿qué necesito saber para decidir? Puede ser la textura, el modo de uso, los ingredientes completos o cómo conservar el producto."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:0:body:1": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Haz una lista breve antes de entrar al catálogo. Así puedes comparar la información disponible y reconocer lo que todavía necesitas consultar, sin asumir que un ingrediente mencionado en el nombre explica toda la fórmula."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:1:heading": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Dos productos para explorar"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:1:body:0": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "El catálogo MAI incluye Caléndula & Aloe Vera Manzanilla, un mousse cremoso limpiador, y Jazmín & Pétalos de Rosa, un mousse espumoso limpiador. Aquí los presentamos como opciones de exploración; esta guía no asigna automáticamente uno a cada tipo de piel."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:1:body:1": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Abre sus fichas, compara sus precios y revisa las instrucciones del envase. Si una información decisiva no aparece, pregúntala antes de comprar. Elegir con tranquilidad incluye tener permiso para detenerse y aclarar una duda."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:2:heading": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "No cambies todo para empezar de nuevo"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:2:body:0": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Una compra puede resolver una necesidad pequeña. Si estás revisando tu limpiador, no hace falta añadir un tónico, un suero y una crema al mismo tiempo. Observa qué pasos ya forman parte de tu rutina y cuáles realmente quieres explorar."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:2:body:1": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Para aplicar un producto, sigue sus indicaciones específicas. No deduzcas frecuencias, cantidades o combinaciones a partir de una publicación de redes. Y si una duda tiene que ver con una condición de tu piel, consulta con un profesional de salud."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:3:heading": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Tu lista antes del carrito"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:3:body:0": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Confirma el nombre del producto elegido, su precio en COP, las instrucciones disponibles y las condiciones del pedido. Guarda tus preguntas si necesitas una asesoría. Una lista corta te ayudará a comprar lo que decidiste, sin perderte entre opciones."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:section:3:body:1": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Abajo dejamos las fichas de los dos limpiadores mencionados. Puedes conocerlos por separado o seguir explorando la categoría facial. El mejor siguiente paso es el que puedes tomar con información suficiente."
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:promotion:eyebrow": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "EL PRINCIPIO DE TU RITUAL"
+  },
+  "blog:limpieza-facial-elegir-sin-complicarte:promotion:headline": {
+    "source": "Diario / limpieza-facial-elegir-sin-complicarte",
+    "text": "Empieza por lo esencial."
+  },
+  "blog:jabon-solido-ritual-corporal:title": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Jabón sólido: un ritual corporal con menos complicaciones"
+  },
+  "blog:jabon-solido-ritual-corporal:description": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Conoce los jabones sólidos MAI y prepara una compra pensada en tus preferencias, el espacio de tu baño y las instrucciones del producto."
+  },
+  "blog:jabon-solido-ritual-corporal:category": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Cuidado corporal"
+  },
+  "blog:jabon-solido-ritual-corporal:readTime": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "3 min"
+  },
+  "blog:jabon-solido-ritual-corporal:section:0:heading": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Volver a un formato sencillo"
+  },
+  "blog:jabon-solido-ritual-corporal:section:0:body:0": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "El jabón sólido invita a mirar un gesto cotidiano con otros ojos. No hace falta transformar todo el baño para conocerlo: basta con elegir un producto, leer cómo usarlo y pensar dónde lo vas a guardar entre usos."
+  },
+  "blog:jabon-solido-ritual-corporal:section:0:body:1": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "En el catálogo MAI puedes explorar opciones como Rosas & Cacao y Caléndula & Manzanilla. Sus nombres ayudan a distinguirlas, pero tu decisión también merece la información completa del envase. Revisa las indicaciones y pregunta por los detalles que sean importantes para ti."
+  },
+  "blog:jabon-solido-ritual-corporal:section:1:heading": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Elige por preferencias, no por promesas"
+  },
+  "blog:jabon-solido-ritual-corporal:section:1:body:0": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Piensa qué disfrutas de tu momento de cuidado y qué quieres cambiar del formato que utilizas. Puedes empezar por conocer una sola opción. No es necesario crear una colección de aromas o comprar varios productos para experimentar un ritual nuevo."
+  },
+  "blog:jabon-solido-ritual-corporal:section:1:body:1": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Esta selección no compara resultados sobre la piel ni promete beneficios ambientales que no hayan sido medidos. El formato sólido, por sí solo, no permite describir toda la huella de un producto. Preferimos que decidas con información concreta y preguntas abiertas."
+  },
+  "blog:jabon-solido-ritual-corporal:section:2:heading": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Hazle espacio en tu baño"
+  },
+  "blog:jabon-solido-ritual-corporal:section:2:body:0": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Antes de recibirlo, revisa dónde podrás dejarlo siguiendo sus condiciones de conservación. También conviene conservar la información del envase para consultar el modo de uso y las precauciones cuando lo necesites."
+  },
+  "blog:jabon-solido-ritual-corporal:section:2:body:1": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Si compartes el baño, piensa cómo identificar los productos de cada persona y mantener tu espacio ordenado. No hay una estética obligatoria: una rutina agradable puede vivir en un baño pequeño y con muy pocos objetos."
+  },
+  "blog:jabon-solido-ritual-corporal:section:3:heading": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Un producto, una decisión consciente"
+  },
+  "blog:jabon-solido-ritual-corporal:section:3:body:0": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Consulta abajo las fichas de los jabones mencionados, revisa el precio y confirma las condiciones de entrega antes de comprar. Si buscas un regalo, pregunta primero por las preferencias de quien lo recibirá y por la presentación disponible."
+  },
+  "blog:jabon-solido-ritual-corporal:section:3:body:1": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "Cuidarte también puede ser quitar ruido a una decisión. Elige un producto que quieras conocer, dale un lugar en tu día y vuelve al Diario MAI cuando busques una nueva idea."
+  },
+  "blog:jabon-solido-ritual-corporal:promotion:eyebrow": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "UN MOMENTO COTIDIANO"
+  },
+  "blog:jabon-solido-ritual-corporal:promotion:headline": {
+    "source": "Diario / jabon-solido-ritual-corporal",
+    "text": "El cuidado, sin prisa."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:title": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Regalar MAI: una guía para elegir con tiempo y atención"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:description": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Cómo elegir un regalo de cosmética MAI según las preferencias de la persona, tu presupuesto y las condiciones reales de entrega."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:category": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Regalos con intención"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:readTime": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "3 min"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:0:heading": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Empieza por la persona"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:0:body:0": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Un regalo de cuidado empieza mucho antes del empaque. Piensa en lo que la persona disfruta, en los productos que ya utiliza y en lo que te ha contado de su rutina. Si no conoces esas preferencias, preguntar también puede ser parte del detalle."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:0:body:1": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "No necesitas adivinar una necesidad de su piel o recomendar una rutina completa. Puedes elegir desde algo más simple: un formato que le interese, una categoría que conozca o la posibilidad de explorar el catálogo juntos."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:1:heading": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Pon un límite amable a tu presupuesto"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:1:body:0": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Define cuánto quieres destinar al regalo antes de comparar opciones. Revisa los precios vigentes en COP y las condiciones del envío. La selección de esta guía reúne productos para explorar por separado; no exige comprarlos juntos."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:1:body:1": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Comprueba qué incluye cada ficha y consulta la presentación disponible. No des por hecho que habrá envoltura especial, tarjeta personalizada o un descuento por temporada. Es mejor aclararlo antes de pagar que contar con un detalle que aún no está confirmado."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:2:heading": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "El tiempo también forma parte del regalo"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:2:body:0": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "MAI comunica una entrega estimada de 5 a 7 días hábiles para su elaboración artesanal. Tómala como una referencia y confirma las condiciones concretas para tu destino y fecha antes de realizar el pedido. Las temporadas de regalos merecen planearse con anticipación."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:2:body:1": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Si necesitas recibirlo para un día específico, consúltalo antes de comprar. Esta guía no garantiza entregas para celebraciones ni sustituye la confirmación de tu pedido. Dejar margen te permite elegir con más tranquilidad."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:3:heading": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Acompáñalo con tus propias palabras"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:3:body:0": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Una nota escrita por ti puede contar por qué elegiste ese detalle, sin prometer lo que el producto hará por otra persona. Algo tan sencillo como «pensé en tus momentos de pausa» puede expresar mucho."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:section:3:body:1": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Explora las fichas relacionadas, guarda tus opciones y resuelve las dudas que queden. Regalar con intención no significa gastar más: significa prestar atención a la persona, a la información del producto y al tiempo que necesita el pedido."
+  },
+  "blog:regalos-mai-elegir-con-tiempo:promotion:eyebrow": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "REGALAR CON INTENCIÓN"
+  },
+  "blog:regalos-mai-elegir-con-tiempo:promotion:headline": {
+    "source": "Diario / regalos-mai-elegir-con-tiempo",
+    "text": "Pensado para alguien."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:title": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Cierra el año con una rutina que se parezca a ti"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:description": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Revisa lo que ya usas, identifica lo que quieres mantener y elige tu próxima compra de cuidado con intención."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:category": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Rituales conscientes"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:readTime": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "3 min"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:0:heading": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Antes de una nueva lista, mira lo que ya tienes"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:0:body:0": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "El final del año invita a hacer planes, pero tu cuidado no necesita convertirse en otra lista de exigencias. Puedes empezar por mirar los productos que ya utilizas y reconocer cuáles tienen un lugar real en tu día."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:0:body:1": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Revisa sus indicaciones y fechas, identifica los que estás usando y anota las preguntas que te hayan quedado. Esa pequeña revisión te ayuda a distinguir una necesidad de reposición de una compra que quizá puede esperar."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:1:heading": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Quédate con los momentos que disfrutas"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:1:body:0": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Piensa en cuándo te resulta más fácil cuidarte y cuánto tiempo quieres dedicarle. No hace falta imitar una rutina ajena. Elige un momento que tenga sentido en tus mañanas, tus noches o tus días de lavado."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:1:body:1": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Puedes escribir tres cosas: un producto que quieres seguir usando, un paso que te gustaría entender mejor y una duda para tu próxima asesoría. Es una forma sencilla de dar dirección a tu siguiente compra sin pedirle a un cosmético que resuelva todo."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:2:heading": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Explora con una intención concreta"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:2:body:0": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Si quieres revisar el momento de acondicionamiento capilar, conoce Bálsamo Jardín Herbal. Si tu pregunta está en el lavado, explora la ficha del Shampoo Jardín Herbal. Son dos puertas al catálogo; no una indicación de que debas estrenar ambos."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:2:body:1": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Confirma instrucciones y precio antes de elegir. Para cualquier condición de piel o cuero cabelludo, busca orientación profesional. El Diario MAI acompaña decisiones de compra y hábitos de organización; no realiza diagnósticos ni prescribe tratamientos."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:3:heading": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Una rutina que pueda seguir contigo"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:3:body:0": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "La próxima vez que abras el catálogo, vuelve a tus tres notas. Quizá quieras reponer un producto, probar algo distinto o simplemente resolver una pregunta. Cualquiera de esas decisiones puede ser suficiente."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:section:3:body:1": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Durante estos meses recorrimos el cuidado facial, capilar, corporal y los regalos. El hilo que los une es el mismo: conocer antes de elegir y hacer espacio para ti. Guarda las historias que te sirvan y vuelve a ellas a tu ritmo."
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:promotion:eyebrow": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "VOLVER A LO QUE IMPORTA"
+  },
+  "blog:rutina-mai-cerrar-el-ano-con-menos:promotion:headline": {
+    "source": "Diario / rutina-mai-cerrar-el-ano-con-menos",
+    "text": "Más tuyo. Más simple."
+  },
+  "blog:rutina-facial-natural-piel-sensible:title": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Rutina facial natural para piel sensible: limpieza, tonico e hidratacion"
+  },
+  "blog:rutina-facial-natural-piel-sensible:description": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Aprende como construir una rutina facial natural para piel sensible con pasos simples, ingredientes botanicos y productos MAI."
+  },
+  "blog:rutina-facial-natural-piel-sensible:category": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Cuidado facial"
+  },
+  "blog:rutina-facial-natural-piel-sensible:readTime": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "5 min"
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:0:heading": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Por que una rutina corta suele funcionar mejor"
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:0:body:0": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "La piel sensible agradece constancia y pocos pasos. Una rutina con limpieza suave, tonico calmante e hidratacion evita sobrecargar la barrera cutanea y facilita identificar que ingrediente realmente aporta bienestar."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:0:body:1": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "En MAI recomendamos empezar con productos botanicos de uso diario, observar la piel durante una o dos semanas y ajustar segun sensacion de tirantez, brillo o resequedad."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:1:heading": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Paso 1: limpieza sin sensacion agresiva"
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:1:body:0": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Busca limpiadores que retiren impurezas sin dejar la piel demasiado seca. Si al terminar sientes ardor o tension intensa, la limpieza puede ser mas fuerte de lo que tu piel necesita."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:1:body:1": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Para rutinas de noche, limpia con calma y evita combinar demasiados exfoliantes en la misma semana."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:2:heading": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Paso 2: tonico botanico para preparar la piel"
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:2:body:0": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Un tonico facial natural puede aportar frescura y ayudar a que la hidratacion se sienta mas uniforme. Aplicalo con las manos limpias o con un pad suave, sin frotar."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:2:body:1": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "El agua de rosas y los rocios faciales son buenas opciones cuando buscas una sensacion calmante y ligera."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:3:heading": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "Paso 3: hidratacion diaria y seguimiento"
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:3:body:0": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "La hidratacion es el paso que sostiene la rutina. Si tu piel cambia por clima, estres o ciclo hormonal, ajusta la cantidad antes de cambiar todos los productos."
+  },
+  "blog:rutina-facial-natural-piel-sensible:section:3:body:1": {
+    "source": "Diario / rutina-facial-natural-piel-sensible",
+    "text": "El seguimiento personalizado de MAI ayuda a convertir la compra en un proceso: elegimos productos, revisamos respuesta y afinamos la rutina."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:title": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Shampoo natural para cabello rizado en Colombia: como elegirlo"
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:description": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Guia para elegir shampoo natural para cabello rizado, evitar resequedad y complementar con crema para peinar botanica."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:category": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Cuidado capilar"
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:readTime": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "4 min"
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:0:heading": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "El rizo necesita limpieza y definicion, no peso"
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:0:body:0": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "El cabello rizado suele pedir equilibrio: limpiar cuero cabelludo, mantener suavidad en medios y puntas, y evitar acabados pesados que apaguen la forma natural."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:0:body:1": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Un shampoo natural puede ser una buena base si lo combinas con acondicionamiento y una crema de peinar adecuada."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:1:heading": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Senales de que tu shampoo no esta ayudando"
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:1:body:0": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Si el rizo queda aspero, con frizz excesivo o pierde forma al primer dia, revisa la frecuencia de lavado, la cantidad de producto y la hidratacion posterior."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:1:body:1": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "No todo se resuelve cambiando de shampoo; a veces la rutina completa necesita orden."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:2:heading": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Como armar una rutina capilar MAI"
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:2:body:0": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "Empieza con una limpieza botanica, sigue con balsamo si tu cabello pide suavidad y termina con crema para peinar para definir sin endurecer."
+  },
+  "blog:shampoo-natural-cabello-rizado-colombia:section:2:body:1": {
+    "source": "Diario / shampoo-natural-cabello-rizado-colombia",
+    "text": "La meta es que el cabello se sienta limpio, flexible y con movimiento, no saturado."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:title": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Regalos de formulaciones botánicas de autor: ideas para sorprender con bienestar"
+  },
+  "blog:regalos-cosmetica-natural-artesanal:description": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Ideas de regalos de formulaciones botánicas de autor elaboradas uno a uno para cumpleaños, fechas especiales y detalles corporativos con sentido."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:category": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Regalos conscientes"
+  },
+  "blog:regalos-cosmetica-natural-artesanal:readTime": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "4 min"
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:0:heading": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Un regalo de cuidado se usa, se siente y se recuerda"
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:0:body:0": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Las formulaciones botánicas de autor funcionan muy bien como regalo porque transforman un detalle en ritual. No es solo un producto: es una invitación a pausar y cuidarse."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:0:body:1": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Para elegir mejor, piensa en la persona: piel seca, amor por aromas suaves, interes por rutinas simples o gusto por productos corporales."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:1:heading": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Ideas faciles por tipo de persona"
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:1:body:0": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Para alguien que ama lo facial, elige tonicos, limpiadores o hidratantes. Para quien disfruta duchas largas, jabones y cremas corporales suelen ser aciertos seguros."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:1:body:1": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Si no sabes por donde empezar, un kit de rutina reduce la decision y aumenta la probabilidad de uso."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:2:heading": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Por que la produccion artesanal importa"
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:2:body:0": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "En MAI cada producto tiene un tiempo de preparacion de 5 a 7 dias habiles. Ese ritmo permite cuidar detalles, frescura y presentacion."
+  },
+  "blog:regalos-cosmetica-natural-artesanal:section:2:body:1": {
+    "source": "Diario / regalos-cosmetica-natural-artesanal",
+    "text": "Para fechas especiales conviene comprar con anticipacion y dejar un margen para envio o entrega."
+  },
+  "home:faq:0:question": {
+    "source": "app/(public)/page.tsx",
+    "text": "¿Cómo elijo mis productos?"
+  },
+  "home:faq:0:answer": {
+    "source": "app/(public)/page.tsx",
+    "text": "Explora el catálogo por cuidado facial, capilar o corporal. En Rutinas puedes ver una selección por necesidad. Si todavía tienes dudas, solicita una asesoría."
+  },
+  "home:faq:1:question": {
+    "source": "app/(public)/page.tsx",
+    "text": "¿Cuánto tarda mi pedido?"
+  },
+  "home:faq:1:answer": {
+    "source": "app/(public)/page.tsx",
+    "text": "La entrega estimada es de 5 a 7 días hábiles porque cada formulación se elabora uno a uno. El destino y las condiciones de envío se revisan antes de confirmar tu pedido."
+  },
+  "home:faq:2:question": {
+    "source": "app/(public)/page.tsx",
+    "text": "¿Necesito crear una cuenta para comprar?"
+  },
+  "home:faq:2:answer": {
+    "source": "app/(public)/page.tsx",
+    "text": "Puedes continuar como invitada o invitado desde el carrito. Te pediremos los datos necesarios para gestionar tu pedido y su entrega."
+  },
+  "home:faq:3:question": {
+    "source": "app/(public)/page.tsx",
+    "text": "¿Qué opciones de pago hay?"
+  },
+  "home:faq:3:answer": {
+    "source": "app/(public)/page.tsx",
+    "text": "Pagas exclusivamente con Wompi. Revisa tus datos, el envío y el total en el checkout; después continúa a Wompi para completar el pago. Si estás en un entorno de pruebas, lo indicaremos antes de continuar."
+  },
+  "home:collection:facial:title": {
+    "source": "app/(public)/page.tsx",
+    "text": "Para tu piel"
+  },
+  "home:collection:facial:note": {
+    "source": "app/(public)/page.tsx",
+    "text": "Limpieza, frescura e hidratación"
+  },
+  "home:collection:capilar:title": {
+    "source": "app/(public)/page.tsx",
+    "text": "Para tu cabello"
+  },
+  "home:collection:capilar:note": {
+    "source": "app/(public)/page.tsx",
+    "text": "Un jardín en tu rutina"
+  },
+  "home:collection:corporal:title": {
+    "source": "app/(public)/page.tsx",
+    "text": "Para todo tu cuerpo"
+  },
+  "home:collection:corporal:note": {
+    "source": "app/(public)/page.tsx",
+    "text": "Pequeños momentos de bienestar"
+  },
+  "subscriptions:faq:0:question": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "¿Ya puedo suscribirme?"
+  },
+  "subscriptions:faq:0:answer": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Aún no. Estamos preparando la propuesta y sus condiciones. No hay planes disponibles para contratar ni cobros de membresía habilitados."
+  },
+  "subscriptions:faq:1:question": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "¿El encuentro con Melina me inscribe?"
+  },
+  "subscriptions:faq:1:answer": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "No. Es una asesoría individual con su propio valor y alcance, visibles antes de solicitarla. Si te interesa la continuidad puedes conversarlo con Melina, sin compromiso de suscripción."
+  },
+  "subscriptions:faq:2:question": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "¿Incluye productos o descuentos?"
+  },
+  "subscriptions:faq:2:answer": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "No hay beneficios comerciales confirmados para el Círculo. Los productos y las asesorías se consultan por separado; no necesitas comprar una membresía para acceder al catálogo."
+  },
+  "subscriptions:faq:3:question": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "¿Cómo podré renovar o cancelar?"
+  },
+  "subscriptions:faq:3:answer": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Las condiciones y el mecanismo de cancelación se comunicarán antes de abrir inscripciones. Esta página no crea una membresía ni autoriza renovaciones."
+  },
+  "subscriptions:faq:4:question": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "¿Qué tipo de acompañamiento propone?"
+  },
+  "subscriptions:faq:4:answer": {
+    "source": "app/(public)/subscriptions/page.tsx",
+    "text": "Estudio sobre belleza, cosmética y exploración personal. No sustituye atención médica ni psicoterapia. Puedes conocer el enfoque de Melina en la página de Asesorías."
+  },
+  "services:faq:0:question": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Tengo que saber qué me pasa?"
+  },
+  "services:faq:0:answer": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No. Puedes venir con una pregunta, una inquietud sobre tu cuidado o con el deseo de conversar. El formulario solo prepara el encuentro; no interpreta tus respuestas ni realiza un diagnóstico."
+  },
+  "services:faq:1:question": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Qué incluye el encuentro inicial?"
+  },
+  "services:faq:2:question": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Necesito conocer estas enseñanzas?"
+  },
+  "services:faq:2:answer": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No necesitas conocimientos previos ni compartir una creencia específica. Las referencias simbólicas forman parte de la mirada de Melina; puedes preguntar por el enfoque y decidir qué quieres explorar."
+  },
+  "services:faq:3:question": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Es una consulta médica o psicológica?"
+  },
+  "services:faq:3:answer": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Es un espacio de orientación cosmética y exploración personal. Las referencias al psicoanálisis y a tradiciones simbólicas no lo convierten en psicoterapia ni en atención médica. No se ofrecen diagnósticos clínicos ni se sustituyen tratamientos profesionales."
+  },
+  "services:faq:4:question": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Me suscribo al reservar?"
+  },
+  "services:faq:4:answer": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No. El encuentro inicial es independiente. Si más adelante quieres profundizar, podrás conocer las condiciones del Círculo MAI y decidir. En este momento las suscripciones aún no están abiertas."
+  },
+  "services:faq:5:question": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Cómo se confirma la cita?"
+  },
+  "services:faq:5:answer": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Elige tu horario, revisa el valor y continúa directamente a Wompi para pagar. Verificamos el resultado con Wompi y el equipo confirma contigo el horario y la modalidad. Para consultar o cambiar tu solicitud, escribe a info@mainatural.com."
+  },
+  "rituals:0:title": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Una pausa para tu rostro"
+  },
+  "rituals:0:label": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Ritual facial"
+  },
+  "rituals:0:description": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Limpieza, tónico y suero: tres momentos para empezar a cuidar tu rostro con intención."
+  },
+  "rituals:0:steps:0": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Limpia"
+  },
+  "rituals:0:steps:1": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Prepara"
+  },
+  "rituals:0:steps:2": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Aplica tu suero"
+  },
+  "rituals:0:note": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Una selección inicial de cuidado facial. Consulta el modo de uso de cada producto; no sustituye una recomendación individual."
+  },
+  "rituals:1:title": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Un momento para tu cabello"
+  },
+  "rituals:1:label": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Ritual capilar"
+  },
+  "rituals:1:description": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Shampoo, bálsamo y crema de peinar: una base para acompañar el lavado y el peinado."
+  },
+  "rituals:1:steps:0": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Lava"
+  },
+  "rituals:1:steps:1": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Acondiciona"
+  },
+  "rituals:1:steps:2": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Peina"
+  },
+  "rituals:1:note": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Incluye Herbal Curl, crema para peinar. Si buscas otro acabado o prefieres una bruma, adapta la selección en «Crea el tuyo»."
+  },
+  "consultation:stepNames:0": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu motivo"
+  },
+  "consultation:stepNames:1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu intención"
+  },
+  "consultation:stepNames:2": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu momento"
+  },
+  "consultation:stepNames:3": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu contacto"
+  },
+  "consultation:stepNames:4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu encuentro"
+  },
+  "consultation:titles:0": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Qué te trae hasta aquí?"
+  },
+  "consultation:titles:1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Qué te gustaría llevarte?"
+  },
+  "consultation:titles:2": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Hagamos espacio para conversar."
+  },
+  "consultation:titles:3": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Cómo podemos encontrarte?"
+  },
+  "consultation:titles:4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Este es tu punto de partida."
+  },
+  "consultation:descriptions:0": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No necesitas tenerlo todo claro. Elige lo que más se acerque a tu momento."
+  },
+  "consultation:descriptions:1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No tienes que resolverlo ahora. Solo darle una dirección a nuestra conversación."
+  },
+  "consultation:descriptions:2": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Elige una fecha y un horario para solicitar tu encuentro. Hora de Colombia (UTC−5)."
+  },
+  "consultation:descriptions:3": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Solo lo necesario para coordinar tu encuentro con Melina."
+  },
+  "consultation:descriptions:4": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Revisa tus respuestas. Puedes cambiarlas antes de enviar tu solicitud."
+  },
+  "consultation:topics:0:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Mi piel y cómo la cuido"
+  },
+  "consultation:topics:0:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Quiero revisar mi rutina y encontrar un punto de partida."
+  },
+  "consultation:topics:0:response": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Podemos empezar por tu piel y darle espacio a lo que quieres contar."
+  },
+  "consultation:topics:1:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Mi cabello y su historia"
+  },
+  "consultation:topics:1:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Quiero entender mis hábitos y elegir un cuidado más mío."
+  },
+  "consultation:topics:1:response": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu historia con el cabello también merece una conversación propia."
+  },
+  "consultation:topics:2:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Mi relación con el cuidado"
+  },
+  "consultation:topics:2:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Quiero mirar más allá de los productos y de la rutina."
+  },
+  "consultation:topics:2:response": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Podemos abrir preguntas sobre el lugar que le das al cuidado en tu vida."
+  },
+  "consultation:topics:3:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Todavía no sé cómo nombrarlo"
+  },
+  "consultation:topics:3:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Hay algo que quiero conversar. Prefiero empezar por ahí."
+  },
+  "consultation:topics:3:response": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "No necesitas llegar con una respuesta. Una pregunta es suficiente para empezar."
+  },
+  "consultation:intentions:0:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Salir con una orientación concreta"
+  },
+  "consultation:intentions:0:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Un primer plan de cuidado que pueda empezar a poner en práctica."
+  },
+  "consultation:intentions:1:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tener un espacio para ser escuchada/o"
+  },
+  "consultation:intentions:1:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Ordenar mis preguntas y mirar mi situación con otra perspectiva."
+  },
+  "consultation:intentions:2:title": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Explorar un proceso más profundo"
+  },
+  "consultation:intentions:2:description": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Conocer cómo podría continuar el trabajo después del encuentro."
+  }
+}

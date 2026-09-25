@@ -1,3 +1,5 @@
+
+import { SiteText } from "@/components/common/SiteText";
 import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
@@ -23,8 +25,8 @@ export default async function AccountProfilePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Perfil</h1>
-      <p className="mt-2 text-slate-700">Configura tus datos personales y preferencias.</p>
+      <h1 className="text-2xl font-bold text-brand-900"><SiteText id="43efa3b56b07787b5ed8">{"Perfil"}</SiteText></h1>
+      <p className="mt-2 text-slate-700"><SiteText id="87857bce41c9395fde1e">{"Configura tus datos personales y preferencias."}</SiteText></p>
       <AccountProfileForm initialUser={initialUser} />
     </div>
   );

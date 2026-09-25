@@ -1,5 +1,6 @@
 import pg from 'pg';
 if (!process.env.DATABASE_URL || !process.env.ADMIN_EMAIL) throw new Error('Configura DATABASE_URL y ADMIN_EMAIL en el entorno privado. La cuenta debe estar registrada previamente.');
+if (process.env.ADMIN_EMAIL.trim().toLowerCase() !== 'hola@mainatural.com') throw new Error('Solo hola@mainatural.com puede habilitarse como administrador.');
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL, connectionTimeoutMillis: 5000 });
 try {
   await client.connect();

@@ -1,7 +1,9 @@
 'use server';
 
 import { signIn } from '@/lib/auth';
-import { db } from '@/lib/db';
+import { db, databaseTransaction } from '@/lib/db';
+import { ADMIN_EMAIL } from '@/lib/admin-policy';
+import { consumeLoginAttempt } from '@/lib/login-security';
 import { sendTransactionalEmail } from '@/lib/email';
 import {
   forgotPasswordSchema,
@@ -68,6 +70,7 @@ export async function registerAction(
     }
 
     const { name: cleanName, email: cleanEmail, password: cleanPassword } = parsed.data;
+    if (cleanEmail === ADMIN_EMAIL) return { error: 'Esta cuenta se habilita desde el procedimiento privado de administración.' };
 
     const existingUser = await db.user.findUnique({
       where: { email: cleanEmail },
@@ -108,6 +111,7 @@ export async function requestPasswordResetAction(email: string) {
       return { error: firstValidationError(parsed.error) };
     }
 
+    await consumeLoginAttempt(`reset:${parsed.data.email}`);
     const user = await db.user.findUnique({
       where: { email: parsed.data.email },
     });
@@ -159,7 +163,7 @@ export async function requestPasswordResetAction(email: string) {
   }
 }
 
-export async function resetPasswordAction(token: string, password: string) {
+export async function resetPasswordAction(token: string, password: string): Promise<{success?: boolean; error?: string}> {
   try {
     const parsed = resetPasswordSchema.safeParse({ token, password });
 
@@ -167,6 +171,8 @@ export async function resetPasswordAction(token: string, password: string) {
       return { error: firstValidationError(parsed.error) };
     }
 
+    const hashedPassword = await bcrypt.hash(parsed.data.password, 12);
+    return await databaseTransaction(async () => {
     const tokenHash = hashResetToken(parsed.data.token);
     const resetToken = await db.passwordResetToken.findUnique({
       where: { tokenHash },
@@ -179,8 +185,6 @@ export async function resetPasswordAction(token: string, password: string) {
     ) {
       return { error: 'El enlace de recuperación venció o ya fue usado' };
     }
-
-    const hashedPassword = await bcrypt.hash(parsed.data.password, 12);
 
     await db.user.update({
       where: { id: resetToken.userId },
@@ -197,6 +201,7 @@ export async function resetPasswordAction(token: string, password: string) {
     });
 
     return { success: true };
+    });
   } catch (error) {
     console.error('Password reset error:', error);
     return { error: 'No pudimos actualizar la contraseña. Inténtalo de nuevo.' };

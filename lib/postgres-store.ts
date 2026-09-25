@@ -21,6 +21,10 @@ export async function databaseReady() {
     return result.rowCount === 1;
   } catch { return false; }
 }
+export async function withPersistentDatabase<T>(operation: (client: PoolClient) => Promise<T>): Promise<T> {
+  if (!persistentDatabaseEnabled()) throw new Error('Se requiere PostgreSQL persistente');
+  return databaseTransaction(() => operation(transactions.getStore()!));
+}
 export async function databaseTransaction<T>(operation: () => Promise<T>): Promise<T> {
   if (!persistentDatabaseEnabled() || transactions.getStore()) return operation();
   const client = await getPool().connect();

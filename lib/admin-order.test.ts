@@ -1,5 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 vi.mock("@/lib/auth",()=>({auth:vi.fn(async()=>({user:{id:"admin-fixture",role:"admin"}}))}));
+// Authorization itself is covered independently in admin-access.test.ts.
+vi.mock("@/lib/admin-access",()=>({requireAdmin:async()=>{const {auth}=await import('./auth');const session=await auth();if(!session?.user)throw new Error('No autorizado');return {id:'admin-fixture',email:'hola@mainatural.com'};}}));
 vi.mock("server-only",()=>({}));
 vi.mock("next/cache",()=>({revalidatePath:vi.fn()}));
 import { db } from "./db";

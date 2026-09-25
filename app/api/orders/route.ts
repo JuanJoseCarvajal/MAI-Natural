@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { getAllProducts } from "@/lib/products.server";
 import { evaluateDiscountCode } from "@/lib/discounts.server";
 import { getShippingInCents } from "@/lib/shipping";
+import { resolveProduct } from "@/lib/products";
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
     const products = await getAllProducts();
     const orderItems = rawItems
       .map((item) => {
-        const product = products.find((product) => product.id === item.id);
+        const product = resolveProduct(products, item.id);
         if (!product) return null;
         return {
           id: product.id,
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (rawItems.some(item => { const product = products.find(p => p.id === item.id); return product?.stock !== undefined && product.stock < item.quantity; })) {
+    if (rawItems.some(item => { const product = resolveProduct(products, item.id); const quantity = rawItems.filter(other => other.id.split("~")[0] === item.id.split("~")[0]).reduce((sum, other) => sum + other.quantity, 0); return product?.stock !== undefined && product.stock < quantity; })) {
       return NextResponse.json({ error: "La cantidad supera la disponibilidad. Revisa tu carrito." }, { status: 409 });
     }
     let totalInCents = orderItems.reduce(

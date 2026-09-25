@@ -4,6 +4,8 @@ import Providers from "@/components/common/Providers";
 import { CartProvider } from "@/components/features/cart/CartContext";
 import AppChrome from "@/components/common/AppChrome";
 import Analytics from "@/components/common/Analytics";
+import { SiteContentProvider } from "@/components/common/SiteText";
+import { publicSiteContent } from "@/lib/site-content";
 import { buildMetadata, defaultSeoDescription, siteName, siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -28,13 +30,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const values = await publicSiteContent();
   return (
     <html lang="es">
       <body>
         <Providers>
           <CartProvider>
-            <AppChrome>{children}</AppChrome>
+            <SiteContentProvider values={values}><AppChrome>{children}</AppChrome></SiteContentProvider>
           </CartProvider>
         </Providers>
         <Analytics />

@@ -1,4 +1,6 @@
 "use client";
+import { SiteText } from "@/components/common/SiteText";
+
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -46,11 +48,9 @@ export default function WhatsAppAgentButton() {
       className={`fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full bg-[#1f9d58] px-4 py-3 text-sm font-bold text-white shadow-2xl transition hover:bg-[#18884b] ${heroVisible ? "max-[760px]:hidden" : ""}`}
       aria-label="Hablar con Agente MAI por WhatsApp"
     >
-      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
-        W
-      </span>
-      <span className="hidden sm:inline">Agente MAI por WhatsApp</span>
-      <span className="sm:hidden">WhatsApp</span>
+      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20"><SiteText id="71d9a02f279a1677591e">{"W"}</SiteText></span>
+      <span className="hidden sm:inline"><SiteText id="f4e91f1ce89cac8aaa37">{"Agente MAI por WhatsApp"}</SiteText></span>
+      <span className="sm:hidden"><SiteText id="9b75fc58503b14737c30">{"WhatsApp"}</SiteText></span>
     </button>
   );
 }

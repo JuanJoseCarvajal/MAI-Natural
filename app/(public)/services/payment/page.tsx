@@ -1,3 +1,5 @@
+
+import { SiteText } from "@/components/common/SiteText";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
@@ -18,5 +20,5 @@ export default async function Payment({ searchParams }: { searchParams: Promise<
       }
     } catch { /* Keep the verification failure visible without exposing provider details. */ }
   }
-  return <main className="mx-auto max-w-2xl px-6 py-24"><h1 className="text-3xl font-bold">Tu asesoría · resultado de Wompi</h1><p role="status" className="my-6">{message}</p><p>El equipo confirma contigo el horario, la modalidad y la recepción del pago. No envíes un segundo pago sin consultar.</p><Link className="mt-8 inline-block underline" href="/services">Volver a asesorías</Link></main>;
+  return <main className="mx-auto max-w-2xl px-6 py-24"><h1 className="text-3xl font-bold"><SiteText id="e619d92661e85568d35c">{"Tu asesoría · resultado de Wompi"}</SiteText></h1><p role="status" className="my-6">{message}</p><p><SiteText id="b5d1b02801a105c400cf">{"El equipo confirma contigo el horario, la modalidad y la recepción del pago. No envíes un segundo pago sin consultar."}</SiteText></p><Link className="mt-8 inline-block underline" href="/services"><SiteText id="cf803d2196f9e0939b64">{"Volver a asesorías"}</SiteText></Link></main>;
 }

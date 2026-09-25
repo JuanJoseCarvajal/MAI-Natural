@@ -1,9 +1,12 @@
+
+import { SiteText } from "@/components/common/SiteText";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedBlogPosts, getBlogPost } from "@/lib/blog";
+import { getEditableBlogPosts } from "@/lib/blog-content";
 import { categoryLabels } from "@/lib/products";
 import { getAllProducts } from "@/lib/products.server";
 import { absoluteUrl, buildMetadata, siteName } from "@/lib/seo";
@@ -20,7 +23,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogDetailProps): Promise<Metadata> {
-  const post = getBlogPost((await params).slug);
+  const slug = (await params).slug;
+  const post = (await getEditableBlogPosts()).find(post => post.slug === slug);
   if (!post) return {};
 
   return buildMetadata({
@@ -34,7 +38,8 @@ export async function generateMetadata({ params }: BlogDetailProps): Promise<Met
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailProps) {
-  const post = getBlogPost((await params).slug);
+  const slug = (await params).slug;
+  const post = (await getEditableBlogPosts()).find(post => post.slug === slug);
   if (!post) notFound();
 
   const products = await getAllProducts();
@@ -74,7 +79,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
           {post.title}
         </h1>
         <p className="mt-4 text-lg text-slate-600">{post.description}</p>
-        <p className="mt-4 text-xs text-slate-500">Diario MAI · <time dateTime={post.publishedAt}>{new Intl.DateTimeFormat("es-CO", { dateStyle: "long", timeZone: "America/Bogota" }).format(new Date(post.publishedAt))}</time></p>
+        <p className="mt-4 text-xs text-slate-500"><SiteText id="eba8f3e9772849befa9f">{"Diario MAI · "}</SiteText><time dateTime={post.publishedAt}>{new Intl.DateTimeFormat("es-CO", { dateStyle: "long", timeZone: "America/Bogota" }).format(new Date(post.publishedAt))}</time></p>
         <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl bg-brand-50 ring-1 ring-brand-100">
           <Image
             src={post.heroImage}
@@ -101,25 +106,17 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
       </article>
 
       <section className="mt-12 rounded-2xl bg-brand-900 p-6 text-white">
-        <h2 className="text-2xl font-bold">Convierte esta guía en una rutina</h2>
-        <p className="mt-2 text-brand-100">
-          Explora productos relacionados o arma una rutina guiada según tu objetivo.
-        </p>
+        <h2 className="text-2xl font-bold"><SiteText id="15d94bd0b04612b18cf5">{"Convierte esta guía en una rutina"}</SiteText></h2>
+        <p className="mt-2 text-brand-100"><SiteText id="731c6cb86191add3ba25">{"Explora productos relacionados o arma una rutina guiada según tu objetivo."}</SiteText></p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <Link href="/routines" className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-brand-900">
-            Armar rutina
-          </Link>
-          <Link href="/products" className="rounded-full border border-white/80 px-5 py-2.5 text-sm font-bold text-white">
-            Ver productos
-          </Link>
+          <Link href="/routines" className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-brand-900"><SiteText id="2d9206b22ebece78511b">{"Armar rutina"}</SiteText></Link>
+          <Link href="/products" className="rounded-full border border-white/80 px-5 py-2.5 text-sm font-bold text-white"><SiteText id="1ae92819b06c427aa022">{"Ver productos"}</SiteText></Link>
         </div>
       </section>
 
       {relatedProducts.length > 0 ? (
         <section className="mt-10">
-          <h2 className="text-2xl font-bold text-brand-900">
-            Productos relacionados
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-900"><SiteText id="31eef25d8a0fecd6d1fc">{"Productos relacionados"}</SiteText></h2>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {relatedProducts.map((product) => (
               <Link

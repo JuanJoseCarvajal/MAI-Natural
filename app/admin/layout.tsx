@@ -4,6 +4,7 @@ export const metadata: Metadata = { robots: { index: false, follow: false }, alt
 import { redirect } from "next/navigation";
 import AdminShell from "@/components/admin/AdminShell";
 import { auth } from "@/lib/auth";
+import { requireAdmin } from "@/lib/admin-access";
 
 export default async function AdminLayout({
   children,
@@ -21,5 +22,6 @@ export default async function AdminLayout({
     redirect("/account");
   }
 
+  try { await requireAdmin(); } catch { redirect("/login?callbackUrl=/admin"); }
   return <AdminShell>{children}</AdminShell>;
 }

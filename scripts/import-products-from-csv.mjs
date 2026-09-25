@@ -6,6 +6,10 @@ const workspaceRoot = process.cwd();
 const csvPath = path.join(workspaceRoot, "data", "products.csv");
 const outPath = path.join(workspaceRoot, "lib", "products.catalog.json");
 
+if (fs.existsSync(path.join(workspaceRoot, "public", "products", "autor"))) {
+  throw new Error("El CSV histórico no corresponde al catálogo de autor vigente. Actualiza las fichas actuales sin reimportar referencias retiradas.");
+}
+
 const csvText = fs.readFileSync(csvPath, "utf8");
 const records = parse(csvText, {
   columns: true,
