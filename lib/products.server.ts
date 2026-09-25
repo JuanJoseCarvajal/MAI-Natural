@@ -9,6 +9,7 @@ const catalogPath = path.join(process.cwd(), "lib", "products.catalog.json");
 export type AdminProductInput = {
   id?: string;
   image: string;
+  images?: string[];
   name: string;
   price: string;
   amountInCents: number;
@@ -64,6 +65,7 @@ export async function createProduct(input: AdminProductInput) {
   const nextProduct: Product = {
     id,
     image: input.image.trim(),
+    images: Array.from(new Set([input.image.trim(), ...(input.images ?? [])])),
     name: input.name.trim(),
     price: input.price.trim(),
     amountInCents: input.amountInCents,
@@ -97,6 +99,7 @@ export async function updateProduct(id: string, updates: AdminProductInput) {
       ? {
           ...product,
           image: updates.image.trim(),
+          images: Array.from(new Set([updates.image.trim(), ...(updates.images ?? product.images ?? [])])),
           name: updates.name.trim(),
           price: updates.price.trim(),
           amountInCents: updates.amountInCents,
@@ -109,7 +112,7 @@ export async function updateProduct(id: string, updates: AdminProductInput) {
           rating: updates.rating ?? product.rating,
           reviewsCount: updates.reviewsCount ?? product.reviewsCount,
           sku: updates.sku?.trim() || undefined,
-          stock: updates.stock ?? 0,
+          stock: updates.stock,
           active: updates.active ?? true,
         }
       : product

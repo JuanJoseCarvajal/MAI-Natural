@@ -167,7 +167,7 @@ function normalizeProductInput(input: AdminProductInput): AdminProductInput {
     benefits: input.benefits?.map((benefit) => benefit.trim()).filter(Boolean) ?? [],
     sku: input.sku?.trim() || undefined,
     amountInCents: Number(input.amountInCents),
-    stock: Number(input.stock ?? 0),
+    stock: input.stock,
     rating: Number(input.rating ?? 4.8),
     reviewsCount: Number(input.reviewsCount ?? 0),
   };

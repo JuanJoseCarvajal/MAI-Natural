@@ -4,6 +4,7 @@ const category = z.enum(['facial','capilar','corporal','kits']);
 const money = z.number().int().min(0).max(10000000000);
 export const adminProductSchema = z.object({
   id:text(160).optional(), image:text(500).refine(value => (value.startsWith('/') && !value.startsWith('//') && !/[\\\u0000-\u0020]/.test(value)) || /^https:\/\/mainatural\.com\//.test(value),'Imagen fuera del dominio permitido'),
+  images:z.array(text(500).refine(value => (value.startsWith('/products/') && !/[\\\u0000-\u0020]/.test(value)) || /^https:\/\/mainatural\.com\//.test(value),'Imagen fuera del dominio permitido')).max(20).optional(),
   name:text(160).min(2),price:text(100),amountInCents:money,description:text(12000),category,
   badge:text(120).optional(),benefits:z.array(text(1000)).max(30).optional(),rating:z.number().min(0).max(5).optional(),reviewsCount:z.number().int().min(0).optional(),
   sku:text(120).optional(),stock:z.number().int().min(0).max(1000000).optional(),active:z.boolean().optional(),

@@ -1,8 +1,8 @@
 # Catálogo de autor — septiembre 2026
 
-- 22 productos; acondicionador líquido y Leave In unificados por confirmación del usuario.
+- 24 productos; acondicionador líquido y Leave In unificados por confirmación del usuario.
 - 34 fotografías originales copiadas a public/products/autor; 20 anteriores retiradas del sitio y recuperables en Git.
-- Agua de rosas incluye la foto entregada el 25 de septiembre. Tónico capilar y las cuatro referencias añadidas usan una imagen explícita de fotografía pendiente.
+- Agua de rosas incluye la foto entregada el 25 de septiembre. Las nuevas imágenes recibidas se incorporaron a Ritual Mineral Exfoliante, C/Activa, Bálsamo Capilar Jardín Herbal, Elixir y ambos desodorantes.
 - Los 18 precios fueron confirmados con las capturas del catálogo de WhatsApp entregadas por el usuario el 25 de septiembre de 2026 (16:29–16:34). Todos los productos del catálogo tienen compra habilitada según su disponibilidad.
 - Se transcribieron las descripciones y presentaciones visibles, incluido el modo de uso del elixir. Las capturas que solo muestran un precio no se usaron para inventar beneficios ni instrucciones; se conserva la descripción previa o una identificación breve.
 - El usuario confirmó añadir Bálsamo Botánico ($72.000), Jabón Corporal Saponificado ($32.000, agotado y sin compra habilitada), C/Activa Vitamina C ($86.000) y Ritual Mineral Exfoliante ($129.000). Sus fotos están pendientes; Bálsamo Botánico se clasifica provisionalmente en corporal.
