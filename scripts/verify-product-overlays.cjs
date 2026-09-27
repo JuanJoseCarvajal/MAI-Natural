@@ -14,8 +14,8 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
       import {createRoot} from "react-dom/client";
       import Manager from "./components/admin/AdminProductsManager";
       import Gallery from "./components/features/products/ProductGallery";
-      const photo="/products/autor/crema-corporal-1.png";
-      const second="/products/autor/crema-corporal-2.png";
+      const photo="/products/media/corporal/crema-corporal-1.png";
+      const second="/products/media/corporal/crema-corporal-2.png";
       const product={id:"fixture",name:"Producto de prueba",image:photo,images:[photo],price:"$35.000",amountInCents:3500000,description:"Inicial",category:"corporal",benefits:[],rating:0,reviewsCount:0,active:true};
       createRoot(document.getElementById("root")).render(<><Manager initialProducts={[product,{...product,id:"second",name:"Segundo producto"}]} /><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,maxWidth:600}}><section id="single"><Gallery image={photo} name="Una foto" /></section><section id="multiple"><Gallery image={photo} images={[photo,second]} name="Varias fotos" /></section></div></>);
     `, resolveDir: root, loader: "tsx" },
@@ -39,7 +39,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     if (req.url === "/bundle.js") { res.setHeader("Content-Type", "text/javascript"); return res.end(javascript); }
     if (req.url === "/bundle.css") { res.setHeader("Content-Type", "text/css"); return res.end(css); }
     if (req.url.startsWith("/products/") && !req.url.includes("..")) {
-      try { res.setHeader("Content-Type", "image/png"); return res.end(await fs.readFile(path.join(root, "public", req.url))); } catch { res.statusCode=404;return res.end(); }
+      try { res.setHeader("Content-Type", "image/png"); return res.end(await fs.readFile(path.join(root, req.url.startsWith('/products/media/') ? 'assets/product-images' : 'public', req.url.replace('/products/media/', '')))); } catch { res.statusCode=404;return res.end(); }
     }
     res.setHeader("Content-Type", "text/html");
     res.end('<!doctype html><html lang="es"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/bundle.css"><style>*{box-sizing:border-box}body{font-family:Arial;margin:24px}h1,h2,p{margin:0 0 8px}button,input{font:inherit}</style><div id="root"></div><script src="/bundle.js"></script></html>');
@@ -64,7 +64,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     const dialog=page.getByRole("dialog");
     await dialog.getByLabel("Descripción",{exact:true}).fill("Descripción editada");
     await dialog.getByRole("button",{name:"+ Agregar imagen",exact:true}).click();
-    await dialog.getByLabel("Imagen 2",{exact:true}).fill("/products/autor/crema-corporal-2.png");
+    await dialog.getByLabel("Imagen 2",{exact:true}).fill("/products/media/corporal/crema-corporal-2.png");
     await dialog.getByLabel("Valoración",{exact:true}).fill("4.2");
     await page.evaluate(()=>window.__fail=true);
     await dialog.getByRole("button",{name:"Guardar producto",exact:true}).click();

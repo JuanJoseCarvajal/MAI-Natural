@@ -2,6 +2,10 @@
 const nextConfig = {
   outputFileTracingRoot: __dirname,
   poweredByHeader: false,
+  outputFileTracingIncludes: { '/products/media/*': ['./assets/product-images/**/*'] },
+  async redirects() {
+    return Object.entries(require('./lib/product-image-redirects.json')).map(([source, destination]) => ({source, destination, permanent:true}));
+  },
   images: { remotePatterns: [{ protocol: "https", hostname: "mainatural.com" }] },
   async headers() {
     const security = [

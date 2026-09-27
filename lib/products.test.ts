@@ -15,7 +15,7 @@ describe("catálogo de autor", () => {
   expect(products.flatMap(p=>p.images || [])).toHaveLength(49);
   expect(products.filter(p=>p.name.includes("Leave In"))).toHaveLength(1);
   expect(products.find(p=>p.id==="balsamos-labiales")?.variants).toHaveLength(3);
-  for(const p of products) for(const image of [p.image,...p.images||[]]) expect(existsSync(path.join(process.cwd(),"public",image))).toBe(true);
+  for(const p of products) for(const image of [p.image,...p.images||[]]) expect(existsSync(path.join(process.cwd(), image.startsWith('/products/media/') ? 'assets/product-images' : 'public', image.startsWith('/products/media/') ? image.replace('/products/media/','') : image))).toBe(true);
  });
  it("includes the four approved additions and keeps soap sold out", () => {
   for (const [id, price] of Object.entries({"balsamo-botanico":7200000,"jabon-corporal-saponificado":3200000,"c-activa-vitamina-c":8600000,"ritual-mineral-exfoliante":12900000})) {
