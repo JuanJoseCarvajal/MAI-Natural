@@ -30,8 +30,7 @@ function hashResetToken(token: string) {
 function getAppUrl() {
   const configuredUrl =
     process.env.NEXT_PUBLIC_APP_URL ||
-    process.env.NEXTAUTH_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
+    process.env.NEXTAUTH_URL;
 
   return configuredUrl?.replace(/\/$/, '') || 'http://localhost:3000';
 }

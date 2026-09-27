@@ -721,7 +721,7 @@
   },
   "f14bfe15e1a5eccae27a": {
     "source": "app/(public)/products/[id]/page.tsx",
-    "text": "Este producto está agotado por ahora."
+    "text": "Este producto se prepara bajo pedido. El tiempo estimado de preparación y entrega es de 5 a 7 días hábiles."
   },
   "02007e67434af499db57": {
     "source": "app/(public)/products/[id]/page.tsx",
@@ -1197,7 +1197,7 @@
   },
   "15b38a60df97997f37bd": {
     "source": "components/features/cart/CartDrawer.tsx",
-    "text": "Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa."
+    "text": "Entrega estimada de 5 a 7 días hábiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa."
   },
   "3d7404091d15db82c70a": {
     "source": "components/features/cart/CartDrawer.tsx",
@@ -1649,7 +1649,7 @@
   },
   "3fab4effa62d66c1f44e": {
     "source": "components/features/services/ConsultationExperience.tsx",
-    "text": "escucharte a ti?"
+    "text": "escucharte?"
   },
   "0dc3805f387a4840cb17": {
     "source": "components/features/services/ConsultationExperience.tsx",
@@ -2417,11 +2417,11 @@
   },
   "blog:rutina-facial-natural-piel-sensible:title": {
     "source": "Diario / rutina-facial-natural-piel-sensible",
-    "text": "Rutina facial natural para piel sensible: limpieza, tonico e hidratacion"
+    "text": "Rutina facial natural para piel sensible: limpieza, tónico e hidratación"
   },
   "blog:rutina-facial-natural-piel-sensible:description": {
     "source": "Diario / rutina-facial-natural-piel-sensible",
-    "text": "Aprende como construir una rutina facial natural para piel sensible con pasos simples, ingredientes botanicos y productos MAI."
+    "text": "Aprende cómo construir una rutina facial natural para piel sensible con pasos simples, ingredientes botánicos y productos MAI."
   },
   "blog:rutina-facial-natural-piel-sensible:category": {
     "source": "Diario / rutina-facial-natural-piel-sensible",
@@ -2509,7 +2509,7 @@
   },
   "blog:shampoo-natural-cabello-rizado-colombia:section:1:heading": {
     "source": "Diario / shampoo-natural-cabello-rizado-colombia",
-    "text": "Senales de que tu shampoo no esta ayudando"
+    "text": "Señales de que tu champú no está ayudando"
   },
   "blog:shampoo-natural-cabello-rizado-colombia:section:1:body:0": {
     "source": "Diario / shampoo-natural-cabello-rizado-colombia",
@@ -2561,7 +2561,7 @@
   },
   "blog:regalos-cosmetica-natural-artesanal:section:1:heading": {
     "source": "Diario / regalos-cosmetica-natural-artesanal",
-    "text": "Ideas faciles por tipo de persona"
+    "text": "Ideas fáciles por tipo de persona"
   },
   "blog:regalos-cosmetica-natural-artesanal:section:1:body:0": {
     "source": "Diario / regalos-cosmetica-natural-artesanal",
@@ -2577,7 +2577,7 @@
   },
   "blog:regalos-cosmetica-natural-artesanal:section:2:body:0": {
     "source": "Diario / regalos-cosmetica-natural-artesanal",
-    "text": "En MAI cada producto tiene un tiempo de preparacion de 5 a 7 dias habiles. Ese ritmo permite cuidar detalles, frescura y presentacion."
+    "text": "En MAI cada producto tiene un tiempo de preparación de 5 a 7 días hábiles. Ese ritmo permite cuidar detalles, frescura y presentación."
   },
   "blog:regalos-cosmetica-natural-artesanal:section:2:body:1": {
     "source": "Diario / regalos-cosmetica-natural-artesanal",

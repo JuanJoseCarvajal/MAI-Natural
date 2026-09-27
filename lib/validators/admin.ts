@@ -2,11 +2,19 @@ import { z } from 'zod';
 const text = (max:number) => z.string().trim().max(max);
 const category = z.enum(['facial','capilar','corporal','kits']);
 const money = z.number().int().min(0).max(10000000000);
+const imagePath = text(500).refine(value => {
+  if (/[\\\u0000-\u0020]/.test(value) || value.includes("..")) return false;
+  if (value.startsWith("/products/")) return true;
+  try { const url = new URL(value); return url.protocol === "https:" && url.hostname === "mainatural.com" && !url.username && !url.password; } catch { return false; }
+}, 'Usa una ruta /products/ o una URL HTTPS de mainatural.com');
+const productId = text(160).regex(/^(?:[a-z0-9]+(?:-[a-z0-9]+)*)?$/, 'Usa letras minúsculas, números y guiones');
 export const adminProductSchema = z.object({
-  id:text(160).optional(), image:text(500).refine(value => (value.startsWith('/') && !value.startsWith('//') && !/[\\\u0000-\u0020]/.test(value)) || /^https:\/\/mainatural\.com\//.test(value),'Imagen fuera del dominio permitido'),
+  id:productId.optional(), image:imagePath,
+  images:z.array(imagePath).max(20).optional(),
+  variants:z.array(z.object({id:productId.min(1),name:text(160).min(1),image:imagePath}).strict()).max(30).refine(items => new Set(items.map(item=>item.id)).size === items.length, 'Los ID de variantes deben ser únicos').optional(),
   name:text(160).min(2),price:text(100),amountInCents:money,description:text(12000),category,
   badge:text(120).optional(),benefits:z.array(text(1000)).max(30).optional(),rating:z.number().min(0).max(5).optional(),reviewsCount:z.number().int().min(0).optional(),
-  sku:text(120).optional(),stock:z.number().int().min(0).max(1000000).optional(),active:z.boolean().optional(),
+  sku:text(120).optional(),active:z.boolean().optional(),
 }).strict();
 export const adminDiscountSchema = z.object({
   id:text(160).optional(),code:text(60).min(1).regex(/^[A-Za-z0-9_-]+$/),label:text(160).min(1),description:text(2000).optional(),active:z.boolean(),

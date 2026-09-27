@@ -59,7 +59,7 @@ export default async function AdminSalesPage() {
           <article className="rounded-2xl bg-brand-50 p-4">
             <p className="font-semibold text-brand-900">Ventas + catálogo</p>
             <p className="mt-2 text-sm text-slate-700">
-              Revisa semanalmente qué productos tienen stock bajo y mejor margen antes de activar
+              Revisa semanalmente qué productos tienen mejor margen y plazo de preparación antes de activar
               campañas.
             </p>
           </article>

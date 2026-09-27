@@ -14,9 +14,7 @@ export default async function AdminPage() {
   const { metrics, appointments, orders, products } = await getAdminOverview();
 
   const latestAppointments = appointments.slice(-5).reverse();
-  const lowStockProducts = products
-    .filter((product) => (product.stock ?? 0) <= 5)
-    .slice(0, 5);
+  const productionProducts = products.filter((product) => product.active !== false).slice(0, 5);
   const latestOrders = orders.slice(-5).reverse();
 
   const statCards = [
@@ -24,7 +22,7 @@ export default async function AdminPage() {
     { label: "Órdenes", value: metrics.ordersCount, helper: `${metrics.paidOrders} confirmadas`, href: "/admin/orders", icon: "🛒" },
     { label: "Citas", value: metrics.appointmentsCount, helper: `${metrics.pendingPayments} con pago pendiente`, href: "/admin/appointments", icon: "📅" },
     { label: "Usuarios", value: metrics.usersCount, helper: "Base de clientes", href: "/admin/users", icon: "👥" },
-    { label: "Inventario bajo", value: metrics.lowStockProducts, helper: "Productos por reponer", href: "/admin/inventory", icon: "📦" },
+    { label: "Bajo pedido", value: metrics.activeProducts, helper: "Productos con preparación de 5 a 7 días", href: "/admin/inventory", icon: "🧴" },
     { label: "Envíos en curso", value: metrics.shipmentsInProgress, helper: "Seguimiento operativo", href: "/admin/shipping", icon: "🚚" },
   ];
 
@@ -117,27 +115,27 @@ export default async function AdminPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">
                   Alertas
                 </p>
-                <h2 className="mt-2 text-2xl font-bold text-brand-900">Inventario bajo</h2>
+                <h2 className="mt-2 text-2xl font-bold text-brand-900">Producción bajo pedido</h2>
               </div>
               <Link href="/admin/inventory" className="text-sm font-semibold text-brand-700 hover:underline">
                 Gestionar
               </Link>
             </div>
 
-            {lowStockProducts.length === 0 ? (
+            {productionProducts.length === 0 ? (
               <p className="mt-6 text-sm text-slate-600">
-                No hay alertas de inventario. Buen momento para preparar lanzamientos o reposiciones.
+                No hay productos activos para preparar.
               </p>
             ) : (
               <div className="mt-6 space-y-3">
-                {lowStockProducts.map((product) => (
+                {productionProducts.map((product) => (
                   <div key={product.id} className="flex items-center justify-between gap-3 rounded-2xl bg-amber-50 px-4 py-3">
                     <div>
                       <p className="font-semibold text-brand-900">{product.name}</p>
                       <p className="text-xs text-slate-600">{product.sku || product.id}</p>
                     </div>
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-700 ring-1 ring-amber-200">
-                      Stock: {product.stock ?? 0}
+                      Preparación: 5–7 días
                     </span>
                   </div>
                 ))}
@@ -190,7 +188,7 @@ export default async function AdminPage() {
         <Link href="/admin/products" className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">Catálogo</p>
           <h3 className="mt-2 text-xl font-bold text-brand-900">Crear y editar productos</h3>
-          <p className="mt-2 text-sm text-slate-600">Control de precio, stock, SKU y visibilidad.</p>
+          <p className="mt-2 text-sm text-slate-600">Control de precio, imágenes, contenido, SKU y visibilidad.</p>
         </Link>
         <Link href="/admin/payments" className="rounded-3xl border border-brand-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-700">Pagos</p>

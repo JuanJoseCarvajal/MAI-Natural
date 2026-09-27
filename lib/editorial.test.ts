@@ -23,8 +23,8 @@ describe("programación editorial MAI", () => {
     expect(posts.some(post => post.slug === campaigns[2].slug)).toBe(false);
   });
 
-  it("no promociona productos desactivados o agotados ni repite el mismo producto", () => {
-    const unavailable = products.map(product => ({ ...product, stock: 0 }));
+  it("no promociona productos desactivados ni repite el mismo producto", () => {
+    const unavailable = products.map(product => ({ ...product, active: false }));
     expect(getEditorialSlides(unavailable)).toEqual([]);
     const slides = getEditorialSlides(products, getPublishedBlogPosts(new Date("2026-12-01")));
     expect(new Set(slides.map(slide => slide.productId)).size).toBe(slides.length);

@@ -105,7 +105,6 @@ export async function getAdminOverview() {
       )
     ).length;
 
-    const lowStockProducts = products.filter((product) => (product.stock ?? 0) <= 5).length;
     const activeProducts = products.filter((product) => product.active !== false).length;
     const totalRevenue = orders.filter(isPaidOrder).reduce((sum, order) => sum + order.total, 0);
     const paidOrders = orders.filter(isPaidOrder).length;
@@ -123,7 +122,6 @@ export async function getAdminOverview() {
         productsCount: products.length,
         activeProducts,
         pendingPayments,
-        lowStockProducts,
         totalRevenue,
         paidOrders,
         shipmentsInProgress,
@@ -142,7 +140,6 @@ export async function getAdminOverview() {
         productsCount: 0,
         activeProducts: 0,
         pendingPayments: 0,
-        lowStockProducts: 0,
         totalRevenue: 0,
         paidOrders: 0,
         shipmentsInProgress: 0,
@@ -167,8 +164,7 @@ function normalizeProductInput(input: AdminProductInput): AdminProductInput {
     benefits: input.benefits?.map((benefit) => benefit.trim()).filter(Boolean) ?? [],
     sku: input.sku?.trim() || undefined,
     amountInCents: Number(input.amountInCents),
-    stock: Number(input.stock ?? 0),
-    rating: Number(input.rating ?? 4.8),
+    rating: Number(input.rating ?? 0),
     reviewsCount: Number(input.reviewsCount ?? 0),
   };
 }
@@ -189,6 +185,7 @@ export async function updateAdminProduct(id: string, input: AdminProductInput) {
   revalidatePath('/');
   revalidatePath('/products');
   revalidatePath(`/products/${id}`);
+  revalidatePath(`/products/${product.id}`);
   revalidatePath('/admin');
   revalidatePath('/admin/products');
   revalidatePath('/admin/inventory');

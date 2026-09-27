@@ -21,10 +21,9 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
   const [product, products] = await Promise.all([getProductById((await params).id), getAllProducts()]);
   if (!product) notFound();
   const related = products.filter(item => item.category === product.category && item.id !== product.id).slice(0,3);
-  const unavailable = typeof product.stock === "number" && product.stock <= 0;
   const url = absoluteUrl(`/products/${product.id}`);
   const structuredData = { "@context":"https://schema.org", "@graph":[
-    { "@type":"Product", "@id":`${url}#product`, name:product.name, image:[absoluteUrl(product.image)], description:product.description, sku:product.sku ?? product.id, category:categoryLabels[product.category], brand:{"@type":"Brand",name:siteName}, ...(product.amountInCents > 0 ? { offers:{"@type":"Offer",priceCurrency:"COP",price:product.amountInCents/100, ...(typeof product.stock === "number" ? {availability:`https://schema.org/${unavailable ? "OutOfStock" : "InStock"}`} : {}), url, seller:{"@type":"Organization",name:siteName}}} : {}) },
+    { "@type":"Product", "@id":`${url}#product`, name:product.name, image:[absoluteUrl(product.image)], description:product.description, sku:product.sku ?? product.id, category:categoryLabels[product.category], brand:{"@type":"Brand",name:siteName}, ...(product.amountInCents > 0 ? { offers:{"@type":"Offer",priceCurrency:"COP",price:product.amountInCents/100, availability:"https://schema.org/InStock", url, seller:{"@type":"Organization",name:siteName}}} : {}) },
     {"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Inicio",item:absoluteUrl("/")},{"@type":"ListItem",position:2,name:"Tienda",item:absoluteUrl("/products")},{"@type":"ListItem",position:3,name:product.name,item:url}]}
   ]};
   return <div className={styles.detail}>

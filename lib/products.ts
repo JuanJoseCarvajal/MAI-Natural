@@ -19,7 +19,6 @@ export type Product = {
   rating: number;
   reviewsCount: number;
   sku?: string;
-  stock?: number;
   active?: boolean;
 };
 

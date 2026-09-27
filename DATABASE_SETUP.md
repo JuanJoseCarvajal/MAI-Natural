@@ -168,11 +168,11 @@ npm run dev
 # 5. npx prisma migrate deploy
 ```
 
-### Vercel Postgres
+### Hostinger
 ```bash
-# (Si deploys en Vercel)
-vercel env pull
-npx prisma migrate deploy
+# Configura DATABASE_URL y DATABASE_DRIVER=postgres en hPanel.
+# En el entorno del servidor, aplica las migraciones del proyecto:
+pnpm db:migrate
 ```
 
 ### Railway
@@ -201,4 +201,3 @@ npx prisma migrate deploy
 - [Prisma Docs](https://www.prisma.io/docs/)
 - [PostgreSQL Docs](https://www.postgresql.org/docs/)
 - [Supabase Docs](https://supabase.com/docs)
-
