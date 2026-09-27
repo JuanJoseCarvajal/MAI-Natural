@@ -1,9 +1,12 @@
 .gallery{position:relative;min-width:0}
+.viewport{position:relative;width:100%;aspect-ratio:3/4}
 .frame{position:relative;display:block;width:100%;aspect-ratio:3/4;overflow:hidden;border:0;padding:0;background:#eee8de;cursor:zoom-in}
 .frame img{object-fit:cover;transition:transform .45s ease}
-.expand{position:absolute;right:12px;bottom:12px;background:#fffE;color:#24362c;padding:6px 10px;border-radius:20px;font-size:12px}
-.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8px;background:#faf8f3;color:#24362c;font-size:13px}
-.controls button{min-width:44px;min-height:44px;border:1px solid #d4d9cf;border-radius:50%;background:white}
+.expand{position:absolute;right:12px;top:12px;height:fit-content;background:#fff9;backdrop-filter:blur(6px);color:#24362c;padding:6px 10px;border-radius:20px;font-size:12px}
+.controls{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px;pointer-events:none;color:#172b20;font-size:13px}
+.controls button{pointer-events:auto;min-width:44px;min-height:44px;border:1px solid #ffffff80;border-radius:50%;background:#ffffff70;backdrop-filter:blur(8px);color:inherit;font-size:20px;cursor:pointer}
+.controls button:hover{background:#ffffffb0}
+.controls span{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:#ffffffa0;backdrop-filter:blur(8px);padding:4px 10px;border-radius:20px}
 .thumbnails{display:flex;gap:8px;overflow:auto;padding:12px 0}
 .thumbnails button{flex:none;border:2px solid transparent;padding:2px}
 .thumbnails button[aria-pressed=true]{border-color:#375341}

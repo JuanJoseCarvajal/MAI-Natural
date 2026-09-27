@@ -168,7 +168,7 @@ function normalizeProductInput(input: AdminProductInput): AdminProductInput {
     sku: input.sku?.trim() || undefined,
     amountInCents: Number(input.amountInCents),
     stock: input.stock,
-    rating: Number(input.rating ?? 4.8),
+    rating: Number(input.rating ?? 0),
     reviewsCount: Number(input.reviewsCount ?? 0),
   };
 }
@@ -189,6 +189,7 @@ export async function updateAdminProduct(id: string, input: AdminProductInput) {
   revalidatePath('/');
   revalidatePath('/products');
   revalidatePath(`/products/${id}`);
+  revalidatePath(`/products/${product.id}`);
   revalidatePath('/admin');
   revalidatePath('/admin/products');
   revalidatePath('/admin/inventory');

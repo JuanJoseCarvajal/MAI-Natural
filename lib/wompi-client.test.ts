@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { openWompiCheckout } from "./wompi-client";
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => { vi.unstubAllGlobals(); });
 describe("Wompi redirect", () => {
  it("sends the existing order to checkout and redirects to official Wompi", async () => {
   const assign=vi.fn(); const fetch=vi.fn().mockResolvedValue({ok:true,json:async()=>({checkoutUrl:"https://checkout.wompi.co/p/?reference=test"})});

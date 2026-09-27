@@ -10,9 +10,9 @@ describe("catálogo de autor", () => {
   for (const [id, pesos] of Object.entries(expected)) expect(products.find(p=>p.id===id)?.amountInCents).toBe(pesos*100);
   for (const variant of products.find(p=>p.id==="balsamos-labiales")!.variants!) expect(resolveProduct(products,"balsamos-labiales~"+variant.id)?.amountInCents).toBe(1500000);
  });
- it("has 24 products, 48 photographs and three lip variants", () => {
+ it("has 24 products, 49 photographs and three lip variants", () => {
   expect(products).toHaveLength(24);
-  expect(products.flatMap(p=>p.images || [])).toHaveLength(48);
+  expect(products.flatMap(p=>p.images || [])).toHaveLength(49);
   expect(products.filter(p=>p.name.includes("Leave In"))).toHaveLength(1);
   expect(products.find(p=>p.id==="balsamos-labiales")?.variants).toHaveLength(3);
   for(const p of products) for(const image of [p.image,...p.images||[]]) expect(existsSync(path.join(process.cwd(),"public",image))).toBe(true);

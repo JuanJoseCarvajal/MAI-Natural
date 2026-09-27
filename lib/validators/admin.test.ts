@@ -11,4 +11,16 @@ describe('administrative input validation',()=>{
     expect(adminDiscountSchema.safeParse(discount).success).toBe(true);
     expect(adminDiscountSchema.safeParse({...discount,percentage:101}).success).toBe(false);
   });
+  it('validates galleries and unique purchasable variant identifiers',()=>{
+    const image='/products/autor/test.png';
+    expect(adminProductSchema.safeParse({...product,images:[image],variants:[{id:'menta',name:'Menta',image}]}).success).toBe(true);
+    for(const patch of [
+      {id:'invalid~variant'},
+      {images:['https://evil.test/image.png']},
+      {images:['/products/../private.txt']},
+      {images:Array(21).fill(image)},
+      {variants:[{id:'same',name:'A',image},{id:'same',name:'B',image}]},
+      {variants:[{id:'a~b',name:'A',image}]}
+    ]) expect(adminProductSchema.safeParse({...product,...patch}).success).toBe(false);
+  });
 });
