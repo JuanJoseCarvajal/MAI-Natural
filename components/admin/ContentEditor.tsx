@@ -1,33 +1,14 @@
 'use client';
-import { useEffect, useState, useTransition } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { saveSiteContent } from '@/app/admin/content/actions';
-type Entry = {key:string;source:string;text:string;value:string;revision:number};
-export default function ContentEditor({entries}:{entries:Entry[]}) {
-  const groups = [...new Set(entries.map(e=>e.source))].sort();
-  const [group,setGroup] = useState(groups[0] || '');
-  const [draft,setDraft] = useState<Record<string,string>>({});
-  const [message,setMessage] = useState('');
-  const [pending,startTransition] = useTransition();
-  const router = useRouter();
-  const changed = entries.filter(e=>draft[e.key] !== undefined && draft[e.key] !== e.value);
-  useEffect(() => {
-    if (!changed.length) return;
-    const warn = (event:BeforeUnloadEvent) => { event.preventDefault(); event.returnValue=''; };
-    window.addEventListener('beforeunload',warn);
-    return () => window.removeEventListener('beforeunload',warn);
-  }, [changed.length]);
-  return <form onSubmit={event=>{event.preventDefault();startTransition(async()=>{
-    try {
-    const result=await saveSiteContent(changed.map(e=>({key:e.key,value:draft[e.key],revision:e.revision})));
-    setMessage(result.error || 'Textos publicados correctamente.');
-    if(!result.error){setDraft({});router.refresh();}
-    } catch { setMessage('No se pudo conectar. Tus cambios siguen aquí; vuelve a intentar.'); }
-  });}}>
-    <fieldset disabled={pending} className="space-y-5">
-      <label className="block">Página / sección<select value={group} onChange={e=>setGroup(e.target.value)} className="mt-2 block w-full rounded border p-3">{groups.map(g=><option key={g} value={g}>{g.replace('app/(public)/','Páginas / ').replace('components/features/','Secciones / ').replace('/page.tsx','').replace('.tsx','')}</option>)}</select></label>
-      {entries.filter(e=>e.source===group).map((e,index)=><label key={e.key} className="block rounded-xl border bg-white p-4"><span className="mb-2 block font-semibold">{index+1}. {e.text.trim().slice(0,90)}</span><textarea value={draft[e.key] ?? e.value} maxLength={12000} required rows={Math.min(8,Math.max(2,Math.ceil(e.text.length/90)))} onChange={event=>setDraft({...draft,[e.key]:event.target.value})} className="block w-full rounded border p-3"/><button type="button" onClick={()=>setDraft({...draft,[e.key]:e.text})} className="mt-2 text-sm underline">Restaurar texto original</button></label>)}
-      <button disabled={!changed.length} className="rounded-full bg-brand-700 px-6 py-3 text-white disabled:opacity-50">{pending?'Guardando…':`Publicar ${changed.length} cambios`}</button>
-    </fieldset><p role="status" className="my-4">{message}</p>
-  </form>;
+type Entry={key:string;source:string;text:string;value:string;revision:number};
+const label=(s:string)=>{const x=s.replace(/^app\/\(public\)\//,'').replace(/^components\/features\//,'').replace(/\/page\.tsx$/,'').replace(/\.tsx$/,'');return (!x||x==='home')?'Página de inicio':x.split('/').map(p=>p.replace(/\[.*?\]/,'Producto').replace(/[-_]/g,' ')).join(' · ').replace(/\b\w/g,c=>c.toUpperCase())};
+const purpose=(s:string)=>s.includes('blog')?'Títulos, extractos y contenido editorial del artículo.':s.includes('consult')?'Pasos, preguntas y mensajes de la consulta.':s.includes('products')?'Títulos, descripciones, beneficios y llamadas a la acción.':'Títulos, descripciones, botones y mensajes visibles de esta página.';
+export default function ContentEditor({entries}:{entries:Entry[]}){
+ const groups=[...new Set(entries.map(e=>e.source))].sort(),[group,setGroup]=useState<string|null>(null),[draft,setDraft]=useState<Record<string,string>>({}),[message,setMessage]=useState(''),[pending,startTransition]=useTransition(),dialog=useRef<HTMLDialogElement>(null),trigger=useRef<HTMLElement|null>(null),router=useRouter(),changed=entries.filter(e=>draft[e.key]!==undefined&&draft[e.key]!==e.value),active=entries.filter(e=>e.source===group);
+ useEffect(()=>{if(!group)return;dialog.current?.showModal();return()=>{dialog.current?.close();trigger.current?.focus()}},[group]);
+ useEffect(()=>{if(!changed.length)return;const warn=(e:BeforeUnloadEvent)=>{e.preventDefault();e.returnValue=''};window.addEventListener('beforeunload',warn);return()=>window.removeEventListener('beforeunload',warn)},[changed.length]);
+ const open=(s:string)=>{trigger.current=document.activeElement as HTMLElement;setMessage('');setGroup(s)},close=()=>{if(!pending)setGroup(null)},publish=()=>startTransition(async()=>{try{const r=await saveSiteContent(changed.map(e=>({key:e.key,value:draft[e.key],revision:e.revision})));setMessage(r.error||'Textos publicados correctamente.');if(!r.error){setDraft({});setGroup(null);router.refresh()}}catch{setMessage('No se pudo conectar. Tus cambios siguen aquí; vuelve a intentar.')}});
+ return <div><div className="mb-8"><p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-700">Centro editorial</p><h1 className="mt-2 text-3xl font-bold text-brand-950">Contenido editable</h1><p className="mt-3 max-w-3xl text-slate-600">Elige una página para ver exactamente qué textos puedes cambiar. Cada tarjeta abre su editor sin salir de este panel.</p></div>{message&&<p role="status" className="mb-5 rounded-lg bg-emerald-50 p-3 text-emerald-800">{message}</p>}<div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">{groups.map(s=>{const es=entries.filter(e=>e.source===s);return <button key={s} type="button" onClick={()=>open(s)} className="group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-brand-400 hover:shadow-md"><div className="flex items-start justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-wider text-brand-700">Página / sección</p><h2 className="mt-2 text-lg font-bold text-brand-950">{label(s)}</h2></div><span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-800">{es.length} textos</span></div><p className="mt-4 text-sm leading-6 text-slate-600">{purpose(s)}</p><p className="mt-5 line-clamp-2 text-sm italic text-slate-500">“{es[0]?.value||es[0]?.text}”</p><span className="mt-5 inline-block text-sm font-bold text-brand-700 group-hover:underline">Ver y editar textos →</span></button>})}</div>{group&&<dialog ref={dialog} className="m-auto max-h-[90vh] w-[min(920px,calc(100%-2rem))] rounded-2xl p-0 shadow-2xl backdrop:bg-slate-950/50" aria-labelledby="content-editor-title" onCancel={e=>{e.preventDefault();close()}}><div className="max-h-[90vh] overflow-y-auto bg-slate-50"><header className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b bg-white px-6 py-5"><div><p className="text-xs font-semibold uppercase tracking-wider text-brand-700">Editor de página</p><h2 id="content-editor-title" className="mt-1 text-2xl font-bold text-brand-950">{label(group)}</h2><p className="mt-1 text-sm text-slate-600">{purpose(group)}</p></div><button type="button" onClick={close} disabled={pending} className="rounded-full px-3 py-1 text-2xl text-slate-500" aria-label="Cerrar editor">×</button></header><div className="space-y-4 p-6">{active.map((e,i)=><label key={e.key} className="block rounded-xl border border-slate-200 bg-white p-4"><span className="mb-2 block font-semibold text-slate-800">{i+1}. {e.text.trim().slice(0,110)}</span><textarea value={draft[e.key]??e.value} maxLength={12000} required rows={Math.min(8,Math.max(2,Math.ceil(e.text.length/90)))} onChange={ev=>setDraft({...draft,[e.key]:ev.target.value})} className="block w-full rounded-lg border border-slate-300 p-3"/><button type="button" onClick={()=>setDraft({...draft,[e.key]:e.text})} className="mt-2 text-sm text-brand-700 underline">Restaurar texto original</button></label>)}</div><footer className="sticky bottom-0 flex items-center justify-between gap-4 border-t bg-white px-6 py-4"><span className="text-sm text-slate-600">{changed.length} cambios pendientes</span><div className="flex gap-3"><button type="button" onClick={close} disabled={pending} className="rounded-full border px-5 py-2">Cancelar</button><button type="button" onClick={publish} disabled={!changed.length||pending} className="rounded-full bg-brand-700 px-5 py-2 font-semibold text-white disabled:opacity-50">{pending?'Guardando…':'Publicar cambios'}</button></div></footer></div></dialog>}</div>
 }

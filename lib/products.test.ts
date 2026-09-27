@@ -21,7 +21,7 @@ describe("catálogo de autor", () => {
   for (const [id, price] of Object.entries({"balsamo-botanico":7200000,"jabon-corporal-saponificado":3200000,"c-activa-vitamina-c":8600000,"ritual-mineral-exfoliante":12900000})) {
    expect(products.find(p=>p.id===id)).toMatchObject({amountInCents:price,active:true});
   }
-  expect(products.find(p=>p.id==="jabon-corporal-saponificado")).toMatchObject({stock:0,badge:"Agotado"});
+  expect(products.find(p=>p.id==="jabon-corporal-saponificado")).toMatchObject({badge:"Elaboración bajo pedido"});
  });
  it("rejects retired, unpriced, inactive and forged variants", () => {
   expect(resolveProduct(products,"kit-ritual-facial-mai")).toBeUndefined();

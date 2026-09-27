@@ -21,7 +21,6 @@ export type AdminProductInput = {
   rating?: number;
   reviewsCount?: number;
   sku?: string;
-  stock?: number;
   active?: boolean;
 };
 
@@ -78,7 +77,6 @@ export async function createProduct(input: AdminProductInput) {
     rating: input.rating ?? 0,
     reviewsCount: input.reviewsCount ?? 0,
     sku: input.sku?.trim() || undefined,
-    stock: input.stock,
     active: input.active ?? true,
   };
 
@@ -114,7 +112,6 @@ export async function updateProduct(id: string, updates: AdminProductInput) {
           rating: updates.rating ?? product.rating,
           reviewsCount: updates.reviewsCount ?? product.reviewsCount,
           sku: updates.sku?.trim() || undefined,
-          stock: updates.stock,
           active: updates.active ?? true,
         }
       : product

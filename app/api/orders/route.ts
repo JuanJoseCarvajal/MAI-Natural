@@ -53,9 +53,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (rawItems.some(item => { const product = resolveProduct(products, item.id); const quantity = rawItems.filter(other => other.id.split("~")[0] === item.id.split("~")[0]).reduce((sum, other) => sum + other.quantity, 0); return product?.stock !== undefined && product.stock < quantity; })) {
-      return NextResponse.json({ error: "La cantidad supera la disponibilidad. Revisa tu carrito." }, { status: 409 });
-    }
     let totalInCents = orderItems.reduce(
       (sum, item) => sum + item.amountInCents * item.quantity,
       0

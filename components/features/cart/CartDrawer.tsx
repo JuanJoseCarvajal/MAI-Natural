@@ -168,7 +168,7 @@ export default function CartDrawer() {
                 {formatCOP(totalAmountInCents)}
               </span>
             </div>
-            <p className="text-xs text-slate-500"><SiteText id="15b38a60df97997f37bd">{"Entrega estimada de 5 a 7 dias habiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa."}</SiteText></p>
+            <p className="text-xs text-slate-500"><SiteText id="15b38a60df97997f37bd">{"Entrega estimada de 5 a 7 días hábiles. Nuestros productos son personalizados y artesanales, elaborados uno a uno y nunca en masa."}</SiteText></p>
             <p className="text-xs text-brand-800"><SiteText id="3d7404091d15db82c70a">{"Paga con "}</SiteText><strong><SiteText id="79c8e046abb7ccfae096">{"Wompi"}</SiteText></strong><SiteText id="409b4c7a47d71ffc0009">{". Revisa tus datos, el envío y el total antes de continuar al pago seguro."}</SiteText></p>
             <Link
               href="/checkout"

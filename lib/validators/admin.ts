@@ -14,7 +14,7 @@ export const adminProductSchema = z.object({
   variants:z.array(z.object({id:productId.min(1),name:text(160).min(1),image:imagePath}).strict()).max(30).refine(items => new Set(items.map(item=>item.id)).size === items.length, 'Los ID de variantes deben ser únicos').optional(),
   name:text(160).min(2),price:text(100),amountInCents:money,description:text(12000),category,
   badge:text(120).optional(),benefits:z.array(text(1000)).max(30).optional(),rating:z.number().min(0).max(5).optional(),reviewsCount:z.number().int().min(0).optional(),
-  sku:text(120).optional(),stock:z.number().int().min(0).max(1000000).optional(),active:z.boolean().optional(),
+  sku:text(120).optional(),active:z.boolean().optional(),
 }).strict();
 export const adminDiscountSchema = z.object({
   id:text(160).optional(),code:text(60).min(1).regex(/^[A-Za-z0-9_-]+$/),label:text(160).min(1),description:text(2000).optional(),active:z.boolean(),

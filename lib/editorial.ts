@@ -17,7 +17,7 @@ export function getEditorialSlides(products: Product[], posts: BlogPost[] = getP
     const candidates = post.promotion
       ? post.promotion.productIds.map(id => products.find(product => product.id === id))
       : products.filter(product => product.category === post.relatedProductCategory);
-    const product = candidates.find(product => product && product.active !== false && product.amountInCents > 0 && (product.stock === undefined || product.stock > 0) && !seen.has(product.id));
+    const product = candidates.find(product => product && product.active !== false && product.amountInCents > 0 && !seen.has(product.id));
     if (!product) return [];
     seen.add(product.id);
     return [{
