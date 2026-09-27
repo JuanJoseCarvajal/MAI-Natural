@@ -12,6 +12,11 @@ function request(bytes:Uint8Array=png,category='facial',origin='https://mainatur
 }
 beforeEach(()=>{vi.resetAllMocks();vi.mocked(requireAdmin).mockResolvedValue({id:'admin',email:'hola@mainatural.com'});});
 describe('product image uploads',()=>{
+ it('accepts uploads from public browsers through an internal reverse proxy',async()=>{
+   const original=request();
+   const proxied=new NextRequest('http://127.0.0.1:3000/api/admin/product-images',{method:'POST',headers:original.headers,body:await original.arrayBuffer()});
+   expect((await POST(proxied)).status).toBe(201);
+ });
  it('requires authentication and same origin',async()=>{
    expect((await POST(request(png,'facial','https://evil.test'))).status).toBe(403);
    vi.mocked(requireAdmin).mockRejectedValue(new Error('unauthorized'));

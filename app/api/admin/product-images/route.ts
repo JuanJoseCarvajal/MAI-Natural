@@ -3,11 +3,12 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { requireAdmin } from '@/lib/admin-access';
+import { isTrustedUploadOrigin } from '@/lib/request-origin';
 import { imageCategories, imageDirectory, imageExtension, maxImageBytes } from '@/lib/product-images';
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
-  if (request.headers.get('origin') !== request.nextUrl.origin) return NextResponse.json({error:'Origen no permitido.'}, {status:403});
+  if (!isTrustedUploadOrigin(request.headers.get('origin'), request.url)) return NextResponse.json({error:'Origen no permitido. Abre el administrador desde https://mainatural.com e intenta de nuevo.'}, {status:403});
   try { await requireAdmin(); } catch { return NextResponse.json({error:'Inicia sesión como administrador.'}, {status:401}); }
   if (Number(request.headers.get('content-length')) > maxImageBytes + 65536) return NextResponse.json({error:'La imagen debe pesar máximo 5 MB.'}, {status:413});
   // Bound the stream even when Content-Length is absent or forged.
