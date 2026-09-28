@@ -1,0 +1,5702 @@
+[
+  {
+    "id": "5c4811a7e80682516f51",
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "keys": [
+      "5c4811a7e80682516f51"
+    ],
+    "type": "Título",
+    "section": "Recuperar contraseña",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "fcfa45fb738e301447da",
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "keys": [
+      "fcfa45fb738e301447da"
+    ],
+    "type": "Párrafo",
+    "section": "Recuperar contraseña",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4a20e18e851ef3235104",
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "keys": [
+      "4a20e18e851ef3235104"
+    ],
+    "type": "Párrafo",
+    "section": "Recuperar contraseña",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "94ec35f921df398b4d15",
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "keys": [
+      "94ec35f921df398b4d15"
+    ],
+    "type": "Párrafo",
+    "section": "Recuperar contraseña",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b5ee06e692bef30850db",
+    "source": "app/(auth)/login/page.tsx",
+    "keys": [
+      "b5ee06e692bef30850db"
+    ],
+    "type": "Título",
+    "section": "Iniciar sesión",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "dbc75a7793cf71ac2307",
+    "source": "app/(auth)/login/page.tsx",
+    "keys": [
+      "dbc75a7793cf71ac2307"
+    ],
+    "type": "Párrafo",
+    "section": "Iniciar sesión",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1d1241d42ab4bb33ee5e",
+    "source": "app/(auth)/login/page.tsx",
+    "keys": [
+      "1d1241d42ab4bb33ee5e"
+    ],
+    "type": "Párrafo",
+    "section": "Iniciar sesión",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ff4e154c507e4f5362b0",
+    "source": "app/(auth)/login/page.tsx",
+    "keys": [
+      "ff4e154c507e4f5362b0"
+    ],
+    "type": "Párrafo",
+    "section": "Iniciar sesión",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c32a3b3109c3c062d922",
+    "source": "app/(auth)/register/page.tsx",
+    "keys": [
+      "c32a3b3109c3c062d922"
+    ],
+    "type": "Título",
+    "section": "Crear cuenta",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "c2feeac2357da3cbc227",
+    "source": "app/(auth)/register/page.tsx",
+    "keys": [
+      "c2feeac2357da3cbc227"
+    ],
+    "type": "Párrafo",
+    "section": "Crear cuenta",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e261948776a4b3e2ba7c",
+    "source": "app/(auth)/register/page.tsx",
+    "keys": [
+      "e261948776a4b3e2ba7c"
+    ],
+    "type": "Párrafo",
+    "section": "Crear cuenta",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f79786f03a74378201c4",
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "keys": [
+      "f79786f03a74378201c4"
+    ],
+    "type": "Título",
+    "section": "Nueva contraseña",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "5e5c24f0ba408069b981",
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "keys": [
+      "5e5c24f0ba408069b981"
+    ],
+    "type": "Párrafo",
+    "section": "Nueva contraseña",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "15f054afe50892db2dab",
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "keys": [
+      "15f054afe50892db2dab"
+    ],
+    "type": "Párrafo",
+    "section": "Nueva contraseña",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6c461968a61a8c8826c8",
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "keys": [
+      "6c461968a61a8c8826c8"
+    ],
+    "type": "Párrafo",
+    "section": "Nueva contraseña",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8f46d5cf8decb49c362a",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "8f46d5cf8decb49c362a"
+    ],
+    "type": "Título",
+    "section": "Mis citas",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "f9c225713e20f6f60890",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "f9c225713e20f6f60890"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "35be82b6b9e562898e8b",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "35be82b6b9e562898e8b"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3eaf770078315178d19f",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "3eaf770078315178d19f"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "450e3d430b383d8ccc55",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "450e3d430b383d8ccc55"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7c7603ec274f45cf1cf6",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "7c7603ec274f45cf1cf6"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "84e74f3dfc70909b1777",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "84e74f3dfc70909b1777"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "99540173fdd5fa0d289f",
+    "source": "app/(dashboard)/account/appointments/page.tsx",
+    "keys": [
+      "99540173fdd5fa0d289f"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2340201ea790f21011c6",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "2340201ea790f21011c6"
+    ],
+    "type": "Título",
+    "section": "Historial de pedidos y citas",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "2d48db65ff87170a9408",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "2d48db65ff87170a9408"
+    ],
+    "type": "Párrafo",
+    "section": "Historial de pedidos y citas",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "252eb4a745c8fc8817f2",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "252eb4a745c8fc8817f2"
+    ],
+    "type": "Subtítulo",
+    "section": "Pedidos de productos",
+    "order": 2,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "8ec302a2279ec3557d25",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "8ec302a2279ec3557d25"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ff42a867555715db0c3b",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "ff42a867555715db0c3b"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7e76f96324e237adf7c9",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "7e76f96324e237adf7c9"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "27325662b26d2c2fae95",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "27325662b26d2c2fae95"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ca3ef0cd774cd3460267",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "ca3ef0cd774cd3460267"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f81effe39987cea32e38",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "f81effe39987cea32e38"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0484a73ab58b1f566da1",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "0484a73ab58b1f566da1"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bde6dc717f7aba6717af",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "bde6dc717f7aba6717af"
+    ],
+    "type": "Párrafo",
+    "section": "Pedidos de productos",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a95e291c0cd2d0c21b7d",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "a95e291c0cd2d0c21b7d"
+    ],
+    "type": "Subtítulo",
+    "section": "Historial de citas",
+    "order": 11,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "2cff25dc9af1cdbab166",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "2cff25dc9af1cdbab166"
+    ],
+    "type": "Párrafo",
+    "section": "Historial de citas",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4ac10eca86709fb8f294",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "4ac10eca86709fb8f294"
+    ],
+    "type": "Párrafo",
+    "section": "Historial de citas",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "46af679a3e333f208116",
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "keys": [
+      "46af679a3e333f208116"
+    ],
+    "type": "Párrafo",
+    "section": "Historial de citas",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d8cab8d68a1a7f2d022a",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "d8cab8d68a1a7f2d022a"
+    ],
+    "type": "Título",
+    "section": "Resumen de tu cuenta",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "e3e1050bccd964d7edb4",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "e3e1050bccd964d7edb4"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e65095c30ae264e180a5",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "e65095c30ae264e180a5"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "90b9dda80bb60ccba712",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "90b9dda80bb60ccba712"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "94bd3ae6733b05934e1f",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "94bd3ae6733b05934e1f"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0ee2951f763a0bdd39c9",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "0ee2951f763a0bdd39c9"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9ecc7ba6a9803a2ca384",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "9ecc7ba6a9803a2ca384"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "052f2591abb67113c19f",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "052f2591abb67113c19f"
+    ],
+    "type": "Subtítulo",
+    "section": "Sigue el estado de cada orden",
+    "order": 7,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "6d211725feeca72e3b30",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "6d211725feeca72e3b30"
+    ],
+    "type": "Párrafo",
+    "section": "Sigue el estado de cada orden",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fd65454a6e071e7c672a",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "fd65454a6e071e7c672a"
+    ],
+    "type": "Párrafo",
+    "section": "Sigue el estado de cada orden",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "28ff6c5d5a0cdf96197a",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "28ff6c5d5a0cdf96197a"
+    ],
+    "type": "Párrafo",
+    "section": "Sigue el estado de cada orden",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b204e90d72fb0f3bd193",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "b204e90d72fb0f3bd193"
+    ],
+    "type": "Subtítulo",
+    "section": "Mantén tus datos al día",
+    "order": 11,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "3d4bb728daeedab00d08",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "3d4bb728daeedab00d08"
+    ],
+    "type": "Párrafo",
+    "section": "Mantén tus datos al día",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "be4df0f36aeaaba9ebee",
+    "source": "app/(dashboard)/account/page.tsx",
+    "keys": [
+      "be4df0f36aeaaba9ebee"
+    ],
+    "type": "Párrafo",
+    "section": "Mantén tus datos al día",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "43efa3b56b07787b5ed8",
+    "source": "app/(dashboard)/account/profile/page.tsx",
+    "keys": [
+      "43efa3b56b07787b5ed8"
+    ],
+    "type": "Título",
+    "section": "Perfil",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "87857bce41c9395fde1e",
+    "source": "app/(dashboard)/account/profile/page.tsx",
+    "keys": [
+      "87857bce41c9395fde1e"
+    ],
+    "type": "Párrafo",
+    "section": "Perfil",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3afd7068ff1faebadd79",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "3afd7068ff1faebadd79"
+    ],
+    "type": "Título",
+    "section": "Mis citas",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "ff36fb1da241cb1b79b0",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "ff36fb1da241cb1b79b0"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "de0c65ab919124b8e145",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "de0c65ab919124b8e145"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bf299a2e3fb0e57de5c4",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "bf299a2e3fb0e57de5c4"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1cb65978d584482206ea",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "1cb65978d584482206ea"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "961104a9452bcbaf2b77",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "961104a9452bcbaf2b77"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "be0ea1f2f2d8369cc33f",
+    "source": "app/(dashboard)/dashboard/appointments/page.tsx",
+    "keys": [
+      "be0ea1f2f2d8369cc33f"
+    ],
+    "type": "Párrafo",
+    "section": "Mis citas",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a5fb0ea92b54e7d22028",
+    "source": "app/(dashboard)/dashboard/orders/page.tsx",
+    "keys": [
+      "a5fb0ea92b54e7d22028"
+    ],
+    "type": "Título",
+    "section": "Mis ordenes",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "7267d762ebf55567ee50",
+    "source": "app/(dashboard)/dashboard/orders/page.tsx",
+    "keys": [
+      "7267d762ebf55567ee50"
+    ],
+    "type": "Párrafo",
+    "section": "Mis ordenes",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "240cb332f448c4dfea9e",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "240cb332f448c4dfea9e"
+    ],
+    "type": "Título",
+    "section": "Resumen de tu cuenta",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "800d64853501116c649b",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "800d64853501116c649b"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "998fcb7291eb2c0a204e",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "998fcb7291eb2c0a204e"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ae31f5043ffb738d5277",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "ae31f5043ffb738d5277"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "53749d149e19a33a4064",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "53749d149e19a33a4064"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f4fa6381476a8b471edf",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "f4fa6381476a8b471edf"
+    ],
+    "type": "Párrafo",
+    "section": "Resumen de tu cuenta",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "553705fd1624079a1239",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "553705fd1624079a1239"
+    ],
+    "type": "Subtítulo",
+    "section": "Tu cuidado puede abrir nuevas preguntas.",
+    "order": 6,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "90a3d86874a42cac2099",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "90a3d86874a42cac2099"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado puede abrir nuevas preguntas.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e7dbb2b909c9c0eb27b8",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "e7dbb2b909c9c0eb27b8"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado puede abrir nuevas preguntas.",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "85c25a0b1aaf2d86129c",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "85c25a0b1aaf2d86129c"
+    ],
+    "type": "Subtítulo",
+    "section": "Acciones Rápidas",
+    "order": 9,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "a4a82bde3ac41de73c10",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "a4a82bde3ac41de73c10"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3e03f8941a1f0ae54bf5",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "3e03f8941a1f0ae54bf5"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 11,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "24f35ea7d13535c520f9",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "24f35ea7d13535c520f9"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "21ae7211756dd650aa22",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "21ae7211756dd650aa22"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "70e26d0ecf76d4a5f446",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "70e26d0ecf76d4a5f446"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2c3ba36a2960e496e715",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "2c3ba36a2960e496e715"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "911ef4fd81b1a2287ad3",
+    "source": "app/(dashboard)/dashboard/page.tsx",
+    "keys": [
+      "911ef4fd81b1a2287ad3"
+    ],
+    "type": "Párrafo",
+    "section": "Acciones Rápidas",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b48cede21580f4453e7b",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "b48cede21580f4453e7b"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "cd2c4fd8e12ab0f0c12a",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "cd2c4fd8e12ab0f0c12a"
+    ],
+    "type": "Título",
+    "section": "Tu bolsa está esperando.",
+    "order": 1,
+    "label": "Título principal"
+  },
+  {
+    "id": "8dca1a1e1a0737fafc08",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "8dca1a1e1a0737fafc08"
+    ],
+    "type": "Párrafo",
+    "section": "Tu bolsa está esperando.",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6fc10f637a3e271cb047",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "6fc10f637a3e271cb047"
+    ],
+    "type": "Párrafo",
+    "section": "Tu bolsa está esperando.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d12c52d1436b6c0c0580",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "d12c52d1436b6c0c0580"
+    ],
+    "type": "Párrafo",
+    "section": "Tu bolsa está esperando.",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "354d9a5b546d89f5ea1e",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "354d9a5b546d89f5ea1e"
+    ],
+    "type": "Párrafo",
+    "section": "Tu bolsa está esperando.",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8f5758136a01782ee8c8",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "8f5758136a01782ee8c8"
+    ],
+    "type": "Título",
+    "section": "Tu cuidado, casi en casa.",
+    "order": 6,
+    "label": "Título principal"
+  },
+  {
+    "id": "c1d7264a26fcf2c32b8a",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "c1d7264a26fcf2c32b8a"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado, casi en casa.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f40cda8c4e349c96403d",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "f40cda8c4e349c96403d"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado, casi en casa.",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a5914c4c56d0705ef7e6",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "a5914c4c56d0705ef7e6"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado, casi en casa.",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2e0fe7aba28d4b2159c5",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "2e0fe7aba28d4b2159c5"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado, casi en casa.",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2cdf958cec4364135847",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "2cdf958cec4364135847"
+    ],
+    "type": "Subtítulo",
+    "section": "01. Tus datos",
+    "order": 11,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "7a035f103f263b593b5d",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "7a035f103f263b593b5d"
+    ],
+    "type": "Párrafo",
+    "section": "01. Tus datos",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4a3850e5ea5b347e0b63",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "4a3850e5ea5b347e0b63"
+    ],
+    "type": "Párrafo",
+    "section": "01. Tus datos",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "62906bdd086f4167fb6f",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "62906bdd086f4167fb6f"
+    ],
+    "type": "Párrafo",
+    "section": "01. Tus datos",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3c2bc77cafe62dd9cec8",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "3c2bc77cafe62dd9cec8"
+    ],
+    "type": "Párrafo",
+    "section": "01. Tus datos",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "742e6ac478ea259d8ff9",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "742e6ac478ea259d8ff9"
+    ],
+    "type": "Párrafo",
+    "section": "01. Tus datos",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9c904548cb53cdcd6ab9",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "9c904548cb53cdcd6ab9"
+    ],
+    "type": "Subtítulo",
+    "section": "02. ¿Dónde te lo enviamos?",
+    "order": 17,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "15b13b434a94b4f25d05",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "15b13b434a94b4f25d05"
+    ],
+    "type": "Párrafo",
+    "section": "02. ¿Dónde te lo enviamos?",
+    "order": 18,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b80f080e949fd7d1e73d",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "b80f080e949fd7d1e73d"
+    ],
+    "type": "Párrafo",
+    "section": "02. ¿Dónde te lo enviamos?",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c6ab033eb72180d15d60",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "c6ab033eb72180d15d60"
+    ],
+    "type": "Párrafo",
+    "section": "02. ¿Dónde te lo enviamos?",
+    "order": 20,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "332d3d18377e6a176af7",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "332d3d18377e6a176af7"
+    ],
+    "type": "Subtítulo",
+    "section": "03. Paga con Wompi",
+    "order": 21,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "3d5d2bc50505be5bdc5d",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "3d5d2bc50505be5bdc5d"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 22,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3a724d9fb5c5d7ac1533",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "3a724d9fb5c5d7ac1533"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 23,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d07ba85cdbd64794fe09",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "d07ba85cdbd64794fe09"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 24,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4be3ee10131fbd3aade7",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "4be3ee10131fbd3aade7"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 25,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6beabe48e79a606c6a48",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "6beabe48e79a606c6a48"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 26,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "17c9ffcaa5a9d9d8bdea",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "17c9ffcaa5a9d9d8bdea"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 27,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bbe22aec812f21711a06",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "bbe22aec812f21711a06"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 28,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c2a6d16d819c0fb97a4b",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "c2a6d16d819c0fb97a4b"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 29,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2f9390c1a64a138a0beb",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "2f9390c1a64a138a0beb"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 30,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c2da22358375971ae0ad",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "c2da22358375971ae0ad"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 31,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "85473a67aa8e3b9689fe",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "85473a67aa8e3b9689fe"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 32,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b71b801fa5e290284413",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "b71b801fa5e290284413"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 33,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0d0035d66bfb6185a234",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "0d0035d66bfb6185a234"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 34,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "54a5e4d38b45c1a4555a",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "54a5e4d38b45c1a4555a"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 35,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1993af921fb756214e47",
+    "source": "app/(public)/checkout/page.tsx",
+    "keys": [
+      "1993af921fb756214e47"
+    ],
+    "type": "Párrafo",
+    "section": "03. Paga con Wompi",
+    "order": 36,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2a86a793d709054895fb",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "2a86a793d709054895fb"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ff2aea656d772c138434",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "ff2aea656d772c138434"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bae0a98b17ba24783d75",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "bae0a98b17ba24783d75"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e33a98401b2a32868ff7",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "e33a98401b2a32868ff7"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8ab4aa9f7b4a5488370c",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "8ab4aa9f7b4a5488370c"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c9ea735217b1b5544451",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "c9ea735217b1b5544451"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1b87e7f9818d85906d9e",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "1b87e7f9818d85906d9e"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "be02b2f4692834149316",
+    "source": "app/(public)/checkout/result/page.tsx",
+    "keys": [
+      "be02b2f4692834149316"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0040a1a069bf91299613",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "0040a1a069bf91299613"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "66e6259e4b4ff8e6a16a",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "66e6259e4b4ff8e6a16a",
+      "7d2ed90e853d00f1d759"
+    ],
+    "type": "Título",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 1,
+    "label": "Título principal"
+  },
+  {
+    "id": "042e06020690ef1deb8b",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "042e06020690ef1deb8b"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2bb097523c91e50803bf",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "2bb097523c91e50803bf"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7c72104e3acd96e6701c",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "7c72104e3acd96e6701c"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9c06be703de5e650dd6c",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "9c06be703de5e650dd6c",
+      "6c3f6151dd8dc33688a4"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "079c82f4057b19ccd11d",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "079c82f4057b19ccd11d"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a5324c5c1ba60f93e390",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "a5324c5c1ba60f93e390"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "244000cb11499039b36c",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "244000cb11499039b36c"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1dd1b8dea4e652cbfee8",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "1dd1b8dea4e652cbfee8"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "66332d2226717eb1de94",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "66332d2226717eb1de94"
+    ],
+    "type": "Párrafo",
+    "section": "Volver a lo natural. Volver a ti.",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "30f0f5b6402689983d81",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "30f0f5b6402689983d81"
+    ],
+    "type": "Subtítulo",
+    "section": "¿Por dónde quieres empezar?",
+    "order": 11,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "b4395d208e1636809c26",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "b4395d208e1636809c26"
+    ],
+    "type": "Párrafo",
+    "section": "¿Por dónde quieres empezar?",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7a78a005c8a147872ed8",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "7a78a005c8a147872ed8"
+    ],
+    "type": "Párrafo",
+    "section": "¿Por dónde quieres empezar?",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7dcb24797b5b4b14cafd",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "7dcb24797b5b4b14cafd",
+      "b803ec1e0a5f8e110665"
+    ],
+    "type": "Subtítulo",
+    "section": "Pequeños gestos. Mucho cuidado.",
+    "order": 14,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "dcbdab263a28fb42c7d7",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "dcbdab263a28fb42c7d7"
+    ],
+    "type": "Párrafo",
+    "section": "Pequeños gestos. Mucho cuidado.",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "06d9f45991890069f530",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "06d9f45991890069f530"
+    ],
+    "type": "Párrafo",
+    "section": "Pequeños gestos. Mucho cuidado.",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6edcef3a00105b5e11bb",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "6edcef3a00105b5e11bb",
+      "3ea2d340f7ade062b3ee"
+    ],
+    "type": "Subtítulo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 17,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "2535278361aed13e66c0",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "2535278361aed13e66c0"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 18,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9e55e9a2601df6ef98ec",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "9e55e9a2601df6ef98ec"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4db29ef4332e1f9d1f7c",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "4db29ef4332e1f9d1f7c"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 20,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d2b8713dcd21ce8ee074",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "d2b8713dcd21ce8ee074"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 21,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9756770b7d4219b241ab",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "9756770b7d4219b241ab"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 22,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "86396f2b367f17024cfd",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "86396f2b367f17024cfd"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado no necesita más pasos. Necesita los tuyos.",
+    "order": 23,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9b5bf029121d7551e0b3",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "9b5bf029121d7551e0b3",
+      "f1c93db42d8de73e94f5"
+    ],
+    "type": "Subtítulo",
+    "section": "Formulaciones de autor. Elaboradas una a una.",
+    "order": 24,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "bbb8f3f9291e5868ee31",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "bbb8f3f9291e5868ee31"
+    ],
+    "type": "Subtítulo",
+    "section": "El tiempo de cada formulación",
+    "order": 25,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "31bfaffb47bc2f5333b2",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "31bfaffb47bc2f5333b2"
+    ],
+    "type": "Párrafo",
+    "section": "El tiempo de cada formulación",
+    "order": 26,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0699239ba520dee08906",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "0699239ba520dee08906"
+    ],
+    "type": "Subtítulo",
+    "section": "Elegir con tranquilidad",
+    "order": 27,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "3529f25651a29adc01d4",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "3529f25651a29adc01d4"
+    ],
+    "type": "Párrafo",
+    "section": "Elegir con tranquilidad",
+    "order": 28,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "67ff0d1961733a817481",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "67ff0d1961733a817481"
+    ],
+    "type": "Subtítulo",
+    "section": "Estamos para acompañarte",
+    "order": 29,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "d911bda54992d0f77d3c",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "d911bda54992d0f77d3c"
+    ],
+    "type": "Párrafo",
+    "section": "Estamos para acompañarte",
+    "order": 30,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ceb10c119bd31f80fe08",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "ceb10c119bd31f80fe08"
+    ],
+    "type": "Párrafo",
+    "section": "Estamos para acompañarte",
+    "order": 31,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8298f488f625ecbf3ed6",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "8298f488f625ecbf3ed6"
+    ],
+    "type": "Párrafo",
+    "section": "Estamos para acompañarte",
+    "order": 32,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "11f3385a00dc41b8a2e2",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "11f3385a00dc41b8a2e2"
+    ],
+    "type": "Subtítulo",
+    "section": "Un poco de inspiración para cuidarte.",
+    "order": 33,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "55f0939b0065acb3b84d",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "55f0939b0065acb3b84d"
+    ],
+    "type": "Párrafo",
+    "section": "Un poco de inspiración para cuidarte.",
+    "order": 34,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b98f5572ff5c49d119e2",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "b98f5572ff5c49d119e2"
+    ],
+    "type": "Párrafo",
+    "section": "Un poco de inspiración para cuidarte.",
+    "order": 35,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "514f6b301c1d7a77a347",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "514f6b301c1d7a77a347"
+    ],
+    "type": "Párrafo",
+    "section": "Un poco de inspiración para cuidarte.",
+    "order": 36,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fe1d3544e07d1d97d3d4",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "fe1d3544e07d1d97d3d4"
+    ],
+    "type": "Subtítulo",
+    "section": "Hablemos de tu compra.",
+    "order": 37,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "home:faq:0:question",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:0:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 163,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:0:answer",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:0:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 164,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:1:question",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:1:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 165,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:1:answer",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:1:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 166,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:2:question",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:2:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 167,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:2:answer",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:2:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 168,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:3:question",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:3:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 169,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:faq:3:answer",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:faq:3:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 170,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:collection:facial:title",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:collection:facial:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 171,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "home:collection:facial:note",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:collection:facial:note"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 172,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:collection:capilar:title",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:collection:capilar:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 173,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "home:collection:capilar:note",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:collection:capilar:note"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 174,
+    "label": "Otros textos"
+  },
+  {
+    "id": "home:collection:corporal:title",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:collection:corporal:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 175,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "home:collection:corporal:note",
+    "source": "app/(public)/page.tsx",
+    "keys": [
+      "home:collection:corporal:note"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 176,
+    "label": "Otros textos"
+  },
+  {
+    "id": "e619d92661e85568d35c",
+    "source": "app/(public)/services/payment/page.tsx",
+    "keys": [
+      "e619d92661e85568d35c"
+    ],
+    "type": "Título",
+    "section": "Tu asesoría · resultado de Wompi",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "b5d1b02801a105c400cf",
+    "source": "app/(public)/services/payment/page.tsx",
+    "keys": [
+      "b5d1b02801a105c400cf"
+    ],
+    "type": "Párrafo",
+    "section": "Tu asesoría · resultado de Wompi",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "cf803d2196f9e0939b64",
+    "source": "app/(public)/services/payment/page.tsx",
+    "keys": [
+      "cf803d2196f9e0939b64"
+    ],
+    "type": "Párrafo",
+    "section": "Tu asesoría · resultado de Wompi",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c662999905f0f1ce3665",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "c662999905f0f1ce3665"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "73a9b477c56365734cdf",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "73a9b477c56365734cdf",
+      "56ba67bcb1bbfc682d00",
+      "353cdf3dbdff2577339a"
+    ],
+    "type": "Título",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 1,
+    "label": "Título principal"
+  },
+  {
+    "id": "5677800df2e0ae5fc8c9",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "5677800df2e0ae5fc8c9"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8752d452fb10cec67812",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "8752d452fb10cec67812"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a2c5abe42ed5a82b4056",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "a2c5abe42ed5a82b4056"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "90369d0f213828f26fce",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "90369d0f213828f26fce"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "57be1d83b2285588980b",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "57be1d83b2285588980b",
+      "88fffe1d2598e69fa908",
+      "1845b53705f2f9cc94a2"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "24e622e1cb2f3a01512c",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "24e622e1cb2f3a01512c"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "729f112daa70b7f45528",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "729f112daa70b7f45528"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen más de un encuentro.",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2aac7de852b6ad52e07d",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "2aac7de852b6ad52e07d",
+      "0505d5a760c00ef4b744"
+    ],
+    "type": "Subtítulo",
+    "section": "El cuidado como punto de partida.",
+    "order": 9,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "e4ab916c03a084b1eb27",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "e4ab916c03a084b1eb27"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado como punto de partida.",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e5ec1ec8ad905212b4cc",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "e5ec1ec8ad905212b4cc"
+    ],
+    "type": "Subtítulo",
+    "section": "Encontrarnos cada quince días",
+    "order": 11,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "45f4df35e84a31d2157f",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "45f4df35e84a31d2157f"
+    ],
+    "type": "Párrafo",
+    "section": "Encontrarnos cada quince días",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ed2fd703acb9792326f0",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "ed2fd703acb9792326f0"
+    ],
+    "type": "Párrafo",
+    "section": "Encontrarnos cada quince días",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "29cc1bfcee50edc96e49",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "29cc1bfcee50edc96e49"
+    ],
+    "type": "Subtítulo",
+    "section": "Belleza y algo más",
+    "order": 14,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "13c3a0fa80f01c2daaa4",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "13c3a0fa80f01c2daaa4"
+    ],
+    "type": "Párrafo",
+    "section": "Belleza y algo más",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7ece2c27ffa3d2c1da58",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "7ece2c27ffa3d2c1da58"
+    ],
+    "type": "Párrafo",
+    "section": "Belleza y algo más",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c301ce30bf392205540b",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "c301ce30bf392205540b"
+    ],
+    "type": "Subtítulo",
+    "section": "Continuar con intención",
+    "order": 17,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "0e0fff1d7ba0896f7db3",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "0e0fff1d7ba0896f7db3"
+    ],
+    "type": "Párrafo",
+    "section": "Continuar con intención",
+    "order": 18,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c8f735e9fe6130afcfb4",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "c8f735e9fe6130afcfb4"
+    ],
+    "type": "Párrafo",
+    "section": "Continuar con intención",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "742d1951d76753cd0bde",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "742d1951d76753cd0bde",
+      "a5d5ce2041a5ebe12cb0"
+    ],
+    "type": "Subtítulo",
+    "section": "Primero, una conversación. El siguiente paso lo eliges tú.",
+    "order": 20,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "63467d111866222f024c",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "63467d111866222f024c"
+    ],
+    "type": "Párrafo",
+    "section": "Primero, una conversación. El siguiente paso lo eliges tú.",
+    "order": 21,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "278be896b91b13b0d547",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "278be896b91b13b0d547"
+    ],
+    "type": "Párrafo",
+    "section": "Primero, una conversación. El siguiente paso lo eliges tú.",
+    "order": 22,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fe49a762c4fc85fba27a",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "fe49a762c4fc85fba27a"
+    ],
+    "type": "Párrafo",
+    "section": "Primero, una conversación. El siguiente paso lo eliges tú.",
+    "order": 23,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6f4f04687497f6ffff8e",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "6f4f04687497f6ffff8e"
+    ],
+    "type": "Párrafo",
+    "section": "Primero, una conversación. El siguiente paso lo eliges tú.",
+    "order": 24,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8afe9d8037ce00682aa0",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "8afe9d8037ce00682aa0"
+    ],
+    "type": "Párrafo",
+    "section": "Primero, una conversación. El siguiente paso lo eliges tú.",
+    "order": 25,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c5dd2a85eecb908585aa",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "c5dd2a85eecb908585aa",
+      "cd51c5b5af9d4492a104"
+    ],
+    "type": "Subtítulo",
+    "section": "Antes de dar el siguiente paso.",
+    "order": 26,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "subscriptions:faq:0:question",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:0:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 207,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:0:answer",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:0:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 208,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:1:question",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:1:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 209,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:1:answer",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:1:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 210,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:2:question",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:2:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 211,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:2:answer",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:2:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 212,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:3:question",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:3:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 213,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:3:answer",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:3:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 214,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:4:question",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:4:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 215,
+    "label": "Otros textos"
+  },
+  {
+    "id": "subscriptions:faq:4:answer",
+    "source": "app/(public)/subscriptions/page.tsx",
+    "keys": [
+      "subscriptions:faq:4:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 216,
+    "label": "Otros textos"
+  },
+  {
+    "id": "5336c31cd7921750bf11",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "5336c31cd7921750bf11"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0344d0d5e7190ca8e1f4",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "0344d0d5e7190ca8e1f4"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9f906569696723dbd853",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "9f906569696723dbd853",
+      "74f8f998612a103ba1a6"
+    ],
+    "type": "Título",
+    "section": "Estamos aquí para ayudarte.",
+    "order": 2,
+    "label": "Título principal"
+  },
+  {
+    "id": "23d8d6489121419579ca",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "23d8d6489121419579ca"
+    ],
+    "type": "Párrafo",
+    "section": "Estamos aquí para ayudarte.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8a810c6f1d09ace0d4ff",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "8a810c6f1d09ace0d4ff"
+    ],
+    "type": "Subtítulo",
+    "section": "Tu pedido y el envío",
+    "order": 4,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "de1a8b41c1d38f39cb73",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "de1a8b41c1d38f39cb73"
+    ],
+    "type": "Párrafo",
+    "section": "Tu pedido y el envío",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d7cd20f3420ab6486512",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "d7cd20f3420ab6486512"
+    ],
+    "type": "Subtítulo",
+    "section": "Precios y pagos",
+    "order": 6,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "0b5fd0b9cc6c3ff0ecc1",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "0b5fd0b9cc6c3ff0ecc1"
+    ],
+    "type": "Párrafo",
+    "section": "Precios y pagos",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6f5f88535915bee7dfbe",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "6f5f88535915bee7dfbe"
+    ],
+    "type": "Subtítulo",
+    "section": "Ayuda con tu compra",
+    "order": 8,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "74515d9084027ee528cd",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "74515d9084027ee528cd"
+    ],
+    "type": "Párrafo",
+    "section": "Ayuda con tu compra",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "98cf5528290f93c55a16",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "98cf5528290f93c55a16"
+    ],
+    "type": "Subtítulo",
+    "section": "Encuentros con Melina",
+    "order": 10,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "12ec971cae553608da7b",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "12ec971cae553608da7b"
+    ],
+    "type": "Párrafo",
+    "section": "Encuentros con Melina",
+    "order": 11,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "54abf418c9a0673139cf",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "54abf418c9a0673139cf"
+    ],
+    "type": "Párrafo",
+    "section": "Encuentros con Melina",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bc6f74bde97831f6c285",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "bc6f74bde97831f6c285"
+    ],
+    "type": "Subtítulo",
+    "section": "Círculo MAI",
+    "order": 13,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "fd989509463eec2a4dbb",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "fd989509463eec2a4dbb"
+    ],
+    "type": "Párrafo",
+    "section": "Círculo MAI",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4b3df080373072214691",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "4b3df080373072214691"
+    ],
+    "type": "Subtítulo",
+    "section": "Uso de tus datos",
+    "order": 15,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "31ca89cfa7f4493c2da4",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "31ca89cfa7f4493c2da4"
+    ],
+    "type": "Párrafo",
+    "section": "Uso de tus datos",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a08546c2122d819dc688",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "a08546c2122d819dc688"
+    ],
+    "type": "Párrafo",
+    "section": "Uso de tus datos",
+    "order": 17,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f3b936241c9bf4e5f623",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "f3b936241c9bf4e5f623"
+    ],
+    "type": "Subtítulo",
+    "section": "Contacto",
+    "order": 18,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "77dbfa25d51af7396b79",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "77dbfa25d51af7396b79"
+    ],
+    "type": "Párrafo",
+    "section": "Contacto",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "13b23d5b67b662d5e4a1",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "13b23d5b67b662d5e4a1"
+    ],
+    "type": "Párrafo",
+    "section": "Contacto",
+    "order": 20,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "04604986792e3b982003",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "04604986792e3b982003"
+    ],
+    "type": "Párrafo",
+    "section": "Contacto",
+    "order": 21,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5813b0fed72fd9fa1cde",
+    "source": "app/(public)/terms/page.tsx",
+    "keys": [
+      "5813b0fed72fd9fa1cde"
+    ],
+    "type": "Párrafo",
+    "section": "Contacto",
+    "order": 22,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "73ec3c5e32e3d5a35b95",
+    "source": "components/common/AppChrome.tsx",
+    "keys": [
+      "73ec3c5e32e3d5a35b95"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0cea9730ff73e81318b0",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "0cea9730ff73e81318b0",
+      "675a32b41e5e2e60aab5"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a61d9765e394012a04fd",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "a61d9765e394012a04fd"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d1235e1aff62c5fe2729",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "d1235e1aff62c5fe2729"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "dd97aa94187fdf9fcca4",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "dd97aa94187fdf9fcca4"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "70b9adb908564c5de5c3",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "70b9adb908564c5de5c3"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d22bab7d82532d17fe79",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "d22bab7d82532d17fe79"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7c15133f5582cbe9524e",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "7c15133f5582cbe9524e"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ee7509843b70fa4128a4",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "ee7509843b70fa4128a4"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fb6bc45dae5c337fcb51",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "fb6bc45dae5c337fcb51"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3f066c0f3dc856fb65e8",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "3f066c0f3dc856fb65e8"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "35b283563185fe313d52",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "35b283563185fe313d52"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a69e3d1ccb189d32a600",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "a69e3d1ccb189d32a600"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 11,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d9380d072425d82a61d2",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "d9380d072425d82a61d2"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9d0f431464a44edaed5f",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "9d0f431464a44edaed5f"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "568f4fd7c3a70b0e9968",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "568f4fd7c3a70b0e9968"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1c1b3d889a22060c99b5",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "1c1b3d889a22060c99b5"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2f65ed7f9eeb68697490",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "2f65ed7f9eeb68697490"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b00e82ce588cc86b8081",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "b00e82ce588cc86b8081"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 17,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c753e06a7a4d32eb2d9e",
+    "source": "components/common/Footer.tsx",
+    "keys": [
+      "c753e06a7a4d32eb2d9e"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 18,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d884ea73fb52445c303b",
+    "source": "components/common/Header.tsx",
+    "keys": [
+      "d884ea73fb52445c303b"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bc7d8b291ebe245e1904",
+    "source": "components/common/Header.tsx",
+    "keys": [
+      "bc7d8b291ebe245e1904"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3609bda2f5c882a16c27",
+    "source": "components/common/Header.tsx",
+    "keys": [
+      "3609bda2f5c882a16c27"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3afbbf0405495fa20cff",
+    "source": "components/common/Header.tsx",
+    "keys": [
+      "3afbbf0405495fa20cff"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d44b42378e35c1dd8856",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "d44b42378e35c1dd8856"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0fe6320a77731e118b9b",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "0fe6320a77731e118b9b"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "navigation:/",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "navigation:/"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 266,
+    "label": "Otros textos"
+  },
+  {
+    "id": "navigation:/products",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "navigation:/products"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 267,
+    "label": "Otros textos"
+  },
+  {
+    "id": "navigation:/routines",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "navigation:/routines"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 268,
+    "label": "Otros textos"
+  },
+  {
+    "id": "navigation:/services",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "navigation:/services"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 269,
+    "label": "Otros textos"
+  },
+  {
+    "id": "navigation:/blog",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "navigation:/blog"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 270,
+    "label": "Otros textos"
+  },
+  {
+    "id": "navigation:/subscriptions",
+    "source": "components/common/Navigation.tsx",
+    "keys": [
+      "navigation:/subscriptions"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 271,
+    "label": "Otros textos"
+  },
+  {
+    "id": "71d9a02f279a1677591e",
+    "source": "components/common/WhatsAppAgentButton.tsx",
+    "keys": [
+      "71d9a02f279a1677591e"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f4e91f1ce89cac8aaa37",
+    "source": "components/common/WhatsAppAgentButton.tsx",
+    "keys": [
+      "f4e91f1ce89cac8aaa37"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9b75fc58503b14737c30",
+    "source": "components/common/WhatsAppAgentButton.tsx",
+    "keys": [
+      "9b75fc58503b14737c30"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "cb145e86a8ed76b28e56",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "cb145e86a8ed76b28e56"
+    ],
+    "type": "Subtítulo",
+    "section": "Informacion personal",
+    "order": 0,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "7452f715cfe2ec3562ff",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "7452f715cfe2ec3562ff"
+    ],
+    "type": "Párrafo",
+    "section": "Informacion personal",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5ddf50b6a1b03b12210e",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "5ddf50b6a1b03b12210e"
+    ],
+    "type": "Párrafo",
+    "section": "Informacion personal",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f1b1a6f0817bffc185cb",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "f1b1a6f0817bffc185cb"
+    ],
+    "type": "Párrafo",
+    "section": "Informacion personal",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d9ac71ce7040e3a5002b",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "d9ac71ce7040e3a5002b"
+    ],
+    "type": "Párrafo",
+    "section": "Informacion personal",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d0a431d98c4536a81647",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "d0a431d98c4536a81647"
+    ],
+    "type": "Subtítulo",
+    "section": "Sesion",
+    "order": 5,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "957469d88be717f22d1c",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "957469d88be717f22d1c"
+    ],
+    "type": "Párrafo",
+    "section": "Sesion",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6a269dc3f1710acb9f00",
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "keys": [
+      "6a269dc3f1710acb9f00"
+    ],
+    "type": "Párrafo",
+    "section": "Sesion",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ba18b65621c38f686546",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "ba18b65621c38f686546"
+    ],
+    "type": "Subtítulo",
+    "section": "Tu carrito",
+    "order": 0,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "9381614bbf241274ed38",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "9381614bbf241274ed38"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "eaa9c98f27622ce09e06",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "eaa9c98f27622ce09e06"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c08954e0a0f1d37b3c06",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "c08954e0a0f1d37b3c06"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1da8581a7bc00832ede9",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "1da8581a7bc00832ede9"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "15b38a60df97997f37bd",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "15b38a60df97997f37bd"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3d7404091d15db82c70a",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "3d7404091d15db82c70a",
+      "79c8e046abb7ccfae096",
+      "409b4c7a47d71ffc0009"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "514dec265e0e81ed654d",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "514dec265e0e81ed654d"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0df3f53a24f66d4202a9",
+    "source": "components/features/cart/CartDrawer.tsx",
+    "keys": [
+      "0df3f53a24f66d4202a9"
+    ],
+    "type": "Párrafo",
+    "section": "Tu carrito",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "64b01d01e00795b04238",
+    "source": "components/features/home/EditorialHeroCarousel.tsx",
+    "keys": [
+      "64b01d01e00795b04238"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b77fada2c6d4fe472c8f",
+    "source": "components/features/home/EditorialHeroCarousel.tsx",
+    "keys": [
+      "b77fada2c6d4fe472c8f"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "65940dbe5baa49cd534f",
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "keys": [
+      "65940dbe5baa49cd534f"
+    ],
+    "type": "Título",
+    "section": "Preparando tu pago con Wompi",
+    "order": 0,
+    "label": "Título principal"
+  },
+  {
+    "id": "d9ebc6dfd94db16a562d",
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "keys": [
+      "d9ebc6dfd94db16a562d"
+    ],
+    "type": "Párrafo",
+    "section": "Preparando tu pago con Wompi",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "823412a7cd58d2aaff9f",
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "keys": [
+      "823412a7cd58d2aaff9f"
+    ],
+    "type": "Párrafo",
+    "section": "Preparando tu pago con Wompi",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "16efde1c378891fde484",
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "keys": [
+      "16efde1c378891fde484"
+    ],
+    "type": "Párrafo",
+    "section": "Preparando tu pago con Wompi",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4ca6a0904e20b66149cf",
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "keys": [
+      "4ca6a0904e20b66149cf"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "eccc76a0d5ff7f02db49",
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "keys": [
+      "eccc76a0d5ff7f02db49"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 1,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6dbc4dfe3657689d4791",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "6dbc4dfe3657689d4791"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5872e8d355ac4bd86654",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "5872e8d355ac4bd86654",
+      "058f4c1756f54a193eac"
+    ],
+    "type": "Título",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 1,
+    "label": "Título principal"
+  },
+  {
+    "id": "540018251b2f0e1c9c75",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "540018251b2f0e1c9c75"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "576f0cab11eaa8e39fd5",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "576f0cab11eaa8e39fd5"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "96961b1308eac652cb99",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "96961b1308eac652cb99"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "637392d0e859838b84a0",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "637392d0e859838b84a0"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9e7e01cfa48322182fe0",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "9e7e01cfa48322182fe0"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3504ba6d54d9a0b1e12b",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "3504ba6d54d9a0b1e12b"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "96b228c61fd02f55ded9",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "96b228c61fd02f55ded9"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1945c62c5f0bc92bb19a",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "1945c62c5f0bc92bb19a"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ee37ca853beda562de11",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "ee37ca853beda562de11"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "cb69701aa2bbb9577ec8",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "cb69701aa2bbb9577ec8"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 11,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8ef1de5c065746fce66f",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "8ef1de5c065746fce66f"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "19becd3cf7cc09c331f8",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "19becd3cf7cc09c331f8"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "dbd786168e1468a17fc2",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "dbd786168e1468a17fc2"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "206a7b9d738f475f644c",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "206a7b9d738f475f644c"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "553257363e763e123b36",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "553257363e763e123b36"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "74e04aa60103aef2f304",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "74e04aa60103aef2f304"
+    ],
+    "type": "Párrafo",
+    "section": "Tu naturaleza. Tu ritual.",
+    "order": 17,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0049794bcda9e5ae6ba7",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "0049794bcda9e5ae6ba7"
+    ],
+    "type": "Subtítulo",
+    "section": "No encontramos ese ritual.",
+    "order": 18,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "0889683e53a9fba4ad06",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "0889683e53a9fba4ad06"
+    ],
+    "type": "Párrafo",
+    "section": "No encontramos ese ritual.",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1d1c09d47cb0093c534c",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "1d1c09d47cb0093c534c"
+    ],
+    "type": "Párrafo",
+    "section": "No encontramos ese ritual.",
+    "order": 20,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "52fd4820307dbd1c93fd",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "52fd4820307dbd1c93fd"
+    ],
+    "type": "Párrafo",
+    "section": "No encontramos ese ritual.",
+    "order": 21,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d43961bd3675476fa739",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "d43961bd3675476fa739"
+    ],
+    "type": "Subtítulo",
+    "section": "Empieza con una rutina.",
+    "order": 22,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "c59499f18540f8201878",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "c59499f18540f8201878"
+    ],
+    "type": "Párrafo",
+    "section": "Empieza con una rutina.",
+    "order": 23,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4890c24c79d6a7bf00c2",
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "keys": [
+      "4890c24c79d6a7bf00c2"
+    ],
+    "type": "Párrafo",
+    "section": "Empieza con una rutina.",
+    "order": 24,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b2f4ddf541add7c93750",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "b2f4ddf541add7c93750"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "57da2412347b90a077a9",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "57da2412347b90a077a9",
+      "68d7eef45213b9c39024",
+      "1c0fb61abfbdf51fa0e6"
+    ],
+    "type": "Título",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 1,
+    "label": "Título principal"
+  },
+  {
+    "id": "b9dee116910bb887a6bc",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "b9dee116910bb887a6bc"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9357cbf283999274f088",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "9357cbf283999274f088"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f37f09c0c9dacd2e1342",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "f37f09c0c9dacd2e1342"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "67a2d6ddf2edaf51286f",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "67a2d6ddf2edaf51286f",
+      "9a8ed7243aeb86ed4e29",
+      "7a57c4cbcf490b25d801"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f45b87a4209f85cc4a16",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "f45b87a4209f85cc4a16"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f89609db0977720ac885",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "f89609db0977720ac885"
+    ],
+    "type": "Párrafo",
+    "section": "El cuidado empieza por elegirte.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "36b0c5bc706d4b5af255",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "36b0c5bc706d4b5af255"
+    ],
+    "type": "Subtítulo",
+    "section": "¿Por dónde quieres empezar?",
+    "order": 8,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "64b38368a419358e8cba",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "64b38368a419358e8cba"
+    ],
+    "type": "Párrafo",
+    "section": "¿Por dónde quieres empezar?",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4cb5d4210c5776e91bc4",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "4cb5d4210c5776e91bc4"
+    ],
+    "type": "Párrafo",
+    "section": "¿Por dónde quieres empezar?",
+    "order": 10,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ab5b3e64153e7bfee08c",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "ab5b3e64153e7bfee08c"
+    ],
+    "type": "Subtítulo",
+    "section": "Crea el tuyo.",
+    "order": 11,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "c7e3c7c55724733960e2",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "c7e3c7c55724733960e2"
+    ],
+    "type": "Párrafo",
+    "section": "Crea el tuyo.",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "adcccf60694037cec52a",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "adcccf60694037cec52a"
+    ],
+    "type": "Párrafo",
+    "section": "Crea el tuyo.",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "af416c118f0dff4f886c",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "af416c118f0dff4f886c"
+    ],
+    "type": "Párrafo",
+    "section": "Crea el tuyo.",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "163a22631fe0386ed54c",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "163a22631fe0386ed54c"
+    ],
+    "type": "Párrafo",
+    "section": "Crea el tuyo.",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "35e4638a9a503cc55e42",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "35e4638a9a503cc55e42"
+    ],
+    "type": "Subtítulo",
+    "section": "¿Cambiarías algo?",
+    "order": 16,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "e20f7b09b3d8a6239e64",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "e20f7b09b3d8a6239e64"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 17,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "38c4d7f07f9d67de49e5",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "38c4d7f07f9d67de49e5"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 18,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "90ca3da85071543322e1",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "90ca3da85071543322e1"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2e25d28902769178e218",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "2e25d28902769178e218"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 20,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fc7543e23ef143837dde",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "fc7543e23ef143837dde"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 21,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d3cac8d2f5c94df1c523",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "d3cac8d2f5c94df1c523"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 22,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "50282fee2b29096250aa",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "50282fee2b29096250aa"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 23,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ea17e0af334fd63f448f",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "ea17e0af334fd63f448f"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 24,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "397f8d0c5c69f44d3e13",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "397f8d0c5c69f44d3e13"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 25,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "51eab8e46f9f76730c31",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "51eab8e46f9f76730c31"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 26,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5fb9cefbd98f59ee2f18",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "5fb9cefbd98f59ee2f18"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 27,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0baec2bed750d5becc5e",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "0baec2bed750d5becc5e"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 28,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3f817f900becafbc0185",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "3f817f900becafbc0185"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 29,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9ca88126f660cd61d471",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "9ca88126f660cd61d471"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 30,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2b6a40416fc3e7503f47",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "2b6a40416fc3e7503f47"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 31,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ef49b33f84c8c5c0dc21",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "ef49b33f84c8c5c0dc21"
+    ],
+    "type": "Párrafo",
+    "section": "¿Cambiarías algo?",
+    "order": 32,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c287be90d8f0b49a3028",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "c287be90d8f0b49a3028",
+      "cc7c38baebdc02e95b04"
+    ],
+    "type": "Subtítulo",
+    "section": "¿Prefieres comenzar con una conversación?",
+    "order": 33,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "1ec217d78f9b68f4aad7",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "1ec217d78f9b68f4aad7"
+    ],
+    "type": "Párrafo",
+    "section": "¿Prefieres comenzar con una conversación?",
+    "order": 34,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3bb078692efcf2be7577",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "3bb078692efcf2be7577"
+    ],
+    "type": "Párrafo",
+    "section": "¿Prefieres comenzar con una conversación?",
+    "order": 35,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b8cda311f58e975d50f5",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "b8cda311f58e975d50f5"
+    ],
+    "type": "Párrafo",
+    "section": "¿Prefieres comenzar con una conversación?",
+    "order": 36,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3dfe4a1f8cd9d58ecd47",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "3dfe4a1f8cd9d58ecd47"
+    ],
+    "type": "Párrafo",
+    "section": "¿Prefieres comenzar con una conversación?",
+    "order": 37,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "40d4496484d4b044d837",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "40d4496484d4b044d837"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 363,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:0:title",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 364,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "rituals:0:label",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:label"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 365,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:0:description",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 366,
+    "label": "Párrafo"
+  },
+  {
+    "id": "rituals:0:steps:0",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:steps:0"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 367,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:0:steps:1",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:steps:1"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 368,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:0:steps:2",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:steps:2"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 369,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:0:note",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:0:note"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 370,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:1:title",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 371,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "rituals:1:label",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:label"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 372,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:1:description",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 373,
+    "label": "Párrafo"
+  },
+  {
+    "id": "rituals:1:steps:0",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:steps:0"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 374,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:1:steps:1",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:steps:1"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 375,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:1:steps:2",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:steps:2"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 376,
+    "label": "Otros textos"
+  },
+  {
+    "id": "rituals:1:note",
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "keys": [
+      "rituals:1:note"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 377,
+    "label": "Otros textos"
+  },
+  {
+    "id": "c3c9187086f118a7e529",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "c3c9187086f118a7e529"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "f8ef36c24155e04c8512",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "f8ef36c24155e04c8512",
+      "ca63943a244583b30b57",
+      "f5e75dd9fd10742a1146"
+    ],
+    "type": "Título",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 1,
+    "label": "Título principal"
+  },
+  {
+    "id": "571281845845a79732ce",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "571281845845a79732ce"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 2,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4f056b69ef609bf6fda4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "4f056b69ef609bf6fda4"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 3,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a099b6d0666384fae314",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "a099b6d0666384fae314"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 4,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a9dbc6ef592b720b5c1b",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "a9dbc6ef592b720b5c1b"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 5,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0869321a454f18abf624",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "0869321a454f18abf624"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 6,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7d303b5406af6f0ff717",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "7d303b5406af6f0ff717"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 7,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "76437381f394dff7ba80",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "76437381f394dff7ba80",
+      "827f63e2d38910eb9f1f"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 8,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "82e811e38de5337e275d",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "82e811e38de5337e275d"
+    ],
+    "type": "Párrafo",
+    "section": "Tu cuidado empieza por escucharte.",
+    "order": 9,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "638efc51caf5ebfa397e",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "638efc51caf5ebfa397e",
+      "478683edfd514d6788bf"
+    ],
+    "type": "Subtítulo",
+    "section": "El primer paso ya está dado.",
+    "order": 10,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "5f3c585d5af2ade6d17d",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "5f3c585d5af2ade6d17d"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 11,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e0cecff9a0285bfdb21b",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "e0cecff9a0285bfdb21b"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 12,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "390d965ec6cc633bb5ef",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "390d965ec6cc633bb5ef"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 13,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "60473bccfea5e2b6297d",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "60473bccfea5e2b6297d"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 14,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "266931d55f08864cb8a4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "266931d55f08864cb8a4"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 15,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "934c7d29bd1d35c1c957",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "934c7d29bd1d35c1c957"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 16,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "bac6886eccda6f4ba0f2",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "bac6886eccda6f4ba0f2"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 17,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1c74cb758e5af78a3153",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "1c74cb758e5af78a3153"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 18,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e117125bf49618688bca",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "e117125bf49618688bca"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 19,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "ddbc11d0792cf491c446",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "ddbc11d0792cf491c446"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 20,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "888287a89eada0fe6ba6",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "888287a89eada0fe6ba6"
+    ],
+    "type": "Párrafo",
+    "section": "El primer paso ya está dado.",
+    "order": 21,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "01597aee56c795617aab",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "01597aee56c795617aab",
+      "00a9168e710447e54c00",
+      "3fab4effa62d66c1f44e"
+    ],
+    "type": "Subtítulo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 22,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "0dc3805f387a4840cb17",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "0dc3805f387a4840cb17"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 23,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "954bafb4056cd4ef2f81",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "954bafb4056cd4ef2f81"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 24,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "357628f6547e84b04164",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "357628f6547e84b04164"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 25,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c8a68048995dedcbe255",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "c8a68048995dedcbe255"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 26,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4597634543a4c7fc131f",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "4597634543a4c7fc131f"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 27,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4a1c245474854834455c",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "4a1c245474854834455c"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 28,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "02b168875486efff80ec",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "02b168875486efff80ec",
+      "36e203e490e28e5bc362"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 29,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0ccb362bdf362c08b640",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "0ccb362bdf362c08b640"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 30,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "028b92402ba921f747a3",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "028b92402ba921f747a3"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 31,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "54ff3e75a416e3c5ed0b",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "54ff3e75a416e3c5ed0b"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 32,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3a0e644cb7fffa11b605",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "3a0e644cb7fffa11b605"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 33,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fbdaaec13629b9dedc77",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "fbdaaec13629b9dedc77"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 34,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "45011998ff909aee2e1c",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "45011998ff909aee2e1c"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 35,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1414f8e1862454db4bd6",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "1414f8e1862454db4bd6"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 36,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "122bd4a906acbacbf9f3",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "122bd4a906acbacbf9f3"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 37,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "39f160444b9b2a9d9fa7",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "39f160444b9b2a9d9fa7"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 38,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4cb89dd70da553d6d21e",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "4cb89dd70da553d6d21e"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 39,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5d1a4e6b165f56993693",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "5d1a4e6b165f56993693"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 40,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "008ade0f27bc622396ce",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "008ade0f27bc622396ce"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 41,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "294fa1e05a1ef8457bdd",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "294fa1e05a1ef8457bdd"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 42,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "21ca7e1dca9a10c15ba2",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "21ca7e1dca9a10c15ba2"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 43,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6b6d9a2bea188ef24209",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "6b6d9a2bea188ef24209"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 44,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1186215aadaa8ed00f3c",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "1186215aadaa8ed00f3c"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 45,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fd90b11f77204ca8f4f0",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "fd90b11f77204ca8f4f0"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 46,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "49837fdcccbdcee706bd",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "49837fdcccbdcee706bd"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 47,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a76993e9588d9612ac77",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "a76993e9588d9612ac77"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 48,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7ba54b7473b0b617b383",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "7ba54b7473b0b617b383"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 49,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "346452b660c2864f9b8e",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "346452b660c2864f9b8e"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 50,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "6fb216a9e639b5730a9f",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "6fb216a9e639b5730a9f"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 51,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d174d037bd2a58742c63",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "d174d037bd2a58742c63"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 52,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c635e18f18046556ff21",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "c635e18f18046556ff21"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 53,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "af2a7ce3997a2eed3aa8",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "af2a7ce3997a2eed3aa8"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 54,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4fbc92db363ccf1e2082",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "4fbc92db363ccf1e2082"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 55,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "9c9d6896b06bfffdde9d",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "9c9d6896b06bfffdde9d"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 56,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "46bc98dc9f89a8ab7e86",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "46bc98dc9f89a8ab7e86"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 57,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c4bed34e8b777df0c79b",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "c4bed34e8b777df0c79b"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 58,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7de0810dfa05c1758013",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "7de0810dfa05c1758013"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 59,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "fab729ed77f35136c45a",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "fab729ed77f35136c45a"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 60,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "4fe2e7df6287389bd573",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "4fe2e7df6287389bd573"
+    ],
+    "type": "Párrafo",
+    "section": "¿Y si esta vez empiezas por escucharte?",
+    "order": 61,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7eec858d274c9bdd6b75",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "7eec858d274c9bdd6b75",
+      "a6224d0fecd9a1b6a695"
+    ],
+    "type": "Subtítulo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 62,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "69ca47a894f8663f9eb4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "69ca47a894f8663f9eb4"
+    ],
+    "type": "Párrafo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 63,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "27b71f881e2e66abe18f",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "27b71f881e2e66abe18f"
+    ],
+    "type": "Párrafo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 64,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b3234837fe67d2402d5b",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "b3234837fe67d2402d5b",
+      "2effbbace25397c6221c"
+    ],
+    "type": "Párrafo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 65,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2a3b59a039993d7bdb30",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "2a3b59a039993d7bdb30"
+    ],
+    "type": "Párrafo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 66,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "d6378c6e08806bca12fe",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "d6378c6e08806bca12fe",
+      "93c071b06b0a975551a4"
+    ],
+    "type": "Párrafo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 67,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b55d3ce603d9f1162c3f",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "b55d3ce603d9f1162c3f"
+    ],
+    "type": "Párrafo",
+    "section": "Una mirada que se detiene en ti.",
+    "order": 68,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1254fe51801139878d53",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "1254fe51801139878d53",
+      "0a590ea5f8f7643cccc0"
+    ],
+    "type": "Subtítulo",
+    "section": "Primero, encontrarnos. Después, tú decides.",
+    "order": 69,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "851a0d15afe78f50b120",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "851a0d15afe78f50b120"
+    ],
+    "type": "Párrafo",
+    "section": "Primero, encontrarnos. Después, tú decides.",
+    "order": 70,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "1b6f75d17a9d174066e4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "1b6f75d17a9d174066e4"
+    ],
+    "type": "Subtítulo",
+    "section": "Tu encuentro inicial",
+    "order": 71,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "5de137227afb3ae187b1",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "5de137227afb3ae187b1"
+    ],
+    "type": "Párrafo",
+    "section": "Tu encuentro inicial",
+    "order": 72,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "0caf9fa31a3cfa5a4e54",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "0caf9fa31a3cfa5a4e54"
+    ],
+    "type": "Párrafo",
+    "section": "Tu encuentro inicial",
+    "order": 73,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "7547cb662cd48c794863",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "7547cb662cd48c794863"
+    ],
+    "type": "Subtítulo",
+    "section": "Una primera orientación",
+    "order": 74,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "f176bc4d08846fcb7506",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "f176bc4d08846fcb7506"
+    ],
+    "type": "Párrafo",
+    "section": "Una primera orientación",
+    "order": 75,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "e8e3a37da6c9eb785d20",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "e8e3a37da6c9eb785d20"
+    ],
+    "type": "Párrafo",
+    "section": "Una primera orientación",
+    "order": 76,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "b86d29ea5c80a185332f",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "b86d29ea5c80a185332f"
+    ],
+    "type": "Subtítulo",
+    "section": "Un proceso, si lo deseas",
+    "order": 77,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "be74893b72e31c665bc6",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "be74893b72e31c665bc6"
+    ],
+    "type": "Párrafo",
+    "section": "Un proceso, si lo deseas",
+    "order": 78,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "2d90cb9fa09176c73b2e",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "2d90cb9fa09176c73b2e"
+    ],
+    "type": "Párrafo",
+    "section": "Un proceso, si lo deseas",
+    "order": 79,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "53595cfffc476a26de76",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "53595cfffc476a26de76",
+      "e423d791b82198885d16"
+    ],
+    "type": "Subtítulo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 80,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "187c33011d97e256c2d6",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "187c33011d97e256c2d6"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 81,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "453605ba7d015580296f",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "453605ba7d015580296f"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 82,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5e1b667a26ce70c9dfa6",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "5e1b667a26ce70c9dfa6"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 83,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "23183e083cfa5f4281b0",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "23183e083cfa5f4281b0"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 84,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "5edcafbcf390711d586a",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "5edcafbcf390711d586a"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 85,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "73701985e1bd7ed70cca",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "73701985e1bd7ed70cca"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 86,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "3fe6a1a19c1024302487",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "3fe6a1a19c1024302487"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 87,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "49b3abae90e3398fff15",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "49b3abae90e3398fff15"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 88,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "a4e6347d72a46eb6f44d",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "a4e6347d72a46eb6f44d"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 89,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "c80ee9277d9a7504eccc",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "c80ee9277d9a7504eccc"
+    ],
+    "type": "Párrafo",
+    "section": "Hay preguntas que merecen continuidad.",
+    "order": 90,
+    "label": "Texto de la sección"
+  },
+  {
+    "id": "8968d2d75753371054e3",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "8968d2d75753371054e3",
+      "4e37613ec330a51e61a1"
+    ],
+    "type": "Subtítulo",
+    "section": "Un poco de claridad para empezar.",
+    "order": 91,
+    "label": "Encabezado de sección"
+  },
+  {
+    "id": "services:faq:0:question",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:0:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 470,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:0:answer",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:0:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 471,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:1:question",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:1:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 472,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:2:question",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:2:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 473,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:2:answer",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:2:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 474,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:3:question",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:3:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 475,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:3:answer",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:3:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 476,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:4:question",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:4:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 477,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:4:answer",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:4:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 478,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:5:question",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:5:question"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 479,
+    "label": "Otros textos"
+  },
+  {
+    "id": "services:faq:5:answer",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "services:faq:5:answer"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 480,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:stepNames:0",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:stepNames:0"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 481,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:stepNames:1",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:stepNames:1"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 482,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:stepNames:2",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:stepNames:2"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 483,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:stepNames:3",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:stepNames:3"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 484,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:stepNames:4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:stepNames:4"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 485,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:titles:0",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:titles:0"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 486,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:titles:1",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:titles:1"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 487,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:titles:2",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:titles:2"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 488,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:titles:3",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:titles:3"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 489,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:titles:4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:titles:4"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 490,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:descriptions:0",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:descriptions:0"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 491,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:descriptions:1",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:descriptions:1"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 492,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:descriptions:2",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:descriptions:2"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 493,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:descriptions:3",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:descriptions:3"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 494,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:descriptions:4",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:descriptions:4"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 495,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:topics:0:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:0:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 496,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:topics:0:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:0:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 497,
+    "label": "Párrafo"
+  },
+  {
+    "id": "consultation:topics:0:response",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:0:response"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 498,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:topics:1:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:1:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 499,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:topics:1:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:1:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 500,
+    "label": "Párrafo"
+  },
+  {
+    "id": "consultation:topics:1:response",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:1:response"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 501,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:topics:2:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:2:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 502,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:topics:2:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:2:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 503,
+    "label": "Párrafo"
+  },
+  {
+    "id": "consultation:topics:2:response",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:2:response"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 504,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:topics:3:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:3:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 505,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:topics:3:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:3:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 506,
+    "label": "Párrafo"
+  },
+  {
+    "id": "consultation:topics:3:response",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:topics:3:response"
+    ],
+    "type": "Otros textos",
+    "section": "Contenido complementario",
+    "order": 507,
+    "label": "Otros textos"
+  },
+  {
+    "id": "consultation:intentions:0:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:intentions:0:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 508,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:intentions:0:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:intentions:0:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 509,
+    "label": "Párrafo"
+  },
+  {
+    "id": "consultation:intentions:1:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:intentions:1:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 510,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:intentions:1:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:intentions:1:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 511,
+    "label": "Párrafo"
+  },
+  {
+    "id": "consultation:intentions:2:title",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:intentions:2:title"
+    ],
+    "type": "Subtítulo",
+    "section": "Contenido complementario",
+    "order": 512,
+    "label": "Subtítulo"
+  },
+  {
+    "id": "consultation:intentions:2:description",
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "keys": [
+      "consultation:intentions:2:description"
+    ],
+    "type": "Párrafo",
+    "section": "Contenido complementario",
+    "order": 513,
+    "label": "Párrafo"
+  },
+  {
+    "id": "26e77447bd469cce20a8",
+    "source": "components/ui/Calendar.tsx",
+    "keys": [
+      "26e77447bd469cce20a8"
+    ],
+    "type": "Párrafo",
+    "section": "Presentación",
+    "order": 0,
+    "label": "Texto de la sección"
+  }
+]

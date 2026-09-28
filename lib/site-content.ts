@@ -17,7 +17,7 @@ export function validateContentChanges(changes: unknown): Array<{key:string; val
   if (!Array.isArray(changes) || changes.length < 1 || changes.length > 200) throw new Error('Cantidad de cambios inválida');
   const seen = new Set<string>();
   for (const item of changes) {
-    if (!item || typeof item.key !== 'string' || !Object.hasOwn(siteTextCatalog,item.key) || seen.has(item.key) || typeof item.value !== 'string' || item.value.length > 12000 || !item.value.trim() || /[<>\u0000]/.test(item.value) || !Number.isSafeInteger(item.revision) || item.revision < 0) throw new Error('Texto inválido: usa texto plano, sin HTML, y máximo 12000 caracteres.');
+    if (!item || typeof item.key !== 'string' || !Object.hasOwn(siteTextCatalog,item.key) || seen.has(item.key) || typeof item.value !== 'string' || !item.value.trim() || item.value.length > 12000 || /[<>\u0000]/.test(item.value) || !Number.isSafeInteger(item.revision) || item.revision < 0) throw new Error('Texto inválido: usa texto plano, sin HTML, y máximo 12000 caracteres.');
     seen.add(item.key);
   }
   return changes;

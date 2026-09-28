@@ -83,7 +83,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
         <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl bg-brand-50 ring-1 ring-brand-100">
           <Image
             src={post.heroImage}
-            alt={post.title}
+            alt={post.heroAlt || post.title}
             fill
             priority
             className="object-cover"
