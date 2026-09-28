@@ -6,7 +6,7 @@ vi.mock('@/lib/email',()=>({sendTransactionalEmail:vi.fn()}));
 import {signIn} from '@/lib/auth';
 import {db} from '@/lib/db';
 import {loginAction} from './actions';
-beforeEach(()=>vi.clearAllMocks());
+beforeEach(()=>{vi.clearAllMocks();});
 it('returns the admin destination after one successful authentication',async()=>{
  vi.mocked(db.user.findUnique).mockResolvedValue({email:'hola@mainatural.com',role:'admin'} as never);
  expect(await loginAction('hola@mainatural.com','ExamplePassword123!')).toMatchObject({success:true,destination:'/admin'});
