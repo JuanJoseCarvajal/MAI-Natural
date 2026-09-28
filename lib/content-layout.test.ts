@@ -11,3 +11,14 @@ it('combines the split home headline into a single editable title',()=>{
  expect(block?.type).toBe('Título');expect(block?.keys).toHaveLength(2);
  expect(contentContinuationKeys.has('7d2ed90e853d00f1d759')).toBe(true);
 });
+
+import {contentPage} from './content-layout';
+it('groups page fragments together while keeping shared elements separate',()=>{
+ expect(contentPage('app/(public)/page.tsx')).toBe('Inicio');
+ expect(contentPage('components/features/home/EditorialHeroCarousel.tsx')).toBe('Inicio');
+ expect(contentPage('components/features/products/ProductsCatalogView.tsx')).toBe('Tienda');
+ expect(contentPage('components/features/services/ConsultationExperience.tsx')).toBe('Asesoría');
+ expect(contentPage('components/ui/Calendar.tsx')).toBe('Asesoría');
+ expect(contentPage('components/common/Header.tsx')).toBe('Elementos compartidos');
+ expect(contentPage('components/common/Footer.tsx')).toBe('Elementos compartidos');
+});

@@ -1,4 +1,5 @@
 import catalog from './site-text-catalog.json';
+import {contentContinuationKeys} from './content-layout';
 import { cache } from 'react';
 import { persistentDatabaseEnabled, withPersistentDatabase } from './postgres-store';
 export const siteTextCatalog: Record<string, {source:string; text:string}> = catalog;
@@ -14,10 +15,10 @@ export const publicSiteContent = cache(async () => {
   catch { console.error('Contenido editorial no disponible; se muestran textos originales.'); return {}; }
 });
 export function validateContentChanges(changes: unknown): Array<{key:string; value:string; revision:number}> {
-  if (!Array.isArray(changes) || changes.length < 1 || changes.length > 200) throw new Error('Cantidad de cambios inválida');
+  if (!Array.isArray(changes) || changes.length < 1 || changes.length > Object.keys(siteTextCatalog).length) throw new Error('Cantidad de cambios inválida');
   const seen = new Set<string>();
   for (const item of changes) {
-    if (!item || typeof item.key !== 'string' || !Object.hasOwn(siteTextCatalog,item.key) || seen.has(item.key) || typeof item.value !== 'string' || !item.value.trim() || item.value.length > 12000 || /[<>\u0000]/.test(item.value) || !Number.isSafeInteger(item.revision) || item.revision < 0) throw new Error('Texto inválido: usa texto plano, sin HTML, y máximo 12000 caracteres.');
+    if (!item || typeof item.key !== 'string' || !Object.hasOwn(siteTextCatalog,item.key) || seen.has(item.key) || typeof item.value !== 'string' || (!item.value.trim() && !(item.value === '' && contentContinuationKeys.has(item.key))) || item.value.length > 12000 || /[<>\u0000]/.test(item.value) || !Number.isSafeInteger(item.revision) || item.revision < 0) throw new Error('Texto inválido: usa texto plano, sin HTML, y máximo 12000 caracteres.');
     seen.add(item.key);
   }
   return changes;

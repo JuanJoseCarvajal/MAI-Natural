@@ -7,7 +7,7 @@ import { signOut } from 'next-auth/react';
 
 const navItems = [
   { href: "/admin/content", label: "Textos del sitio", icon: "✏️" },
-  { href: "/admin/blog", label: "Blog · artículos", icon: "📝" },
+  { href: "/admin/blog", label: "Blogs · Diario MAI", icon: "📝" },
   { href: "/admin", label: "Resumen", icon: "📊" },
   { href: "/admin/products", label: "Productos", icon: "🧴" },
   { href: "/admin/inventory", label: "Inventario", icon: "📦" },

@@ -24,3 +24,13 @@ export function contentLocation(source:string):{title:string;url:string} {
  if(source.includes('Calendar'))return {title:'Calendario de citas',url:'/services'};
  return {title:'Mensajes de la asesoría',url:'/services'};
 }
+
+/** Groups source fragments by the page an editor recognizes. */
+export function contentPage(source:string):string {
+ const location=contentLocation(source);
+ if(/AppChrome|Header|Navigation|Footer|WhatsApp/.test(source))return 'Elementos compartidos';
+ if(location.url==='/services'||source.includes('/services/'))return 'Asesoría';
+ if(source.includes('Cart'))return 'Carrito';
+ if(location.url==='/products')return 'Tienda';
+ return location.title.split(' · ')[0];
+}
