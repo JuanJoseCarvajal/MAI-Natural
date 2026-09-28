@@ -1,6 +1,6 @@
 import {afterEach,expect,it,vi} from 'vitest';
 import {isTrustedUploadOrigin} from './request-origin';
-afterEach(()=>vi.unstubAllEnvs());
+afterEach(()=>{vi.unstubAllEnvs();});
 it('accepts public origins behind an internal Hostinger URL',()=>{
  vi.stubEnv('NODE_ENV','production');
  for(const origin of ['https://mainatural.com','https://www.mainatural.com']) expect(isTrustedUploadOrigin(origin,'http://127.0.0.1:3000/api/admin/product-images')).toBe(true);

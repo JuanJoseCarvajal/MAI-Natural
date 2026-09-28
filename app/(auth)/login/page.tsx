@@ -2,13 +2,12 @@
 import { SiteText } from "@/components/common/SiteText";
 
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { loginAction } from '../actions';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-  const router = useRouter();
+  const submitting = useRef(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -16,8 +15,11 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
     setError(null);
     setLoading(true);
+    let navigating = false;
 
     try {
       const result = await loginAction(email, password);
@@ -33,15 +35,20 @@ export default function LoginPage() {
         const nextUrl =
           callbackUrl?.startsWith('/') && !callbackUrl.startsWith('//') && !/[\\\u0000-\u001f]/.test(callbackUrl)
             ? callbackUrl
-            : '/account';
+            : result.destination;
 
-        router.push(nextUrl);
-        router.refresh();
+        // Start a fresh authenticated request, avoiding a prefetched anonymous page.
+        window.location.replace(nextUrl);
+        navigating = true;
+        return;
       }
     } catch {
       setError('Error inesperado');
     } finally {
-      setLoading(false);
+      if (!navigating) {
+        submitting.current = false;
+        setLoading(false);
+      }
     }
   };
 
@@ -50,22 +57,28 @@ export default function LoginPage() {
       <h1 className="text-2xl font-bold text-brand-900"><SiteText id="b5ee06e692bef30850db">{"Iniciar sesión"}</SiteText></h1>
       
       {error && (
-        <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
+        <div role="alert" id="login-error" className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+      <form onSubmit={handleSubmit} aria-busy={loading} className="mt-6 space-y-4">
+        <label htmlFor="login-email" className="block font-medium">Correo electrónico</label>
         <input
+          id="login-email"
+          disabled={loading}
           type="email"
           placeholder="Correo"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
-          autoComplete="email"
+          autoComplete="username"
           required
         />
+        <label htmlFor="login-password" className="block font-medium">Contraseña</label>
         <input
+          id="login-password"
+          disabled={loading}
           type="password"
           placeholder="Contraseña"
           value={password}

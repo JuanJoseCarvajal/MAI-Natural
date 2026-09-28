@@ -6,6 +6,7 @@ import { createAdminProduct, deleteAdminProduct, updateAdminProduct } from "@/ap
 import { categoryLabels, type Product } from "@/lib/products";
 import { adminProductSchema } from "@/lib/validators/admin";
 import styles from "./products-admin.module.css";
+import ProductImageUploader from './ProductImageUploader';
 
 type Draft = Product;
 const emptyProduct = (): Draft => ({
@@ -53,25 +54,11 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
   };
   const change = <K extends keyof Draft>(key: K, value: Draft[K]) => setDraft(current => current ? { ...current, [key]: value } : null);
   const close = () => { if (!pending && !uploading) setDraft(null); };
-  const upload = async (files: FileList | null) => {
-    if (!files?.length || !draft) return;
-    if ((draft.images?.length ?? 0) + files.length > 20) { setError('Puedes agregar máximo 20 imágenes.'); return; }
-    setUploading(true); setError('');
-    try {
-      for (const file of Array.from(files)) {
-        const form = new FormData(); form.append('file',file); form.append('category',draft.category);
-        const response = await fetch('/api/admin/product-images', {method:'POST',body:form});
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error || 'No se pudo subir la imagen.');
-        setDraft(current => {
-          if (!current) return current;
-          const images = (current.images ?? []).filter(src => src && !src.endsWith('/foto-pendiente.svg'));
-          return {...current, images:[...images,result.url], image:images[0] || result.url};
-        });
-      }
-    } catch (failure) { setError(failure instanceof Error ? failure.message : 'No se pudo subir la imagen.'); }
-    finally { setUploading(false); }
-  };
+  const addUploadedPhoto = (url: string) => setDraft(current => {
+    if (!current) return current;
+    const images = (current.images ?? []).filter(src => src && !src.endsWith('/foto-pendiente.svg'));
+    return {...current, images:[...images,url], image:images[0] || url};
+  });
   const save = () => {
     if (!draft || pending || uploading) return;
     const parsed = adminProductSchema.safeParse(draft);
@@ -130,7 +117,7 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
     {draft && <dialog ref={dialog} aria-labelledby="product-editor-title" onCancel={event => { event.preventDefault(); close(); }} className={styles.dialog}>
       <header className={styles.modalHeader}><div><p className={styles.eyebrow}>{editingId ? "Editar referencia" : "Nueva referencia"}</p><h2 id="product-editor-title">{editingId ? draft.name : "Crear producto"}</h2></div><button type="button" disabled={pending} onClick={close} aria-label="Cerrar editor" autoFocus>×</button></header>
       <form onSubmit={event => { event.preventDefault(); save(); }}>
-        <fieldset disabled={pending || uploading} className={styles.fields}>
+        <fieldset disabled={pending} className={styles.fields}>
           <label>Nombre<input required maxLength={160} value={draft.name} onChange={event => change("name", event.target.value)} /></label>
           <label>Categoría<select value={draft.category} onChange={event => change("category", event.target.value as Product["category"])}>{Object.entries(categoryLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
           <label>ID / slug<input value={draft.id} pattern="[a-z0-9]+(-[a-z0-9]+)*" maxLength={160} placeholder="Se genera a partir del nombre" onChange={event => change("id", event.target.value)} /><small>Cambiarlo modifica el enlace público del producto.</small></label>
@@ -145,10 +132,9 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
           <label className={styles.full}>Descripción<textarea aria-label="Descripción" rows={6} maxLength={12000} value={draft.description} onChange={event => change("description", event.target.value)} /></label>
           <label className={styles.full}>Beneficios (uno por línea)<textarea aria-label="Beneficios (uno por línea)" rows={3} value={draft.benefits.join("\n")} onChange={event => change("benefits", event.target.value.split("\n"))} /></label>
           <section className={styles.full} aria-label="Imágenes del producto"><h3>Imágenes y carrusel</h3><p>Sube fotos desde tu computador. Se guardan en el servidor por categoría. Pulsa Guardar producto para publicar la galería; la primera foto será la principal.</p>
-            <label>Subir imágenes desde mi computador<input type="file" accept="image/png,image/jpeg,image/webp" multiple onChange={event => { void upload(event.target.files); event.target.value = ''; }} /><small>PNG, JPEG o WebP · máximo 5 MB por imagen · hasta 20 fotos.</small></label>
-            {uploading && <p role="status">Subiendo imágenes al servidor…</p>}
+            <ProductImageUploader category={draft.category} remaining={Math.max(0,20-photos.filter(src=>src&&!src.endsWith('/foto-pendiente.svg')).length)} onUploaded={addUploadedPhoto} onBusy={setUploading}/>
             <div className={styles.photos}>{photos.map((src, index) => <div key={index} className={styles.photoRow}><Photo src={src} small /><div><label>{index === 0 ? "Imagen principal" : "Imagen " + (index + 1)}<input required value={src} placeholder="/products/autor/foto.png" onChange={event => { const next = [...photos]; next[index] = event.target.value; replacePhotos(next, next[0]); }} /></label><div className={styles.actions}><button type="button" disabled={index === 0} onClick={() => { const next = [...photos]; next.splice(index, 1); next.unshift(src); replacePhotos(next, src); }}>Hacer principal</button><button type="button" disabled={index === 0} aria-label={"Subir imagen " + (index + 1)} onClick={() => movePhoto(index, -1)}>↑</button><button type="button" disabled={index === photos.length - 1} aria-label={"Bajar imagen " + (index + 1)} onClick={() => movePhoto(index, 1)}>↓</button><button type="button" aria-label={"Quitar imagen " + (index + 1)} onClick={() => replacePhotos(photos.filter((_, i) => i !== index))}>Quitar</button></div></div></div>)}</div>
-            <button type="button" disabled={photos.length >= 20} onClick={() => change("images", [...photos, ""])}>+ Agregar imagen</button>
+            <button type="button" disabled={uploading || photos.length >= 20} onClick={() => change("images", [...photos, ""])}>Agregar imagen mediante URL (avanzado)</button>
           </section>
           <section className={styles.full} aria-label="Variantes del producto"><h3>Variantes</h3><p>Comparten el precio y el plazo de elaboración del producto.</p>
             {(draft.variants ?? []).map((variant, index) => <div key={index} className={styles.variant}>
@@ -159,7 +145,7 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
           </section>
         </fieldset>
         {error && <p role="alert" className={styles.error}>{error}</p>}
-        <footer className={styles.modalFooter}><button type="button" disabled={pending} onClick={close}>Cancelar</button><button type="submit" disabled={pending} className={styles.create}>{pending ? "Guardando…" : "Guardar producto"}</button></footer>
+        <footer className={styles.modalFooter}><button type="button" disabled={pending || uploading} onClick={close}>Cancelar</button><button type="submit" disabled={pending || uploading} className={styles.create}>{uploading ? "Espera a que terminen las fotos…" : pending ? "Guardando…" : "Guardar producto"}</button></footer>
       </form>
     </dialog>}
   </div>;
