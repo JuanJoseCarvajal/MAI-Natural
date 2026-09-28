@@ -9,7 +9,7 @@ const imagePath = text(500).refine(value => {
 }, 'Usa una ruta /products/ o una URL HTTPS de mainatural.com');
 const productId = text(160).regex(/^(?:[a-z0-9]+(?:-[a-z0-9]+)*)?$/, 'Usa letras minúsculas, números y guiones');
 export const adminProductSchema = z.object({
-  id:productId.optional(), image:imagePath,
+  revision:z.number().int().min(0).optional(),id:productId.optional(), image:imagePath,
   images:z.array(imagePath).max(20).optional(),
   variants:z.array(z.object({id:productId.min(1),name:text(160).min(1),image:imagePath}).strict()).max(30).refine(items => new Set(items.map(item=>item.id)).size === items.length, 'Los ID de variantes deben ser únicos').optional(),
   name:text(160).min(2),price:text(100),amountInCents:money,description:text(12000),category,
@@ -17,6 +17,6 @@ export const adminProductSchema = z.object({
   sku:text(120).optional(),active:z.boolean().optional(),
 }).strict();
 export const adminDiscountSchema = z.object({
-  id:text(160).optional(),code:text(60).min(1).regex(/^[A-Za-z0-9_-]+$/),label:text(160).min(1),description:text(2000).optional(),active:z.boolean(),
+  revision:z.number().int().min(0).optional(),id:text(160).optional(),code:text(60).min(1).regex(/^[A-Za-z0-9_-]+$/),label:text(160).min(1),description:text(2000).optional(),active:z.boolean(),
   kind:z.enum(['percentage','fixed']),percentage:z.number().min(0).max(100).optional(),amountInCents:money.optional(),scope:z.enum(['all','category','products','kits']),category:category.optional(),productIds:z.array(text(160)).max(500).optional(),minimumSubtotalInCents:money.optional(),
 }).strict().refine(value => value.kind === 'percentage' ? (value.percentage ?? 0) > 0 : (value.amountInCents ?? 0) > 0,'Descuento inválido');

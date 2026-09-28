@@ -27,7 +27,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
         build.onResolve({ filter: /^@\/app\/admin\/actions$/ }, () => ({ path: "actions", namespace: "fixture" }));
         build.onLoad({ filter: /.*/, namespace: "fixture" }, args => ({
           contents: args.path === "image" ? `import React from "react"; export default function Image({fill,sizes,priority,...props}) {return React.createElement("img",{...props,style:fill?{position:"absolute",inset:0,width:"100%",height:"100%"}:undefined});}` :
-          `const save=async product=>{if(window.__fail){throw new Error("Error de prueba");} window.__saved=product;return {product:{...product,id:product.id||"new-product"}}};export const createAdminProduct=save;export const updateAdminProduct=(_,p)=>save(p);export const deleteAdminProduct=async()=>({success:true});`,
+          `const save=async product=>{if(window.__fail){return {error:"Error de prueba"};} window.__saved=product;return {product:{...product,id:product.id||"new-product"}}};export const createAdminProduct=save;export const updateAdminProduct=(_,p)=>save(p);export const deleteAdminProduct=async()=>({success:true});`,
           loader: "js", resolveDir: root,
         }));
       },
@@ -81,7 +81,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     assert.equal(await dialog.getByLabel("Descripción",{exact:true}).inputValue(),"Descripción editada");
     await page.evaluate(()=>window.__fail=false);
     await dialog.getByRole("button",{name:"Guardar producto",exact:true}).click();
-    await page.getByText("Producto actualizado.",{exact:true}).waitFor();
+    await page.getByText("Producto guardado y disponible en el sitio.",{exact:true}).waitFor();
     const saved=await page.evaluate(()=>window.__saved);
     assert.equal(saved.images.length,2); assert.equal(saved.rating,4.2); assert.equal(saved.description,"Descripción editada");
     const single=await page.locator("#single button").first().boundingBox(), multiple=await page.locator("#multiple button").first().boundingBox();

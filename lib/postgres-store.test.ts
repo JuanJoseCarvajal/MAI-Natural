@@ -37,7 +37,8 @@ describe('Persistent Wompi production safeguards (embedded PostgreSQL)',()=>{
  it('migrates CMS privately, publishes atomically and rejects stale revisions',async()=>{
    config();await runtime.engine.exec(await readFile('migrations/002-admin-content.sql','utf8'));
    const key=Object.keys(siteTextCatalog)[0],actor=randomUUID();
-   await writeSiteContent([{key,value:'Texto publicado',revision:0}],actor);
+   const confirmed=await writeSiteContent([{key,value:'Texto publicado',revision:0}],actor);
+   expect(confirmed).toEqual([{key,value:'Texto publicado',revision:1}]);
    expect((await readSiteContent()).find(row=>row.key===key)?.value).toBe('Texto publicado');
    await expect(writeSiteContent([{key,value:'Texto obsoleto',revision:0}],actor)).rejects.toThrow('Otra sesión');
    await writeSiteContent([{key,value:'Texto actualizado',revision:1}],actor);

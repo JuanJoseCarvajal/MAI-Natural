@@ -5,7 +5,7 @@ type Item={id:string;file:File;preview:string;progress:number;status:'waiting'|'
 export default function ProductImageUploader({category,remaining,onUploaded,onBusy}:{category:string;remaining:number;onUploaded:(url:string)=>void;onBusy:(busy:boolean)=>void}) {
  const [items,setItems]=useState<Item[]>([]),[message,setMessage]=useState('');
  const busy=useRef(false),xhr=useRef<XMLHttpRequest|null>(null),urls=useRef<string[]>([]),mounted=useRef(true);
- useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;xhr.current?.abort();urls.current.forEach(url=>URL.revokeObjectURL(url));};},[]);
+ useEffect(()=>{const previews=urls.current;mounted.current=true;return()=>{mounted.current=false;xhr.current?.abort();previews.forEach(url=>URL.revokeObjectURL(url));};},[]);
  const update=(id:string,patch:Partial<Item>)=>{if(mounted.current)setItems(all=>all.map(item=>item.id===id?{...item,...patch}:item));};
  async function run(batch:Item[]){
   if(busy.current)return;busy.current=true;onBusy(true);

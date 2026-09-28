@@ -6,6 +6,7 @@ try {
   await client.connect();
   await client.query(await readFile(new URL('../migrations/001-persistent-records.sql', import.meta.url), 'utf8'));
   await client.query(await readFile(new URL('../migrations/002-admin-content.sql', import.meta.url), 'utf8'));
-  console.log('Esquema MAI v2 listo. No se importaron datos del almacenamiento temporal.');
+  await client.query(await readFile(new URL('../migrations/003-shared-catalogs.sql', import.meta.url), 'utf8'));
+  console.log('Esquema MAI v3 listo. Importa los catálogos actuales con scripts/import-shared-catalogs.mjs antes del despliegue.');
 } catch { console.error('No se pudo migrar la base de datos. Revisa conexión, TLS y permisos.'); process.exitCode = 1; }
 finally { await client.end(); }

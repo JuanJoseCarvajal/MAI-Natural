@@ -22,6 +22,7 @@ function Photo({ src, alt = "", small = false }: { src: string; alt?: string; sm
 
 export default function AdminProductsManager({ initialProducts }: { initialProducts: Product[] }) {
   const [products, setProducts] = useState(initialProducts);
+  const [baseline, setBaseline] = useState("");
   const [query, setQuery] = useState("");
   const [draft, setDraft] = useState<Draft | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -32,6 +33,13 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLElement | null>(null);
   const open = draft !== null;
+  const dirty = !!draft && JSON.stringify(draft) !== baseline;
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ''; };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [dirty]);
 
   useEffect(() => {
     if (!open) return;
@@ -50,10 +58,12 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
     trigger.current = document.activeElement as HTMLElement;
     setEditingId(product?.id ?? null);
     setError("");
-    setDraft(product ? { ...product, images: Array.from(new Set([product.image, ...(product.images ?? [])])), variants: product.variants?.map(v => ({ ...v })) ?? [], benefits: [...product.benefits] } : emptyProduct());
+    const next = product ? { ...product, images: Array.from(new Set([product.image, ...(product.images ?? [])])), variants: product.variants?.map(v => ({ ...v })) ?? [], benefits: [...product.benefits] } : emptyProduct();
+    setBaseline(JSON.stringify(next));
+    setDraft(next);
   };
   const change = <K extends keyof Draft>(key: K, value: Draft[K]) => setDraft(current => current ? { ...current, [key]: value } : null);
-  const close = () => { if (!pending && !uploading) setDraft(null); };
+  const close = () => { if (!pending && !uploading && (!dirty || window.confirm("¿Descartar los cambios sin guardar?"))) setDraft(null); };
   const addUploadedPhoto = (url: string) => setDraft(current => {
     if (!current) return current;
     const images = (current.images ?? []).filter(src => src && !src.endsWith('/foto-pendiente.svg'));
@@ -66,9 +76,11 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
     setError("");
     startTransition(async () => {
       try {
-        const { product } = editingId ? await updateAdminProduct(editingId, parsed.data) : await createAdminProduct(parsed.data);
+        const result = editingId ? await updateAdminProduct(editingId, parsed.data) : await createAdminProduct(parsed.data);
+        if (result.error) { setError(result.error); return; }
+        const product = result.product!;
         setProducts(current => editingId ? current.map(item => item.id === editingId ? product : item) : [product, ...current]);
-        setNotice(editingId ? "Producto actualizado." : "Producto creado.");
+        setNotice(editingId ? "Producto guardado y disponible en el sitio." : "Producto creado y guardado.");
         setDraft(null);
       } catch (failure) { setError(failure instanceof Error ? failure.message : "No fue posible guardar. Inténtalo nuevamente."); }
     });
@@ -76,7 +88,7 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
   const remove = (product: Product) => {
     if (!window.confirm("¿Eliminar " + product.name + " del catálogo?")) return;
     startTransition(async () => {
-      try { await deleteAdminProduct(product.id); setProducts(current => current.filter(item => item.id !== product.id)); setNotice("Producto eliminado."); }
+      try { const result = await deleteAdminProduct(product.id, product.revision); if (result.error) { setNotice(result.error); return; } setProducts(current => current.filter(item => item.id !== product.id)); setNotice("Producto eliminado."); }
       catch (failure) { setNotice(failure instanceof Error ? failure.message : "No fue posible eliminar."); }
     });
   };

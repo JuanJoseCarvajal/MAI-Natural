@@ -1,16 +1,15 @@
 import "server-only";
 
-import { promises as fs } from "fs";
-import path from "path";
+import { readCatalog, writeCatalog, catalogTransaction, assertCatalogRevision } from "./catalog-store";
 import type { CartItem } from "@/components/features/cart/CartContext";
 import type { DiscountCode, DiscountEvaluation } from "@/lib/discounts";
 import { getAllProductsForAdmin } from "@/lib/products.server";
 import { resolveProduct } from "@/lib/products";
 
-const discountsPath = path.join(process.cwd(), "lib", "discounts.catalog.json");
 
 export type AdminDiscountInput = {
   id?: string;
+  revision?: number;
   code: string;
   label: string;
   description?: string;
@@ -24,14 +23,8 @@ export type AdminDiscountInput = {
   minimumSubtotalInCents?: number;
 };
 
-async function readDiscountsFile() {
-  const raw = await fs.readFile(discountsPath, "utf8");
-  return JSON.parse(raw) as DiscountCode[];
-}
-
-async function writeDiscountsFile(discounts: DiscountCode[]) {
-  await fs.writeFile(discountsPath, `${JSON.stringify(discounts, null, 2)}\n`, "utf8");
-}
+const readDiscountsFile = () => readCatalog<DiscountCode>("discounts");
+const writeDiscountsFile = (items: DiscountCode[]) => writeCatalog("discounts", items);
 
 export async function getAllDiscountsForAdmin() {
   return readDiscountsFile();
@@ -52,6 +45,7 @@ function buildIdFromCode(code: string) {
 }
 
 export async function createDiscount(input: AdminDiscountInput) {
+  return catalogTransaction(async () => {
   const discounts = await readDiscountsFile();
   const normalizedCode = input.code.trim().toUpperCase();
   if (discounts.some((discount) => discount.code === normalizedCode)) {
@@ -60,6 +54,7 @@ export async function createDiscount(input: AdminDiscountInput) {
 
   const nextDiscount: DiscountCode = {
     id: input.id?.trim() || buildIdFromCode(normalizedCode),
+    revision: 1,
     code: normalizedCode,
     label: input.label.trim(),
     description: input.description?.trim() || undefined,
@@ -73,12 +68,18 @@ export async function createDiscount(input: AdminDiscountInput) {
     minimumSubtotalInCents: Number(input.minimumSubtotalInCents ?? 0) || undefined,
   };
 
+  if (discounts.some(discount => discount.id === nextDiscount.id)) throw new Error("Ya existe un descuento con ese identificador.");
   await writeDiscountsFile([nextDiscount, ...discounts]);
   return nextDiscount;
+  });
 }
 
 export async function updateDiscount(id: string, input: AdminDiscountInput) {
+  return catalogTransaction(async () => {
   const discounts = await readDiscountsFile();
+  const current = discounts.find(item => item.id === id);
+  if (!current) throw new Error('Descuento no encontrado.');
+  assertCatalogRevision(current, input.revision);
   const normalizedCode = input.code.trim().toUpperCase();
   const repeated = discounts.find(
     (discount) => discount.id !== id && discount.code === normalizedCode
@@ -91,6 +92,7 @@ export async function updateDiscount(id: string, input: AdminDiscountInput) {
     discount.id === id
       ? {
           ...discount,
+          revision: (discount.revision ?? 0) + 1,
           code: normalizedCode,
           label: input.label.trim(),
           description: input.description?.trim() || undefined,
@@ -109,11 +111,17 @@ export async function updateDiscount(id: string, input: AdminDiscountInput) {
 
   await writeDiscountsFile(nextDiscounts);
   return nextDiscounts.find((discount) => discount.id === id);
+  });
 }
 
-export async function deleteDiscount(id: string) {
+export async function deleteDiscount(id: string, revision?: number) {
+  return catalogTransaction(async () => {
   const discounts = await readDiscountsFile();
+  const current = discounts.find(item => item.id === id);
+  if (!current) throw new Error("Descuento no encontrado.");
+  assertCatalogRevision(current, revision);
   await writeDiscountsFile(discounts.filter((discount) => discount.id !== id));
+  });
 }
 
 export async function evaluateDiscountCode(

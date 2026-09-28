@@ -68,7 +68,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       </aside>
 
       <div className="min-w-0 flex-1">
-        <div className="flex justify-end border-b bg-white px-4 py-2"><button className="text-sm underline" onClick={() => signOut({callbackUrl:'/login'})}>Cerrar sesión administrativa</button></div>
+        <div className="flex flex-wrap justify-end gap-4 border-b bg-white px-4 py-2"><button type="button" className="text-sm underline" onClick={() => window.location.reload()}>Actualizar datos</button><button className="text-sm underline" onClick={() => signOut({callbackUrl:'/login'})}>Cerrar sesión administrativa</button></div>
         <div className="border-b border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="flex items-center justify-between gap-3">
             <div>

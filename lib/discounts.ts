@@ -4,6 +4,7 @@ export type DiscountScope = "all" | "category" | "products" | "kits";
 export type DiscountKind = "percentage" | "fixed";
 
 export type DiscountCode = {
+  revision?: number;
   id: string;
   code: string;
   label: string;

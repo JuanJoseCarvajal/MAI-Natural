@@ -5,9 +5,9 @@ import { revalidatePath } from 'next/cache';
 export async function saveSiteContent(changes: unknown) {
   try {
     const actor = await requireAdmin();
-    await writeSiteContent(changes, actor.id);
+    const saved = await writeSiteContent(changes, actor.id);
     revalidatePath('/', 'layout');
-    return { success: true };
+    return { success: true, saved };
   } catch (error) {
     return { error: error instanceof Error && /Otra sesión|Texto inválido|Cantidad/.test(error.message) ? error.message : 'No se pudo guardar. Verifica tu sesión administrativa y la conexión.' };
   }

@@ -1,13 +1,12 @@
 import "server-only";
 
-import { promises as fs } from "fs";
-import path from "path";
+import { readCatalog, writeCatalog, catalogTransaction, assertCatalogRevision } from "./catalog-store";
 import { categoryLabels, type Product } from "@/lib/products";
 
-const catalogPath = path.join(process.cwd(), "lib", "products.catalog.json");
 
 export type AdminProductInput = {
   id?: string;
+  revision?: number;
   image: string;
   images?: string[];
   variants?: Product["variants"];
@@ -24,14 +23,8 @@ export type AdminProductInput = {
   active?: boolean;
 };
 
-async function readCatalogFile() {
-  const raw = await fs.readFile(catalogPath, "utf8");
-  return JSON.parse(raw) as Product[];
-}
-
-async function writeCatalogFile(products: Product[]) {
-  await fs.writeFile(catalogPath, `${JSON.stringify(products, null, 2)}\n`, "utf8");
-}
+const readCatalogFile = () => readCatalog<Product>("products");
+const writeCatalogFile = (items: Product[]) => writeCatalog("products", items);
 
 export async function getAllProducts() {
   const products = await readCatalogFile();
@@ -48,6 +41,7 @@ export async function getProductById(id: string) {
 }
 
 export async function createProduct(input: AdminProductInput) {
+  return catalogTransaction(async () => {
   const products = await readCatalogFile();
   const id =
     input.id?.trim() ||
@@ -64,6 +58,7 @@ export async function createProduct(input: AdminProductInput) {
 
   const nextProduct: Product = {
     id,
+    revision: 1,
     image: input.image.trim(),
     images: Array.from(new Set([input.image.trim(), ...(input.images ?? [])])),
     variants: input.variants ?? [],
@@ -83,14 +78,17 @@ export async function createProduct(input: AdminProductInput) {
   const nextProducts = [nextProduct, ...products];
   await writeCatalogFile(nextProducts);
   return nextProduct;
+  });
 }
 
 export async function updateProduct(id: string, updates: AdminProductInput) {
+  return catalogTransaction(async () => {
   const products = await readCatalogFile();
   const current = products.find((product) => product.id === id);
   if (!current) {
     throw new Error("Producto no encontrado.");
   }
+  assertCatalogRevision(current, updates.revision);
   const nextId = updates.id?.trim() || id;
   if (nextId !== id && products.some(product => product.id === nextId)) throw new Error("Ya existe un producto con ese identificador.");
 
@@ -98,6 +96,7 @@ export async function updateProduct(id: string, updates: AdminProductInput) {
     product.id === id
       ? {
           ...product,
+          revision: (product.revision ?? 0) + 1,
           id: nextId,
           image: updates.image.trim(),
           images: Array.from(new Set([updates.image.trim(), ...(updates.images ?? product.images ?? [])])),
@@ -119,10 +118,16 @@ export async function updateProduct(id: string, updates: AdminProductInput) {
 
   await writeCatalogFile(nextProducts);
   return nextProducts.find((product) => product.id === nextId)!;
+  });
 }
 
-export async function deleteProduct(id: string) {
+export async function deleteProduct(id: string, revision?: number) {
+  return catalogTransaction(async () => {
   const products = await readCatalogFile();
+  const current = products.find(item => item.id === id);
+  if (!current) throw new Error("Producto no encontrado.");
+  assertCatalogRevision(current, revision);
   const nextProducts = products.filter((product) => product.id !== id);
   await writeCatalogFile(nextProducts);
+  });
 }

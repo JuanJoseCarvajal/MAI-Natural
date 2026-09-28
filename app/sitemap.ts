@@ -3,7 +3,7 @@ import { getEditableBlogPosts } from "@/lib/blog-content";
 import { getAllProducts } from "@/lib/products.server";
 import { absoluteUrl } from "@/lib/seo";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getAllProducts();

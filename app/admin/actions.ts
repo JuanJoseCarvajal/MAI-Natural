@@ -1,4 +1,5 @@
 'use server';
+import {adminSaveError} from '@/lib/admin-errors';
 
 import { randomUUID } from 'node:crypto';
 import { reconcileWompi } from '@/lib/wompi-reconciliation';
@@ -170,6 +171,7 @@ function normalizeProductInput(input: AdminProductInput): AdminProductInput {
 }
 
 export async function createAdminProduct(input: AdminProductInput) {
+  try {
   await ensureAdmin();
   const product = await createProduct(normalizeProductInput(input));
   revalidatePath('/');
@@ -177,9 +179,11 @@ export async function createAdminProduct(input: AdminProductInput) {
   revalidatePath('/admin');
   revalidatePath('/admin/products');
   return { success: true, product };
+  } catch (error) { return {error: adminSaveError(error)}; }
 }
 
 export async function updateAdminProduct(id: string, input: AdminProductInput) {
+  try {
   await ensureAdmin();
   const product = await updateProduct(id, normalizeProductInput(input));
   revalidatePath('/');
@@ -190,17 +194,20 @@ export async function updateAdminProduct(id: string, input: AdminProductInput) {
   revalidatePath('/admin/products');
   revalidatePath('/admin/inventory');
   return { success: true, product };
+  } catch (error) { return {error: adminSaveError(error)}; }
 }
 
-export async function deleteAdminProduct(id: string) {
+export async function deleteAdminProduct(id: string, revision?: number) {
+  try {
   await ensureAdmin();
-  await deleteProduct(id);
+  await deleteProduct(id, revision);
   revalidatePath('/');
   revalidatePath('/products');
   revalidatePath('/admin');
   revalidatePath('/admin/products');
   revalidatePath('/admin/inventory');
   return { success: true };
+  } catch (error) { return {error: adminSaveError(error)}; }
 }
 
 export async function updateAdminAppointmentStatus(id: string, status: string) {
@@ -256,27 +263,33 @@ export async function updateAdminUserRole(id: string, role: string) {
 }
 
 export async function createAdminDiscount(input: AdminDiscountInput) {
+  try {
   await ensureAdmin();
   const discount = await createDiscount(adminDiscountSchema.parse(input));
   revalidatePath('/admin/discounts');
   revalidatePath('/checkout');
   return { success: true, discount };
+  } catch (error) { return {error: adminSaveError(error)}; }
 }
 
 export async function updateAdminDiscount(id: string, input: AdminDiscountInput) {
+  try {
   await ensureAdmin();
   const discount = await updateDiscount(id, adminDiscountSchema.parse(input));
   revalidatePath('/admin/discounts');
   revalidatePath('/checkout');
   return { success: true, discount };
+  } catch (error) { return {error: adminSaveError(error)}; }
 }
 
-export async function deleteAdminDiscount(id: string) {
+export async function deleteAdminDiscount(id: string, revision?: number) {
+  try {
   await ensureAdmin();
-  await deleteDiscount(id);
+  await deleteDiscount(id, revision);
   revalidatePath('/admin/discounts');
   revalidatePath('/checkout');
   return { success: true };
+  } catch (error) { return {error: adminSaveError(error)}; }
 }
 
 export async function verifyAdminWompiOrder(orderId: string, transactionId: string) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import {
   createAdminDiscount,
   deleteAdminDiscount,
@@ -65,6 +65,14 @@ export default function AdminDiscountsManager({
   const [discounts, setDiscounts] = useState(initialDiscounts);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<DiscountFormState>(defaultForm);
+  const [baseline, setBaseline] = useState(JSON.stringify(defaultForm));
+  const dirty = JSON.stringify(form) !== baseline;
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ''; };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [dirty]);
   const [query, setQuery] = useState("");
   const visible = discounts.filter(d=>[d.code,d.description].join(" ").toLowerCase().includes(query.trim().toLowerCase()));
   const [message, setMessage] = useState("");
@@ -73,12 +81,14 @@ export default function AdminDiscountsManager({
   const resetForm = () => {
     setEditingId(null);
     setForm(defaultForm);
+    setBaseline(JSON.stringify(defaultForm));
   };
 
   const handleSubmit = () => {
     setMessage("");
     const payload = {
       ...form,
+      revision: discounts.find(item => item.id === editingId)?.revision ?? 0,
       percentage: Number(form.percentage),
       amountInCents: Number(form.amountInCents),
       productIds: form.productIds.split("\n").map((item) => item.trim()).filter(Boolean),
@@ -89,6 +99,7 @@ export default function AdminDiscountsManager({
       try {
         if (editingId) {
           const result = await updateAdminDiscount(editingId, payload);
+          if (result.error) { setMessage(result.error); return; }
           setDiscounts((current) =>
             current.map((discount) =>
               discount.id === editingId ? (result.discount as DiscountCode) : discount
@@ -97,6 +108,7 @@ export default function AdminDiscountsManager({
           setMessage("Descuento actualizado.");
         } else {
           const result = await createAdminDiscount(payload);
+          if (result.error) { setMessage(result.error); return; }
           setDiscounts((current) => [result.discount as DiscountCode, ...current]);
           setMessage("Código creado.");
         }
@@ -111,7 +123,8 @@ export default function AdminDiscountsManager({
     if (!window.confirm("¿Seguro que quieres eliminar este código de descuento?")) return;
     startTransition(async () => {
       try {
-        await deleteAdminDiscount(id);
+        const result = await deleteAdminDiscount(id, discounts.find(item => item.id === id)?.revision);
+        if (result.error) { setMessage(result.error); return; }
         setDiscounts((current) => current.filter((discount) => discount.id !== id));
         if (editingId === id) resetForm();
         setMessage("Código eliminado.");
@@ -136,7 +149,7 @@ export default function AdminDiscountsManager({
           {editingId ? (
             <button
               type="button"
-              onClick={resetForm}
+              onClick={() => { if (!dirty || window.confirm("¿Descartar los cambios sin guardar?")) resetForm(); }}
               className="rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-900"
             >
               Nuevo
@@ -144,7 +157,7 @@ export default function AdminDiscountsManager({
           ) : null}
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <fieldset disabled={isPending} className="mt-6 grid gap-4 md:grid-cols-2">
           <label className="text-sm">
             <span className="mb-1 block font-medium text-slate-700">Código</span>
             <input
@@ -265,7 +278,7 @@ export default function AdminDiscountsManager({
               <option value="inactive">Inactivo</option>
             </select>
           </label>
-        </div>
+        </fieldset>
 
         {message ? (
           <p role="status" aria-live="polite" className="mt-4 rounded-2xl bg-brand-50 px-4 py-3 text-sm text-brand-900">{message}</p>
@@ -315,9 +328,12 @@ export default function AdminDiscountsManager({
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
+                    disabled={isPending}
                     onClick={() => {
+                      if (dirty && !window.confirm("¿Descartar los cambios sin guardar?")) return;
                       setEditingId(discount.id);
                       setForm(discountToForm(discount));
+                          setBaseline(JSON.stringify(discountToForm(discount)));
                     }}
                     className="rounded-full border border-brand-300 px-4 py-2 text-sm font-semibold text-brand-900"
                   >
@@ -325,6 +341,7 @@ export default function AdminDiscountsManager({
                   </button>
                   <button
                     type="button"
+                    disabled={isPending}
                     onClick={() => handleDelete(discount.id)}
                     className="rounded-full border border-red-200 px-4 py-2 text-sm font-semibold text-red-700"
                   >

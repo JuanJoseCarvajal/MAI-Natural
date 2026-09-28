@@ -7,6 +7,7 @@ export type ProductCategory =
 export type Product = {
   images?: string[];
   variants?: { id: string; name: string; image: string }[];
+  revision?: number;
   id: string;
   image: string;
   name: string;
