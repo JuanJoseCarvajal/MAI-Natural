@@ -33,4 +33,4 @@ Las pruebas automatizadas usan PostgreSQL embebido aislado. No certifican el des
 
 - 150 pruebas automatizadas aprobadas; compilación de producción y comprobación de tipos aprobadas.
 - Navegador de escritorio y móvil: formulario conservado tras error, reintento, foco de teclado y ausencia de desbordamiento horizontal. Las acciones del navegador se simulan; persistencia, reinicio, concurrencia y permisos se prueban por separado en PostgreSQL embebido.
-- Se ejecutó únicamente la migración aditiva 003 en la conexión configurada localmente. La tabla existe y está vacía. No se importaron productos ni descuentos, ni se desplegó el código. Debe verificarse que Hostinger use esa misma conexión antes de activar la revisión.
+- Se ejecutó la migración aditiva 003 en la conexión configurada localmente. Después se importaron los archivos del despliegue actual adjuntados por el usuario: 24 productos y 2 descuentos. Una nueva conexión verificó la igualdad campo por campo con ambos archivos, incluyendo las revisiones iniciales. Debe verificarse que Hostinger use esa misma conexión antes de activar la revisión. El despliegue en Hostinger sigue pendiente de confirmación.
