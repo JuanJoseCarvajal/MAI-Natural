@@ -8,6 +8,10 @@ import { SiteContentProvider } from "@/components/common/SiteText";
 import { publicSiteContent } from "@/lib/site-content";
 import { buildMetadata, defaultSeoDescription, siteName, siteUrl } from "@/lib/seo";
 
+// Editorial content is shared across the entire site. Read it on every request
+// so separate server instances do not serve independently cached revisions.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   ...buildMetadata({
