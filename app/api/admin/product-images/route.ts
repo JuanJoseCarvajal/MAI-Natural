@@ -4,6 +4,8 @@ import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { requireAdmin } from '@/lib/admin-access';
 import { isTrustedUploadOrigin } from '@/lib/request-origin';
+import { persistentDatabaseEnabled } from '@/lib/postgres-store';
+import { storeProductImage } from '@/lib/product-image-store';
 import { imageCategories, imageDirectory, imageExtension, maxImageBytes } from '@/lib/product-images';
 export const runtime = 'nodejs';
 
@@ -22,11 +24,15 @@ export async function POST(request: NextRequest) {
     if (!imageCategories.includes(category as typeof imageCategories[number]) || !(file instanceof File) || !file.size || file.size > maxImageBytes) return NextResponse.json({error:'Selecciona una categoría y una imagen de hasta 5 MB.'}, {status:400});
     const bytes = Buffer.from(await file.arrayBuffer()), extension = imageExtension(bytes);
     if (!extension) return NextResponse.json({error:'Solo se admiten imágenes PNG, JPEG o WebP.'}, {status:400});
-    if (process.env.NODE_ENV === 'production' && !process.env.PRODUCT_IMAGES_DIR) return NextResponse.json({error:'Configura PRODUCT_IMAGES_DIR en el servidor para conservar las imágenes entre despliegues.'}, {status:503});
-    const folder = path.join(imageDirectory(), String(category));
-    await mkdir(folder, {recursive:true});
     const filename = `${randomUUID()}.${extension}`;
-    await writeFile(path.join(folder, filename), bytes, {flag:'wx'});
+    if (persistentDatabaseEnabled()) {
+      await storeProductImage(String(category),filename,bytes);
+    } else {
+      if (process.env.NODE_ENV === 'production' && !process.env.PRODUCT_IMAGES_DIR) return NextResponse.json({error:'El almacenamiento persistente no está disponible. Contacta al administrador del sitio.'}, {status:503});
+      const folder = path.join(imageDirectory(), String(category));
+      await mkdir(folder, {recursive:true});
+      await writeFile(path.join(folder, filename), bytes, {flag:'wx'});
+    }
     return NextResponse.json({url:`/products/media/${category}/${filename}`}, {status:201});
-  } catch { return NextResponse.json({error:'No se pudo guardar la imagen. Revisa el formato y los permisos del servidor.'}, {status:500}); }
+  } catch { return NextResponse.json({error:'No se pudo guardar la imagen en el almacenamiento. Reintenta; si persiste, revisa la conexión y los permisos de la base de datos.'}, {status:500}); }
 }

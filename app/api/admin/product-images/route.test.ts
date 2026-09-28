@@ -1,7 +1,9 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 vi.mock('@/lib/admin-access',()=>({requireAdmin:vi.fn()}));
 vi.mock('node:fs/promises',()=>({mkdir:vi.fn(),writeFile:vi.fn()}));
+vi.mock('@/lib/product-image-store',()=>({storeProductImage:vi.fn()}));
+import {storeProductImage} from '@/lib/product-image-store';
 import {requireAdmin} from '@/lib/admin-access';
 import {writeFile} from 'node:fs/promises';
 import {POST} from './route';
@@ -10,8 +12,18 @@ function request(bytes:Uint8Array=png,category='facial',origin='https://mainatur
  const form=new FormData(); form.append('category',category); form.append('file',new Blob([bytes as BlobPart]),'photo.png');
  return new NextRequest('https://mainatural.com/api/admin/product-images',{method:'POST',headers:{origin},body:form});
 }
-beforeEach(()=>{vi.resetAllMocks();vi.mocked(requireAdmin).mockResolvedValue({id:'admin',email:'hola@mainatural.com'});});
+beforeEach(()=>{vi.resetAllMocks();vi.stubEnv('DATABASE_DRIVER','memory');vi.mocked(requireAdmin).mockResolvedValue({id:'admin',email:'hola@mainatural.com'});});
+afterEach(()=>{vi.unstubAllEnvs();});
 describe('product image uploads',()=>{
+ it('uploads in production without PRODUCT_IMAGES_DIR using persistent storage',async()=>{
+   vi.stubEnv('NODE_ENV','production');vi.stubEnv('DATABASE_DRIVER','postgres');vi.stubEnv('PRODUCT_IMAGES_DIR','');
+   expect((await POST(request())).status).toBe(201);
+   expect(storeProductImage).toHaveBeenCalledOnce();expect(writeFile).not.toHaveBeenCalled();
+ });
+ it('does not silently write to temporary disk when persistent storage fails',async()=>{
+   vi.stubEnv('DATABASE_DRIVER','postgres');vi.mocked(storeProductImage).mockRejectedValueOnce(new Error('database unavailable'));
+   expect((await POST(request())).status).toBe(500);expect(writeFile).not.toHaveBeenCalled();
+ });
  it('accepts uploads from public browsers through an internal reverse proxy',async()=>{
    const original=request();
    const proxied=new NextRequest('http://127.0.0.1:3000/api/admin/product-images',{method:'POST',headers:original.headers,body:await original.arrayBuffer()});

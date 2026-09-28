@@ -4,9 +4,9 @@ Las 49 fotografías del catálogo se organizan en `assets/product-images/{facial
 
 ## Hostinger
 
-Configurar `PRODUCT_IMAGES_DIR` como una ruta absoluta a una carpeta persistente y escribible **fuera del directorio reemplazado por los despliegues**. Copiar inicialmente el contenido de `assets/product-images/` a esa carpeta, conservando las subcarpetas por categoría. No sobrescribir ni eliminar las fotos subidas en futuros despliegues. Incluir esta carpeta en las copias de seguridad. Sin esta variable, en producción las fotos incluidas se pueden leer pero las nuevas cargas se rechazan con un mensaje de configuración.
+Las nuevas fotos se guardan en PostgreSQL cuando `DATABASE_DRIVER=postgres`, usando la conexión existente `DATABASE_URL` del backoffice. Ya no se requiere `PRODUCT_IMAGES_DIR`. La tabla privada `mai_product_images` se inicializa en la primera carga administrativa; la cuenta de conexión necesita permiso de creación de tabla. Las fotos se conservan entre despliegues e instancias y deben incluirse en las copias de seguridad de la base de datos. Límite: 5 MB por foto. Para catálogos de gran volumen conviene migrar los binarios a almacenamiento de objetos.
 
-La ruta exacta depende del alojamiento y debe configurarse en hPanel. No se ha aplicado esta configuración al servidor desde el repositorio.
+Las fotos iniciales se leen desde `assets/product-images/`. Si anteriormente se configuró `PRODUCT_IMAGES_DIR`, se conserva la lectura de esa carpeta para imágenes anteriores; no se elimina ni mueve su contenido. En desarrollo sin PostgreSQL se mantiene la escritura en archivos. No se conecta ni modifica producción al compilar: el esquema se inicializa únicamente durante una carga autenticada.
 
 ## Edición
 
