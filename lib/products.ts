@@ -42,10 +42,10 @@ export const categoryLabels: Record<ProductCategory, string> = {
 
 export const categoryImages: Record<ProductCategory, string> = {
   facial:
-    "https://mainatural.com/wp-content/uploads/elementor/thumbs/Categoria-Facial-2-r67l4wjc01w2wakl51c9itj5wiaessnoowkbun5kf4.png",
+    "/products/media/facial/fa-lam-120-1-1.png",
   capilar:
-    "https://mainatural.com/wp-content/uploads/elementor/thumbs/Categoria-Capilar-r65x99bym2z55xrkl8xfasfi8z6q9qwcbgd2m3cm1s.png",
+    "/products/media/capilar/mnk-001-1.png",
   corporal:
-    "https://mainatural.com/wp-content/uploads/elementor/thumbs/Categoria-Facial-2-r67l4wjc01w2wakl51c9itj5wiaessnoowkbun5kf4.png",
-  kits: "https://mainatural.com/wp-content/uploads/2025/06/foto8-768x432.jpg",
+    "/products/media/corporal/crema-corporal-1.png",
+  kits: "/products/media/facial/ritual-mineral-exfoliante-1.png",
 };

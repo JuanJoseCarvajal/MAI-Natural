@@ -48,7 +48,7 @@ describe("programación editorial MAI", () => {
   it("cada campaña enlaza productos y fotografías existentes", () => {
     expect(new Set(allBlogPosts.map(post => post.slug)).size).toBe(allBlogPosts.length);
     campaigns.forEach(campaign => {
-      expect(existsSync(join(process.cwd(), "public", campaign.heroImage))).toBe(true);
+      expect(existsSync(join(process.cwd(), campaign.heroImage.startsWith('/products/media/') ? 'assets/product-images' : 'public', campaign.heroImage.replace('/products/media/', '')))).toBe(true);
       campaign.promotion.productIds.forEach(id => expect(products.some(product => product.id === id)).toBe(true));
     });
   });

@@ -6,6 +6,7 @@ import { createAdminProduct, deleteAdminProduct, updateAdminProduct } from "@/ap
 import { categoryLabels, type Product } from "@/lib/products";
 import { adminProductSchema } from "@/lib/validators/admin";
 import styles from "./products-admin.module.css";
+import ProductImageUploader from './ProductImageUploader';
 
 type Draft = Product;
 const emptyProduct = (): Draft => ({
@@ -26,6 +27,7 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
   const [editingId, setEditingId] = useState<string | null>(null);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
+  const [uploading, setUploading] = useState(false);
   const [pending, startTransition] = useTransition();
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLElement | null>(null);
@@ -51,9 +53,14 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
     setDraft(product ? { ...product, images: Array.from(new Set([product.image, ...(product.images ?? [])])), variants: product.variants?.map(v => ({ ...v })) ?? [], benefits: [...product.benefits] } : emptyProduct());
   };
   const change = <K extends keyof Draft>(key: K, value: Draft[K]) => setDraft(current => current ? { ...current, [key]: value } : null);
-  const close = () => { if (!pending) setDraft(null); };
+  const close = () => { if (!pending && !uploading) setDraft(null); };
+  const addUploadedPhoto = (url: string) => setDraft(current => {
+    if (!current) return current;
+    const images = (current.images ?? []).filter(src => src && !src.endsWith('/foto-pendiente.svg'));
+    return {...current, images:[...images,url], image:images[0] || url};
+  });
   const save = () => {
-    if (!draft || pending) return;
+    if (!draft || pending || uploading) return;
     const parsed = adminProductSchema.safeParse(draft);
     if (!parsed.success) { setError(parsed.error.issues.map(issue => issue.path.join(".") + ": " + issue.message).join(" · ")); return; }
     setError("");
@@ -124,9 +131,10 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
           <label>Número de reseñas<input type="number" min="0" step="1" value={draft.reviewsCount} onChange={event => change("reviewsCount", Number(event.target.value))} /></label>
           <label className={styles.full}>Descripción<textarea aria-label="Descripción" rows={6} maxLength={12000} value={draft.description} onChange={event => change("description", event.target.value)} /></label>
           <label className={styles.full}>Beneficios (uno por línea)<textarea aria-label="Beneficios (uno por línea)" rows={3} value={draft.benefits.join("\n")} onChange={event => change("benefits", event.target.value.split("\n"))} /></label>
-          <section className={styles.full} aria-label="Imágenes del producto"><h3>Imágenes y carrusel</h3><p>La primera foto será la principal. Agrega rutas de imágenes del sitio o URLs de mainatural.com.</p>
+          <section className={styles.full} aria-label="Imágenes del producto"><h3>Imágenes y carrusel</h3><p>Sube fotos desde tu computador. Se guardan en el servidor por categoría. Pulsa Guardar producto para publicar la galería; la primera foto será la principal.</p>
+            <ProductImageUploader category={draft.category} remaining={Math.max(0,20-photos.filter(src=>src&&!src.endsWith('/foto-pendiente.svg')).length)} onUploaded={addUploadedPhoto} onBusy={setUploading}/>
             <div className={styles.photos}>{photos.map((src, index) => <div key={index} className={styles.photoRow}><Photo src={src} small /><div><label>{index === 0 ? "Imagen principal" : "Imagen " + (index + 1)}<input required value={src} placeholder="/products/autor/foto.png" onChange={event => { const next = [...photos]; next[index] = event.target.value; replacePhotos(next, next[0]); }} /></label><div className={styles.actions}><button type="button" disabled={index === 0} onClick={() => { const next = [...photos]; next.splice(index, 1); next.unshift(src); replacePhotos(next, src); }}>Hacer principal</button><button type="button" disabled={index === 0} aria-label={"Subir imagen " + (index + 1)} onClick={() => movePhoto(index, -1)}>↑</button><button type="button" disabled={index === photos.length - 1} aria-label={"Bajar imagen " + (index + 1)} onClick={() => movePhoto(index, 1)}>↓</button><button type="button" aria-label={"Quitar imagen " + (index + 1)} onClick={() => replacePhotos(photos.filter((_, i) => i !== index))}>Quitar</button></div></div></div>)}</div>
-            <button type="button" disabled={photos.length >= 20} onClick={() => change("images", [...photos, ""])}>+ Agregar imagen</button>
+            <button type="button" disabled={uploading || photos.length >= 20} onClick={() => change("images", [...photos, ""])}>Agregar imagen mediante URL (avanzado)</button>
           </section>
           <section className={styles.full} aria-label="Variantes del producto"><h3>Variantes</h3><p>Comparten el precio y el plazo de elaboración del producto.</p>
             {(draft.variants ?? []).map((variant, index) => <div key={index} className={styles.variant}>
@@ -137,7 +145,7 @@ export default function AdminProductsManager({ initialProducts }: { initialProdu
           </section>
         </fieldset>
         {error && <p role="alert" className={styles.error}>{error}</p>}
-        <footer className={styles.modalFooter}><button type="button" disabled={pending} onClick={close}>Cancelar</button><button type="submit" disabled={pending} className={styles.create}>{pending ? "Guardando…" : "Guardar producto"}</button></footer>
+        <footer className={styles.modalFooter}><button type="button" disabled={pending || uploading} onClick={close}>Cancelar</button><button type="submit" disabled={pending || uploading} className={styles.create}>{uploading ? "Espera a que terminen las fotos…" : pending ? "Guardando…" : "Guardar producto"}</button></footer>
       </form>
     </dialog>}
   </div>;

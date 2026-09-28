@@ -2,7 +2,7 @@
 
 import { signIn } from '@/lib/auth';
 import { db, databaseTransaction } from '@/lib/db';
-import { ADMIN_EMAIL } from '@/lib/admin-policy';
+import { ADMIN_EMAIL, isAdministrativeAccount } from '@/lib/admin-policy';
 import { consumeLoginAttempt } from '@/lib/login-security';
 import { sendTransactionalEmail } from '@/lib/email';
 import {
@@ -49,7 +49,8 @@ export async function loginAction(email: string, password: string) {
       redirect: false,
     });
 
-    return { success: true };
+    const user = await db.user.findUnique({ where: { email: parsed.data.email } });
+    return { success: true, destination: isAdministrativeAccount(user) ? '/admin' : '/account' };
   } catch (error) {
     console.error('Login error:', error);
     return { error: 'Correo o contraseña incorrectos' };
