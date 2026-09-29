@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./gallery.module.css";
 
 export default function ProductGallery({ image, images, name, detail = false }: { image: string; images?: string[]; name: string; detail?: boolean }) {
@@ -9,6 +9,14 @@ export default function ProductGallery({ image, images, name, detail = false }: 
   const [expanded, setExpanded] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const next = (direction: number) => setIndex(current => (current + direction + photos.length) % photos.length);
+  useEffect(() => {
+    const select = (event: Event) => {
+      const selected = photos.indexOf((event as CustomEvent<string>).detail);
+      if (selected >= 0) setIndex(selected);
+    };
+    window.addEventListener("mai:product-image", select);
+    return () => window.removeEventListener("mai:product-image", select);
+  }, [photos]);
   const controls = <div className={styles.controls}>
     <button type="button" onClick={() => next(-1)} aria-label={"Foto anterior de " + name}>←</button>
     <span aria-live="polite">{index + 1} / {photos.length}</span>

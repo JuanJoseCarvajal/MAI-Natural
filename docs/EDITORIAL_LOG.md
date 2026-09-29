@@ -92,3 +92,10 @@ Registrar cada futura acción con fecha real, campaña, pieza, estado y URL veri
 - Leídos estrategia, registro y calendario de seis campañas. No corresponde nueva entrega: continúa `mai-ritual-01-rosas`; próxima entrega el 1 de octubre a las 09:00 de Colombia.
 - Ejecutado `pnpm exec vitest run lib/editorial.test.ts`: cinco pruebas aprobadas sobre fechas, selección del carrusel y referencias de productos/imágenes.
 - Verificación local de archivos y pruebas; no se comprobó por HTTP el servidor local ni producción, por lo que no acredita publicación pública. Sin cambios de contenido o fechas, despliegues ni actividad en redes. Sin novedades accionables.
+
+## Revisión del calendario — 28 septiembre 2026
+
+- Referencia del heartbeat: `2026-09-28T14:01:33.238Z` (09:01 Colombia); pruebas ejecutadas a las 09:01 según consola.
+- Leídos estrategia, registro y calendario de seis campañas. No corresponde nueva entrega: continúa `mai-ritual-01-rosas`; próxima entrega el 1 de octubre a las 09:00 de Colombia.
+- Ejecutado `pnpm exec vitest run lib/editorial.test.ts`: cinco pruebas aprobadas sobre fechas, selección del carrusel y referencias de productos/imágenes.
+- Verificación local de archivos y pruebas; sin comprobación HTTP del servidor local ni de producción, por lo que no acredita publicación pública. Sin cambios de contenido o fechas, despliegues ni actividad en redes. Sin novedades accionables.

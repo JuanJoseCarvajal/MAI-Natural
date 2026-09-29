@@ -7,7 +7,7 @@ export const blogEditorSchema=z.object({
  heroImage:z.union([z.literal(''),adminProductSchema.shape.image]),heroAlt:plain(250),
  publishedAt:z.string().datetime({offset:true}),status:z.enum(['draft','published','scheduled']),
  keywords:z.array(plain(80)).max(20),
- sections:z.array(z.object({heading:plain(250),body:z.array(plain(12000)).max(50)}).strict()).max(40),
+ sections:z.array(z.object({heading:plain(250),body:z.array(plain(12000)).max(50),media:z.array(z.object({url:adminProductSchema.shape.image,alt:plain(250)}).strict()).max(20).optional(),layout:z.enum(['stack','carousel','grid']).optional()}).strict()).max(40),
  relatedProductCategory:z.enum(['facial','capilar','corporal','kits']).optional(),
  promotion:z.object({eyebrow:plain(160),headline:plain(250),productIds:z.array(z.string().max(160)).max(30)}).optional(),
  revision:z.number().int().min(0),

@@ -100,6 +100,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
                   {paragraph}
                 </p>
               ))}
+              {section.media?.length ? <div className={section.layout === 'grid' ? 'mt-6 grid grid-cols-2 gap-3' : section.layout === 'carousel' ? 'mt-6 flex snap-x gap-4 overflow-x-auto' : 'mt-6 space-y-4'}>{section.media.map((media, index) => <Image key={index} src={media.url} alt={media.alt} width={900} height={600} className={section.layout === 'carousel' ? 'min-w-[80%] snap-center aspect-[4/3] rounded-xl object-cover' : 'aspect-[4/3] w-full rounded-xl object-cover'} />)}</div> : null}
             </section>
           ))}
         </div>

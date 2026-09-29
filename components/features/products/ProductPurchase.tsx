@@ -6,9 +6,14 @@ import AddToCartButton from "@/components/features/cart/AddToCartButton";
 export default function ProductPurchase({ product }: { product: Product }) {
   const [variantId, setVariantId] = useState("");
   const variant = product.variants?.find(item => item.id === variantId);
+  const selectVariant = (id: string) => {
+    setVariantId(id);
+    const selected = product.variants?.find(item => item.id === id);
+    if (selected) window.dispatchEvent(new CustomEvent("mai:product-image", { detail: selected.image }));
+  };
   return <div>
     {!!product.variants?.length && <label className="mb-4 block">Elige los componentes
-      <select className="mt-2 block w-full rounded-lg border p-3" value={variantId} onChange={event => setVariantId(event.target.value)}>
+      <select className="mt-2 block w-full rounded-lg border p-3" value={variantId} onChange={event => selectVariant(event.target.value)}>
         <option value="">Selecciona una opción</option>
         {product.variants.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
       </select>

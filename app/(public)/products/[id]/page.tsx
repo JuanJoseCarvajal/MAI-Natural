@@ -30,7 +30,7 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(structuredData)}} />
     <Breadcrumbs items={[{ label: "Tienda", href: "/products" }, { label: product.name }]} />
     <div className={styles.detailGrid}>
-      <ProductGallery image={product.image} images={product.images} name={product.name} detail />
+      <ProductGallery image={product.image} images={[...(product.images ?? []), ...(product.variants ?? []).map(variant => variant.image)]} name={product.name} detail />
       <div className={styles.detailInfo}><p className={styles.eyebrow}>{categoryLabels[product.category]}</p><h1>{product.name}</h1><p className={styles.detailPrice}>{product.price}<span hidden={product.amountInCents <= 0}><SiteText id="6539c299f7388a51c22c">{"COP"}</SiteText></span></p><p className={styles.priceNote}><SiteText id="b56903e541b63c5d3296">{"Envío calculado antes de confirmar tu pedido."}</SiteText></p><p className={styles.detailDescription}>{product.description}</p>
         <div className={styles.purchase}><ProductPurchase product={product} /></div>
         <div className={styles.delivery}><p><strong><SiteText id="64d5d48f2d8c8272c4b6">{"Formulación de autor."}</SiteText></strong><SiteText id="5295e1b37eac2b98a30a">{" Elaborada uno a uno, producto a producto."}</SiteText></p><p><SiteText id="a167be8fd1e60de8e796">{"Entrega estimada: 5 a 7 días hábiles."}</SiteText></p><p><SiteText id="ac50c57ee5a598d356ae">{"Paga con Wompi. En el checkout verás el envío y el total antes de continuar al pago seguro. Las pruebas se identifican y no realizan cobros reales."}</SiteText></p></div>
