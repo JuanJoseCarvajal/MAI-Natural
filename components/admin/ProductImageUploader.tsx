@@ -1,8 +1,9 @@
 'use client';
 import Image from 'next/image';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useId,useRef,useState} from 'react';
 type Item={id:string;file:File;preview:string;progress:number;status:'waiting'|'uploading'|'done'|'error';error?:string};
-export default function ProductImageUploader({category,remaining,onUploaded,onBusy}:{category:string;remaining:number;onUploaded:(url:string)=>void;onBusy:(busy:boolean)=>void}) {
+export default function ProductImageUploader({category,remaining,onUploaded,onBusy,successMessage='Subida. Pulsa Guardar producto para publicarla.'}:{category:string;remaining:number;successMessage?:string;onUploaded:(url:string)=>void;onBusy:(busy:boolean)=>void}) {
+ const inputId=useId(),instructionsId=useId();
  const [items,setItems]=useState<Item[]>([]),[message,setMessage]=useState('');
  const busy=useRef(false),xhr=useRef<XMLHttpRequest|null>(null),urls=useRef<string[]>([]),mounted=useRef(true);
  useEffect(()=>{const previews=urls.current;mounted.current=true;return()=>{mounted.current=false;xhr.current?.abort();previews.forEach(url=>URL.revokeObjectURL(url));};},[]);
@@ -40,14 +41,14 @@ export default function ProductImageUploader({category,remaining,onUploaded,onBu
   setItems(all=>[...all,...batch]);void run(batch);
  }
  return <div className="my-4 space-y-3 rounded-xl border-2 border-dashed border-brand-300 bg-brand-50 p-4" onDragOver={event=>event.preventDefault()} onDrop={event=>{event.preventDefault();select(Array.from(event.dataTransfer.files));}}>
-  <label htmlFor="product-local-photos" className="block font-semibold">Agregar fotos desde este computador</label>
-  <p id="photo-instructions" className="text-sm">Selecciona o arrastra tus fotos aquí. PNG, JPEG o WebP, máximo 5 MB por foto. {remaining} espacios disponibles.</p>
-  <input id="product-local-photos" type="file" multiple accept="image/png,image/jpeg,image/webp" disabled={busy.current||remaining===0} aria-describedby="photo-instructions" onChange={event=>{const files=Array.from(event.currentTarget.files??[]);event.currentTarget.value='';select(files);}}/>
+  <label htmlFor={inputId} className="block font-semibold">Agregar fotos desde este computador</label>
+  <p id={instructionsId} className="text-sm">Selecciona o arrastra tus fotos aquí. PNG, JPEG o WebP, máximo 5 MB por foto. {remaining} espacios disponibles.</p>
+  <input id={inputId} type="file" multiple accept="image/png,image/jpeg,image/webp" disabled={busy.current||remaining===0} aria-describedby={instructionsId} onChange={event=>{const files=Array.from(event.currentTarget.files??[]);event.currentTarget.value='';select(files);}}/>
   {message&&<p role="alert">{message}</p>}
   <ul className="space-y-3" aria-label="Estado de las fotos seleccionadas">{items.map(item=><li key={item.id} className="flex items-start gap-3 rounded-lg bg-white p-3">
    <Image src={item.preview} alt={`Vista previa: ${item.file.name}`} width={64} height={80} unoptimized className="rounded object-cover"/>
    <div className="min-w-0 flex-1"><p className="break-all text-sm font-semibold">{item.file.name}</p>
-    <p role={item.status==='error'?'alert':'status'} className="text-sm">{item.status==='done'?'Subida. Pulsa Guardar producto para publicarla.':item.status==='error'?item.error:item.status==='waiting'?'En espera':item.progress===100?'Procesando en el servidor…':`Subiendo: ${item.progress}%`}</p>
+    <p role={item.status==='error'?'alert':'status'} className="text-sm">{item.status==='done'?successMessage:item.status==='error'?item.error:item.status==='waiting'?'En espera':item.progress===100?'Procesando en el servidor…':`Subiendo: ${item.progress}%`}</p>
     {item.status==='uploading'&&<progress max={100} value={item.progress} aria-label={`Progreso de ${item.file.name}`} className="w-full"/>}
     {item.status==='error'&&<button type="button" disabled={busy.current||remaining===0} onClick={()=>void run([item])}>Reintentar {item.file.name}</button>}
    </div>

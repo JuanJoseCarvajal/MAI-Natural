@@ -14,10 +14,13 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
       import {createRoot} from "react-dom/client";
       import Manager from "./components/admin/AdminProductsManager";
       import Gallery from "./components/features/products/ProductGallery";
+      import Selection from "./components/features/products/ProductSelection";
+      import Purchase from "./components/features/products/ProductPurchase";
+      import BlogEditor from "./components/admin/BlogEditor";
       const photo="/products/media/corporal/crema-corporal-1.png";
       const second="/products/media/corporal/crema-corporal-2.png";
-      const product={id:"fixture",name:"Producto de prueba",image:photo,images:[photo],price:"$35.000",amountInCents:3500000,description:"Inicial",category:"corporal",benefits:[],rating:0,reviewsCount:0,active:true};
-      createRoot(document.getElementById("root")).render(<><Manager initialProducts={[product,{...product,id:"second",name:"Segundo producto"}]} /><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,maxWidth:600}}><section id="single"><Gallery image={photo} name="Una foto" /></section><section id="multiple"><Gallery image={photo} images={[photo,second]} name="Varias fotos" /></section></div></>);
+      const product={id:"fixture",name:"Producto de prueba",image:photo,images:[photo],variants:[{id:"second-photo",name:"Segunda foto",image:second}],price:"$35.000",amountInCents:3500000,description:"Inicial",category:"corporal",benefits:[],rating:0,reviewsCount:0,active:true};
+      createRoot(document.getElementById("root")).render(<><Manager initialProducts={[product,{...product,id:"second",name:"Segundo producto"}]} /><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,maxWidth:600}}><section id="single"><Gallery image={photo} name="Una foto" /></section><section id="multiple"><Gallery image={photo} images={[photo,second]} name="Varias fotos" /></section></div><section id="variant"><Selection><Gallery image={photo} images={[photo,second]} name="Producto con variante"/><Purchase product={product}/></Selection></section><section id="editor"><BlogEditor initialPosts={[{slug:"prueba",title:"Artículo de prueba",description:"Resumen",category:"Facial",heroImage:photo,heroAlt:"Portada",keywords:[],status:"draft",revision:0,publishedAt:"2026-01-01T00:00:00Z",sections:[{heading:"Sección de prueba",body:["Contenido"]}]}]}/></section></>);
     `, resolveDir: root, loader: "tsx" },
     bundle: true, write: false, outdir: "/tmp/mai-overlay-bundle", jsx: "automatic",
     plugins: [{
@@ -25,8 +28,11 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
       setup(build) {
         build.onResolve({ filter: /^next\/image$/ }, () => ({ path: "image", namespace: "fixture" }));
         build.onResolve({ filter: /^@\/app\/admin\/actions$/ }, () => ({ path: "actions", namespace: "fixture" }));
+        build.onResolve({filter:/^@\/app\/admin\/blog\/actions$/},()=>({path:"blog-actions",namespace:"fixture"}));
+        build.onResolve({filter:/^@\/components\/features\/cart\/CartContext$/},()=>({path:"cart",namespace:"fixture"}));
+        build.onResolve({filter:/^@\/lib\/analytics$/},()=>({path:"analytics",namespace:"fixture"}));
         build.onLoad({ filter: /.*/, namespace: "fixture" }, args => ({
-          contents: args.path === "image" ? `import React from "react"; export default function Image({fill,sizes,priority,...props}) {return React.createElement("img",{...props,style:fill?{position:"absolute",inset:0,width:"100%",height:"100%"}:undefined});}` :
+          contents: args.path === "blog-actions" ? `export const saveBlogPost=async(post)=>{window.__blog=post;return {post:{...post,revision:post.revision+1}}}` : args.path==="cart" ? `export const useCart=()=>({addItem:item=>{window.__cart=item}})` : args.path==="analytics" ? `export const trackAddToCart=()=>{}` : args.path === "image" ? `import React from "react"; export default function Image({fill,sizes,priority,...props}) {return React.createElement("img",{...props,style:fill?{position:"absolute",inset:0,width:"100%",height:"100%"}:undefined});}` :
           `const save=async product=>{if(window.__fail){return {error:"Error de prueba"};} window.__saved=product;return {product:{...product,id:product.id||"new-product"}}};export const createAdminProduct=save;export const updateAdminProduct=(_,p)=>save(p);export const deleteAdminProduct=async()=>({success:true});`,
           loader: "js", resolveDir: root,
         }));
@@ -34,7 +40,8 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     }],
   });
   const javascript = result.outputFiles.find(file => file.path.endsWith(".js")).text;
-  const css = result.outputFiles.find(file => file.path.endsWith(".css")).text;
+  const globalCss = await require('postcss')([require('tailwindcss')({config:path.join(root,'tailwind.config.ts')})]).process(await fs.readFile(path.join(root,'app/globals.css'),'utf8'),{from:path.join(root,'app/globals.css')});
+  const css = globalCss.css + result.outputFiles.find(file => file.path.endsWith(".css")).text;
   const server = http.createServer(async (req, res) => {
     if (req.url === "/bundle.js") { res.setHeader("Content-Type", "text/javascript"); return res.end(javascript); }
     if (req.url === "/bundle.css") { res.setHeader("Content-Type", "text/css"); return res.end(css); }
@@ -96,7 +103,52 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     await dialog.waitFor();
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     await page.screenshot({path:"/tmp/mai-admin-products-mobile.png"});
+    await page.keyboard.press("Escape");
+    await page.getByRole("button",{name:"Foto siguiente de Varias fotos",exact:true}).click();
+    const variant=page.locator("#variant");
+    await variant.getByLabel("Elige los componentes").selectOption("second-photo");
+    assert.match(await variant.locator("img").first().getAttribute("src"),/2.png$/);
+    assert.match(await page.locator("#single img").first().getAttribute("src"),/1.png$/);
+    assert.match(await page.locator("#multiple img").first().getAttribute("src"),/1.png$/);
+    await variant.getByRole("button",{name:"Foto siguiente de Producto con variante",exact:true}).click();
+    assert.match(await variant.locator("img").first().getAttribute("src"),/1.png$/);
+    assert.equal(await variant.getByLabel("Elige los componentes").inputValue(),"second-photo");
+    await variant.getByRole("button",{name:"Agregar al carrito",exact:true}).click();
+    assert.equal((await page.evaluate(()=>window.__cart)).id,"fixture~second-photo");
+    assert.match((await page.evaluate(()=>window.__cart)).image,/2.png$/);
+    await variant.getByLabel("Elige los componentes").selectOption("");
+    assert.match(await variant.locator("img").first().getAttribute("src"),/1.png$/);
+    const editor=page.locator("#editor");
+    await editor.getByRole("button",{name:"Editar artículo",exact:true}).click();
+    await editor.getByLabel("Fecha para programar (hora de este computador)",{exact:true}).waitFor();
+    await editor.getByPlaceholder("Describe lo que se ve en la portada",{exact:true}).waitFor();
+    await editor.getByLabel("Ruta de una imagen existente").fill("/products/media/corporal/crema-corporal-1.png");
+    await editor.getByRole("button",{name:"Agregar imagen por ruta"}).click();
+    await editor.getByLabel("Descripción de imagen 1",{exact:true}).fill("Primera imagen");
+    await editor.getByLabel("Ruta de una imagen existente").fill("/products/media/corporal/crema-corporal-2.png");
+    await editor.getByRole("button",{name:"Agregar imagen por ruta"}).click();
+    await editor.getByLabel("Descripción de imagen 2",{exact:true}).fill("Segunda imagen");
+    await editor.getByLabel("Presentación").selectOption("carousel");
+    await editor.getByRole("button",{name:"Vista previa",exact:true}).click();
+    const carousel=editor.getByRole("region",{name:"Sección de prueba"});
+    await carousel.getByRole("button",{name:"Imagen siguiente",exact:true}).click();
+    assert.match(await carousel.locator("img").getAttribute("src"),/2.png$/);
+    await page.keyboard.press("ArrowLeft");
+    assert.match(await carousel.locator("img").getAttribute("src"),/1.png$/);
+    await editor.getByRole("button",{name:"Volver a escribir"}).click();
+    await editor.getByLabel("Presentación").selectOption("grid");
+    await editor.getByRole("button",{name:"Guardar borrador",exact:true}).click();
+    await editor.getByText("Borrador guardado. No es visible en el sitio.",{exact:true}).waitFor();
+    const savedBlog=await page.evaluate(()=>window.__blog);
+    assert.equal(savedBlog.sections[0].layout,"grid");
+    assert.equal(savedBlog.sections[0].media.length,2);
+    await editor.getByRole("button",{name:"Vista previa",exact:true}).click();
+    assert.equal(await editor.locator(".grid img").count(),2);
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+    await editor.screenshot({path:"/tmp/mai-blog-media-mobile.png"});
+    await page.setViewportSize({width:1280,height:960});
+    await editor.screenshot({path:"/tmp/mai-blog-media-desktop.png"});
     assert.deepEqual(errors,[]);
-    console.log("PASS: two-column cards, toolbar modal, Escape/focus restore, gallery addition and save/error state, equal image sizes, overlaid controls, mobile without overflow. Actions mocked; persistence tested separately.");
+    console.log("PASS: variant image selection, independent galleries, correct cart image, blog media preview and save, carousel keyboard navigation, grid rendering; two-column cards, toolbar modal, Escape/focus restore, gallery addition and save/error state, equal image sizes, overlaid controls, mobile without overflow. Actions mocked; persistence tested separately.");
   } finally { await browser.close(); await new Promise(resolve=>server.close(resolve)); }
 })().catch(error=>{console.error(error);process.exitCode=1;});

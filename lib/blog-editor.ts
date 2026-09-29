@@ -13,6 +13,7 @@ export const blogEditorSchema=z.object({
  revision:z.number().int().min(0),
 }).strict().superRefine((post,ctx)=>{
  if(post.status!=='draft'){
+  if(post.sections.some(section=>section.media?.some(image=>!image.alt.trim())))ctx.addIssue({code:'custom',message:'Describe todas las imágenes de las secciones antes de publicar.'});
   if(!post.description.trim()||!post.category.trim()||!post.heroImage||!post.heroAlt.trim()||!post.sections.length||post.sections.some(s=>!s.heading.trim()||!s.body.some(p=>p.trim())))ctx.addIssue({code:'custom',message:'Para publicar completa resumen, categoría, portada, texto alternativo y al menos una sección con subtítulo y párrafo.'});
  }
 });

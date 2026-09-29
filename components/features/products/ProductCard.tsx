@@ -24,7 +24,7 @@ export default function ProductCard({ id, image, images, variants, name, price, 
     timer.current = setTimeout(() => setAdded(false), 1800);
   }
   return <article className={styles.card}>
-    <ProductGallery image={image} images={images} name={name} />
+    <ProductGallery image={image} images={[...(images ?? []), ...(variants ?? []).map(variant => variant.image)]} name={name} />
     <div className={styles.cardBody}>
       {category ? <p className={styles.category}>{categoryLabels[category].replace("Formulaciones Botánicas de Autor · ", "Cuidado ")}</p> : null}
       <h3><Link href={`/products/${id}`}>{name}</Link></h3>

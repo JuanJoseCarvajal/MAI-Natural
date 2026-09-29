@@ -2,14 +2,16 @@
 import { useState } from "react";
 import type { Product } from "@/lib/products";
 import AddToCartButton from "@/components/features/cart/AddToCartButton";
+import {useProductSelection} from "./ProductSelection";
 
 export default function ProductPurchase({ product }: { product: Product }) {
   const [variantId, setVariantId] = useState("");
+  const selection = useProductSelection();
   const variant = product.variants?.find(item => item.id === variantId);
   const selectVariant = (id: string) => {
     setVariantId(id);
     const selected = product.variants?.find(item => item.id === id);
-    if (selected) window.dispatchEvent(new CustomEvent("mai:product-image", { detail: selected.image }));
+    selection?.selectImage(selected?.image || product.image);
   };
   return <div>
     {!!product.variants?.length && <label className="mb-4 block">Elige los componentes

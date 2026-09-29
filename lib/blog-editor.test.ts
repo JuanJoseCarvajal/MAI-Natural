@@ -10,6 +10,20 @@ const db=new PGlite();
 beforeEach(async()=>{state.client=db;await db.exec(blogTableSql);await db.exec('ALTER TABLE mai_blog_posts ENABLE ROW LEVEL SECURITY');await db.exec('DELETE FROM mai_blog_posts');});
 afterAll(async()=>{await db.close();});
 const post:BlogDraft={slug:'test-article',title:'Un artículo de prueba',description:'Resumen',category:'Facial',heroImage:'/products/media/facial/fa-lnd-70-1.png',heroAlt:'Frasco de leche facial',keywords:[],sections:[{heading:'Un subtítulo',body:['Párrafo completo.']}],publishedAt:'2026-01-01T00:00:00.000Z',status:'draft',revision:0};
+it.each(['stack','carousel','grid'] as const)('persists %s images through publication and a fresh read',async(layout)=>{
+ const sections=[{...post.sections[0],layout,media:[{url:post.heroImage,alt:'Detalle del frasco'}]}];
+ const saved=await saveManagedBlogPost({...post,sections},null);
+ await saveManagedBlogPost({...saved,status:'published'},post.slug);
+ expect((await getEditableBlogPosts()).find(p=>p.slug===post.slug)?.sections).toEqual(sections);
+});
+it('validates section images without breaking legacy articles or incomplete drafts',()=>{
+ expect(blogEditorSchema.safeParse({...post,status:'published'}).success).toBe(true);
+ const withMedia={...post,sections:[{...post.sections[0],media:[{url:post.heroImage,alt:''}]}]};
+ expect(blogEditorSchema.safeParse(withMedia).success).toBe(true);
+ expect(blogEditorSchema.safeParse({...withMedia,status:'published'}).success).toBe(false);
+ expect(blogEditorSchema.safeParse({...post,sections:[{...post.sections[0],media:[{url:'javascript:alert(1)',alt:'Imagen'}]}]}).success).toBe(false);
+ expect(blogEditorSchema.safeParse({...post,sections:[{...post.sections[0],media:Array.from({length:21},()=>({url:post.heroImage,alt:'Imagen'}))}]}).success).toBe(false);
+});
 it('persists drafts privately and publishes complete articles',async()=>{
  const saved=await saveManagedBlogPost(post,null);expect(saved.revision).toBe(1);
  expect((await getManagedBlogPosts()).some(p=>p.slug===post.slug)).toBe(true);
