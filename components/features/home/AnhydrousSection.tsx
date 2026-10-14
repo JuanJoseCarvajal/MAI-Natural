@@ -1,13 +1,13 @@
 'use client';
 
-import Image from 'next/image';
+import ProductGallery from '@/components/features/products/ProductGallery';
 import Link from 'next/link';
 import {useRef} from 'react';
 import type {Product} from '@/lib/products';
 import {anhydrousShopUrl} from '@/lib/anhydrous';
 import styles from './anhydrous-section.module.css';
 
-type SlideProduct = Pick<Product, 'id' | 'name' | 'image' | 'price'>;
+type SlideProduct = Pick<Product, 'id' | 'name' | 'image' | 'images' | 'price'>;
 
 export default function AnhydrousSection({products}: {products: SlideProduct[]}) {
   const track = useRef<HTMLUListElement>(null);
@@ -29,7 +29,7 @@ export default function AnhydrousSection({products}: {products: SlideProduct[]})
       <div className={styles.controls}><span>{products.length} productos para descubrir</span>{products.length > 1 && <div><button type="button" onClick={()=>move(-1)} aria-label="Ver producto anterior" aria-controls="anhydrous-products">←</button><button type="button" onClick={()=>move(1)} aria-label="Ver producto siguiente" aria-controls="anhydrous-products">→</button></div>}</div>
       <ul id="anhydrous-products" ref={track} className={styles.track} tabIndex={0} aria-label="Desliza para explorar todos los productos">
         {products.map(product=><li key={product.id} className={styles.card}>
-          <Link href={`/products/${product.id}`} className={styles.photo}><Image src={product.image} alt={product.name} fill sizes="(max-width: 760px) 75vw, 30vw"/><span aria-hidden="true">↗</span></Link>
+          <ProductGallery image={product.image} images={product.images} name={product.name}/>
           <h3><Link href={`/products/${product.id}`}>{product.name}</Link></h3><p>{product.price}</p>
         </li>)}
       </ul>

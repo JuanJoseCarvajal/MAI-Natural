@@ -45,7 +45,7 @@ export default async function PublicHomePage() {
       </section>
       <div className="benefit-ribbon" aria-label="Nuestra propuesta"><span><SiteText id="079c82f4057b19ccd11d">{"Formulaciones botánicas de autor"}</SiteText></span><i aria-hidden="true">✳</i><span><SiteText id="a5324c5c1ba60f93e390">{"Elaborado uno a uno"}</SiteText></span><i aria-hidden="true">✳</i><span><SiteText id="244000cb11499039b36c">{"Asesoría personalizada"}</SiteText></span><i aria-hidden="true">✳</i><span><SiteText id="1dd1b8dea4e652cbfee8">{"Una rutina a tu ritmo"}</SiteText></span></div>
 
-      <AnhydrousSection products={products.filter(isAnhydrousProduct).map(({id,name,image,price})=>({id,name,image,price}))} />
+      <AnhydrousSection products={products.filter(isAnhydrousProduct).map(({id,name,image,images,price})=>({id,name,image,images,price}))} />
 
       <section className="editorial-section">
         <div className="section-heading"><div><p className="eyebrow"><SiteText id="66332d2226717eb1de94">{"TU NATURALEZA, TU RITUAL"}</SiteText></p><h2><SiteText id="30f0f5b6402689983d81">{"¿Por dónde quieres empezar?"}</SiteText></h2></div><Link href="/products" className="text-link"><SiteText id="b4395d208e1636809c26">{"Todo el catálogo "}</SiteText><span aria-hidden="true">↗</span></Link></div>
