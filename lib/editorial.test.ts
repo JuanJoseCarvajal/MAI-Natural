@@ -66,5 +66,5 @@ it('honors home opt-out and explicit product selection including an empty select
 it('reflects a renamed article instead of its obsolete campaign copy', () => {
   const post = getPublishedBlogPosts(new Date('2026-10-01T14:00:00Z'))[0];
   const updated = {...post,title:'Cosmética ANHÍDRIDA',category:'Cosmética sin agua',promotion:{...post.promotion!,headline:'El cuidado, sin prisa.',eyebrow:'UN MOMENTO COTIDIANO'}};
-  expect(getEditorialSlides(products,[updated])[0]).toMatchObject({slug:updated.slug,headline:updated.title,eyebrow:updated.category,articleTitle:updated.title});
+  expect(getEditorialSlides(products,[updated])[0]).toMatchObject({slug:updated.slug,headline:updated.title,eyebrow:updated.category,articleTitle:updated.title,image:updated.heroImage});
 });

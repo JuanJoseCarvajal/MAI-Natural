@@ -88,7 +88,7 @@ export default function EditorialHeroCarousel({ slides }: { slides: EditorialSli
         {slides.length > 1 && <button type="button" onPointerDown={() => { rotationBeforePointer.current = playing; }} onClick={() => { setPlaying(!(rotationBeforePointer.current ?? playing)); rotationBeforePointer.current = null; }} aria-label={playing ? "Pausar carrusel" : "Reproducir carrusel"}>{playing ? "Ⅱ" : "▷"}<span>{playing ? "Pausar" : "Reproducir"}</span></button>}
       </div>
       <div className={styles.slide} role="group" aria-roledescription="diapositiva" aria-label={`${current + 1} de ${slides.length}: ${slide.productName}`}>
-        <Image key={slide.image} src={slide.image} alt={slide.productName} fill priority={current === 0} sizes="(max-width: 760px) 100vw, 54vw" className={styles.image} />
+        <Image key={slide.image} src={slide.image} alt={slide.articleTitle} fill priority={current === 0} sizes="(max-width: 760px) 100vw, 54vw" className={styles.image} />
         <div className={styles.card}>
           <div aria-live={playing ? "off" : "polite"} aria-atomic="true">
             <p className={styles.eyebrow}>{slide.eyebrow}</p>

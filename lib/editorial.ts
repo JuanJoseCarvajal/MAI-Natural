@@ -29,7 +29,7 @@ export function getEditorialSlides(products: Product[], posts: BlogPost[] = getP
       articleTitle: post.title,
       productId: product.id,
       productName: product.name,
-      image: product.image,
+      image: post.heroImage || product.image,
     }];
   }).slice(0, 4);
 }
