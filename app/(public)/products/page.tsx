@@ -10,7 +10,8 @@ export const metadata: Metadata = buildMetadata({
   path: "/products",
 });
 
-export default async function ProductsPage() {
+export default async function ProductsPage({searchParams}: {searchParams: Promise<{collection?: string}>}) {
+  const {collection: collectionFilter} = await searchParams;
   const products = await getAllProducts();
   const collection = {
     "@context": "https://schema.org",
@@ -30,6 +31,6 @@ export default async function ProductsPage() {
   };
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(collection) }} />
-    <ProductsCatalogView products={products} />
+    <ProductsCatalogView key={collectionFilter ?? "all"} products={products} initialCollection={collectionFilter} />
   </>;
 }
