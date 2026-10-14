@@ -41,3 +41,11 @@ it('keeps schedules hidden before their date and validates publication requireme
  expect(blogEditorSchema.safeParse({...post,status:'published',heroAlt:''}).success).toBe(false);
  expect(blogEditorSchema.safeParse({...post,title:'<script>x</script>'}).success).toBe(false);
 });
+it('persists home visibility and product links independently of publication',async()=>{
+ const saved=await saveManagedBlogPost({...post,showOnHome:true,relatedProductIds:['mnk-001','fa-lnd-70']},null);
+ expect((await getEditableBlogPosts()).some(p=>p.slug===post.slug)).toBe(false);
+ const published=await saveManagedBlogPost({...saved,status:'published'},post.slug);
+ expect((await getEditableBlogPosts()).find(p=>p.slug===post.slug)).toMatchObject({showOnHome:true,relatedProductIds:['mnk-001','fa-lnd-70']});
+ await saveManagedBlogPost({...published,showOnHome:false,relatedProductIds:[]},post.slug);
+ expect((await getEditableBlogPosts()).find(p=>p.slug===post.slug)).toMatchObject({showOnHome:false,relatedProductIds:[]});
+});

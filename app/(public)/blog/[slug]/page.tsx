@@ -44,8 +44,9 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
   if (!post) notFound();
 
   const products = await getAllProducts();
-  const relatedProducts = post.promotion
-    ? post.promotion.productIds.flatMap(id => products.filter(product => product.id === id))
+  const relatedIds = post.relatedProductIds ?? post.promotion?.productIds;
+  const relatedProducts = relatedIds
+    ? relatedIds.flatMap(id => products.filter(product => product.id === id))
     : post.relatedProductCategory
     ? products.filter((product) => product.category === post.relatedProductCategory).slice(0, 3)
     : products.slice(0, 3);

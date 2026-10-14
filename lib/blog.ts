@@ -13,6 +13,8 @@ export type BlogPost = {
     heading: string;
     body: string[];
   }>;
+  showOnHome?: boolean;
+  relatedProductIds?: string[];
   relatedProductCategory?: "facial" | "capilar" | "corporal" | "kits";
   promotion?: { eyebrow: string; headline: string; productIds: string[] };
 };

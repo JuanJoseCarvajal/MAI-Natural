@@ -53,3 +53,12 @@ describe("programación editorial MAI", () => {
     });
   });
 });
+
+it('honors home opt-out and explicit product selection including an empty selection', () => {
+  const post = getPublishedBlogPosts(new Date('2026-10-01T14:00:00Z'))[0];
+  expect(getEditorialSlides(products, [{...post,showOnHome:false}])).toEqual([]);
+  expect(getEditorialSlides(products, [{...post,showOnHome:true,relatedProductIds:[]}])).toEqual([]);
+  const product = products.find(p=>p.active!==false&&p.amountInCents>0)!;
+  expect(getEditorialSlides(products, [{...post,showOnHome:true,relatedProductIds:[product.id]}])[0].productId).toBe(product.id);
+  expect(getEditorialSlides(products.map(p=>({...p,active:false})), [{...post,showOnHome:true,relatedProductIds:[product.id]}])).toEqual([]);
+});

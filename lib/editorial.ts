@@ -14,8 +14,10 @@ export type EditorialSlide = {
 export function getEditorialSlides(products: Product[], posts: BlogPost[] = getPublishedBlogPosts()): EditorialSlide[] {
   const seen = new Set<string>();
   return posts.flatMap((post) => {
-    const candidates = post.promotion
-      ? post.promotion.productIds.map(id => products.find(product => product.id === id))
+    if (post.showOnHome === false) return [];
+    const ids = post.relatedProductIds ?? post.promotion?.productIds;
+    const candidates = ids
+      ? ids.map(id => products.find(product => product.id === id))
       : products.filter(product => product.category === post.relatedProductCategory);
     const product = candidates.find(product => product && product.active !== false && product.amountInCents > 0 && !seen.has(product.id));
     if (!product) return [];
