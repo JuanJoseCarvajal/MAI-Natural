@@ -23,6 +23,8 @@ it('uses current catalog covers for all three categories and preserves custom im
  const products=(catalog as Product[]).map(p=>ids.includes(p.id)?{...p,image:`/products/updated-${p.id}.png`}:p);
  expect(getHomeCategories(defaultHomeConfig,products).map(p=>p.image)).toEqual(ids.map(id=>`/products/updated-${id}.png`));
  const config=structuredClone(defaultHomeConfig);config.categories[1].image='/products/custom.png';
+ expect(getHomeCategories(config,products)[1].image).toBe('/products/updated-mnk-001.png');
+ config.categories[1].imageProductId=null;
  expect(getHomeCategories(config,products)[1].image).toBe('/products/custom.png');
  expect(getHomeCategories(defaultHomeConfig,[])).toEqual(defaultHomeConfig.categories);
  expect(getHomeCategories(defaultHomeConfig,products.map(p=>({...p,active:false})))).toEqual(defaultHomeConfig.categories);

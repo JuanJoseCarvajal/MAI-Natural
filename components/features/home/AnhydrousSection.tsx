@@ -18,12 +18,12 @@ export default function AnhydrousSection({products}: {products: SlideProduct[]})
     list.scrollBy({left: direction * (step + 20), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   }
   if (!products.length) return null;
-  return <section className={`editorial-section ${styles.section}`} aria-labelledby="anhydrous-title">
-    <div className={styles.copy}>
-      <p className="eyebrow">COSMÉTICA ANHIDRA</p>
-      <h2 id="anhydrous-title">Lo esencial,<br/><em>sin agua en la fórmula.</em></h2>
-      <p>Descubre otra forma de cuidar de ti: fórmulas sin agua que hacen parte de tus rituales de cada día. Explora nuestros acondicionadores y desodorantes anhidros y encuentra el cuidado que va contigo.</p>
-      <Link href={anhydrousShopUrl} className="mai-button">Explorar cosmética anhidra <span aria-hidden="true">↗</span></Link>
+  return <section className={`ritual-story ${styles.section}`} aria-labelledby="anhydrous-title">
+    <div className={`ritual-copy ${styles.copy}`}>
+      <p className="eyebrow">COSMÉTICA ANHIDRA · CUIDADO EN SÓLIDO</p>
+      <h2 id="anhydrous-title">Otra forma de cuidarte.<br/><em>Lo esencial, en tus manos.</em></h2>
+      <p>Shampoos, acondicionadores y jabones sólidos, junto a nuestros productos anhidros. Una colección para descubrir nuevas texturas y hacer de lo cotidiano un momento de cuidado.</p>
+      <Link href={anhydrousShopUrl} className="mai-button mai-button-light">Explorar cosmética anhidra <span aria-hidden="true">↗</span></Link>
     </div>
     <div className={styles.slider} role="region" aria-label="Productos de cosmética anhidra">
       <div className={styles.controls}><span>{products.length} productos para descubrir</span>{products.length > 1 && <div><button type="button" onClick={()=>move(-1)} aria-label="Ver producto anterior" aria-controls="anhydrous-products">←</button><button type="button" onClick={()=>move(1)} aria-label="Ver producto siguiente" aria-controls="anhydrous-products">→</button></div>}</div>

@@ -3,7 +3,7 @@ import {adminProductSchema} from './validators/admin';
 import type {Product} from './products';
 const text=(max:number)=>z.string().trim().min(1).max(max).refine(v=>!/[<>\u0000]/.test(v),'Usa texto sin HTML.');
 const link=z.string().max(300).refine(v=>/^\/(?!\/)[a-zA-Z0-9/?#=&_%.-]*$/.test(v)&&!v.includes('..'),'Usa un enlace interno, por ejemplo /products.');
-export const homePanelSchema=z.object({id:text(80),title:text(160),description:text(400),image:adminProductSchema.shape.image,alt:text(250),href:link,action:text(80),enabled:z.boolean()}).strict();
+export const homePanelSchema=z.object({id:text(80),title:text(160),description:text(400),image:adminProductSchema.shape.image,alt:text(250),href:link,action:text(80),enabled:z.boolean(),imageProductId:z.string().min(1).max(160).nullable().optional()}).strict();
 const panels=z.array(homePanelSchema).min(1).max(12).refine(rows=>rows.some(row=>row.enabled),'Deja al menos un elemento visible.').refine(rows=>new Set(rows.map(row=>row.id)).size===rows.length,'Los elementos deben tener identificadores únicos.');
 export const homeConfigSchema=z.object({revision:z.number().int().min(0),categories:panels});
 export type HomeConfig=z.infer<typeof homeConfigSchema>;
@@ -17,9 +17,9 @@ export const defaultHomeConfig:HomeConfig={revision:0,categories:categories.map(
 const categoryProductIds:Record<string,string>={facial:'fa-lnd-70',capilar:'mnk-001',corporal:'crema-corporal'};
 export function getHomeCategories(config:HomeConfig,products:Product[]):HomePanel[]{
  return config.categories.map(panel=>{
-  const original=categories.find(category=>category.id===panel.id);
-  const product=products.find(product=>product.id===categoryProductIds[panel.id]&&product.active!==false);
-  return original&&panel.image===original.image&&product?.image
+  if(panel.imageProductId===null)return panel;
+  const product=products.find(product=>product.id===(panel.imageProductId??categoryProductIds[panel.id])&&product.active!==false);
+  return product?.image
    ? {...panel,image:product.image,alt:product.name} : panel;
  });
 }
