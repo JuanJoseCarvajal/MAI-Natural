@@ -14,8 +14,12 @@ const categories:HomePanel[]=[
  {id:'corporal',title:'Habita tu bienestar.',description:'Pequeños gestos para cuidar todo tu cuerpo.',image:'/products/media/corporal/crema-corporal-1.png',alt:'Cuidado corporal MAI',href:'/products?category=corporal',action:'Explorar cuidado corporal',enabled:true},
 ];
 export const defaultHomeConfig:HomeConfig={revision:0,categories:categories.map((p,i)=>({...p,title:['Para tu piel','Para tu cabello','Para todo tu cuerpo'][i]}))};
+const categoryProductIds:Record<string,string>={facial:'fa-lnd-70',capilar:'mnk-001',corporal:'crema-corporal'};
 export function getHomeCategories(config:HomeConfig,products:Product[]):HomePanel[]{
- const shampoo=products.find(p=>p.id==='mnk-001'&&p.active!==false);
- return config.categories.map(panel=>panel.id==='capilar'&&panel.image==='/products/media/capilar/mnk-001-1.png'&&shampoo
-  ? {...panel,image:shampoo.image,alt:shampoo.name} : panel);
+ return config.categories.map(panel=>{
+  const original=categories.find(category=>category.id===panel.id);
+  const product=products.find(product=>product.id===categoryProductIds[panel.id]&&product.active!==false);
+  return original&&panel.image===original.image&&product?.image
+   ? {...panel,image:product.image,alt:product.name} : panel;
+ });
 }

@@ -18,9 +18,12 @@ it('rejects invalid category image URLs',()=>{
  const config=structuredClone(defaultHomeConfig);config.categories[0].image='https://example.com/image.png';
  expect(homeConfigSchema.safeParse(config).success).toBe(false);
 });
-it('uses the current shampoo cover while preserving custom category images',()=>{
- const products=(catalog as Product[]).map(p=>p.id==='mnk-001'?{...p,image:'/products/latest.png'}:p);
- expect(getHomeCategories(defaultHomeConfig,products).find(p=>p.id==='capilar')?.image).toBe('/products/latest.png');
+it('uses current catalog covers for all three categories and preserves custom images',()=>{
+ const ids=['fa-lnd-70','mnk-001','crema-corporal'];
+ const products=(catalog as Product[]).map(p=>ids.includes(p.id)?{...p,image:`/products/updated-${p.id}.png`}:p);
+ expect(getHomeCategories(defaultHomeConfig,products).map(p=>p.image)).toEqual(ids.map(id=>`/products/updated-${id}.png`));
  const config=structuredClone(defaultHomeConfig);config.categories[1].image='/products/custom.png';
  expect(getHomeCategories(config,products)[1].image).toBe('/products/custom.png');
+ expect(getHomeCategories(defaultHomeConfig,[])).toEqual(defaultHomeConfig.categories);
+ expect(getHomeCategories(defaultHomeConfig,products.map(p=>({...p,active:false})))).toEqual(defaultHomeConfig.categories);
 });
