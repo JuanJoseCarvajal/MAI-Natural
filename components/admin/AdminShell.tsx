@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { signOut } from 'next-auth/react';
 
 const navItems = [
+  { href: "/admin/home", label: "Home · Página de inicio", icon: "🏡" },
   { href: "/admin/content", label: "Textos del sitio", icon: "✏️" },
   { href: "/admin/blog", label: "Blogs · Diario MAI", icon: "📝" },
   { href: "/admin", label: "Resumen", icon: "📊" },

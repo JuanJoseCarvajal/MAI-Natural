@@ -7,7 +7,7 @@ export async function getManagedBlogPosts():Promise<BlogDraft[]>{
  const values=await publicSiteContent();
  const defaults:BlogDraft[]=allBlogPosts.map(post=>{
   const text=(key:string,fallback:string)=>values[`blog:${post.slug}:${key}`]??fallback;
-  return {slug:post.slug,heroImage:post.heroImage,keywords:post.keywords,relatedProductCategory:post.relatedProductCategory,promotion:post.promotion,title:text('title',post.title),description:text('description',post.description),category:text('category',post.category),heroAlt:post.title,publishedAt:new Date(post.publishedAt).toISOString(),status:Date.parse(post.publishedAt)>Date.now()?'scheduled':'published',revision:0,
+  return {showOnHome:post.showOnHome,relatedProductIds:post.relatedProductIds,slug:post.slug,heroImage:post.heroImage,keywords:post.keywords,relatedProductCategory:post.relatedProductCategory,promotion:post.promotion,title:text('title',post.title),description:text('description',post.description),category:text('category',post.category),heroAlt:post.title,publishedAt:new Date(post.publishedAt).toISOString(),status:Date.parse(post.publishedAt)>Date.now()?'scheduled':'published',revision:0,
    sections:post.sections.map((s,i)=>({heading:text(`section:${i}:heading`,s.heading),body:s.body.map((p,j)=>text(`section:${i}:body:${j}`,p))}))};
  });
  if(!persistentDatabaseEnabled())return defaults;

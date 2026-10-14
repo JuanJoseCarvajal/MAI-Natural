@@ -24,8 +24,8 @@ export function getEditorialSlides(products: Product[], posts: BlogPost[] = getP
     seen.add(product.id);
     return [{
       slug: post.slug,
-      headline: post.promotion?.headline ?? post.title,
-      eyebrow: post.promotion?.eyebrow ?? post.category,
+      headline: post.title,
+      eyebrow: post.category,
       articleTitle: post.title,
       productId: product.id,
       productName: product.name,
