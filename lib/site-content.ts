@@ -11,8 +11,15 @@ export async function readSiteContent() {
     return result.rows as Array<{key:string; value:string; revision:number}>;
   });
 }
+// The editor and the public page must share the same default when no override exists.
+export function resolvePublishedContent(rows:Array<{key:string;value:string}>):Record<string,string>{
+ return Object.fromEntries([
+  ...Object.entries(siteTextCatalog).map(([key,field])=>[key,field.text]),
+  ...rows.filter(row=>Object.hasOwn(siteTextCatalog,row.key)).map(row=>[row.key,row.value]),
+ ]);
+}
 export const publicSiteContent = cache(async () => {
-  return Object.fromEntries((await readSiteContent()).filter(row => Object.hasOwn(siteTextCatalog,row.key)).map(row => [row.key,row.value]));
+  return resolvePublishedContent(await readSiteContent());
 });
 export function validateContentChanges(changes: unknown): Array<{key:string; value:string; revision:number}> {
   if (!Array.isArray(changes) || changes.length < 1 || changes.length > Object.keys(siteTextCatalog).length) throw new Error('Cantidad de cambios inválida');

@@ -185,7 +185,7 @@ export default function ConsultationExperience() {
         </div> : <div className={styles.launch}>
           <span className={styles.launchSymbol} aria-hidden="true">✳</span>
           <p className="eyebrow"><SiteText id="888287a89eada0fe6ba6">{"UNA PREGUNTA PUEDE ABRIR OTRO CAMINO"}</SiteText></p>
-          <h2><SiteText id="01597aee56c795617aab">{"¿Y si esta vez"}</SiteText><br /><SiteText id="00a9168e710447e54c00">{"empiezas por"}</SiteText><br /><em><SiteText id="3fab4effa62d66c1f44e">{"escucharte a ti?"}</SiteText></em></h2>
+          <h2><SiteText id="01597aee56c795617aab">{"¿Y si esta vez"}</SiteText><br /><SiteText id="00a9168e710447e54c00">{"empiezas por"}</SiteText><br /><em><SiteText id="3fab4effa62d66c1f44e">{"escucharte?"}</SiteText></em></h2>
           <p><SiteText id="0dc3805f387a4840cb17">{"Hay algo que quieres cuidar. Quizás también algo que quieres comprender. Démosle un espacio."}</SiteText></p>
           <button ref={launchButton} type="button" className={styles.primary} onClick={() => setIsOpen(true)} aria-haspopup="dialog">{started ? <SiteText id="5833bc737a59ccc43999">{"Retomar mi encuentro"}</SiteText> : <SiteText id="4967aa161f0f6351f0dc">{"Continuar"}</SiteText>}<span aria-hidden="true">↗</span></button>
           <small>{started ? <SiteText id="a2a518651f2bb88a7fea">{"Tus respuestas siguen aquí mientras permaneces en esta página."}</SiteText> : <SiteText id="40568a7b61d59f76d348">{"Cinco pasos breves. Una conversación que empieza contigo."}</SiteText>}</small>
