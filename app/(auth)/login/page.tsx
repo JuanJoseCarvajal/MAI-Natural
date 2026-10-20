@@ -1,5 +1,5 @@
 'use client';
-import { SiteText } from "@/components/common/SiteText";
+import { SiteText , useSiteContentText} from "@/components/common/SiteText";
 
 
 import { useRef, useState } from 'react';
@@ -7,6 +7,8 @@ import { loginAction } from '../actions';
 import Link from 'next/link';
 
 export default function LoginPage() {
+ const editorialText=useSiteContentText();
+
   const submitting = useRef(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -63,24 +65,24 @@ export default function LoginPage() {
       )}
 
       <form onSubmit={handleSubmit} aria-busy={loading} className="mt-6 space-y-4">
-        <label htmlFor="login-email" className="block font-medium">Correo electrónico</label>
+        <label htmlFor="login-email" className="block font-medium"><SiteText id="4f5e884fe69bacb2b7f9">{"Correo electrónico"}</SiteText></label>
         <input
           id="login-email"
           disabled={loading}
           type="email"
-          placeholder="Correo"
+          placeholder={editorialText("1cf95fa3c962a36b48d1","Correo")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
           autoComplete="username"
           required
         />
-        <label htmlFor="login-password" className="block font-medium">Contraseña</label>
+        <label htmlFor="login-password" className="block font-medium"><SiteText id="4ac4c54dbbae6bdebb2a">{"Contraseña"}</SiteText></label>
         <input
           id="login-password"
           disabled={loading}
           type="password"
-          placeholder="Contraseña"
+          placeholder={editorialText("fd7e2d05e7092e074a9d","Contraseña")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -95,7 +97,7 @@ export default function LoginPage() {
           disabled={loading}
           className="w-full rounded-full bg-brand-700 py-2 text-white font-semibold hover:bg-brand-900 disabled:opacity-50"
         >
-          {loading ? 'Cargando...' : 'Entrar'}
+          {loading ? <SiteText id="c64b2504ff0c8fb6a00b">{"Cargando..."}</SiteText> : <SiteText id="bb69a4169b50af85b1af">{"Entrar"}</SiteText>}
         </button>
       </form>
 

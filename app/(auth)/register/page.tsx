@@ -1,5 +1,5 @@
 'use client';
-import { SiteText } from "@/components/common/SiteText";
+import { SiteText , useSiteContentText} from "@/components/common/SiteText";
 
 
 import { useState } from 'react';
@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function RegisterPage() {
+ const editorialText=useSiteContentText();
+
   const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -59,7 +61,7 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <input
           type="text"
-          placeholder="Nombre"
+          placeholder={editorialText("bd660bb9dab006a73517","Nombre")}
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -68,7 +70,7 @@ export default function RegisterPage() {
         />
         <input
           type="email"
-          placeholder="Correo"
+          placeholder={editorialText("46cb0f7d7bed445067a6","Correo")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -77,7 +79,7 @@ export default function RegisterPage() {
         />
         <input
           type="password"
-          placeholder="Contraseña"
+          placeholder={editorialText("60554bdbaf84226f582a","Contraseña")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -87,7 +89,7 @@ export default function RegisterPage() {
         />
         <input
           type="password"
-          placeholder="Confirmar contraseña"
+          placeholder={editorialText("4e5ae47d9e819cebdc13","Confirmar contraseña")}
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -100,7 +102,7 @@ export default function RegisterPage() {
           disabled={loading}
           className="w-full rounded-full bg-brand-700 py-2 text-white font-semibold hover:bg-brand-900 disabled:opacity-50"
         >
-          {loading ? 'Cargando...' : 'Registrarme'}
+          {loading ? <SiteText id="5e68f11dbdd621d426c1">{"Cargando..."}</SiteText> : <SiteText id="3ecf365f6b0962f072dc">{"Registrarme"}</SiteText>}
         </button>
       </form>
 

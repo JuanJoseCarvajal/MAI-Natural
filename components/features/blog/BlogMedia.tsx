@@ -1,4 +1,6 @@
 'use client';
+import {SiteText} from "@/components/common/SiteText";
+
 import Image from 'next/image';
 import {useState} from 'react';
 
@@ -14,9 +16,9 @@ export default function BlogMedia({images=[],layout='stack',label='Imágenes del
  return <div role="region" aria-roledescription="carrusel" aria-label={label||'Imágenes del artículo'} className="not-prose my-6" onKeyDown={event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();move(event.key==='ArrowLeft'?-1:1);}}}>
   {photo(images[index],index)}
   <div className="mt-3 flex items-center justify-between gap-4">
-   <button type="button" disabled={images.length<2} onClick={()=>move(-1)} className="min-h-11 rounded-lg border px-4" aria-label="Imagen anterior">Anterior</button>
+   <button type="button" disabled={images.length<2} onClick={()=>move(-1)} className="min-h-11 rounded-lg border px-4" aria-label="Imagen anterior"><SiteText id="e5a9a31dd81a153bdf4e">{"Anterior"}</SiteText></button>
    <span role="status" aria-live="polite">{index+1} / {images.length}</span>
-   <button type="button" disabled={images.length<2} onClick={()=>move(1)} className="min-h-11 rounded-lg border px-4" aria-label="Imagen siguiente">Siguiente</button>
+   <button type="button" disabled={images.length<2} onClick={()=>move(1)} className="min-h-11 rounded-lg border px-4" aria-label="Imagen siguiente"><SiteText id="6bda852800d90c8e0ab6">{"Siguiente"}</SiteText></button>
   </div>
  </div>;
 }

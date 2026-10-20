@@ -2,7 +2,10 @@ import blocks from './content-layout.json';
 export const contentBlocks=blocks;
 export const contentContinuationKeys=new Set(blocks.flatMap(block=>block.keys.slice(1)));
 export function contentLocation(source:string):{title:string;url:string} {
+ if(source.includes('/blog/')||source.includes('BlogMedia'))return {title:'Diario MAI',url:'/blog'};
+ if(source.includes('/products/')||source.includes('ProductGallery')||source.includes('ProductPurchase'))return {title:'Tienda',url:'/products'};
  if(source.includes('home/')||source==='app/(public)/page.tsx')return {title:'Inicio',url:'/'};
+ if(source.includes('/services/'))return {title:'Asesoría',url:'/services'};
  if(source.includes('Consultation'))return {title:'Asesoría · experiencia y preguntas',url:'/services'};
  if(source.includes('Routine'))return {title:'Rutinas',url:'/routines'};
  if(source.includes('ProductsCatalog'))return {title:'Tienda · presentación del catálogo',url:'/products'};
@@ -20,6 +23,7 @@ export function contentLocation(source:string):{title:string;url:string} {
  if(source.includes('appointments'))return {title:'Mi cuenta · citas',url:'/account/appointments'};
  if(source.includes('orders'))return {title:'Mi cuenta · pedidos',url:'/account/orders'};
  if(/profile|Profile/.test(source))return {title:'Mi cuenta · perfil',url:'/account/profile'};
+ if(source.includes('Dashboard'))return {title:'Mi cuenta',url:'/account'};
  if(/account|dashboard/.test(source))return {title:'Mi cuenta',url:'/account'};
  if(source.includes('Calendar'))return {title:'Calendario de citas',url:'/services'};
  return {title:'Mensajes de la asesoría',url:'/services'};

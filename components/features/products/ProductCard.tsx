@@ -30,8 +30,8 @@ export default function ProductCard({ id, image, images, variants, name, price, 
       <h3><Link href={`/products/${id}`}>{name}</Link></h3>
       <p className={styles.description}>{description}</p>
       <p className={styles.price}>{price} <span hidden={amountInCents <= 0}><SiteText id="3523f6e81ccde3b2be29">{"COP"}</SiteText></span></p>
-      {variants?.length ? <Link className={styles.addButton} href={`/products/${id}`}>Elegir componentes →</Link> : <button onClick={handleAdd} disabled={added || amountInCents <= 0} className={styles.addButton} aria-label={added ? `${name} agregado al carrito` : `Agregar ${name} al carrito`}>
-        <span aria-live="polite">{amountInCents <= 0 ? "Precio por confirmar" : added ? "Agregado ✓" : "Agregar al carrito"}</span><span aria-hidden="true">{added ? "" : "+"}</span>
+      {variants?.length ? <Link className={styles.addButton} href={`/products/${id}`}><SiteText id="b67da212abab03da69a2">{"Elegir componentes →"}</SiteText></Link> : <button onClick={handleAdd} disabled={added || amountInCents <= 0} className={styles.addButton} aria-label={added ? `${name} agregado al carrito` : `Agregar ${name} al carrito`}>
+        <span aria-live="polite">{amountInCents <= 0 ? <SiteText id="a4f75090e929d4d4429c">{"Precio por confirmar"}</SiteText> : added ? <SiteText id="7dc5402e1d81c62ae5e2">{"Agregado ✓"}</SiteText> : <SiteText id="c8a8c36c43229d9d1955">{"Agregar al carrito"}</SiteText>}</span><span aria-hidden="true">{added ? "" : "+"}</span>
       </button>}
     </div>
   </article>;

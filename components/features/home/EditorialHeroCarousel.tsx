@@ -85,7 +85,7 @@ export default function EditorialHeroCarousel({ slides }: { slides: EditorialSli
     >
       <div className={styles.topline}>
         <span><SiteText id="64b01d01e00795b04238">{"DEL DIARIO A TU RITUAL"}</SiteText></span>
-        {slides.length > 1 && <button type="button" onPointerDown={() => { rotationBeforePointer.current = playing; }} onClick={() => { setPlaying(!(rotationBeforePointer.current ?? playing)); rotationBeforePointer.current = null; }} aria-label={playing ? "Pausar carrusel" : "Reproducir carrusel"}>{playing ? "Ⅱ" : "▷"}<span>{playing ? "Pausar" : "Reproducir"}</span></button>}
+        {slides.length > 1 && <button type="button" onPointerDown={() => { rotationBeforePointer.current = playing; }} onClick={() => { setPlaying(!(rotationBeforePointer.current ?? playing)); rotationBeforePointer.current = null; }} aria-label={playing ? "Pausar carrusel" : "Reproducir carrusel"}>{playing ? "Ⅱ" : "▷"}<span>{playing ? <SiteText id="18f152b5ee6fa4d85c19">{"Pausar"}</SiteText> : <SiteText id="c778e71a0849a7d1a39a">{"Reproducir"}</SiteText>}</span></button>}
       </div>
       <div className={styles.slide} role="group" aria-roledescription="diapositiva" aria-label={`${current + 1} de ${slides.length}: ${slide.productName}`}>
         <Image key={slide.image} src={slide.image} alt={slide.articleTitle} fill priority={current === 0} sizes="(max-width: 760px) 100vw, 54vw" className={styles.image} />

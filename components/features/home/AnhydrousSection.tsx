@@ -1,4 +1,6 @@
 'use client';
+import {SiteText} from "@/components/common/SiteText";
+
 
 import ProductGallery from '@/components/features/products/ProductGallery';
 import Link from 'next/link';
@@ -20,13 +22,13 @@ export default function AnhydrousSection({products}: {products: SlideProduct[]})
   if (!products.length) return null;
   return <section className={styles.section} aria-labelledby="anhydrous-title">
     <div className={styles.copy}>
-      <p className="eyebrow">COSMÉTICA ANHIDRA · CUIDADO EN SÓLIDO</p>
-      <h2 id="anhydrous-title">Otra forma de cuidarte.<br/><em>Lo esencial, en tus manos.</em></h2>
-      <p>Shampoos, acondicionadores y jabones sólidos, junto a nuestros productos anhidros. Una colección para descubrir nuevas texturas y hacer de lo cotidiano un momento de cuidado.</p>
-      <Link href={anhydrousShopUrl} className="mai-button">Explorar cosmética anhidra <span aria-hidden="true">↗</span></Link>
+      <p className="eyebrow"><SiteText id="52580a8807084b262101">{"COSMÉTICA ANHIDRA · CUIDADO EN SÓLIDO"}</SiteText></p>
+      <h2 id="anhydrous-title"><SiteText id="52f0e844ce4c1a3ce993">{"Otra forma de cuidarte."}</SiteText><br/><em><SiteText id="c25f18c581b14da1531b">{"Lo esencial, en tus manos."}</SiteText></em></h2>
+      <p><SiteText id="e12d07aa7c026e248999">{"Shampoos, acondicionadores y jabones sólidos, junto a nuestros productos anhidros. Una colección para descubrir nuevas texturas y hacer de lo cotidiano un momento de cuidado."}</SiteText></p>
+      <Link href={anhydrousShopUrl} className="mai-button"><SiteText id="95abff4068c90d4c3a4d">{"Explorar cosmética anhidra "}</SiteText><span aria-hidden="true">↗</span></Link>
     </div>
     <div className={styles.slider} role="region" aria-label="Productos de cosmética anhidra">
-      <div className={styles.controls}><span>{products.length} productos para descubrir</span>{products.length > 1 && <div><button type="button" onClick={()=>move(-1)} aria-label="Ver producto anterior" aria-controls="anhydrous-products">←</button><button type="button" onClick={()=>move(1)} aria-label="Ver producto siguiente" aria-controls="anhydrous-products">→</button></div>}</div>
+      <div className={styles.controls}><span>{products.length}<SiteText id="46b82a81c1bb1034f5ca">{" productos para descubrir"}</SiteText></span>{products.length > 1 && <div><button type="button" onClick={()=>move(-1)} aria-label="Ver producto anterior" aria-controls="anhydrous-products">←</button><button type="button" onClick={()=>move(1)} aria-label="Ver producto siguiente" aria-controls="anhydrous-products">→</button></div>}</div>
       <ul id="anhydrous-products" ref={track} className={styles.track} tabIndex={0} aria-label="Desliza para explorar todos los productos">
         {products.map(product=><li key={product.id} className={styles.card}>
           <ProductGallery image={product.image} images={product.images} name={product.name}/>

@@ -1,5 +1,5 @@
 'use client';
-import { SiteText } from "@/components/common/SiteText";
+import { SiteText , useSiteContentText} from "@/components/common/SiteText";
 
 
 import Link from 'next/link';
@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { requestPasswordResetAction } from '../actions';
 
 export default function ForgotPasswordPage() {
+ const editorialText=useSiteContentText();
+
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
@@ -54,7 +56,7 @@ export default function ForgotPasswordPage() {
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <input
           type="email"
-          placeholder="Correo"
+          placeholder={editorialText("b7ca39836e9e04278e62","Correo")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -66,7 +68,7 @@ export default function ForgotPasswordPage() {
           disabled={loading}
           className="w-full rounded-full bg-brand-700 py-2 font-semibold text-white hover:bg-brand-900 disabled:opacity-50"
         >
-          {loading ? 'Enviando...' : 'Enviar enlace'}
+          {loading ? <SiteText id="ab2b5eb3c5e226c3417b">{"Enviando..."}</SiteText> : <SiteText id="2f2799f1a3545027d089">{"Enviar enlace"}</SiteText>}
         </button>
       </form>
 

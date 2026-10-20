@@ -1,4 +1,6 @@
 "use client";
+import {SiteText} from "@/components/common/SiteText";
+
 import Image from "next/image";
 import { useRef, useState } from "react";
 import {useProductSelection} from "./ProductSelection";
@@ -26,7 +28,7 @@ export default function ProductGallery({ image, images, name, detail = false }: 
     <div className={styles.viewport}>
     <button type="button" className={styles.frame} onClick={() => { setExpanded(true); dialog.current?.showModal(); }} aria-label={"Ampliar imagen de " + name}>
       <Image src={photos[index]} alt={name + " · foto " + (index + 1)} fill sizes={detail ? "(max-width: 640px) 100vw, 50vw" : "(max-width: 640px) 50vw, 25vw"} />
-      <span className={styles.expand}>Ampliar ↗</span>
+      <span className={styles.expand}><SiteText id="6a0a0aa12315b39211d8">{"Ampliar ↗"}</SiteText></span>
     </button>
     {photos.length > 1 && controls}
     </div>
@@ -36,7 +38,7 @@ export default function ProductGallery({ image, images, name, detail = false }: 
       </button>)}</div>}
     <dialog ref={dialog} className={styles.dialog} onClose={() => setExpanded(false)} aria-label={"Galería de " + name}
       onKeyDown={event => { if(event.key === "ArrowLeft") {event.preventDefault(); next(-1);} if(event.key === "ArrowRight") {event.preventDefault(); next(1);} }}>
-      <button type="button" className={styles.close} onClick={() => dialog.current?.close()} autoFocus>Cerrar ×</button>
+      <button type="button" className={styles.close} onClick={() => dialog.current?.close()} autoFocus><SiteText id="6c631da93a64bbf99f0e">{"Cerrar ×"}</SiteText></button>
       <div className={styles.large}>{expanded && <Image src={photos[index]} alt={name + " · foto " + (index + 1)} fill sizes="90vw" />}{photos.length > 1 && controls}</div>
     </dialog>
   </div>;

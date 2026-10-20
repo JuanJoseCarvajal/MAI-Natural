@@ -1,4 +1,6 @@
 "use client";
+import {SiteText} from "@/components/common/SiteText";
+
 import { useState } from "react";
 import { useCart } from "@/components/features/cart/CartContext";
 import { trackAddToCart } from "@/lib/analytics";
@@ -35,7 +37,7 @@ export default function AddToCartButton({ id, name, price, amountInCents, image 
         added ? "bg-green-600" : "bg-brand-700 hover:bg-brand-900"
       }`}
     >
-      {added ? "✓ Agregado al carrito" : "Agregar al carrito"}
+      {added ? <SiteText id="364aeded4a3ca7df964f">{"✓ Agregado al carrito"}</SiteText> : <SiteText id="6a8d11469368c844362d">{"Agregar al carrito"}</SiteText>}
     </button>
   );
 }

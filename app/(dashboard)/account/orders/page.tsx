@@ -94,7 +94,7 @@ export default async function AccountOrdersPage() {
                       </p>
                       <p className="mt-2 text-sm text-slate-700"><SiteText id="f81effe39987cea32e38">{"Total: "}</SiteText><strong>{formatCOP(order.total)}</strong>
                       </p>
-                      <p className="mt-1 text-sm text-slate-600"><SiteText id="0484a73ab58b1f566da1">{"Pago: "}</SiteText><strong>{order.paymentMethod === "wompi_sandbox" ? "Wompi · simulación sin cobro real" : order.paymentMethod === "wompi" ? "Wompi · pago real" : "Pago no disponible · consultar al equipo"}</strong>
+                      <p className="mt-1 text-sm text-slate-600"><SiteText id="0484a73ab58b1f566da1">{"Pago: "}</SiteText><strong>{order.paymentMethod === "wompi_sandbox" ? <SiteText id="38540410ea1022b32b83">{"Wompi · simulación sin cobro real"}</SiteText> : order.paymentMethod === "wompi" ? <SiteText id="8ad3a53034455c76da27">{"Wompi · pago real"}</SiteText> : <SiteText id="3551733aa14353eacddf">{"Pago no disponible · consultar al equipo"}</SiteText>}</strong>
                       </p>
                       {order.trackingNumber ? (
                         <p className="mt-1 text-sm text-slate-600"><SiteText id="bde6dc717f7aba6717af">{"Guía: "}</SiteText><strong>{order.trackingNumber}</strong>

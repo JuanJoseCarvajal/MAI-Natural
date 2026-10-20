@@ -1,5 +1,5 @@
 'use client';
-import { SiteText } from "@/components/common/SiteText";
+import { SiteText , useSiteContentText} from "@/components/common/SiteText";
 
 
 import Link from 'next/link';
@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { resetPasswordAction } from '../actions';
 
 export default function ResetPasswordForm({ token }: { token: string }) {
+ const editorialText=useSiteContentText();
+
   const router = useRouter();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -68,7 +70,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <input
           type="password"
-          placeholder="Nueva contraseña"
+          placeholder={editorialText("44c34c5d82bd2ab167a0","Nueva contraseña")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -78,7 +80,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
         />
         <input
           type="password"
-          placeholder="Confirmar nueva contraseña"
+          placeholder={editorialText("22eee5069b493485afa3","Confirmar nueva contraseña")}
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           className="w-full rounded-lg border px-3 py-2"
@@ -91,7 +93,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           disabled={loading || success}
           className="w-full rounded-full bg-brand-700 py-2 font-semibold text-white hover:bg-brand-900 disabled:opacity-50"
         >
-          {loading ? 'Actualizando...' : 'Actualizar contraseña'}
+          {loading ? <SiteText id="24cdacf31aa7c4844f44">{"Actualizando..."}</SiteText> : <SiteText id="6b7692afa3559fc3b2fa">{"Actualizar contraseña"}</SiteText>}
         </button>
       </form>
 

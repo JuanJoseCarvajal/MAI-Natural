@@ -2910,5 +2910,581 @@
   "consultation:intentions:2:description": {
     "source": "components/features/services/ConsultationExperience.tsx",
     "text": "Conocer cómo podría continuar el trabajo después del encuentro."
+  },
+  "4f5e884fe69bacb2b7f9": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Correo electrónico"
+  },
+  "4ac4c54dbbae6bdebb2a": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Contraseña"
+  },
+  "99596a292c2b3cea87b7": {
+    "source": "app/(dashboard)/layout.tsx",
+    "text": "Mi cuenta"
+  },
+  "1508021d629c0529042a": {
+    "source": "app/(dashboard)/layout.tsx",
+    "text": "Gestiona tu perfil, pedidos y citas."
+  },
+  "7b9f6ccb4ac8b236ec82": {
+    "source": "app/(dashboard)/layout.tsx",
+    "text": "Resumen"
+  },
+  "cb0d44d85ce641120848": {
+    "source": "app/(dashboard)/layout.tsx",
+    "text": "Pedidos"
+  },
+  "f75a80fa6f21e68cbc37": {
+    "source": "app/(dashboard)/layout.tsx",
+    "text": "Citas"
+  },
+  "6c93de5fd2a9902c0808": {
+    "source": "app/(dashboard)/layout.tsx",
+    "text": "Perfil"
+  },
+  "e5a9a31dd81a153bdf4e": {
+    "source": "components/features/blog/BlogMedia.tsx",
+    "text": "Anterior"
+  },
+  "6bda852800d90c8e0ab6": {
+    "source": "components/features/blog/BlogMedia.tsx",
+    "text": "Siguiente"
+  },
+  "52580a8807084b262101": {
+    "source": "components/features/home/AnhydrousSection.tsx",
+    "text": "COSMÉTICA ANHIDRA · CUIDADO EN SÓLIDO"
+  },
+  "52f0e844ce4c1a3ce993": {
+    "source": "components/features/home/AnhydrousSection.tsx",
+    "text": "Otra forma de cuidarte."
+  },
+  "c25f18c581b14da1531b": {
+    "source": "components/features/home/AnhydrousSection.tsx",
+    "text": "Lo esencial, en tus manos."
+  },
+  "e12d07aa7c026e248999": {
+    "source": "components/features/home/AnhydrousSection.tsx",
+    "text": "Shampoos, acondicionadores y jabones sólidos, junto a nuestros productos anhidros. Una colección para descubrir nuevas texturas y hacer de lo cotidiano un momento de cuidado."
+  },
+  "95abff4068c90d4c3a4d": {
+    "source": "components/features/home/AnhydrousSection.tsx",
+    "text": "Explorar cosmética anhidra "
+  },
+  "46b82a81c1bb1034f5ca": {
+    "source": "components/features/home/AnhydrousSection.tsx",
+    "text": " productos para descubrir"
+  },
+  "b67da212abab03da69a2": {
+    "source": "components/features/products/ProductCard.tsx",
+    "text": "Elegir componentes →"
+  },
+  "6a0a0aa12315b39211d8": {
+    "source": "components/features/products/ProductGallery.tsx",
+    "text": "Ampliar ↗"
+  },
+  "6c631da93a64bbf99f0e": {
+    "source": "components/features/products/ProductGallery.tsx",
+    "text": "Cerrar ×"
+  },
+  "6c88bd9470bfc5e2df65": {
+    "source": "components/features/products/ProductPurchase.tsx",
+    "text": "Elige los componentes"
+  },
+  "41d86e56e2798ceedaa7": {
+    "source": "components/features/products/ProductPurchase.tsx",
+    "text": "Selecciona una opción"
+  },
+  "e61a23a4a03058dcd91f": {
+    "source": "components/features/products/ProductPurchase.tsx",
+    "text": "Precio pendiente de confirmación."
+  },
+  "6fbbb5007c4a922b4fdf": {
+    "source": "components/features/products/ProductPurchase.tsx",
+    "text": "Selecciona una opción para agregar al carrito."
+  },
+  "694f256c876ad9347a59": {
+    "source": "components/features/products/ProductPurchase.tsx",
+    "text": "Elaboración bajo pedido · preparación y entrega estimadas: 5 a 7 días hábiles."
+  },
+  "64ce061013f1c396c1df": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Filtra por categoría · puedes seleccionar varias"
+  },
+  "2518645543b8b1451547": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Cosmética anhidra "
+  },
+  "d89a258fb700cdccae62": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Cosmética anhidra ×"
+  },
+  "943ac8dc052597e4b7c8": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Los productos se agregan como artículos individuales."
+  },
+  "shop:filter:facial": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Facial"
+  },
+  "shop:filter:capilar": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Capilar"
+  },
+  "shop:filter:corporal": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Corporal"
+  },
+  "shop:filter:kits": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Kits y rutinas"
+  },
+  "ab2b5eb3c5e226c3417b": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Enviando..."
+  },
+  "2f2799f1a3545027d089": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Enviar enlace"
+  },
+  "c64b2504ff0c8fb6a00b": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Cargando..."
+  },
+  "bb69a4169b50af85b1af": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Entrar"
+  },
+  "5e68f11dbdd621d426c1": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Cargando..."
+  },
+  "3ecf365f6b0962f072dc": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Registrarme"
+  },
+  "24cdacf31aa7c4844f44": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Actualizando..."
+  },
+  "6b7692afa3559fc3b2fa": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Actualizar contraseña"
+  },
+  "38540410ea1022b32b83": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Wompi · simulación sin cobro real"
+  },
+  "8ad3a53034455c76da27": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Wompi · pago real"
+  },
+  "3551733aa14353eacddf": {
+    "source": "app/(dashboard)/account/orders/page.tsx",
+    "text": "Pago no disponible · consultar al equipo"
+  },
+  "1f132960c53d6b969b88": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Wompi · pago seguro"
+  },
+  "aa14f051a81107b3b07b": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Wompi · entorno de pruebas"
+  },
+  "66421817f34433db95da": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Al continuar abrirás Wompi para completar el pago del total mostrado, incluido el envío."
+  },
+  "60bf87dac9c1472747ac": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "El checkout está en pruebas. No realiza cobros reales."
+  },
+  "ffb843a67339a99d6bcd": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Wompi no está disponible temporalmente. Tu selección se conserva; vuelve a intentarlo más tarde."
+  },
+  "9ecad58914a423c4a90a": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Aplicar"
+  },
+  "6708b4a79b54b2edd79a": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Indica tu ciudad"
+  },
+  "f9475b0be138f00560eb": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Incluido"
+  },
+  "0bef090075b661a1a96a": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Subtotal"
+  },
+  "34cd1a0e24c8a30d2269": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Total a pagar"
+  },
+  "174120a114aefd7b7ace": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Redirigiendo a Wompi…"
+  },
+  "77de8b48f6aa43ee6e00": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Retomar pago con Wompi →"
+  },
+  "16ace5a4a26e50dfd068": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Continuar a Wompi · prueba →"
+  },
+  "98b4afc1076395ca32e2": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Pagar con Wompi →"
+  },
+  "c2723495849046721142": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Pedido recibido"
+  },
+  "c5e204b173fa0a03dbcc": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Consulta de pedido"
+  },
+  "791b4299af3e846a1c00": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Gracias por elegir cuidarte."
+  },
+  "2ed1c9096a58c8e541b4": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Verifiquemos tu pedido."
+  },
+  "180d94dfd9e38f0bdd37": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Tu pedido está listo para una simulación con Wompi. No confirma un pago real ni activa la preparación del envío."
+  },
+  "22c0c1cfee197d69eac2": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Tu pago fue confirmado por Wompi. Aquí puedes consultar el estado de tu pedido."
+  },
+  "dc697865827340933963": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Tu total incluye el envío. Puedes consultar el estado o retomar tu pago con Wompi desde esta página."
+  },
+  "c373b53117264998db1d": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Consulta con el equipo el total de este pedido para completar el pago con Wompi."
+  },
+  "b86ef01eb8c9284600a2": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Este pedido no está disponible para iniciar un pago. Contacta al equipo para revisar su estado."
+  },
+  "f554c4895e546c218af6": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "No pudimos recuperar este pedido. Si ya lo enviaste o realizaste un pago, contacta al equipo antes de repetirlo."
+  },
+  "f7c3dcfaa4c29b7a5635": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Envío por confirmar. "
+  },
+  "5755bb2fb416eaf5b172": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Es una simulación, no confirma un pago real."
+  },
+  "4382d9129ecf659de1d7": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "La confirmación definitiva se registra al recibir el evento verificado de Wompi."
+  },
+  "3f60afd5a81764090b22": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Estado de prueba verificado:"
+  },
+  "0e5c1273d10d866f674f": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Estado del pago verificado:"
+  },
+  "c371e7b79e3021ba6141": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "No confirma un cobro real."
+  },
+  "83c6204514e6cb566bd6": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Recibimos el pago de un pedido cancelado. Contacta al equipo para resolverlo."
+  },
+  "8a62db5b08eebbd0fa57": {
+    "source": "app/(public)/checkout/result/page.tsx",
+    "text": "Conserva la referencia de tu pedido."
+  },
+  "0781bdc2a0973930c51b": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Guardando..."
+  },
+  "ce4c6d5f8de81c90f1e5": {
+    "source": "components/features/account/AccountProfileForm.tsx",
+    "text": "Guardar cambios"
+  },
+  "364aeded4a3ca7df964f": {
+    "source": "components/features/cart/AddToCartButton.tsx",
+    "text": "✓ Agregado al carrito"
+  },
+  "6a8d11469368c844362d": {
+    "source": "components/features/cart/AddToCartButton.tsx",
+    "text": "Agregar al carrito"
+  },
+  "18f152b5ee6fa4d85c19": {
+    "source": "components/features/home/EditorialHeroCarousel.tsx",
+    "text": "Pausar"
+  },
+  "c778e71a0849a7d1a39a": {
+    "source": "components/features/home/EditorialHeroCarousel.tsx",
+    "text": "Reproducir"
+  },
+  "02ba8049c41a0b376065": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": "prueba de pago"
+  },
+  "de79bc3f19d0de78eee9": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": "pago"
+  },
+  "7545675fe6573311f084": {
+    "source": "components/features/payments/PaymentRedirectOverlay.tsx",
+    "text": "La conexión está tardando un poco más. Cuando esté lista, te redirigiremos automáticamente a Wompi. No necesitas hacer clic de nuevo."
+  },
+  "b45dc3e421a60c86c208": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "Redirigiendo a Wompi…"
+  },
+  "7537859530a14887f3e4": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "Pagar con Wompi ↗"
+  },
+  "b86b67105a7a6912c680": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "Ir a Wompi · pago de prueba ↗"
+  },
+  "41eb585d477c5ac8545a": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "Se abrirá el checkout oficial de Wompi. Confirmaremos el resultado directamente con el proveedor. No repitas el pago si queda pendiente."
+  },
+  "809d7e83858c49d7783f": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "La simulación no confirma tu cita."
+  },
+  "d1fe7a089329d35dbfe2": {
+    "source": "components/features/payments/WompiPaymentButton.tsx",
+    "text": "El importe simulado corresponde al total mostrado."
+  },
+  "a4f75090e929d4d4429c": {
+    "source": "components/features/products/ProductCard.tsx",
+    "text": "Precio por confirmar"
+  },
+  "7dc5402e1d81c62ae5e2": {
+    "source": "components/features/products/ProductCard.tsx",
+    "text": "Agregado ✓"
+  },
+  "c8a8c36c43229d9d1955": {
+    "source": "components/features/products/ProductCard.tsx",
+    "text": "Agregar al carrito"
+  },
+  "4f2fe955a40996f110bd": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "producto"
+  },
+  "231ef77f919254e9d430": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "productos"
+  },
+  "a823124af85c1dfb408b": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Selección de 3 productos · precios individuales"
+  },
+  "83606da7ca620d63071b": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Estás explorando este ritual ✓"
+  },
+  "2cd410f53980e230def3": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Explorar ritual ↗"
+  },
+  "27658a698d9742d3b94a": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Estás creando tu ritual ✓"
+  },
+  "1886e1a5bec3b6c1f6f5": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Armar mi selección ↗"
+  },
+  "bcd83a20c15846733f3c": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "HAZLO TUYO"
+  },
+  "6da8e0ea0e4649c366c1": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "CONOCE TU RITUAL"
+  },
+  "96dc407966a31863e1ac": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Tu cuidado, a tu manera."
+  },
+  "be4f383f148169ebc2d1": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Puedes comenzar desde cero o adaptar una de las bases. Selecciona una unidad de cada producto; podrás ajustar cantidades en la bolsa."
+  },
+  "b7c8aea5ffd4aecb60e7": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Elegido ✓ · quitar"
+  },
+  "3b4946326f22070c9836": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "No disponible"
+  },
+  "9f4db6c9524debb146a2": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Selección completa"
+  },
+  "2ebc4227b17727818360": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Elegir +"
+  },
+  "a52c8b6d801a48df0406": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Subtotal de productos"
+  },
+  "fcda4f84d0c138c65583": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Precio por confirmar"
+  },
+  "14fccdcc39046d7658d6": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Elige tu primer producto"
+  },
+  "b32b40176ecfe859a741": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Agregado a tu bolsa ✓"
+  },
+  "298e83665f262e4cd9f4": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Agregar la selección a mi bolsa ↗"
+  },
+  "8818ef33a80c75f5ab3c": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Paga de forma segura con Wompi. El equipo confirma contigo el horario después de verificar el pago."
+  },
+  "42b1f7d1af2386bb7042": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Wompi: simulación de pruebas, sin cobros reales ni confirmación de cita."
+  },
+  "5833bc737a59ccc43999": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Retomar mi encuentro"
+  },
+  "4967aa161f0f6351f0dc": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Continuar"
+  },
+  "a2a518651f2bb88a7fea": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tus respuestas siguen aquí mientras permaneces en esta página."
+  },
+  "40568a7b61d59f76d348": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Cinco pasos breves. Una conversación que empieza contigo."
+  },
+  "84d2938fd9b7c548f8f1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Abriendo Wompi…"
+  },
+  "d5b84c03a6bff9780262": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Continuar a Wompi · prueba"
+  },
+  "968141b6467e3252dcdf": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Pagar mi encuentro con Wompi"
+  },
+  "1152d5ed51f58df5c0fd": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Revisar mi encuentro"
+  },
+  "7b76259d9787cb82081a": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Abriremos Wompi en modo de prueba. No se realizará un cobro real."
+  },
+  "7609e3b62f0928f90a0b": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Pagarás el valor mostrado en Wompi. El equipo confirmará contigo el horario del encuentro."
+  },
+  "049630b797668774ffe2": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Wompi no está disponible temporalmente. Tus respuestas se conservan."
+  },
+  "e78c93e18350bd1b9409": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Puedes volver y cambiar tus respuestas antes de enviar."
+  },
+  "b7ca39836e9e04278e62": {
+    "source": "app/(auth)/forgot-password/page.tsx",
+    "text": "Correo"
+  },
+  "1cf95fa3c962a36b48d1": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Correo"
+  },
+  "fd7e2d05e7092e074a9d": {
+    "source": "app/(auth)/login/page.tsx",
+    "text": "Contraseña"
+  },
+  "bd660bb9dab006a73517": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Nombre"
+  },
+  "46cb0f7d7bed445067a6": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Correo"
+  },
+  "60554bdbaf84226f582a": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Contraseña"
+  },
+  "4e5ae47d9e819cebdc13": {
+    "source": "app/(auth)/register/page.tsx",
+    "text": "Confirmar contraseña"
+  },
+  "44c34c5d82bd2ab167a0": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Nueva contraseña"
+  },
+  "22eee5069b493485afa3": {
+    "source": "app/(auth)/reset-password/ResetPasswordForm.tsx",
+    "text": "Confirmar nueva contraseña"
+  },
+  "51ebedbb81672879f6fb": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "3001234567"
+  },
+  "700e7b598a4a7d0ac600": {
+    "source": "app/(public)/checkout/page.tsx",
+    "text": "Ej. Medellín"
+  },
+  "2f35af0f97916ef4a535": {
+    "source": "components/features/products/ProductsCatalogView.tsx",
+    "text": "Busca tu próximo ritual…"
+  },
+  "af204d1f614c805c4d55": {
+    "source": "components/features/products/RoutineBuilderView.tsx",
+    "text": "Mi pausa de los domingos"
+  },
+  "adf59af80a9b429123e1": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Me gustaría conversar sobre…"
+  },
+  "consultation:contact:name:label": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "¿Cómo te llamas?"
+  },
+  "consultation:contact:email:label": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu correo electrónico"
+  },
+  "consultation:contact:phone:label": {
+    "source": "components/features/services/ConsultationExperience.tsx",
+    "text": "Tu teléfono de contacto"
   }
 }

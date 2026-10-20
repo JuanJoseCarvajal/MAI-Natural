@@ -1,10 +1,10 @@
 import {expect,it} from 'vitest';
 import {contentBlocks,contentContinuationKeys} from './content-layout';
 import catalog from './site-text-catalog.json';
-it('excludes individual product and blog editing and maps each field once',()=>{
+it('excludes article bodies while including shared page copy and maps each field once',()=>{
  const keys=contentBlocks.flatMap(b=>b.keys);
  expect(new Set(keys).size).toBe(keys.length);
- for(const block of contentBlocks){expect(block.source).not.toMatch(/Diario \/|\/blog\/|products\/(ProductCard|\[id\])/);for(const key of block.keys)expect(catalog).toHaveProperty(key);}
+ for(const block of contentBlocks){expect(block.source).not.toMatch(/^Diario \//);for(const key of block.keys)expect(catalog).toHaveProperty(key);}
 });
 it('combines the split home headline into a single editable title',()=>{
  const block=contentBlocks.find(b=>b.id==='66e6259e4b4ff8e6a16a');
@@ -21,4 +21,12 @@ it('groups page fragments together while keeping shared elements separate',()=>{
  expect(contentPage('components/ui/Calendar.tsx')).toBe('Asesoría');
  expect(contentPage('components/common/Header.tsx')).toBe('Elementos compartidos');
  expect(contentPage('components/common/Footer.tsx')).toBe('Elementos compartidos');
+});
+
+it('exposes new home copy and shop chips, excludes deleted selection',()=>{
+ expect(contentBlocks.some(block=>block.source.includes('AnhydrousSection'))).toBe(true);
+ for(const category of ['facial','capilar','corporal','kits'])expect(contentBlocks.some(block=>block.keys.includes(`shop:filter:${category}`))).toBe(true);
+ expect(contentBlocks.some(block=>block.keys.includes('7a78a005c8a147872ed8'))).toBe(false);
+ expect(contentPage('app/(public)/blog/page.tsx')).toBe('Diario MAI');
+ expect(contentPage('components/features/products/ProductGallery.tsx')).toBe('Tienda');
 });
